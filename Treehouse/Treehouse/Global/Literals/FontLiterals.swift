@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//import UIKit
 
 enum FontName: String {
     case PretendardSemiBold = "Pretendard-SemiBold"
@@ -59,13 +60,32 @@ extension FontLevel {
             return 10
         }
     }
+    
+    var lineHeight: CGFloat {
+        switch self {
+        case .heading1, .heading2:
+            return 36
+        case .heading3:
+            return 28
+        case .heading4, .body1, .body2, .body3:
+            return 26
+        case .body4, .body5:
+            return 24
+        case .caption1:
+            return 18
+        case .caption2:
+            return 16
+        }
+    }
 }
 
 extension Font {
     
     static func fontGuide(_ fontLevel: FontLevel) -> Font {
-        let font = Font.custom(fontLevel.fontWeight, size: fontLevel.fontSize)
-        
-        return font
+        return Font.custom(fontLevel.fontWeight, size: fontLevel.fontSize)
+    }
+    
+    static func uiFontGuide(_ fontLevel: FontLevel) -> UIFont {
+        return UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize)!
     }
 }

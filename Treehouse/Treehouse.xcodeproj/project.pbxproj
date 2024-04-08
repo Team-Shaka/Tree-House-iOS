@@ -22,18 +22,10 @@
 		00CF35AC2BC2F4C900D9E332 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35AB2BC2F4C900D9E332 /* Kingfisher */; };
 		00CF35B02BC2F63E00D9E332 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35AE2BC2F63E00D9E332 /* Pretendard-Regular.otf */; };
 		00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35AF2BC2F63E00D9E332 /* Pretendard-SemiBold.otf */; };
-		00CF35B42BC3064300D9E332 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35B32BC3064300D9E332 /* UIColor+.swift */; };
-		00CF35B62BC3068F00D9E332 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35B52BC3068E00D9E332 /* UIImageView+.swift */; };
 		00CF35B92BC306D500D9E332 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35B82BC306D500D9E332 /* SVGKit */; };
 		00CF35BB2BC306D500D9E332 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35BA2BC306D500D9E332 /* SVGKitSwift */; };
-		00CF35BD2BC3070200D9E332 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35BC2BC3070200D9E332 /* UIImage+.swift */; };
-		00CF35BF2BC3075300D9E332 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35BE2BC3075300D9E332 /* UITextField+.swift */; };
-		00CF35C12BC3077D00D9E332 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C02BC3077D00D9E332 /* UIButton+.swift */; };
-		00CF35C32BC307AA00D9E332 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C22BC307AA00D9E332 /* UIViewController+.swift */; };
-		00CF35C52BC307C200D9E332 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C42BC307C200D9E332 /* UIStackView+.swift */; };
-		00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C62BC307E600D9E332 /* NSObject+.swift */; };
-		00CF35C92BC307FE00D9E332 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C82BC307FE00D9E332 /* UILabel+.swift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
+		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,17 +39,9 @@
 		00CF35972BC2E22200D9E332 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		00CF35AE2BC2F63E00D9E332 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		00CF35AF2BC2F63E00D9E332 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		00CF35B32BC3064300D9E332 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		00CF35B52BC3068E00D9E332 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
-		00CF35BC2BC3070200D9E332 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
-		00CF35BE2BC3075300D9E332 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		00CF35C02BC3077D00D9E332 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		00CF35C22BC307AA00D9E332 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		00CF35C42BC307C200D9E332 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
-		00CF35C62BC307E600D9E332 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
-		00CF35C82BC307FE00D9E332 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,16 +180,8 @@
 		00CF35B22BC3060E00D9E332 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				00CF35C62BC307E600D9E332 /* NSObject+.swift */,
 				00CF35CA2BC3083100D9E332 /* String+.swift */,
-				00CF35C02BC3077D00D9E332 /* UIButton+.swift */,
-				00CF35B32BC3064300D9E332 /* UIColor+.swift */,
-				00CF35B52BC3068E00D9E332 /* UIImageView+.swift */,
-				00CF35BC2BC3070200D9E332 /* UIImage+.swift */,
-				00CF35C82BC307FE00D9E332 /* UILabel+.swift */,
-				00CF35C42BC307C200D9E332 /* UIStackView+.swift */,
-				00CF35BE2BC3075300D9E332 /* UITextField+.swift */,
-				00CF35C22BC307AA00D9E332 /* UIViewController+.swift */,
+				3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -302,17 +278,9 @@
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
-				00CF35C92BC307FE00D9E332 /* UILabel+.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
-				00CF35BD2BC3070200D9E332 /* UIImage+.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
-				00CF35BF2BC3075300D9E332 /* UITextField+.swift in Sources */,
-				00CF35C52BC307C200D9E332 /* UIStackView+.swift in Sources */,
-				00CF35B42BC3064300D9E332 /* UIColor+.swift in Sources */,
-				00CF35C32BC307AA00D9E332 /* UIViewController+.swift in Sources */,
-				00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */,
-				00CF35B62BC3068F00D9E332 /* UIImageView+.swift in Sources */,
-				00CF35C12BC3077D00D9E332 /* UIButton+.swift in Sources */,
+				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
