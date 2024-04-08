@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum I18N {
+enum StringLiterals {
     enum Register {
         static let buttonTitle1 = "인증번호 보내기"
         static let buttonTitle2 = "다음으로"
