@@ -34,7 +34,6 @@
 		00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C62BC307E600D9E332 /* NSObject+.swift */; };
 		00CF35C92BC307FE00D9E332 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C82BC307FE00D9E332 /* UILabel+.swift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
-		00CF35CD2BC3087A00D9E332 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CC2BC3087A00D9E332 /* ColorLiterals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +57,7 @@
 		00CF35C62BC307E600D9E332 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		00CF35C82BC307FE00D9E332 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		00CF35CC2BC3087A00D9E332 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
+		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +98,7 @@
 		00CF35802BC291FA00D9E332 /* Treehouse */ = {
 			isa = PBXGroup;
 			children = (
+				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
 				00CF35902BC2DF9200D9E332 /* Global */,
 				00CF35992BC2E2E200D9E332 /* Presentation */,
@@ -145,7 +145,6 @@
 		00CF35922BC2E1DA00D9E332 /* Literals */ = {
 			isa = PBXGroup;
 			children = (
-				00CF35CC2BC3087A00D9E332 /* ColorLiterals.swift */,
 				00CF35952BC2E21700D9E332 /* FontLiterals.swift */,
 				00CF35972BC2E22200D9E332 /* SizeLiterals.swift */,
 				00CF35932BC2E20300D9E332 /* StringLiterals.swift */,
@@ -312,7 +311,6 @@
 				00CF35B42BC3064300D9E332 /* UIColor+.swift in Sources */,
 				00CF35C32BC307AA00D9E332 /* UIViewController+.swift in Sources */,
 				00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */,
-				00CF35CD2BC3087A00D9E332 /* ColorLiterals.swift in Sources */,
 				00CF35B62BC3068F00D9E332 /* UIImageView+.swift in Sources */,
 				00CF35C12BC3077D00D9E332 /* UIButton+.swift in Sources */,
 			);
@@ -450,6 +448,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Treehouse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -478,6 +477,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Treehouse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

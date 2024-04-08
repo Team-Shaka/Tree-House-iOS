@@ -5,7 +5,7 @@
 //  Created by 티모시 킴 on 4/7/24.
 //
 
-import UIKit
+import SwiftUI
 
 enum FontName: String {
     case PretendardSemiBold = "Pretendard-SemiBold"
@@ -61,10 +61,11 @@ extension FontLevel {
     }
 }
 
-extension UIFont {
+extension Font {
     
-    static func fontGuide(_ fontLevel: FontLevel) -> UIFont {
-        let font = UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize)!
+    static func fontGuide(_ fontLevel: FontLevel) -> Font {
+        let font = Font.custom(fontLevel.fontWeight, size: fontLevel.fontSize)
+        
         return font
     }
 }
