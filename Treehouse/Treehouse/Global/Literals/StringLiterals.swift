@@ -32,9 +32,10 @@ enum StringLiterals {
         
         static let indicatorTitle1 = "전화번호 구조가 맞지 않습니다."
         static let indicatorTitle2 = "인증번호가 맞지 않습니다."
+        static let indicatorTitle3 = "*이름 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
         
         static let placeholderTitle1 = "전화번호 입력"
-        static let placeholderTitle2 = "유저 이름 입력"
+        static let placeholderTitle2 = "유저이름 입력"
         static let placeholderTitle3 = "멤버 이름 입력"
         static let placeholderTitle4 = "바이오 입력"
         
