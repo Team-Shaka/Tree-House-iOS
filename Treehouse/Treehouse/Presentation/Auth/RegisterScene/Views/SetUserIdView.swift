@@ -84,6 +84,7 @@ private extension SetUserIdView {
             TextField(StringLiterals.Register.placeholderTitle2, text: $userId)
                 .fontWithLineHeight(fontLevel: .body2)
                 .foregroundStyle(.gray8)
+                .tint(.treeGreen)
                 .focused($focusedField, equals: .userId)
                 .padding(EdgeInsets(top: 18, leading: 18, bottom: 18, trailing: 10))
                 .frame(height: 62)
