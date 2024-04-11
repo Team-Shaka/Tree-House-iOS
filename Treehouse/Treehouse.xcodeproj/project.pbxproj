@@ -26,6 +26,7 @@
 		00CF35BB2BC306D500D9E332 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35BA2BC306D500D9E332 /* SVGKitSwift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
+		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		00CF35AD2BC2F52C00D9E332 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */,
 				00CF35AE2BC2F63E00D9E332 /* Pretendard-Regular.otf */,
 				00CF35AF2BC2F63E00D9E332 /* Pretendard-SemiBold.otf */,
 			);
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00CF35892BC291FC00D9E332 /* Preview Assets.xcassets in Resources */,
+				944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */,
 				00CF35B02BC2F63E00D9E332 /* Pretendard-Regular.otf in Resources */,
 				00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */,
 				00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */,
