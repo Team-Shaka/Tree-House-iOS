@@ -26,6 +26,7 @@
 		00CF35BB2BC306D500D9E332 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35BA2BC306D500D9E332 /* SVGKitSwift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
+		944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */; };
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				00CF35832BC291FA00D9E332 /* ContentView.swift */,
+				944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
+				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
