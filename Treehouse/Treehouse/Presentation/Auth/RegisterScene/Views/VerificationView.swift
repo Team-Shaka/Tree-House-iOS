@@ -61,13 +61,11 @@ struct VerificationView: View {
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 8 / 852)
                 
-                
                 Text("*인증번호가 맞지 않습니다.")
                     .font(.fontGuide(.caption1))
                     .foregroundStyle(isCodeCorrect ? .grayscaleWhite : .error)
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
-                
                 
                 Text(StringLiterals.Register.guidanceTitle1)
                     .font(.fontGuide(.body5))
@@ -130,7 +128,6 @@ struct VerificationView: View {
 #Preview {
     VerificationView(phoneNumber: "+82010XXXXXXXX")
 }
-
 
 // MARK: Binding <String> Extension
 
