@@ -36,6 +36,7 @@
 		00CF35C92BC307FE00D9E332 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35C82BC307FE00D9E332 /* UILabel+.swift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
 		00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */; };
+		00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB442BC9A43000B23AE4 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		00CF35C82BC307FE00D9E332 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnableRegisterView.swift; sourceTree = "<group>"; };
+		00F8BB442BC9A43000B23AE4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				00CF35832BC291FA00D9E332 /* ContentView.swift */,
+				00F8BB442BC9A43000B23AE4 /* LoginView.swift */,
 				00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */,
 				008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */,
 			);
@@ -316,6 +319,7 @@
 				00CF35BF2BC3075300D9E332 /* UITextField+.swift in Sources */,
 				00CF35C52BC307C200D9E332 /* UIStackView+.swift in Sources */,
 				00CF35B42BC3064300D9E332 /* UIColor+.swift in Sources */,
+				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				00CF35C32BC307AA00D9E332 /* UIViewController+.swift in Sources */,
 				00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */,
 				00CF35B62BC3068F00D9E332 /* UIImageView+.swift in Sources */,
