@@ -52,7 +52,7 @@ struct SetUserIdView: View {
                     .cornerRadius(10)
             }
         }
-        .padding(EdgeInsets(top: 66, leading: 22, bottom: 23, trailing: 22))
+        .padding(EdgeInsets(top: 66, leading: 24, bottom: 23, trailing: 22))
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
