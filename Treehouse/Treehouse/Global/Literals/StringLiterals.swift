@@ -20,6 +20,7 @@ enum StringLiterals {
         static let buttonTitle9 = "프로필 사진 설정하러 가기"
         static let buttonTitle10 = "바이오 설정하러 가기"
         static let buttonTitle11 = "내 프로필 보러가기"
+        static let buttonTitle12 = "다시 작성할게요"
         
         static let guidanceTitle1 = "당신의 전화번호는 기기에서 암호화되어 서버로 전송됩니다.\n트리하우스는 당신의 개인정보를 소중하게 여기며,\n당신의 전화번호는 저희가 확인할 수 없습니다."
         static let guidanceTitle2 = "트리하우스는 원활한 서비스 제공과\n내부 커뮤니티 유지를 위해 초대된 전화번호에\n대해서만 가입이 가능하도록 제공됩니다."
@@ -29,6 +30,7 @@ enum StringLiterals {
         static let guidanceTitle6 = "멤버 이름은 추후에 바꿀 수 있어요."
         static let guidanceTitle7 = "이 사진은 이 트리하우스 멤버에게만 보여요."
         static let guidanceTitle8 = "이 바이오는 트리하우스 멤버에게만 보여요."
+        static let guidacneTitel9 = "멤버이름과 바이오는 곧 설정할 예정이에요."
         
         static let indicatorTitle1 = "전화번호 구조가 맞지 않습니다."
         static let indicatorTitle2 = "인증번호가 맞지 않습니다."
@@ -47,6 +49,7 @@ enum StringLiterals {
         static let registerTitle6 = "당신의 멤버 이름을 작성해주세요."
         static let registerTitle7 = "당신의 프로필 사진을 설정해주세요!"
         static let registerTitle8 = "마지막으로 짧은 바이오를\n작성해주세요."
+        static let registerTitle9 = "님 반갑습니다!\n아마 다른 트리 멤버에게는\n당신이 이렇게 보일거에요!"
         
         static let etcTitle1 = "추후 누구나 가입이 가능하도록\n변경할 예정이니 기다려주세요!"
     }
