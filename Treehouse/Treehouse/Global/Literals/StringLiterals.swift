@@ -32,7 +32,7 @@ enum StringLiterals {
         static let guidanceTitle8 = "이 바이오는 트리하우스 멤버에게만 보여요."
         static let guidacneTitel9 = "멤버이름과 바이오는 곧 설정할 예정이에요."
         
-        static let indicatorTitle1 = "전화번호 구조가 맞지 않습니다."
+        static let indicatorTitle1 = "*전화번호 구조가 맞지 않습니다."
         static let indicatorTitle2 = "인증번호가 맞지 않습니다."
         static let indicatorTitle3 = "*이름 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
         
