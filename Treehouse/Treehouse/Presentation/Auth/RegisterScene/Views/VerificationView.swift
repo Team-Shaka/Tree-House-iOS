@@ -16,7 +16,7 @@ struct VerificationView: View {
     // MARK: - State Property
     
     @State private var verificationCode: String = ""
-    @State private var isCodeCorrect = true
+    @State private var isValid = true
     @FocusState private var isKeyboardShowing: Bool
     
     // MARK: - View
@@ -63,7 +63,7 @@ struct VerificationView: View {
                 
                 Text("*인증번호가 맞지 않습니다.")
                     .font(.fontGuide(.caption1))
-                    .foregroundStyle(isCodeCorrect ? .grayscaleWhite : .error)
+                    .foregroundStyle(isValid ? .grayscaleWhite : .error)
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
                 
