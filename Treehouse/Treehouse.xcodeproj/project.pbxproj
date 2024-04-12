@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				00CF35832BC291FA00D9E332 /* ContentView.swift */,
+				008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				00CF35C72BC307E600D9E332 /* NSObject+.swift in Sources */,
 				00CF35B62BC3068F00D9E332 /* UIImageView+.swift in Sources */,
 				00CF35C12BC3077D00D9E332 /* UIButton+.swift in Sources */,
+				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -454,6 +459,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,6 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -483,6 +490,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
