@@ -21,4 +21,10 @@ extension String {
         guard self.range(of: pattern, options: .regularExpression) != nil else { return false }
         return true
     }
+    
+    func validatePhoneNumber() -> Bool {
+        let phoneRegex = "^(010\\d{8}|10\\d{8})$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return predicate.evaluate(with: self)
+    }
 }
