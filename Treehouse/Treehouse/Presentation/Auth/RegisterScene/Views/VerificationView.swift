@@ -38,8 +38,8 @@ struct VerificationView: View {
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 50 / 852)
                 
-                HStack(spacing: 0){
-                    ForEach(0 ..< 6,id: \.self){index in
+                HStack(spacing: 0) {
+                    ForEach(0 ..< 6, id: \.self) {index in
                         verificationCodeBox(index)
                     }
                 }
@@ -78,13 +78,11 @@ struct VerificationView: View {
             
             Button {
                 print("다음으로 버튼 탭했음")
-                isCodeCorrect = verificationCode.count == 6
             } label: {
                 Text("다음으로")
                     .font(.fontGuide(.body2))
-                    .foregroundStyle(.gray1)
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
-                    .background(.treeBlack)
+                    .disableWithOpacity(verificationCode.count < 6)
                     .cornerRadius(12)
             }
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
@@ -129,11 +127,22 @@ struct VerificationView: View {
     VerificationView(phoneNumber: "+82010XXXXXXXX")
 }
 
+// MARK: View Extensions
+
+extension View{
+    func disableWithOpacity(_ condition: Bool) -> some View {
+        self
+            .disabled(condition)
+            .foregroundStyle(condition ? Color.gray6 : Color.gray1)
+            .background(condition ? Color.gray2 : Color.treeBlack)
+    }
+}
+
 // MARK: Binding <String> Extension
 
-extension Binding where Value == String{
-    func limit(_ length: Int)->Self{
-        if self.wrappedValue.count > length{
+extension Binding where Value == String {
+    func limit(_ length: Int) -> Self {
+        if self.wrappedValue.count > length {
             DispatchQueue.main.async {
                 self.wrappedValue = String(self.wrappedValue.prefix(length))
             }
