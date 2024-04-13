@@ -16,7 +16,7 @@ struct VerificationView: View {
     // MARK: - State Property
     
     @State private var verificationCode: String = ""
-    @State private var isValid = true
+    @State private var isValid = false
     @FocusState private var isKeyboardShowing: Bool
     
     // MARK: - View
@@ -26,17 +26,16 @@ struct VerificationView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 0) {
                     Text("\(phoneNumber ?? "nil")")
-                        .font(.fontGuide(.heading1))
                         .foregroundStyle(.treeGreen)
                     +
                     Text("로 전송된\n6자리 인증번호를 입력해주세요.")
-                        .font(.fontGuide(.heading1))
                         .foregroundStyle(.treeBlack)
                 }
+                .fontWithLineHeight(fontLevel: .heading1)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 72)
                 
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 50 / 852)
+                Spacer(minLength: SizeLiterals.Screen.screenHeight * 40 / 852)
                 
                 HStack(spacing: 0) {
                     ForEach(0 ..< 6, id: \.self) {index in
@@ -59,22 +58,23 @@ struct VerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.top, 10)
                 
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 8 / 852)
+                Spacer(minLength: SizeLiterals.Screen.screenHeight * 3 / 852)
                 
                 Text("*인증번호가 맞지 않습니다.")
-                    .font(.fontGuide(.caption1))
+                    .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(isValid ? .grayscaleWhite : .error)
+                    .offset(y: -SizeLiterals.Screen.screenHeight * 10 / 852)
                 
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
+                Spacer(minLength: SizeLiterals.Screen.screenHeight * 20 / 852)
                 
                 Text(StringLiterals.Register.guidanceTitle1)
-                    .font(.fontGuide(.body5))
+                    .fontWithLineHeight(fontLevel: .body5)
                     .foregroundStyle(.gray5)
-                    .frame(height: 60)
+                    .frame(height: 72)
             }
             .padding(.top, SizeLiterals.Screen.screenHeight * 66 / 852)
             
-            Spacer(minLength: SizeLiterals.Screen.screenHeight * 335 / 852)
+            Spacer(minLength: SizeLiterals.Screen.screenHeight * 325 / 852)
             
             Button {
                 print("다음으로 버튼 탭했음")
