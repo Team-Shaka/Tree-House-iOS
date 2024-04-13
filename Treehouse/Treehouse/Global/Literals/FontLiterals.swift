@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-//import UIKit
 
 enum FontName: String {
     case PretendardSemiBold = "Pretendard-SemiBold"
     case PretendardRegular = "Pretendard-Regular"
+    case PretendardMedium = "Pretendard-Medium"
 }
 
 enum FontLevel {
@@ -30,12 +30,13 @@ enum FontLevel {
 }
 
 extension FontLevel {
-    
     var fontWeight: String {
         switch self {
+        case .body1:
+            return FontName.PretendardMedium.rawValue
         case .heading1, .heading2, .heading3, .heading4, .body2, .body4:
             return FontName.PretendardSemiBold.rawValue
-        case .body1, .body3, .body5, .caption1, .caption2:
+        case .body3, .body5, .caption1, .caption2:
             return FontName.PretendardRegular.rawValue
         }
     }
@@ -80,7 +81,6 @@ extension FontLevel {
 }
 
 extension Font {
-    
     static func fontGuide(_ fontLevel: FontLevel) -> Font {
         return Font.custom(fontLevel.fontWeight, size: fontLevel.fontSize)
     }

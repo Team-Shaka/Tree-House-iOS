@@ -21,7 +21,12 @@ struct FontWithLineHeight: ViewModifier {
 
 extension View {
     func fontWithLineHeight(fontLevel: FontLevel) -> some View {
-        return ModifiedContent(content: self, modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), lineHeight: fontLevel.lineHeight))
+        return ModifiedContent(content: self, 
+                               modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), lineHeight: fontLevel.lineHeight))
+    }
+    
+    func hideKeyboard() {
+      UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     // 상단 SafeArea 의 높이를 반환해주는 메서드
