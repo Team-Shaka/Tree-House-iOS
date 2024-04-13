@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
+		00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */; };
+		00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB442BC9A43000B23AE4 /* LoginView.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
 		944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */; };
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
@@ -36,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnableRegisterView.swift; sourceTree = "<group>"; };
+		00F8BB442BC9A43000B23AE4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
@@ -171,6 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				00CF35832BC291FA00D9E332 /* ContentView.swift */,
+				00F8BB442BC9A43000B23AE4 /* LoginView.swift */,
+				00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */,
+				008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */,
 				944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */,
 				3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */,
 				3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */,
@@ -304,8 +313,11 @@
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
+				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
+				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
+				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
@@ -442,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -450,6 +463,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,6 +485,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -479,6 +494,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
