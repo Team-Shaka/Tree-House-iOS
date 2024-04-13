@@ -1,5 +1,5 @@
 //
-//  RecievedFirstInvitaionView.swift
+//  ReceivedFirstInvitaionView.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 4/12/24.
