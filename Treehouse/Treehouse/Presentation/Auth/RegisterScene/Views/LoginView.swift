@@ -15,14 +15,14 @@ struct LoginView: View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(StringLiterals.Register.registerTitle3)
-                    .font(.fontGuide(.heading1))
+                    .fontWithLineHeight(fontLevel: .heading1)
                     .foregroundStyle(.treeBlack)
                     .frame(width: 287, height: 108)
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
                 
                 Text(StringLiterals.Register.guidanceTitle2)
-                    .font(.fontGuide(.body1))
+                    .fontWithLineHeight(fontLevel: .body1)
                     .foregroundStyle(.gray5)
                     .frame(height: 78)
             }
@@ -44,7 +44,7 @@ struct LoginView: View {
                 print("로그인 버튼 탭했음")
             } label: {
                 Text("로그인")
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.gray1)
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
                     .background(.treeBlack)
