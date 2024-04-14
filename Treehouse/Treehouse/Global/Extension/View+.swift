@@ -28,4 +28,13 @@ extension View {
     func hideKeyboard() {
       UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    // 상단 SafeArea 의 높이를 반환해주는 메서드
+    func safeAreaHeight() -> CGFloat {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let statusBarHeight = windowScene.statusBarManager?.statusBarFrame.height ?? 0
+            return statusBarHeight
+        }
+        return 0
+    }
 }
