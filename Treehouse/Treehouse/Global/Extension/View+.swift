@@ -22,7 +22,8 @@ struct FontWithLineHeight: ViewModifier {
 extension View {
     func fontWithLineHeight(fontLevel: FontLevel) -> some View {
         return ModifiedContent(content: self, 
-                               modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), lineHeight: fontLevel.lineHeight))
+                               modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), 
+                                                            lineHeight: fontLevel.lineHeight))
     }
     
     func hideKeyboard() {
