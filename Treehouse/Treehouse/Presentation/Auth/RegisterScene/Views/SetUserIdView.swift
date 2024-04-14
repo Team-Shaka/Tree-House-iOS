@@ -57,7 +57,7 @@ struct SetUserIdView: View {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
         .onChange(of: userId) { _, newValue in
-            if isValidInputUserId(newValue) {
+            if self.isValidInputUserId(newValue) {
                 isButtonEnabled = true
                 textFieldState = .enable
             } else {
@@ -101,17 +101,6 @@ private extension SetUserIdView {
                     .foregroundStyle(.error)
             }
         }
-    }
-}
-
-// MARK: - Func
-
-private extension SetUserIdView {
-    // 입력값이 주어진 조건을 충족하는지 여부를 확인하는 정규식 ( 0~9,a~z, _, ., 4~20자 )
-    func isValidInputUserId(_ input: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^[0-9a-z_\\.]{4,20}$")
-        let range = NSRange(location: 0, length: input.utf16.count)
-        return regex.firstMatch(in: input, options: [], range: range) != nil
     }
 }
 
