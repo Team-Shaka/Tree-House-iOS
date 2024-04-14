@@ -83,7 +83,7 @@ private extension SetUserIdView {
         VStack(alignment: .leading, spacing: 8) {
             TextField(StringLiterals.Register.placeholderTitle2, text: $userId)
                 .fontWithLineHeight(fontLevel: .body2)
-                .foregroundStyle(.gray8)
+                .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
                 .focused($focusedField, equals: .userId)
                 .padding(EdgeInsets(top: 18, leading: 18, bottom: 18, trailing: 10))
