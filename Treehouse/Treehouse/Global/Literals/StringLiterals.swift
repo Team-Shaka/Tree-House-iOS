@@ -21,6 +21,7 @@ enum StringLiterals {
         static let buttonTitle10 = "바이오 설정하러 가기"
         static let buttonTitle11 = "내 프로필 보러가기"
         static let buttonTitle12 = "다시 작성할게요"
+        static let buttonTitle13 = "사진 변경하기"
         
         static let guidanceTitle1 = "당신의 전화번호는 기기에서 암호화되어 서버로 전송됩니다.\n트리하우스는 당신의 개인정보를 소중하게 여기며,\n당신의 전화번호는 저희가 확인할 수 없습니다."
         static let guidanceTitle2 = "트리하우스는 원활한 서비스 제공과\n내부 커뮤니티 유지를 위해 초대된 전화번호에\n대해서만 가입이 가능하도록 제공됩니다."
