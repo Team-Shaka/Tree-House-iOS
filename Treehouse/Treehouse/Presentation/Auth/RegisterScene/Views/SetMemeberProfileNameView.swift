@@ -56,8 +56,23 @@ struct SetMemeberProfileNameView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 30, trailing: 24))
             .background(.grayscaleWhite)
-            .navigationTitle(StringLiterals.Register.navigationTitle1)
             .navigationBarTitleDisplayMode(.inline)
+            .background(.grayscaleWhite)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(StringLiterals.Register.navigationTitle1)
+                        .fontWithLineHeight(fontLevel: .body2)
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.treeBlack)
+                    }
+                }
+            }
         }
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
@@ -107,6 +122,8 @@ private extension SetMemeberProfileNameView {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     SetMemeberProfileNameView()
