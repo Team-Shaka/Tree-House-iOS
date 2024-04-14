@@ -59,9 +59,17 @@ struct SetMemeberProfileNameView: View {
             .navigationTitle(StringLiterals.Register.navigationTitle1)
             .navigationBarTitleDisplayMode(.inline)
         }
-        
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
+        }
+        .onChange(of: memberName) { _, newValue in
+            if self.isValidInputUserId(newValue) {
+                isButtonEnabled = true
+                textFieldState = .enable
+            } else {
+                isButtonEnabled = false
+                textFieldState = .unable
+            }
         }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .memberName {
