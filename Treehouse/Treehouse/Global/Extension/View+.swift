@@ -37,4 +37,10 @@ extension View {
         }
         return 0
     }
+    
+    func isValidInputUserId(_ input: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[0-9a-z_\\.]{4,20}$")
+        let range = NSRange(location: 0, length: input.utf16.count)
+        return regex.firstMatch(in: input, options: [], range: range) != nil
+    }
 }
