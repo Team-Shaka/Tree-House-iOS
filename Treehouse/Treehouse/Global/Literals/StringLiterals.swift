@@ -31,6 +31,7 @@ enum StringLiterals {
         static let guidanceTitle7 = "이 사진은 이 트리하우스 멤버에게만 보여요."
         static let guidanceTitle8 = "이 바이오는 트리하우스 멤버에게만 보여요."
         static let guidacneTitel9 = "멤버이름과 바이오는 곧 설정할 예정이에요."
+        static let guidacneTitle10 = "멤버 이름은 추후에 바꿀 수 있어요."
         
         static let indicatorTitle1 = "*전화번호 구조가 맞지 않습니다."
         static let indicatorTitle2 = "인증번호가 맞지 않습니다."
@@ -52,5 +53,7 @@ enum StringLiterals {
         static let registerTitle9 = "님 반갑습니다!\n아마 다른 트리 멤버에게는\n당신이 이렇게 보일거에요!"
         
         static let etcTitle1 = "추후 누구나 가입이 가능하도록\n변경할 예정이니 기다려주세요!"
+        
+        static let navigationTitle1 = "멤버 프로필 설정"
     }
 }
