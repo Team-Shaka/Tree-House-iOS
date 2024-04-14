@@ -20,14 +20,14 @@ struct UnableRegisterView: View {
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 28 / 852)
                 
                 Text(StringLiterals.Register.registerTitle2)
-                    .font(.fontGuide(.heading1))
+                    .fontWithLineHeight(fontLevel: .heading1)
                     .foregroundStyle(.treeBlack)
                     .frame(width: 335, height: 72)
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
                 
                 Text(StringLiterals.Register.guidanceTitle2)
-                    .font(.fontGuide(.body1))
+                    .fontWithLineHeight(fontLevel: .body1)
                     .foregroundStyle(.gray5)
                     .frame(height: 78)
             }
@@ -36,7 +36,7 @@ struct UnableRegisterView: View {
             Spacer(minLength: SizeLiterals.Screen.screenHeight * 269 / 852)
             
             Text(StringLiterals.Register.etcTitle1)
-                .font(.fontGuide(.body1))
+                .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(.treeGreen)
                 .frame(maxWidth: .infinity)
                 .frame(height: 70)
