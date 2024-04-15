@@ -14,9 +14,9 @@ struct MaxLengthModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .onChange(of: text) { _, newValue in
+            .onChange(of: text) { oldValue, newValue in
                 if newValue.count > maxLength {
-                    text = String(newValue.prefix(maxLength))
+                    text = oldValue
                 }
             }
     }
