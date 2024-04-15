@@ -50,7 +50,10 @@ enum StringLiterals {
         static let registerTitle7 = "당신의 프로필 사진을 설정해주세요!"
         static let registerTitle8 = "마지막으로 짧은 바이오를\n작성해주세요."
         static let registerTitle9 = "님 반갑습니다!\n아마 다른 트리 멤버에게는\n당신이 이렇게 보일거에요!"
+        static let registerTitle10 = ", 멋진데요!\n이 트리하우스에서\n당신은 이렇게 보일거에요!"
         
         static let etcTitle1 = "추후 누구나 가입이 가능하도록\n변경할 예정이니 기다려주세요!"
+        
+        static let navigationTitle1 = "멤버 프로필 설정"
     }
 }
