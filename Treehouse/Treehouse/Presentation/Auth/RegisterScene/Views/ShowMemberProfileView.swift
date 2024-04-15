@@ -90,11 +90,7 @@ extension ShowMemberProfileView {
                 .stroke(.gray3, lineWidth: 1)
                 .padding(.top, 56)
             
-            Image(.imgProfileBackground)
-                .padding(.top, 0)
-            
             profileImageView
-                .padding(.top, 6)
             
             VStack(spacing: 0) {
                 VStack(spacing: 2) {
@@ -120,13 +116,22 @@ extension ShowMemberProfileView {
     @ViewBuilder
     var profileImageView: some View {
         Circle()
-            .overlay(
+            .frame(width: 112, height: 112)
+        
+            .overlay {
+                Circle().stroke(LinearGradient(gradient: Gradient(colors: [.treeGreen, .treeBlack]),
+                                               startPoint: .top,
+                                               endPoint: .bottom),
+                                lineWidth: 4)
+                
+                Circle().fill(.treePale)
+                
                 Image(.imgDumy)
                     .resizable()
                     .scaledToFill()
-            )
-            .frame(width: 99, height: 99)
-            .clipShape(Circle())
+                    .frame(width: 99, height: 99)
+                    .clipShape(Circle())
+            }
     }
 }
 
