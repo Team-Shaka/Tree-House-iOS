@@ -28,15 +28,15 @@ struct SetMemeberProfileNameView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(StringLiterals.Register.registerTitle6)
                         .fontWithLineHeight(fontLevel: .heading1)
-                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 22/852)
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 22 / 852)
                     
                     Text(StringLiterals.Register.guidacneTitle10)
                         .fontWithLineHeight(fontLevel: .body3)
                         .foregroundStyle(.gray5)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, SizeLiterals.Screen.screenHeight * 30/852)
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 96/852)
+                .padding(.top, SizeLiterals.Screen.screenHeight * 30 / 852)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 96 / 852)
                   
                 memberNameTextField
                 

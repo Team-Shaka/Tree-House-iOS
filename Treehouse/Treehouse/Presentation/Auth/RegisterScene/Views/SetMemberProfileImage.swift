@@ -21,15 +21,15 @@ struct SetMemberProfileImage: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(StringLiterals.Register.registerTitle7)
                         .fontWithLineHeight(fontLevel: .heading1)
-                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 22/852)
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 22 / 852)
                     
                     Text(StringLiterals.Register.guidanceTitle7)
                         .fontWithLineHeight(fontLevel: .body3)
                         .foregroundStyle(.gray5)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, SizeLiterals.Screen.screenHeight * 22/852)
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 15/852)
+                .padding(.top, SizeLiterals.Screen.screenHeight * 22 / 852)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 15 / 852)
                 
                 ZStack(alignment: .bottom) {
                     memberProfileImage
@@ -49,7 +49,7 @@ struct SetMemberProfileImage: View {
                                     .stroke(.treeGreen, lineWidth: 1.5)
                             )
                     }
-                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 44/852)
+                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 44 / 852)
                 }
                 
                 Spacer()
@@ -65,7 +65,7 @@ struct SetMemberProfileImage: View {
                         .background(.treeBlack)
                         .cornerRadius(12)
                 }
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 30/852)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
             .navigationBarTitleDisplayMode(.inline)

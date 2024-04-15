@@ -28,7 +28,7 @@ struct SetMemberBioView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(StringLiterals.Register.registerTitle8)
                         .fontWithLineHeight(fontLevel: .heading1)
-                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 18/852)
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 18 / 852)
                     
                     Text(StringLiterals.Register.guidanceTitle8)
                         .fontWithLineHeight(fontLevel: .body3)
