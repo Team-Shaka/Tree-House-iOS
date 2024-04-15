@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// TextField 에서 최대 글자수를 정하기 위한 Modifier
+/// TextField 에서 최대 글자수를 정하기 위한 Modifier
 struct MaxLengthModifier: ViewModifier {
     @Binding var text: String
     let maxLength: Int
