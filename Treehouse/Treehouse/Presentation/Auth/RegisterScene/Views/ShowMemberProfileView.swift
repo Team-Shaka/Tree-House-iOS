@@ -60,7 +60,6 @@ struct ShowMemberProfileView: View {
             }
             .disabled(isRetryButtonDisabled)
             
-            .navigationTitle(StringLiterals.Register.navigationTitle1)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
