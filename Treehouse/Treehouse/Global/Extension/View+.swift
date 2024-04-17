@@ -22,7 +22,8 @@ struct FontWithLineHeight: ViewModifier {
 extension View {
     func fontWithLineHeight(fontLevel: FontLevel) -> some View {
         return ModifiedContent(content: self, 
-                               modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), lineHeight: fontLevel.lineHeight))
+                               modifier: FontWithLineHeight(font: Font.uiFontGuide(fontLevel), 
+                                                            lineHeight: fontLevel.lineHeight))
     }
     
     /// 외부 탭 시, 키보드 내려주는 메서드
@@ -37,5 +38,11 @@ extension View {
             return statusBarHeight
         }
         return 0
+    }
+    
+    func isValidInputUserId(_ input: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[0-9a-z_\\.]{4,20}$")
+        let range = NSRange(location: 0, length: input.utf16.count)
+        return regex.firstMatch(in: input, options: [], range: range) != nil
     }
 }
