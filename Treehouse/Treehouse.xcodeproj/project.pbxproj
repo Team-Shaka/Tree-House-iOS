@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */; };
+		0012366D2BCED9BD00CEAC53 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* LetterView.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBranchView.swift; sourceTree = "<group>"; };
+		0012366C2BCED9BD00CEAC53 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				3F88357C2BCA51BA0021C8AB /* DrawingView.swift */,
 				3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */,
 				944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */,
+				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
+				0012366C2BCED9BD00CEAC53 /* LetterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
+				0012366D2BCED9BD00CEAC53 /* LetterView.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
@@ -319,6 +326,7 @@
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
+				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
