@@ -56,4 +56,8 @@ enum StringLiterals {
         
         static let navigationTitle1 = "멤버 프로필 설정"
     }
+    
+    enum Invitation {
+        static let guidanceTitle1 = "가진 초대장을 소모해서 친구를 트리하우스에\n초대할 수 있어요!"
+    }
 }
