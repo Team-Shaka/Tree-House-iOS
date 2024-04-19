@@ -15,11 +15,18 @@ struct NotificationView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    ForEach(notifications) { notification in
-                        NotificationRow(notification: notification)
+            Group {
+                if !notifications.isEmpty {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 0) {
+                            ForEach(notifications) { notification in
+                                NotificationRow(notification: notification)
+                            }
+                        }
                     }
+                    
+                } else {
+                    emptyNotificationView
                 }
             }
             
@@ -41,7 +48,7 @@ struct NotificationView: View {
 extension NotificationView {
     @ViewBuilder
     var emptyNotificationView: some View {
-        VStack(alignment: .center, spacing: 12) {
+        VStack(spacing: 12) {
             Image(.imgNotiempty)
             
             Text(StringLiterals.Notification.notificationTitle1)
@@ -50,7 +57,6 @@ extension NotificationView {
         }
     }
 }
-
 
 // MARK: - Preview
 
