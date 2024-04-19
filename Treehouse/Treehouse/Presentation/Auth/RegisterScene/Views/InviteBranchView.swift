@@ -12,6 +12,7 @@ struct InviteBranchView: View {
     @State private var inviteCount: Int = 0
     @State private var availableInviteCount: Int = 0
     @State private var percent: CGFloat = 70
+    @State private var searchText = ""
     
     var body: some View {
         ScrollView() {
@@ -116,8 +117,11 @@ struct InviteBranchView: View {
                 .fontWithLineHeight(fontLevel: .body4)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
+                PhoneNumberSearchBar(text: $searchText)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 14)
             }
-            .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/33)
+            .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
         }
     }
 }
