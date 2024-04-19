@@ -38,6 +38,10 @@ struct NotificationRow: View {
             + Text(notification.tree)
                 .font(.fontGuide(.body3))
                 .foregroundColor(.gray6)
+                        
+            if notification.type == .inviteToTree {
+                Image(.icInvitation)
+            }
         }
         .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))
     }
