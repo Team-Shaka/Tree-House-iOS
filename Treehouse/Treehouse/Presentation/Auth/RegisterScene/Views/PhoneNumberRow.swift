@@ -21,6 +21,7 @@ struct PhoneNumberRow: View {
                 Text("홍길동") // Text(person.name)
                     .fontWithLineHeight(fontLevel: .body2)
                     .foregroundColor(.grayscaleBlack)
+                
                 Text("010-XXXX-XXXX") // Text(person.phonenumber)
                     .fontWithLineHeight(fontLevel: .body5)
                     .foregroundColor(.gray5)
@@ -40,6 +41,7 @@ struct PhoneNumberRow: View {
                     .cornerRadius(16)
             }
         }
+        .padding(.vertical, 2)
     }
 }
 

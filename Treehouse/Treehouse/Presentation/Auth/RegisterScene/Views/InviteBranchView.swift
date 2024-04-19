@@ -120,6 +120,11 @@ struct InviteBranchView: View {
                 PhoneNumberSearchBar(text: $searchText)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 14)
+                    .padding(.bottom, 12)
+                
+                ForEach(0..<3) { _ in
+                    PhoneNumberRow()
+                }
             }
             .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
         }
