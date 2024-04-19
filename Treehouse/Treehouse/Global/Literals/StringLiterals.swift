@@ -58,4 +58,8 @@ enum StringLiterals {
         
         static let navigationTitle1 = "멤버 프로필 설정"
     }
+    
+    enum Notification {
+        static let notificationTitle1 = "아직 받은 알림이 없어요."
+    }
 }
