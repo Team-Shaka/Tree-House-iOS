@@ -23,3 +23,38 @@ struct NotificationStruct: Identifiable, Hashable {
         Image(profileImageName)
     }
 }
+
+extension NotificationStruct {
+    static let notificationDummyData: [NotificationStruct] = [
+        NotificationStruct(type: .reactionToComment(emoji: "💛"),
+                           profileImageName: "img_dumy",
+                           userName: "useruser",
+                           time: "30분전",
+                           tree: "일산팟"),
+        
+        NotificationStruct(type: .replyOnComment,
+                           profileImageName: "ic_noti_member",
+                           userName: "tamama",
+                           time: "45분전",
+                           tree: "지디팟"),
+        
+        NotificationStruct(type: .reactionToPost(emoji: "🍄"),
+                           profileImageName: "img_dummy_2",
+                           userName: "whowhowhwo",
+                           time: "5분전",
+                           tree: "트리팟"),
+        
+        
+        NotificationStruct(type: .replyOnComment,
+                           profileImageName: "img_dumy",
+                           userName: "tamama",
+                           time: "45분전",
+                           tree: "지디팟"),
+        
+        NotificationStruct(type: .inviteToTree,
+                           profileImageName: "img_dummy_2",
+                           userName: "whowhowhwo",
+                           time: "5분전",
+                           tree: "트리팟")
+    ]
+}
