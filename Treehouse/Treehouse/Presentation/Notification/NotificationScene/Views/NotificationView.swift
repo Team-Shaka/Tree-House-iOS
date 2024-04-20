@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NotificationView: View {
     
+    // MARK: - Property
+    
     let notifications = NotificationStruct.notificationDummyData
     
     // MARK: - View

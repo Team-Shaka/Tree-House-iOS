@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NotificationRow: View {
     
+    // MARK: - Property
+    
     var notification: NotificationStruct
     var textColor: Color {
         notification.isChecked ? .gray6 : .treeBlack
