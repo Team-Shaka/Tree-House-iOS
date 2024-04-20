@@ -110,7 +110,7 @@ private extension ReceivedFirstInvitaionView {
     @ViewBuilder
     var invitationView: some View {
         VStack(spacing: 0) {
-            Image(.imgDumy)
+            Image(.imgDummy)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
@@ -160,7 +160,7 @@ private extension ReceivedFirstInvitaionView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            Image(.imgDumy)
+            Image(.imgDummy)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())

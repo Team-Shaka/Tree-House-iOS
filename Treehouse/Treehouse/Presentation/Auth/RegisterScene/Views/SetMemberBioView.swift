@@ -37,7 +37,7 @@ struct SetMemberBioView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, SizeLiterals.Screen.screenHeight * 39/852)
                 
-                Image(.imgDumy)
+                Image(.imgDummy)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())
