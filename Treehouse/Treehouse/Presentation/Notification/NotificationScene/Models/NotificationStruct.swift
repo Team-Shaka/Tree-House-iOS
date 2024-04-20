@@ -27,7 +27,7 @@ struct NotificationStruct: Identifiable, Hashable {
 extension NotificationStruct {
     static let notificationDummyData: [NotificationStruct] = [
         NotificationStruct(type: .reactionToComment(emoji: "💛"),
-                           profileImageName: "img_dumy",
+                           profileImageName: "img_dummy",
                            userName: "useruser",
                            time: "30분전",
                            tree: "일산팟", 
@@ -49,7 +49,7 @@ extension NotificationStruct {
         
         
         NotificationStruct(type: .replyOnComment,
-                           profileImageName: "img_dumy",
+                           profileImageName: "img_dummy",
                            userName: "tamama",
                            time: "45분전",
                            tree: "지디팟", 
