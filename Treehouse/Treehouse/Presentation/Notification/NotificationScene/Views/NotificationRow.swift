@@ -10,6 +10,9 @@ import SwiftUI
 struct NotificationRow: View {
     
     var notification: NotificationStruct
+    var textColor: Color {
+        notification.isChecked ? .gray6 : .treeBlack
+    }
     
     // MARK: - View
     
@@ -25,11 +28,11 @@ struct NotificationRow: View {
             
             Text(notification.userName)
                 .font(.fontGuide(.body4))
-                .foregroundColor(.treeBlack)
+                .foregroundColor(textColor)
             
             + Text(notification.type.notificationContent)
                 .font(.fontGuide(.body3))
-                .foregroundColor(.treeBlack)
+                .foregroundColor(textColor)
             
             + Text(" \(notification.time)ㆍ")
                 .font(.fontGuide(.body3))
@@ -38,9 +41,9 @@ struct NotificationRow: View {
             + Text(notification.tree)
                 .font(.fontGuide(.body3))
                 .foregroundColor(.gray6)
-                        
+            
             if notification.type == .inviteToTree {
-                Image(.icInvitation)
+                notification.isChecked ? Image(.icInvitationGray) : Image(.icInvitation)
             }
         }
         .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))

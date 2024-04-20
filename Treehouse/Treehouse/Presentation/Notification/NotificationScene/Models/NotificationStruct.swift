@@ -17,7 +17,7 @@ struct NotificationStruct: Identifiable, Hashable {
     let userName: String
     let time: String
     let tree: String
-    let isChecked: Bool = false
+    let isChecked: Bool
     
     var profileImage: Image {
         Image(profileImageName)
@@ -30,31 +30,43 @@ extension NotificationStruct {
                            profileImageName: "img_dumy",
                            userName: "useruser",
                            time: "30분전",
-                           tree: "일산팟"),
+                           tree: "일산팟", 
+                           isChecked: false),
         
         NotificationStruct(type: .replyOnComment,
                            profileImageName: "ic_noti_member",
                            userName: "tamama",
                            time: "45분전",
-                           tree: "지디팟"),
+                           tree: "지디팟",
+                           isChecked: true),
         
         NotificationStruct(type: .reactionToPost(emoji: "🍄"),
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟"),
+                           tree: "트리팟", 
+                           isChecked: false),
         
         
         NotificationStruct(type: .replyOnComment,
                            profileImageName: "img_dumy",
                            userName: "tamama",
                            time: "45분전",
-                           tree: "지디팟"),
+                           tree: "지디팟", 
+                           isChecked: true),
         
         NotificationStruct(type: .inviteToTree,
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟")
+                           tree: "트리팟", 
+                           isChecked: true),
+        
+        NotificationStruct(type: .inviteToTree,
+                           profileImageName: "img_dummy_2",
+                           userName: "whowhowhwo",
+                           time: "5분전",
+                           tree: "트리팟",
+                           isChecked: false)
     ]
 }
