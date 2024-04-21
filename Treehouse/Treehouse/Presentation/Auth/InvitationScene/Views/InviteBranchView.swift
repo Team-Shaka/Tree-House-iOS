@@ -10,6 +10,7 @@ import SwiftUI
 struct InviteBranchView: View {
     
     let availableInvitaion = AvailableInvitationStruct.AvailableInvitationDummyData
+    let phoneNumberList = PhoneNumberStruct.PhoneNumberStructDummyData
     
     @State private var inviteCount: Int = 0
     @State private var searchText = ""
@@ -122,8 +123,8 @@ struct InviteBranchView: View {
                     .padding(.top, 14)
                     .padding(.bottom, 12)
                 
-                ForEach(0..<3) { _ in
-                    PhoneNumberRow()
+                ForEach(phoneNumberList) { phoneNumber in
+                    PhoneNumberRow(phoneNumber: phoneNumber)
                 }
             }
             .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)

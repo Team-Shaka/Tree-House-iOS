@@ -9,20 +9,20 @@ import SwiftUI
 
 struct PhoneNumberRow: View {
     
-//    var person: Person
+    var phoneNumber: PhoneNumberStruct
     
     var body: some View {
         HStack(spacing: 0) {
-            Image("ic_noti_member") // person.image
+            Image("ic_noti_member")
                 .resizable()
                 .frame(width: 36, height: 36)
             
             VStack(alignment: .leading, spacing: 0) {
-                Text("홍길동") // Text(person.name)
+                Text(phoneNumber.name)
                     .fontWithLineHeight(fontLevel: .body2)
                     .foregroundColor(.grayscaleBlack)
                 
-                Text("010-XXXX-XXXX") // Text(person.phonenumber)
+                Text(phoneNumber.phoneNumber)
                     .fontWithLineHeight(fontLevel: .body5)
                     .foregroundColor(.gray5)
             }
@@ -46,5 +46,9 @@ struct PhoneNumberRow: View {
 }
 
 #Preview {
-    PhoneNumberRow()
+    let phoneNumbers = PhoneNumberStruct.PhoneNumberStructDummyData
+    return Group {
+        PhoneNumberRow(phoneNumber: phoneNumbers[0])
+        PhoneNumberRow(phoneNumber: phoneNumbers[1])
+    }
 }
