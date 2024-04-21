@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct AvailableInvitationStruct: Hashable, Identifiable {
-    let id = UUID()
+struct AvailableInvitationStruct: Decodable {
     let availableInvitation: Int
     let activeRate: Int
 }
 
 extension AvailableInvitationStruct {
-    static let AvailableInvitationDummyData: AvailableInvitationStruct = AvailableInvitationStruct(availableInvitation: 3, activeRate: 70)
+    static let availableInvitationDummyData: AvailableInvitationStruct = AvailableInvitationStruct(availableInvitation: 3, activeRate: 70)
 }

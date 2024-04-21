@@ -14,7 +14,7 @@ struct PhoneNumberStruct: Hashable, Identifiable {
 }
 
 extension PhoneNumberStruct {
-    static let PhoneNumberStructDummyData: [PhoneNumberStruct] = [
+    static let phoneNumberStructDummyData: [PhoneNumberStruct] = [
         PhoneNumberStruct(name: "음바페", phoneNumber: "010-0XXX-XXXX"),
         PhoneNumberStruct(name: "라모스", phoneNumber: "010-X0XX-XXXX"),
         PhoneNumberStruct(name: "크로스", phoneNumber: "010-XX0X-XXXX"),
