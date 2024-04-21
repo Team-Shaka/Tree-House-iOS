@@ -52,7 +52,7 @@ struct PhoneNumberRow: View {
 // MARK: - Preview
 
 #Preview {
-    let phoneNumbers = PhoneNumberStruct.PhoneNumberStructDummyData
+    let phoneNumbers = PhoneNumberStruct.phoneNumberStructDummyData
     return Group {
         PhoneNumberRow(phoneNumber: phoneNumbers[0])
         PhoneNumberRow(phoneNumber: phoneNumbers[1])

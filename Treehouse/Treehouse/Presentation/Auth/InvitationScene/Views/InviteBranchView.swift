@@ -11,8 +11,8 @@ struct InviteBranchView: View {
     
     // MARK: - Property
     
-    let availableInvitaion = AvailableInvitationStruct.AvailableInvitationDummyData
-    let phoneNumberList = PhoneNumberStruct.PhoneNumberStructDummyData
+    let availableInvitaion = AvailableInvitationStruct.availableInvitationDummyData
+    let phoneNumberList = PhoneNumberStruct.phoneNumberStructDummyData
     
     // MARK: - State Property
     
@@ -129,11 +129,22 @@ struct InviteBranchView: View {
                     .padding(.top, 14)
                     .padding(.bottom, 12)
                 
-                ForEach(phoneNumberList) { phoneNumber in
-                    PhoneNumberRow(phoneNumber: phoneNumber)
+                if searchText.isEmpty {
+                    ForEach(phoneNumberList) { phoneNumber in
+                        PhoneNumberRow(phoneNumber: phoneNumber)
+                    }
+                } else {
+                    ForEach(phoneNumberList.filter {
+                        $0.name.contains(searchText) || $0.phoneNumber.contains(searchText)
+                    }) { phoneNumber in
+                        PhoneNumberRow(phoneNumber: phoneNumber)
+                    }
                 }
             }
             .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
