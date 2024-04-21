@@ -9,9 +9,9 @@ import SwiftUI
 
 struct InviteBranchView: View {
     
+    let availableInvitaion = AvailableInvitationStruct.AvailableInvitationDummyData
+    
     @State private var inviteCount: Int = 0
-    @State private var availableInviteCount: Int = 0
-    @State private var percent: CGFloat = 70
     @State private var searchText = ""
     
     var body: some View {
@@ -69,7 +69,7 @@ struct InviteBranchView: View {
                             .fontWithLineHeight(fontLevel: .heading4)
                             .foregroundStyle(.grayscaleBlack)
                         
-                        Text("가진 초대장 : \(availableInviteCount)장")
+                        Text("가진 초대장 : \(availableInvitaion.availableInvitation)장")
                             .fontWithLineHeight(fontLevel: .body2)
                             .foregroundStyle(.treeGreen)
                     }
@@ -94,7 +94,7 @@ struct InviteBranchView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.treeBlack)
                         
-                            .frame(width: percent/100 * SizeLiterals.Screen.screenWidth * 292/393)
+                            .frame(width: CGFloat(availableInvitaion.activeRate)/100 * SizeLiterals.Screen.screenWidth * 292/393)
                             .frame(height: 10)
                             .padding(.top, 16)
                     }
@@ -106,7 +106,7 @@ struct InviteBranchView: View {
                 .frame(height: 42)
                 
                 HStack(spacing: 0) {
-                    Text("\(100 - Int(percent))%")
+                    Text("\(100 - availableInvitaion.activeRate)%")
                         .foregroundStyle(.treeGreen)
                     +
                     Text("만 더 채우면 초대장 한 장을 받아요.")
