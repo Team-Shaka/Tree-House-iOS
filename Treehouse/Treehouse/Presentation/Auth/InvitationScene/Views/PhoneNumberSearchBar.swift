@@ -21,7 +21,7 @@ struct PhoneNumberSearchBar: View {
                 Image(systemName: "magnifyingglass")
                 
                 TextField("전화번호 검색", text: $text)
-                    .foregroundColor(.gray5)
+                    .foregroundColor(.primary)
                     .fontWithLineHeight(fontLevel: .body3)
                 
                 if !text.isEmpty {
@@ -34,7 +34,8 @@ struct PhoneNumberSearchBar: View {
                     EmptyView()
                 }
             }
-            .padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16))
+            .frame(height: 50)
+            .padding(.horizontal, 16)
             .foregroundColor(.gray5)
             .background(.gray1)
             .cornerRadius(10)
