@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - View
+
 struct LetterView: View {
     var body: some View {
         Path { path in
@@ -23,6 +25,8 @@ struct LetterView: View {
     }
 
 }
+
+// MARK: - Preview
 
 #Preview {
     LetterView()

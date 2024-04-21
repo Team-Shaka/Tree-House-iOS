@@ -9,11 +9,17 @@ import SwiftUI
 
 struct InviteBranchView: View {
     
+    // MARK: - Property
+    
     let availableInvitaion = AvailableInvitationStruct.AvailableInvitationDummyData
     let phoneNumberList = PhoneNumberStruct.PhoneNumberStructDummyData
     
+    // MARK: - State Property
+    
     @State private var inviteCount: Int = 0
-    @State private var searchText = ""
+    @State private var searchText: String = ""
+    
+    // MARK: - View
     
     var body: some View {
         ScrollView() {
@@ -131,6 +137,8 @@ struct InviteBranchView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     InviteBranchView()

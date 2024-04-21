@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct PhoneNumberSearchBar: View {
+    
+    // MARK: - Binding Property
+    
     @Binding var text: String
+    
+    // MARK: - View
     
     var body: some View {
         HStack {
@@ -36,6 +41,8 @@ struct PhoneNumberSearchBar: View {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     PhoneNumberSearchBar(text: .constant(""))

@@ -9,7 +9,11 @@ import SwiftUI
 
 struct PhoneNumberRow: View {
     
+    // MARK: - Property
+    
     var phoneNumber: PhoneNumberStruct
+    
+    // MARK: - View
     
     var body: some View {
         HStack(spacing: 0) {
@@ -44,6 +48,8 @@ struct PhoneNumberRow: View {
         .padding(.vertical, 2)
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     let phoneNumbers = PhoneNumberStruct.PhoneNumberStructDummyData
