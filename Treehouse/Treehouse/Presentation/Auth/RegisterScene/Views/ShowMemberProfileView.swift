@@ -126,7 +126,7 @@ extension ShowMemberProfileView {
                 
                 Circle().fill(.treePale)
                 
-                Image(.imgDumy)
+                Image(.imgDummy)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 99, height: 99)
