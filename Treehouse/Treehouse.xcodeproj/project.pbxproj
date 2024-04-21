@@ -11,6 +11,7 @@
 		0012366D2BCED9BD00CEAC53 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* LetterView.swift */; };
 		0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */; };
 		001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001236722BD2748200CEAC53 /* PhoneNumberRow.swift */; };
+		003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -48,6 +49,7 @@
 		0012366C2BCED9BD00CEAC53 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
 		0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberSearchBar.swift; sourceTree = "<group>"; };
 		001236722BD2748200CEAC53 /* PhoneNumberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRow.swift; sourceTree = "<group>"; };
+		003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableInvitationStruct.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -93,6 +95,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003E6EF02BD50E87001C7613 /* InvitationScene */ = {
+			isa = PBXGroup;
+			children = (
+				003E6EF22BD50EAB001C7613 /* Models */,
+				003E6EF12BD50EA2001C7613 /* Views */,
+			);
+			path = InvitationScene;
+			sourceTree = "<group>";
+		};
+		003E6EF12BD50EA2001C7613 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0012366C2BCED9BD00CEAC53 /* LetterView.swift */,
+				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
+				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
+				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		003E6EF22BD50EAB001C7613 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		00CF35752BC291FA00D9E332 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */,
+				003E6EF02BD50E87001C7613 /* InvitationScene */,
 				00CF359D2BC2F21400D9E332 /* RegisterScene */,
 			);
 			path = Auth;
@@ -196,10 +227,6 @@
 				3F88357C2BCA51BA0021C8AB /* DrawingView.swift */,
 				3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */,
 				944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */,
-				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
-				0012366C2BCED9BD00CEAC53 /* LetterView.swift */,
-				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
-				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +360,7 @@
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
+				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
