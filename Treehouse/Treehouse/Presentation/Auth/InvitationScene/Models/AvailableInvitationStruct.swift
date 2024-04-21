@@ -12,3 +12,7 @@ struct AvailableInvitationStruct: Hashable, Identifiable {
     let availableInvitation: Int
     let activeRate: Int
 }
+
+extension AvailableInvitationStruct {
+    static let AvailableInvitationDummyData: AvailableInvitationStruct = AvailableInvitationStruct(availableInvitation: 3, activeRate: 70)
+}
