@@ -69,6 +69,6 @@ enum StringLiterals {
         static let sectionTitle1 = "새로운 초대"
         static let sectionTitle2 = "초대장 보내기"
         
-        static let tooltilTitle1 = "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!"
+        static let tooltipTitle1 = "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!"
     }
 }

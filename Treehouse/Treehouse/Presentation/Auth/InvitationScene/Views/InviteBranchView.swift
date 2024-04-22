@@ -123,7 +123,7 @@ struct InviteBranchView: View {
                         Image("ic_tooltip")
                     })
                     .popover(isPresented: $showPopover, attachmentAnchor: .point(.center), content: {
-                        InvitationTooltip(text: StringLiterals.Invitation.tooltilTitle1, closeAction: {
+                        InvitationTooltip(text: StringLiterals.Invitation.tooltipTitle1, closeAction: {
                             showPopover.toggle()
                         })
                         .background(.treeDarkgreen)
