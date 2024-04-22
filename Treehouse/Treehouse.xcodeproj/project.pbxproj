@@ -115,10 +115,10 @@
 			children = (
 				005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */,
 				0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */,
+				005296C12BD65CAB007D209A /* InvitationTooltip.swift */,
 				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
 				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
 				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
-				005296C12BD65CAB007D209A /* InvitationTooltip.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

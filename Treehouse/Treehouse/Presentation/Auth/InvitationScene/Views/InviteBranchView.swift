@@ -99,7 +99,6 @@ struct InviteBranchView: View {
                         
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.treeBlack)
-                        
                             .frame(width: CGFloat(availableInvitaion.activeRate)/100 * SizeLiterals.Screen.screenWidth * 292/393)
                             .frame(height: 10)
                             .padding(.top, 16)
