@@ -37,7 +37,7 @@ struct PhoneNumberRow: View {
             Button(action: {
                 
             }) {
-                Text("초대하기")
+                Text(StringLiterals.Invitation.buttonTitle2)
                     .fontWithLineHeight(fontLevel: .body5)
                     .frame(width: 72, height: 32)
                     .foregroundStyle(.grayscaleWhite)

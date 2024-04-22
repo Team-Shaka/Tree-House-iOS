@@ -20,7 +20,7 @@ struct PhoneNumberSearchBar: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                 
-                TextField("전화번호 검색", text: $text)
+                TextField(StringLiterals.Invitation.placeholderTitle1, text: $text)
                     .foregroundColor(.primary)
                     .fontWithLineHeight(fontLevel: .body3)
                 

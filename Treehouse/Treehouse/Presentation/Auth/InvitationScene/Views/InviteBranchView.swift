@@ -26,7 +26,7 @@ struct InviteBranchView: View {
         ScrollView() {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("새로운 초대")
+                    Text(StringLiterals.Invitation.sectionTitle1)
                         .fontWithLineHeight(fontLevel: .heading4)
                         .foregroundStyle(.grayscaleBlack)
                     
@@ -48,7 +48,7 @@ struct InviteBranchView: View {
                             Button(action: {
                                 
                             }) {
-                                Text("확인하기 >")
+                                Text(StringLiterals.Invitation.buttonTitle1)
                                     .font(.fontGuide(.body3))
                                     .frame(width: 82, height: 32)
                                     .foregroundStyle(.treeBlack)
@@ -71,7 +71,7 @@ struct InviteBranchView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 9) {
-                        Text("초대장 보내기")
+                        Text(StringLiterals.Invitation.sectionTitle2)
                             .fontWithLineHeight(fontLevel: .heading4)
                             .foregroundStyle(.grayscaleBlack)
                         
@@ -114,7 +114,7 @@ struct InviteBranchView: View {
                     Text("\(100 - availableInvitaion.activeRate)%")
                         .foregroundStyle(.treeGreen)
                     +
-                    Text("만 더 채우면 초대장 한 장을 받아요.")
+                    Text(StringLiterals.Invitation.guidanceTitle2)
                         .foregroundStyle(.treeBlack)
                     
                     Button(action: {
@@ -123,14 +123,12 @@ struct InviteBranchView: View {
                         Image("ic_tooltip")
                     })
                     .popover(isPresented: $showPopover, attachmentAnchor: .point(.center), content: {
-                        InvitationTooltip(text: "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!", closeAction: {
+                        InvitationTooltip(text: StringLiterals.Invitation.tooltilTitle1, closeAction: {
                             showPopover.toggle()
                         })
                         .background(.treeDarkgreen)
                         .presentationCompactAdaptation(.popover)
                     })
-
-                    
                 }
                 .fontWithLineHeight(fontLevel: .body4)
                 .frame(maxWidth: .infinity, alignment: .leading)
