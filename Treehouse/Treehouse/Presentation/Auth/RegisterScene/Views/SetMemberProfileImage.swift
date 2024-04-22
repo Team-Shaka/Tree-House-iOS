@@ -102,7 +102,7 @@ private extension SetMemberProfileImage {
                 ZStack {
                     Image(.imgUserRing)
                     
-                    Image(.imgDumy)
+                    Image(.imgDummy)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
