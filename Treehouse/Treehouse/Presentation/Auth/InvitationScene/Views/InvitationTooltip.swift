@@ -22,26 +22,28 @@ struct InvitationTooltip: View {
     // MARK: - View
     
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button(action: {
-                    closeAction()
-                }) {
-                    Image(systemName: "xmark")
-                        .frame(width: 10, height: 10)
-                        .foregroundColor(.treeGreen)
-                }
-                .offset(y: 20)
-            }
-            .frame(height: 0)
-            .padding(.trailing, 10)
-            
+        ZStack {
             Text(text)
                 .fontWithLineHeight(fontLevel: .body4)
-                .foregroundStyle(Color.treeGreen)
+                .foregroundStyle(Color.treePale)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
+            
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        closeAction()
+                    }) {
+                        Image(systemName: "xmark")
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.treePale)
+                    }
+                    Spacer()
+                }
+            }
+            .padding(.top, 10)
+            .padding(.trailing, 10)
         }
     }
 }

@@ -127,7 +127,7 @@ struct InviteBranchView: View {
                         InvitationTooltip(text: "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!", closeAction: {
                             showPopover.toggle()
                         })
-                        .background(.treePale)
+                        .background(.treeDarkgreen)
                         .presentationCompactAdaptation(.popover)
                     })
 
