@@ -21,13 +21,13 @@ struct PhoneNumberRow: View {
                 .resizable()
                 .frame(width: 36, height: 36)
             
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(phoneNumber.name)
-                    .fontWithLineHeight(fontLevel: .body2)
+                    .font(.fontGuide(.body2))
                     .foregroundColor(.grayscaleBlack)
                 
                 Text(phoneNumber.phoneNumber)
-                    .fontWithLineHeight(fontLevel: .body5)
+                    .font(.fontGuide(.body5))
                     .foregroundColor(.gray5)
             }
             .padding(.leading, 10)
@@ -38,14 +38,14 @@ struct PhoneNumberRow: View {
                 
             }) {
                 Text("초대하기")
-                    .fontWithLineHeight(fontLevel: .body4)
+                    .fontWithLineHeight(fontLevel: .body5)
                     .frame(width: 72, height: 32)
                     .foregroundStyle(.grayscaleWhite)
                     .background(.treeBlack)
                     .cornerRadius(16)
             }
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 5)
     }
 }
 

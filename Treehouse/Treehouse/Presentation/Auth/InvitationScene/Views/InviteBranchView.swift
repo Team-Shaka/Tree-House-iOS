@@ -59,7 +59,7 @@ struct InviteBranchView: View {
                                     .cornerRadius(16)
                             }
                         }
-                        .offset(y: -40)
+                        .offset(y: -44)
                     }
                     .padding(.top, 58)
                     .padding(.bottom, 15)
