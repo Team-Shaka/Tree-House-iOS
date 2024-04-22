@@ -45,7 +45,7 @@ struct PhoneNumberRow: View {
                     .cornerRadius(16)
             }
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 13)
     }
 }
 
