@@ -18,6 +18,7 @@ struct InviteBranchView: View {
     
     @State private var inviteCount: Int = 0
     @State private var searchText: String = ""
+    @State private var showPopover: Bool = false
     
     // MARK: - View
     
@@ -119,7 +120,20 @@ struct InviteBranchView: View {
                     Text("만 더 채우면 초대장 한 장을 받아요.")
                         .foregroundStyle(.treeBlack)
                     
-                    Image("ic_tooltip")
+                    Button(action: {
+                        showPopover.toggle()
+                    }, label: {
+                        Image("ic_tooltip")
+                    })
+                    .popover(isPresented: $showPopover, attachmentAnchor: .point(.center), content: {
+                        InvitationTooltip(text: "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!", closeAction: {
+                            showPopover.toggle()
+                        })
+                        .background(.treePale)
+                        .presentationCompactAdaptation(.popover)
+                    })
+
+                    
                 }
                 .fontWithLineHeight(fontLevel: .body4)
                 .frame(maxWidth: .infinity, alignment: .leading)
