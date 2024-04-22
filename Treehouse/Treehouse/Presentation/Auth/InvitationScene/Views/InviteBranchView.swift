@@ -31,9 +31,7 @@ struct InviteBranchView: View {
                         .foregroundStyle(.grayscaleBlack)
                     
                     ZStack {
-                        Rectangle()
-                            .fill(.treeDarkgreen)
-                            .frame(width: 361, height: 136)
+                        DarkGreenLetterView()
                         
                         RoundedRectangle(cornerRadius: 12.0)
                             .stroke(.gray3, lineWidth: 1)
@@ -41,7 +39,7 @@ struct InviteBranchView: View {
                             .frame(width: SizeLiterals.Screen.screenWidth * 325/393, height: 165)
                             .offset(y: -25)
                         
-                        LetterView()
+                        GreenLetterView()
                         
                         VStack(spacing: 13) {
                             Text("\(inviteCount)건")

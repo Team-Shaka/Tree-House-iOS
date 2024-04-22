@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */; };
-		0012366D2BCED9BD00CEAC53 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* LetterView.swift */; };
+		0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */; };
 		0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */; };
 		001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001236722BD2748200CEAC53 /* PhoneNumberRow.swift */; };
 		003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */; };
 		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
+		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -48,12 +49,13 @@
 
 /* Begin PBXFileReference section */
 		0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBranchView.swift; sourceTree = "<group>"; };
-		0012366C2BCED9BD00CEAC53 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
+		0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenLetterView.swift; sourceTree = "<group>"; };
 		0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberSearchBar.swift; sourceTree = "<group>"; };
 		001236722BD2748200CEAC53 /* PhoneNumberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRow.swift; sourceTree = "<group>"; };
 		003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableInvitationStruct.swift; sourceTree = "<group>"; };
 		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
+		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 		003E6EF12BD50EA2001C7613 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0012366C2BCED9BD00CEAC53 /* LetterView.swift */,
+				005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */,
+				0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */,
 				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
 				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
 				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
@@ -357,13 +360,14 @@
 				944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
-				0012366D2BCED9BD00CEAC53 /* LetterView.swift in Sources */,
+				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
+				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
