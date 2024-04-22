@@ -289,6 +289,10 @@
 				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
 				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
 				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
+            );
+            path = Views;
+            sourceTree = "<group>";
+        };
 		94561F642BD115C000B005CE /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,10 +320,16 @@
 			sourceTree = "<group>";
 		};
 		3FE944102BD1167900C3A869 /* Models */ = {
+              isa = PBXGroup;
+            children = (
+                3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
+            );
+            path = Models;
+            sourceTree = "<group>";
+        };
 		94561F6B2BD11C3C00B005CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
 				944562052BD1211000078023 /* NotificationType.swift */,
 				9445620B2BD1879400078023 /* NotificationStruct.swift */,
 			);

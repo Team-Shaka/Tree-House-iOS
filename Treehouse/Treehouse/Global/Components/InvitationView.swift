@@ -115,7 +115,7 @@ extension InvitationView {
     @ViewBuilder
     var invitationView: some View {
         VStack(spacing: 0) {
-            Image(.imgDumy)
+            Image(.imgDummy)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
@@ -165,7 +165,7 @@ extension InvitationView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            Image(.imgDumy)
+            Image(.imgDummy)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
