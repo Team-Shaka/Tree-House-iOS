@@ -34,9 +34,7 @@ struct GreenLetterView: View {
         }
         .fill(.treeGreen)
         .frame(width: drawingWidth1, height: drawingHeight1)
-        
     }
-
 }
 
 // MARK: - Preview
