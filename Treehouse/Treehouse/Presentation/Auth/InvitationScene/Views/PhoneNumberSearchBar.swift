@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum SearchBarStateType {
+    case empty
+    case notEmpty
+}
+
 struct PhoneNumberSearchBar: View {
     
     // MARK: - Binding Property
@@ -24,14 +29,10 @@ struct PhoneNumberSearchBar: View {
                     .foregroundColor(.primary)
                     .fontWithLineHeight(fontLevel: .body3)
                 
-                if !text.isEmpty {
-                    Button(action: {
-                        self.text = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                    }
+                if text.isEmpty {
+                    xmarkView(viewState: .empty)
                 } else {
-                    EmptyView()
+                    xmarkView(viewState: .notEmpty)
                 }
             }
             .frame(height: 50)
@@ -39,6 +40,20 @@ struct PhoneNumberSearchBar: View {
             .foregroundColor(.gray5)
             .background(.gray1)
             .cornerRadius(10)
+        }
+    }
+    
+    @ViewBuilder
+    func xmarkView(viewState: SearchBarStateType) -> some View {
+        switch viewState {
+        case .empty:
+            EmptyView()
+        case .notEmpty:
+            Button(action: {
+                self.text = ""
+            }) {
+                Image(systemName: "xmark.circle.fill")
+            }
         }
     }
 }
