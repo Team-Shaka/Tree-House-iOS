@@ -23,12 +23,21 @@ enum TextFieldStateType {
         }
     }
     
+    var fontColor: Color {
+        switch self {
+        case .notFocused:
+            return .gray5
+        case .enable, .unable:
+            return .gray8
+        }
+    }
+    
     var backgroundColor: Color {
         switch self {
         case .notFocused:
             return .gray1
         case .enable, .unable:
-            return .white
+            return .grayscaleWhite
         }
     }
 }

@@ -38,13 +38,22 @@
 		00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB442BC9A43000B23AE4 /* LoginView.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
+		3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift */; };
+		3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835802BCBC4A40021C8AB /* SetMemberProfileImage.swift */; };
+		3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835822BCBF97D0021C8AB /* SetMemberBioView.swift */; };
+		3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835842BCC00D30021C8AB /* TextField+.swift */; };
+		3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
 		3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */; };
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
+		944562062BD1211000078023 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562052BD1211000078023 /* NotificationType.swift */; };
+		9445620A2BD185A600078023 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562092BD185A600078023 /* NotificationView.swift */; };
+		9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445620B2BD1879400078023 /* NotificationStruct.swift */; };
 		944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */; };
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 		944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */; };
+		94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94561F6C2BD11C4800B005CE /* NotificationRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,14 +81,23 @@
 		00F8BB442BC9A43000B23AE4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		3F88357E2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemeberProfileNameView.swift; sourceTree = "<group>"; };
+		3F8835802BCBC4A40021C8AB /* SetMemberProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileImage.swift; sourceTree = "<group>"; };
+		3F8835822BCBF97D0021C8AB /* SetMemberBioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberBioView.swift; sourceTree = "<group>"; };
+		3F8835842BCC00D30021C8AB /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
+		3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthModifier.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
 		3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStateType.swift; sourceTree = "<group>"; };
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
+		944562052BD1211000078023 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		944562092BD185A600078023 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		9445620B2BD1879400078023 /* NotificationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStruct.swift; sourceTree = "<group>"; };
 		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemberProfileView.swift; sourceTree = "<group>"; };
+		94561F6C2BD11C4800B005CE /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +197,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3F8835862BCC05540021C8AB /* ViewModifier */,
 				00CF35922BC2E1DA00D9E332 /* Literals */,
 				00CF35912BC2DFA800D9E332 /* Resources */,
 				00CF35B22BC3060E00D9E332 /* Extension */,
@@ -208,6 +227,7 @@
 		00CF35992BC2E2E200D9E332 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				94561F642BD115C000B005CE /* Notification */,
 				00CF359A2BC2E2FF00D9E332 /* Auth */,
 			);
 			path = Presentation;
@@ -235,6 +255,9 @@
 				3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */,
 				3F88357C2BCA51BA0021C8AB /* DrawingView.swift */,
 				3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */,
+				3F88357E2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift */,
+				3F8835802BCBC4A40021C8AB /* SetMemberProfileImage.swift */,
+				3F8835822BCBF97D0021C8AB /* SetMemberBioView.swift */,
 				944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */,
 			);
 			path = Views;
@@ -263,8 +286,52 @@
 			children = (
 				00CF35CA2BC3083100D9E332 /* String+.swift */,
 				3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */,
+				3F8835842BCC00D30021C8AB /* TextField+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		3F8835862BCC05540021C8AB /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		94561F642BD115C000B005CE /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				94561F652BD115CA00B005CE /* NotificationScene */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		94561F652BD115CA00B005CE /* NotificationScene */ = {
+			isa = PBXGroup;
+			children = (
+				94561F6B2BD11C3C00B005CE /* Models */,
+				94561F6A2BD11C3600B005CE /* Views */,
+			);
+			path = NotificationScene;
+			sourceTree = "<group>";
+		};
+		94561F6A2BD11C3600B005CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				94561F6C2BD11C4800B005CE /* NotificationRow.swift */,
+				944562092BD185A600078023 /* NotificationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		94561F6B2BD11C3C00B005CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				944562052BD1211000078023 /* NotificationType.swift */,
+				9445620B2BD1879400078023 /* NotificationStruct.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,11 +428,19 @@
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
+				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
+				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
+				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
+				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
+				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
+				9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */,
+				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
+				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
@@ -379,6 +454,7 @@
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
+				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
 			);
