@@ -16,7 +16,11 @@ struct NotificationView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
+        VStack(alignment: .leading) {
+            Text("알림")
+                .font(.fontGuide(.heading3))
+                .padding(.leading, 24)
+            
             Group {
                 if !notifications.isEmpty {
                     ScrollView {
@@ -29,16 +33,6 @@ struct NotificationView: View {
                     
                 } else {
                     emptyNotificationView
-                }
-            }
-            
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("알림")
-                        .font(.fontGuide(.heading3))
-                        .padding(.leading, 14)
-                        .padding(.bottom, 13)
                 }
             }
         }

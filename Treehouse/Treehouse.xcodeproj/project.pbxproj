@@ -46,6 +46,8 @@
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 		944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */; };
 		94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94561F6C2BD11C4800B005CE /* NotificationRow.swift */; };
+		94FEF7A72BD77B3200ED6573 /* TabViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FEF7A62BD77B3200ED6573 /* TabViewType.swift */; };
+		94FEF7A92BD77DD700ED6573 /* TreeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FEF7A82BD77DD700ED6573 /* TreeTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemberProfileView.swift; sourceTree = "<group>"; };
 		94561F6C2BD11C4800B005CE /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
+		94FEF7A62BD77B3200ED6573 /* TabViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewType.swift; sourceTree = "<group>"; };
+		94FEF7A82BD77DD700ED6573 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				94FEF7A42BD77B1B00ED6573 /* Components */,
 				3F8835862BCC05540021C8AB /* ViewModifier */,
 				00CF35922BC2E1DA00D9E332 /* Literals */,
 				00CF35912BC2DFA800D9E332 /* Resources */,
@@ -286,6 +291,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		94FEF7A42BD77B1B00ED6573 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				94FEF7A52BD77B2700ED6573 /* TabView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		94FEF7A52BD77B2700ED6573 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				94FEF7A62BD77B3200ED6573 /* TabViewType.swift */,
+				94FEF7A82BD77DD700ED6573 /* TreeTabView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -385,6 +407,7 @@
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
+				94FEF7A92BD77DD700ED6573 /* TreeTabView.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
@@ -401,6 +424,7 @@
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
+				94FEF7A72BD77B3200ED6573 /* TabViewType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
