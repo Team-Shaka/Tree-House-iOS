@@ -59,6 +59,21 @@ enum StringLiterals {
         static let navigationTitle1 = "멤버 프로필 설정"
     }
     
+    enum Invitation {
+        static let buttonTitle1 = "확인하기 >"
+        static let buttonTitle2 = "초대하기"
+        
+        static let guidanceTitle1 = "가진 초대장을 소모해서 친구를 트리하우스에\n초대할 수 있어요!"
+        static let guidanceTitle2 = "만 더 채우면 초대장 한 장을 받아요."
+        
+        static let placeholderTitle1 = "전화번호 검색"
+        
+        static let sectionTitle1 = "새로운 초대"
+        static let sectionTitle2 = "초대장 보내기"
+        
+        static let tooltipTitle1 = "게시글, 댓글 작성 등\n활발한 활동을 하면 그래프가 늘어나요!"
+    }
+    
     enum Notification {
         static let notificationTitle1 = "아직 받은 알림이 없어요."
     }
