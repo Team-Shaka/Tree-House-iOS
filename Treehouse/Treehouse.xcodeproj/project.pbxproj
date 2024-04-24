@@ -148,6 +148,7 @@
 			children = (
 				003E6EF22BD50EAB001C7613 /* Models */,
 				003E6EF12BD50EA2001C7613 /* Views */,
+				3FE944132BD63F9600C3A869 /* ViewModel */,
 			);
 			path = InvitationScene;
 			sourceTree = "<group>";
@@ -161,6 +162,9 @@
 				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
 				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
 				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
+				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
+				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
+				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +174,7 @@
 			children = (
 				003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */,
 				003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */,
+				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,7 +270,6 @@
 				3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */,
 				003E6EF02BD50E87001C7613 /* InvitationScene */,
 				00CF359D2BC2F21400D9E332 /* RegisterScene */,
-				3FE9440D2BD1163300C3A869 /* InvitationScene */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -379,26 +383,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		3FE9440D2BD1163300C3A869 /* InvitationScene */ = {
+		3FE944132BD63F9600C3A869 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3FE944102BD1167900C3A869 /* Models */,
-				3FE9440F2BD1165900C3A869 /* Views */,
-				3FE944132BD63F9600C3A869 /* ViewModel */,
+				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
 			);
-			path = InvitationScene;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3FE9440F2BD1165900C3A869 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
-				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
-				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
-            );
-            path = Views;
-            sourceTree = "<group>";
-        };
 		94561F642BD115C000B005CE /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,14 +417,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3FE944102BD1167900C3A869 /* Models */ = {
-              isa = PBXGroup;
-            children = (
-                3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
-            );
-            path = Models;
-            sourceTree = "<group>";
-        };
 		94561F6B2BD11C3C00B005CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,14 +424,6 @@
 				9445620B2BD1879400078023 /* NotificationStruct.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3FE944132BD63F9600C3A869 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
