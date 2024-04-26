@@ -11,36 +11,13 @@ enum Field {
     case phoneNumber
 }
 
-enum TextFieldType {
-    case focused
-    case unFocused
-    
-    var borderColor: Color {
-        switch self {
-        case .focused:
-            return .gray7
-        case .unFocused:
-            return .clear
-        }
-    }
-    
-    var backgroundColor: Color {
-        switch self {
-        case .focused:
-            return .grayscaleWhite
-        case .unFocused:
-            return .gray1
-        }
-    }
-}
-
 struct SetPhoneNumberView: View {
     
     // MARK: - State Property
     
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
-    @State private var textFieldState: TextFieldType = .unFocused
+    @State var textFieldState: TextFieldStateType = .notFocused
     @State private var isButtonEnabled: Bool = false
     
     @FocusState private var focusedField: Field?
@@ -100,9 +77,9 @@ struct SetPhoneNumberView: View {
         
         .onChange(of: focusedField) { _, newValue in
             if newValue == .phoneNumber {
-                textFieldState = .focused
+                textFieldState = .enable
             } else {
-                textFieldState = .unFocused
+                textFieldState = .notFocused
             }
         }
         
