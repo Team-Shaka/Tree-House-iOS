@@ -154,7 +154,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				94FEF7A42BD77B1B00ED6573 /* Components */,
+				94FEF7A52BD77B2700ED6573 /* TabView */,
 				3F8835862BCC05540021C8AB /* ViewModifier */,
 				00CF35922BC2E1DA00D9E332 /* Literals */,
 				00CF35912BC2DFA800D9E332 /* Resources */,
@@ -289,14 +289,6 @@
 				9445620B2BD1879400078023 /* NotificationStruct.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		94FEF7A42BD77B1B00ED6573 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				94FEF7A52BD77B2700ED6573 /* TabView */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		94FEF7A52BD77B2700ED6573 /* TabView */ = {
