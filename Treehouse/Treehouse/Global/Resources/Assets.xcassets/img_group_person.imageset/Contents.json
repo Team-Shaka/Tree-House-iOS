@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "img_group_person.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
