@@ -11,7 +11,7 @@ struct NotificationView: View {
     
     // MARK: - Property
     
-    let notifications = NotificationStruct.notificationDummyData
+    let notifications = NotificationModel.notificationDummyData
     
     // MARK: - View
     

@@ -41,7 +41,7 @@
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
 		944562062BD1211000078023 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562052BD1211000078023 /* NotificationType.swift */; };
 		9445620A2BD185A600078023 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562092BD185A600078023 /* NotificationView.swift */; };
-		9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445620B2BD1879400078023 /* NotificationStruct.swift */; };
+		9445620C2BD1879400078023 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445620B2BD1879400078023 /* NotificationModel.swift */; };
 		944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */; };
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 		944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */; };
@@ -79,7 +79,7 @@
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
 		944562052BD1211000078023 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		944562092BD185A600078023 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		9445620B2BD1879400078023 /* NotificationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStruct.swift; sourceTree = "<group>"; };
+		9445620B2BD1879400078023 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemberProfileView.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				944562052BD1211000078023 /* NotificationType.swift */,
-				9445620B2BD1879400078023 /* NotificationStruct.swift */,
+				9445620B2BD1879400078023 /* NotificationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,7 +403,7 @@
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
-				9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */,
+				9445620C2BD1879400078023 /* NotificationModel.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
