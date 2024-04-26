@@ -98,10 +98,6 @@ struct SetPhoneNumberView: View {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
         
-        .onTapGesture {
-            hideKeyboard()
-        }
-        
         .onChange(of: focusedField) { _, newValue in
             if newValue == .phoneNumber {
                 textFieldState = .focused
