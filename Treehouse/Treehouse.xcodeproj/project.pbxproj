@@ -148,7 +148,7 @@
 			children = (
 				003E6EF22BD50EAB001C7613 /* Models */,
 				003E6EF12BD50EA2001C7613 /* Views */,
-				3FE944132BD63F9600C3A869 /* ViewModel */,
+				3FE944132BD63F9600C3A869 /* ViewModels */,
 			);
 			path = InvitationScene;
 			sourceTree = "<group>";
@@ -383,12 +383,12 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		3FE944132BD63F9600C3A869 /* ViewModel */ = {
+		3FE944132BD63F9600C3A869 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		94561F642BD115C000B005CE /* Notification */ = {
