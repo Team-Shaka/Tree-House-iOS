@@ -16,6 +16,7 @@
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
 		0054D7362BDAD1630009B9CC /* CheckNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameEntity.swift */; };
+		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -73,6 +74,7 @@
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
 		0054D7352BDAD1630009B9CC /* CheckNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameEntity.swift; sourceTree = "<group>"; };
+		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -188,6 +190,22 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		0087C2782BDD32CB004CED9C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2792BDD3325004CED9C /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0087C2792BDD3325004CED9C /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
 		00CF35752BC291FA00D9E332 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
+				0087C2782BDD32CB004CED9C /* Data */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
 				0054D7292BDACE430009B9CC /* Domain */,
 				00CF35902BC2DF9200D9E332 /* Global */,
@@ -528,6 +547,7 @@
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
+				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
