@@ -15,7 +15,7 @@
 		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
-		0054D7362BDAD1630009B9CC /* CheckNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameEntity.swift */; };
+		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
 		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
@@ -73,7 +73,7 @@
 		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
-		0054D7352BDAD1630009B9CC /* CheckNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameEntity.swift; sourceTree = "<group>"; };
+		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
 		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +185,7 @@
 		0054D7342BDAD0D60009B9CC /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				0054D7352BDAD1630009B9CC /* CheckNameEntity.swift */,
+				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -201,9 +201,17 @@
 		0087C2792BDD3325004CED9C /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+				0087C27C2BDD3988004CED9C /* Register */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		0087C27C2BDD3988004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		00CF35752BC291FA00D9E332 = {
@@ -537,7 +545,7 @@
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
-				0054D7362BDAD1630009B9CC /* CheckNameEntity.swift in Sources */,
+				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,

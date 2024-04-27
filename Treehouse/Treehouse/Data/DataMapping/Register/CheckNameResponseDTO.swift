@@ -10,7 +10,7 @@ import Foundation
 struct CheckNameResponseDTO: Codable {
     let isDuplicated: Bool
     
-    func toDomain() -> CheckNameEntity {
-        return CheckNameEntity(isDuplicated: isDuplicated)
+    func toDomain() -> CheckNameResponseEntity {
+        return CheckNameResponseEntity(isDuplicated:  isDuplicated)
     }
 }
