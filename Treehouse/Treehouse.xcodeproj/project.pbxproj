@@ -18,6 +18,7 @@
 		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
 		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
 		0087C27E2BDD3FBB004CED9C /* CheckNameRequestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27D2BDD3FBB004CED9C /* CheckNameRequestEntity.swift */; };
+		0087C2802BDD403B004CED9C /* CheckNameRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27F2BDD403B004CED9C /* CheckNameRequestDTO.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -77,6 +78,7 @@
 		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
 		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
 		0087C27D2BDD3FBB004CED9C /* CheckNameRequestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameRequestEntity.swift; sourceTree = "<group>"; };
+		0087C27F2BDD403B004CED9C /* CheckNameRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameRequestDTO.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+				0087C27F2BDD403B004CED9C /* CheckNameRequestDTO.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
+				0087C2802BDD403B004CED9C /* CheckNameRequestDTO.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
