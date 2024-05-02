@@ -5,26 +5,25 @@
 //  Created by 티모시 킴 on 4/29/24.
 //
 
-import Foundation
-
-protocol RegisterRepository {
-    
-    func postCheckName(checkNameResponseDTO: CheckNameResponseDTO) async -> CheckNameResponseEntity?
-}
-
-class DefaultRegisterRepository: RegisterRepository {
-    
-    var checkNameService: CheckNameService
-    
-    public init(checkNameService: CheckNameService) {
-        self.checkNameService = checkNameService
-    }
-    
-    func postCheckName(checkNameResponseDTO: CheckNameResponseDTO) async -> CheckNameResponseEntity? {
-        let result = await self.checkNameService.postCheckName(checkNameResponseDTO: checkNameResponseDTO)
-        guard case .success(let data) = result else {
-            return nil
-        }
-        return (data as! CheckNameResponseDTO).toDomain()
-    }
-}
+//import Foundation
+//
+//final class DefaultRegisterRepository: RegisterRepository {
+//    
+//    var registerService: RegisterService
+//    
+//    public init(registerService: RegisterService) {
+//        self.registerService = registerService
+//    }
+//    
+//    func postCheckName(userName: String) async throws -> CheckNameResponseEntity? {
+//        do {
+//            let result = await self.registerService.postCheckName(userName)
+//            switch result {
+//            case .success(let data):
+//                return (data as! CheckNameResponseDTO).toDomain()
+//            }
+//        } catch {
+//            throw error
+//        }
+//    }
+//}
