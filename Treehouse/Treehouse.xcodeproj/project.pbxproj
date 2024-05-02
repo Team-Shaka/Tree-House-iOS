@@ -54,6 +54,12 @@
 		3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835842BCC00D30021C8AB /* TextField+.swift */; };
 		3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
+		3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */; };
+		3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */; };
+		3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */; };
+		3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB332BD8922B00AAE53F /* CommentModel.swift */; };
+		3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB352BD8C76200AAE53F /* CommentView.swift */; };
+		3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */; };
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
 		3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */; };
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
@@ -111,6 +117,12 @@
 		3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthModifier.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentView.swift; sourceTree = "<group>"; };
+		3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentViewModel.swift; sourceTree = "<group>"; };
+		3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiListView.swift; sourceTree = "<group>"; };
+		3FC1FB332BD8922B00AAE53F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		3FC1FB352BD8C76200AAE53F /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowlayoutStack.swift; sourceTree = "<group>"; };
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
 		3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStateType.swift; sourceTree = "<group>"; };
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 			children = (
 				003E6EF22BD50EAB001C7613 /* Models */,
 				003E6EF12BD50EA2001C7613 /* Views */,
+				3FE944132BD63F9600C3A869 /* ViewModels */,
 			);
 			path = InvitationScene;
 			sourceTree = "<group>";
@@ -163,6 +176,9 @@
 				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
 				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
 				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
+				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
+				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
+				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +188,7 @@
 			children = (
 				003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */,
 				003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */,
+				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -359,6 +376,7 @@
 			children = (
 				94561F642BD115C000B005CE /* Notification */,
 				00CF359A2BC2E2FF00D9E332 /* Auth */,
+				3FC1FB262BD7725F00AAE53F /* Feed */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -369,7 +387,6 @@
 				3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */,
 				003E6EF02BD50E87001C7613 /* InvitationScene */,
 				00CF359D2BC2F21400D9E332 /* RegisterScene */,
-				3FE9440D2BD1163300C3A869 /* InvitationScene */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -430,6 +447,51 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		3FC1FB262BD7725F00AAE53F /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2A2BD772FC00AAE53F /* FeedContentScene */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		3FC1FB272BD7729D00AAE53F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3FC1FB282BD772D100AAE53F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */,
+				3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */,
+				3FC1FB352BD8C76200AAE53F /* CommentView.swift */,
+				3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3FC1FB292BD772D600AAE53F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB332BD8922B00AAE53F /* CommentModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3FC1FB2A2BD772FC00AAE53F /* FeedContentScene */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB292BD772D600AAE53F /* Models */,
+				3FC1FB282BD772D100AAE53F /* Views */,
+				3FC1FB272BD7729D00AAE53F /* ViewModels */,
+			);
+			path = FeedContentScene;
+			sourceTree = "<group>";
+		};
 		3FE9440C2BD115EE00C3A869 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,40 +500,12 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		3FE9440D2BD1163300C3A869 /* InvitationScene */ = {
-			isa = PBXGroup;
-			children = (
-				3FE944102BD1167900C3A869 /* Models */,
-				3FE9440F2BD1165900C3A869 /* Views */,
-				3FE944132BD63F9600C3A869 /* ViewModel */,
-			);
-			path = InvitationScene;
-			sourceTree = "<group>";
-		};
-		3FE9440F2BD1165900C3A869 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
-				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
-				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3FE944102BD1167900C3A869 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3FE944132BD63F9600C3A869 /* ViewModel */ = {
+		3FE944132BD63F9600C3A869 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		94561F642BD115C000B005CE /* Notification */ = {
@@ -603,8 +637,11 @@
 				3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
+				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
+				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
+				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
@@ -625,6 +662,8 @@
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
+				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
+				3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */,
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
 				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
@@ -639,6 +678,7 @@
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
+				3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
@@ -778,7 +818,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -809,7 +849,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;

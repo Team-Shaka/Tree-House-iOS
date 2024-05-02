@@ -19,6 +19,16 @@ struct FontWithLineHeight: ViewModifier {
     }
 }
 
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
 extension View {
     func fontWithLineHeight(fontLevel: FontLevel) -> some View {
         return ModifiedContent(content: self, 
@@ -40,9 +50,15 @@ extension View {
         return 0
     }
     
+    /// 입력 조건을 설정하는 메서드
     func isValidInputUserId(_ input: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[0-9a-z_\\.]{4,20}$")
         let range = NSRange(location: 0, length: input.utf16.count)
         return regex.firstMatch(in: input, options: [], range: range) != nil
+    }
+    
+    /// 원하는 모서리에 라운드 처리해주는 메서드
+    func selectCornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
