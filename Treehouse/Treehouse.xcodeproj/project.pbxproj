@@ -15,6 +15,13 @@
 		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
+		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
+		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
+		0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */; };
+		0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2962BE15E91004CED9C /* RegisterRepository.swift */; };
+		0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */; };
+		0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29B2BE3609C004CED9C /* RegisterAPI.swift */; };
+		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -77,6 +84,13 @@
 		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
+		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
+		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
+		0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRegisterRepository.swift; sourceTree = "<group>"; };
+		0087C2962BE15E91004CED9C /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
+		0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckNameUseCase.swift; sourceTree = "<group>"; };
+		0087C29B2BE3609C004CED9C /* RegisterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPI.swift; sourceTree = "<group>"; };
+		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -179,6 +193,106 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0054D7292BDACE430009B9CC /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0054D72C2BDACE7A0009B9CC /* Entities */,
+				0087C28F2BDFCD5C004CED9C /* Repositories */,
+				0087C2902BDFCDD3004CED9C /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0054D72C2BDACE7A0009B9CC /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0054D7342BDAD0D60009B9CC /* Register */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0054D7342BDAD0D60009B9CC /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C2782BDD32CB004CED9C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2852BDEC78D004CED9C /* Repositories */,
+				0087C2792BDD3325004CED9C /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0087C2792BDD3325004CED9C /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27C2BDD3988004CED9C /* Register */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		0087C27C2BDD3988004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C2852BDEC78D004CED9C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0087C2892BDED546004CED9C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0087C28A2BDED554004CED9C /* Register */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0087C28A2BDED554004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C29B2BE3609C004CED9C /* RegisterAPI.swift */,
+				0087C29D2BE360A6004CED9C /* RegisterService.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C28F2BDFCD5C004CED9C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2962BE15E91004CED9C /* RegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0087C2902BDFCDD3004CED9C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2982BE16193004CED9C /* Register */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		0087C2982BE16193004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		00CF35752BC291FA00D9E332 = {
 			isa = PBXGroup;
 			children = (
@@ -200,8 +314,11 @@
 			children = (
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
+				0087C2782BDD32CB004CED9C /* Data */,
+				0054D7292BDACE430009B9CC /* Domain */,
 				00CF35902BC2DF9200D9E332 /* Global */,
 				00CF35992BC2E2E200D9E332 /* Presentation */,
+				0087C2892BDED546004CED9C /* Network */,
 				00CF35872BC291FC00D9E332 /* Preview Content */,
 			);
 			path = Treehouse;
@@ -528,7 +645,9 @@
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
+				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
+				0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */,
@@ -537,19 +656,23 @@
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
+				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
+				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
 				3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */,
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
+				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
+				0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
@@ -559,6 +682,7 @@
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
+				0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
 			);
