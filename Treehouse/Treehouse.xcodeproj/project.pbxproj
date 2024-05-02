@@ -295,13 +295,13 @@
 		00CF35802BC291FA00D9E332 /* Treehouse */ = {
 			isa = PBXGroup;
 			children = (
-				0087C2892BDED546004CED9C /* Network */,
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
-				0087C2782BDD32CB004CED9C /* Data */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
+				0087C2782BDD32CB004CED9C /* Data */,
 				0054D7292BDACE430009B9CC /* Domain */,
 				00CF35902BC2DF9200D9E332 /* Global */,
 				00CF35992BC2E2E200D9E332 /* Presentation */,
+				0087C2892BDED546004CED9C /* Network */,
 				00CF35872BC291FC00D9E332 /* Preview Content */,
 			);
 			path = Treehouse;
