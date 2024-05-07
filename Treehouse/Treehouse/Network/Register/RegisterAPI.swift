@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RegisterAPIType {
+enum RegisterAPI {
     case postCheckUserName(requestBody: PostCheckUserNameRequestDTO)
     case postRegisterUser(requestBody: PostRegisterUserRequestDTO)
     case postAcceptInvitationTreeMember(requestBody: PostAcceptInvitationTreeMemberRequestDTO)
@@ -15,7 +15,7 @@ enum RegisterAPIType {
     case postReissueToken(requestBody: PostReissueTokenRequestDTO)
 }
 
-extension RegisterAPIType: BaseRequest {
+extension RegisterAPI: BaseRequest {
     var path: String {
         switch self {
         case .postCheckUserName: return "users/checkName"

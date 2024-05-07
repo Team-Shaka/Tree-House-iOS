@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum NotificationAPIType {
+enum NotificationAPI {
     case getCheckNotifications
 }
 
-extension NotificationAPIType: BaseRequest {
+extension NotificationAPI: BaseRequest {
     
     var path: String {
         switch self {

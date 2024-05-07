@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum InvitationAPIType {
+enum InvitationAPI {
     case getCheckInvitations
     case getCheckAvailableInvitation
     case postWhetherInvitations(requestBody: PostWhetherInvitationsRequestDTO)
 }
 
-extension InvitationAPIType: BaseRequest {
+extension InvitationAPI: BaseRequest {
     var path: String {
         switch self {
         case .getCheckInvitations: return "users/invitation"
