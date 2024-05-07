@@ -131,4 +131,8 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+### Env
+*.xcconfig
+.env
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos
