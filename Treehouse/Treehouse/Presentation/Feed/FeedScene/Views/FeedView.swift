@@ -48,33 +48,25 @@ struct FeedView: View {
 extension FeedView {
     @ViewBuilder
     private var postTextField: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Image(.imgDummy2)
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 36, height: 36)
-                
-                HStack {
-                    TextField("groupname에 글쓰기...", text: $postContent)
-                        .font(.fontGuide(.body5))
-                        .padding()
-                        .tint(.treeGreen)
-                        .foregroundColor(textFieldState.fontColor)
-                        .focused($focusedField, equals: .post)
-                    
-                    if textFieldState == .enable {
-                        Image(.icUpload)
-                    }
-                }
-            }
-            .frame(height: 36)
-            .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+        HStack(spacing: 0) {
+            Image(.imgDummy2)
+                .resizable()
+                .clipShape(Circle())
+                .frame(width: 36, height: 36)
             
-            Rectangle()
-                .frame(maxWidth: .infinity, maxHeight: 1)
-                .foregroundColor(.gray3)
+            TextField("groupname에 글쓰기...", text: $postContent)
+                .font(.fontGuide(.body5))
+                .padding()
+                .tint(.treeGreen)
+                .foregroundColor(textFieldState.fontColor)
+                .focused($focusedField, equals: .post)
+            
+            if textFieldState == .enable {
+                Image(.icUpload)
+            }
         }
+        .frame(height: 36)
+        .padding(.leading, 16)
     }
     
     @ViewBuilder
