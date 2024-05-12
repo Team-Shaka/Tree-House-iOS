@@ -7,31 +7,8 @@
 
 import SwiftUI
 
-enum Field {
+enum SetPhoneNumberViewField {
     case phoneNumber
-}
-
-enum TextFieldType {
-    case focused
-    case unFocused
-    
-    var borderColor: Color {
-        switch self {
-        case .focused:
-            return .gray7
-        case .unFocused:
-            return .clear
-        }
-    }
-    
-    var backgroundColor: Color {
-        switch self {
-        case .focused:
-            return .grayscaleWhite
-        case .unFocused:
-            return .gray1
-        }
-    }
 }
 
 struct SetPhoneNumberView: View {
@@ -40,10 +17,10 @@ struct SetPhoneNumberView: View {
     
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
-    @State private var textFieldState: TextFieldType = .unFocused
+    @State private var textFieldState: TextFieldStateType = .notFocused
     @State private var isButtonEnabled: Bool = false
     
-    @FocusState private var focusedField: Field?
+    @FocusState private var focusedField: SetPhoneNumberViewField?
     
     // MARK: - View
     
@@ -98,15 +75,11 @@ struct SetPhoneNumberView: View {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
         
-        .onTapGesture {
-            hideKeyboard()
-        }
-        
         .onChange(of: focusedField) { _, newValue in
             if newValue == .phoneNumber {
-                textFieldState = .focused
+                textFieldState = .enable
             } else {
-                textFieldState = .unFocused
+                textFieldState = .notFocused
             }
         }
         

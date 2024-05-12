@@ -11,7 +11,7 @@ struct NotificationRow: View {
     
     // MARK: - Property
     
-    var notification: NotificationStruct
+    var notification: NotificationModel
     var textColor: Color {
         notification.isChecked ? .gray6 : .treeBlack
     }
@@ -55,5 +55,5 @@ struct NotificationRow: View {
 // MARK: - Preview
 
 #Preview {
-    NotificationRow(notification: NotificationStruct.notificationDummyData[4])
+    NotificationRow(notification: NotificationModel.notificationDummyData[4])
 }
