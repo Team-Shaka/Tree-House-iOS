@@ -30,7 +30,7 @@ extension NotificationModel {
                            profileImageName: "img_dummy",
                            userName: "useruser",
                            time: "30분전",
-                           tree: "일산팟", 
+                           tree: "일산팟",
                            isChecked: false),
         
         NotificationModel(type: .replyOnComment,
@@ -44,7 +44,7 @@ extension NotificationModel {
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟", 
+                           tree: "트리팟",
                            isChecked: false),
         
         
@@ -52,14 +52,14 @@ extension NotificationModel {
                            profileImageName: "img_dummy",
                            userName: "tamama",
                            time: "45분전",
-                           tree: "지디팟", 
+                           tree: "지디팟",
                            isChecked: true),
         
         NotificationModel(type: .inviteToTree,
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟", 
+                           tree: "트리팟",
                            isChecked: true),
         
         NotificationModel(type: .inviteToTree,

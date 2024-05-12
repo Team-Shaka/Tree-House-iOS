@@ -130,8 +130,8 @@ extension SinglePostView {
 // MARK: - Preview
 
 #Preview {
-    SinglePostView(userProfileImageURL: "", 
-                   sentTime: 5, 
+    SinglePostView(userProfileImageURL: "",
+                   sentTime: 5,
                    postContent: "",
                    postImageURLs: ["", ""])
 }
