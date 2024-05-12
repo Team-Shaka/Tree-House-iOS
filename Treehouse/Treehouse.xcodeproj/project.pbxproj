@@ -15,6 +15,13 @@
 		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
+		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
+		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
+		0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */; };
+		0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2962BE15E91004CED9C /* RegisterRepository.swift */; };
+		0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */; };
+		0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29B2BE3609C004CED9C /* RegisterAPI.swift */; };
+		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
@@ -47,12 +54,39 @@
 		3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835842BCC00D30021C8AB /* TextField+.swift */; };
 		3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
+		3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */; };
+		3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */; };
+		3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */; };
+		3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB332BD8922B00AAE53F /* CommentModel.swift */; };
+		3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB352BD8C76200AAE53F /* CommentView.swift */; };
+		3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */; };
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
 		3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */; };
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
 		3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */; };
 		3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */; };
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
+		3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106F92BEA077E00C52908 /* BaseRequest.swift */; };
+		3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106FB2BEA078C00C52908 /* BaseResponse.swift */; };
+		3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106FD2BEA079500C52908 /* HttpMethod.swift */; };
+		3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107012BEA07FB00C52908 /* InvitationAPI.swift */; };
+		3FF107042BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107032BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift */; };
+		3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107052BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift */; };
+		3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107072BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift */; };
+		3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107092BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift */; };
+		3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1070D2BEA097900C52908 /* NotificationAPI.swift */; };
+		3FF107102BEA099600C52908 /* GetCheckNotificationsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1070F2BEA099600C52908 /* GetCheckNotificationsResponseDTO.swift */; };
+		3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107142BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift */; };
+		3FF107172BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107162BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift */; };
+		3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107182BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift */; };
+		3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1071A2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift */; };
+		3FF1071D2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */; };
+		3FF1071F2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1071E2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift */; };
+		3FF107212BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107202BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift */; };
+		3FF107232BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107222BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift */; };
+		3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */; };
+		3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */; };
+		3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1072A2BEA0BE700C52908 /* Config.swift */; };
 		944562062BD1211000078023 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562052BD1211000078023 /* NotificationType.swift */; };
 		9445620A2BD185A600078023 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944562092BD185A600078023 /* NotificationView.swift */; };
 		9445620C2BD1879400078023 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9445620B2BD1879400078023 /* NotificationModel.swift */; };
@@ -77,6 +111,13 @@
 		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
+		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
+		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
+		0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRegisterRepository.swift; sourceTree = "<group>"; };
+		0087C2962BE15E91004CED9C /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
+		0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckNameUseCase.swift; sourceTree = "<group>"; };
+		0087C29B2BE3609C004CED9C /* RegisterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPI.swift; sourceTree = "<group>"; };
+		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
@@ -103,12 +144,40 @@
 		3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthModifier.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentView.swift; sourceTree = "<group>"; };
+		3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentViewModel.swift; sourceTree = "<group>"; };
+		3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiListView.swift; sourceTree = "<group>"; };
+		3FC1FB332BD8922B00AAE53F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		3FC1FB352BD8C76200AAE53F /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowlayoutStack.swift; sourceTree = "<group>"; };
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
 		3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStateType.swift; sourceTree = "<group>"; };
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
 		3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationModel.swift; sourceTree = "<group>"; };
 		3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationViewModel.swift; sourceTree = "<group>"; };
 		3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationRowView.swift; sourceTree = "<group>"; };
+		3FF106F92BEA077E00C52908 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		3FF106FB2BEA078C00C52908 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		3FF106FD2BEA079500C52908 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		3FF107012BEA07FB00C52908 /* InvitationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAPI.swift; sourceTree = "<group>"; };
+		3FF107032BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWhetherInvitationsRequestDTO.swift; sourceTree = "<group>"; };
+		3FF107052BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCheckAvailableInvitationResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107072BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCheckInvitationsReponseDTO.swift; sourceTree = "<group>"; };
+		3FF107092BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWhetherInvitationsResponseDTO.swift; sourceTree = "<group>"; };
+		3FF1070D2BEA097900C52908 /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
+		3FF1070F2BEA099600C52908 /* GetCheckNotificationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCheckNotificationsResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107142BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAcceptInvitationTreeMemberRequestDTO.swift; sourceTree = "<group>"; };
+		3FF107162BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserNameRequestDTO.swift; sourceTree = "<group>"; };
+		3FF107182BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterTreeMemberRequestDTO.swift; sourceTree = "<group>"; };
+		3FF1071A2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterUserRequestDTO.swift; sourceTree = "<group>"; };
+		3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenRequestDTO.swift; sourceTree = "<group>"; };
+		3FF1071E2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAcceptInvitationTreeMemberResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107202BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserNameResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107222BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterTreeMemberResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterUserResponseDTO.swift; sourceTree = "<group>"; };
+		3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
+		3FF1072A2BEA0BE700C52908 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		944562052BD1211000078023 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		944562092BD185A600078023 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		9445620B2BD1879400078023 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
@@ -148,6 +217,7 @@
 			children = (
 				003E6EF22BD50EAB001C7613 /* Models */,
 				003E6EF12BD50EA2001C7613 /* Views */,
+				3FE944132BD63F9600C3A869 /* ViewModels */,
 			);
 			path = InvitationScene;
 			sourceTree = "<group>";
@@ -161,6 +231,9 @@
 				0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */,
 				0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */,
 				001236722BD2748200CEAC53 /* PhoneNumberRow.swift */,
+				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
+				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
+				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,8 +243,113 @@
 			children = (
 				003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */,
 				003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */,
+				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0054D7292BDACE430009B9CC /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0054D72C2BDACE7A0009B9CC /* Entities */,
+				0087C28F2BDFCD5C004CED9C /* Repositories */,
+				0087C2902BDFCDD3004CED9C /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0054D72C2BDACE7A0009B9CC /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0054D7342BDAD0D60009B9CC /* Register */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0054D7342BDAD0D60009B9CC /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C2782BDD32CB004CED9C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2852BDEC78D004CED9C /* Repositories */,
+				0087C2792BDD3325004CED9C /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0087C2792BDD3325004CED9C /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27C2BDD3988004CED9C /* Register */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		0087C27C2BDD3988004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C2852BDEC78D004CED9C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0087C2892BDED546004CED9C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3FF106F62BEA073E00C52908 /* Base */,
+				0087C28A2BDED554004CED9C /* Register */,
+				3FF106F72BEA074800C52908 /* Invitation */,
+				3FF106F82BEA074E00C52908 /* Notification */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0087C28A2BDED554004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C29B2BE3609C004CED9C /* RegisterAPI.swift */,
+				0087C29D2BE360A6004CED9C /* RegisterService.swift */,
+				3FF107112BEA09D000C52908 /* DTO */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0087C28F2BDFCD5C004CED9C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2962BE15E91004CED9C /* RegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0087C2902BDFCDD3004CED9C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2982BE16193004CED9C /* Register */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		0087C2982BE16193004CED9C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		00CF35752BC291FA00D9E332 = {
@@ -195,8 +373,11 @@
 			children = (
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
+				0087C2782BDD32CB004CED9C /* Data */,
+				0054D7292BDACE430009B9CC /* Domain */,
 				00CF35902BC2DF9200D9E332 /* Global */,
 				00CF35992BC2E2E200D9E332 /* Presentation */,
+				0087C2892BDED546004CED9C /* Network */,
 				00CF35872BC291FC00D9E332 /* Preview Content */,
 			);
 			path = Treehouse;
@@ -235,6 +416,8 @@
 			children = (
 				00CF35AD2BC2F52C00D9E332 /* Font */,
 				00CF35852BC291FC00D9E332 /* Assets.xcassets */,
+				3FF1072A2BEA0BE700C52908 /* Config.swift */,
+				3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -255,6 +438,7 @@
 				9449C6CD2BDBA7CF00FC938B /* Feed */,
 				94561F642BD115C000B005CE /* Notification */,
 				00CF359A2BC2E2FF00D9E332 /* Auth */,
+				3FC1FB262BD7725F00AAE53F /* Feed */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -265,7 +449,6 @@
 				3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */,
 				003E6EF02BD50E87001C7613 /* InvitationScene */,
 				00CF359D2BC2F21400D9E332 /* RegisterScene */,
-				3FE9440D2BD1163300C3A869 /* InvitationScene */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -326,6 +509,51 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		3FC1FB262BD7725F00AAE53F /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2A2BD772FC00AAE53F /* FeedContentScene */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		3FC1FB272BD7729D00AAE53F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3FC1FB282BD772D100AAE53F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */,
+				3FC1FB2F2BD7749000AAE53F /* EmojiListView.swift */,
+				3FC1FB352BD8C76200AAE53F /* CommentView.swift */,
+				3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3FC1FB292BD772D600AAE53F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB332BD8922B00AAE53F /* CommentModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3FC1FB2A2BD772FC00AAE53F /* FeedContentScene */ = {
+			isa = PBXGroup;
+			children = (
+				3FC1FB292BD772D600AAE53F /* Models */,
+				3FC1FB282BD772D100AAE53F /* Views */,
+				3FC1FB272BD7729D00AAE53F /* ViewModels */,
+			);
+			path = FeedContentScene;
+			sourceTree = "<group>";
+		};
 		3FE9440C2BD115EE00C3A869 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,40 +563,115 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		3FE9440D2BD1163300C3A869 /* InvitationScene */ = {
-			isa = PBXGroup;
-			children = (
-				3FE944102BD1167900C3A869 /* Models */,
-				3FE9440F2BD1165900C3A869 /* Views */,
-				3FE944132BD63F9600C3A869 /* ViewModel */,
-			);
-			path = InvitationScene;
-			sourceTree = "<group>";
-		};
-		3FE9440F2BD1165900C3A869 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */,
-				3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */,
-				3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3FE944102BD1167900C3A869 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3FE944132BD63F9600C3A869 /* ViewModel */ = {
+		3FE944132BD63F9600C3A869 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3FF106F62BEA073E00C52908 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3FF106F92BEA077E00C52908 /* BaseRequest.swift */,
+				3FF106FB2BEA078C00C52908 /* BaseResponse.swift */,
+				3FF106FD2BEA079500C52908 /* HttpMethod.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3FF106F72BEA074800C52908 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107012BEA07FB00C52908 /* InvitationAPI.swift */,
+				3FF107282BEA0AE300C52908 /* DTO */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
+		3FF106F82BEA074E00C52908 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				3FF1070D2BEA097900C52908 /* NotificationAPI.swift */,
+				3FF107292BEA0AEF00C52908 /* DTO */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		3FF106FF2BEA07E700C52908 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107052BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift */,
+				3FF107072BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift */,
+				3FF107092BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		3FF107002BEA07ED00C52908 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107032BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		3FF1070B2BEA096900C52908 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3FF1070F2BEA099600C52908 /* GetCheckNotificationsResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		3FF1070C2BEA096F00C52908 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		3FF107112BEA09D000C52908 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107132BEA0A0300C52908 /* Request */,
+				3FF107122BEA09FE00C52908 /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		3FF107122BEA09FE00C52908 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3FF1071E2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift */,
+				3FF107202BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift */,
+				3FF107222BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift */,
+				3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */,
+				3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		3FF107132BEA0A0300C52908 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107142BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift */,
+				3FF107162BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift */,
+				3FF107182BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift */,
+				3FF1071A2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift */,
+				3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		3FF107282BEA0AE300C52908 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				3FF107002BEA07ED00C52908 /* Request */,
+				3FF106FF2BEA07E700C52908 /* Response */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		9449C6C72BDBA57800FC938B /* TabView */ = {
@@ -552,45 +855,73 @@
 				3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
-				9449C6C92BDBA58100FC938B /* TabViewType.swift in Sources */,
-				9474FA562BECDC88006265E9 /* FeedViewModel.swift in Sources */,
+				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
+				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
+				3FF107102BEA099600C52908 /* GetCheckNotificationsResponseDTO.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
+				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
+				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
+				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
-				9449C6D42BDBBBBA00FC938B /* SinglePostView.swift in Sources */,
+				3FF107212BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
+				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
+				0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */,
 				3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */,
+				3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */,
+				3FF1071D2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
+				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
-				9445620C2BD1879400078023 /* NotificationModel.swift in Sources */,
+				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
+				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
+				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
-				9449C6CB2BDBA59D00FC938B /* TreeTabView.swift in Sources */,
+				3FF107232BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift in Sources */,
+				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
+				3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */,
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
+				3FF107172BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift in Sources */,
+				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
+				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
+				3FF107042BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
+				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
+				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
+				0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */,
+				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
+				3FF1071F2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
-				9449C6D72BDBBEA000FC938B /* FeedModel.swift in Sources */,
+				3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
+				3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
+				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
+				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
+				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
+				3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */,
+				0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
 			);
@@ -601,6 +932,7 @@
 /* Begin XCBuildConfiguration section */
 		00CF358A2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -664,6 +996,7 @@
 		};
 		00CF358B2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -720,13 +1053,14 @@
 		};
 		00CF358D2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -751,13 +1085,14 @@
 		};
 		00CF358E2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FF1072C2BEA0BFB00C52908 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
