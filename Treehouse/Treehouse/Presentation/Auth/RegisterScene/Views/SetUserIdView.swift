@@ -44,6 +44,7 @@ struct SetUserIdView: View {
                 
             }) {
                 Text(StringLiterals.Register.buttonTitle5)
+                    .font(.fontGuide(.body2))
                     .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
@@ -82,7 +83,7 @@ private extension SetUserIdView {
     var userNameTextField: some View {
         VStack(alignment: .leading, spacing: 8) {
             TextField(StringLiterals.Register.placeholderTitle2, text: $userId)
-                .fontWithLineHeight(fontLevel: .body2)
+                .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
                 .focused($focusedField, equals: .userId)
@@ -94,6 +95,7 @@ private extension SetUserIdView {
                         .stroke(textFieldState.borderColor, lineWidth: 1.5)
                 )
                 .cornerRadius(12)
+                .autocapitalization(.none)
             
             if textFieldState == .unable {
                 Text(StringLiterals.Register.indicatorTitle3)
