@@ -25,7 +25,7 @@ enum StringLiterals {
         
         static let guidanceTitle1 = "당신의 전화번호는 기기에서 암호화되어 서버로 전송됩니다.\n트리하우스는 당신의 개인정보를 소중하게 여기며,\n당신의 전화번호는 저희가 확인할 수 없습니다."
         static let guidanceTitle2 = "트리하우스는 원활한 서비스 제공과\n내부 커뮤니티 유지를 위해 초대된 전화번호에\n대해서만 가입이 가능하도록 제공됩니다."
-        static let guidanceTitle3 = "유저 이름은 한번 정해지면 바꿀 수 없습니다. 가입되는 모든 트리하우스에서 보이는 이름이니 꼭 신중히 작성해주세요."
+        static let guidanceTitle3 = "유저 아이디는 한번 정해지면 바꿀 수 없습니다. 가입되는 모든 트리하우스에서 보이는 이름이니 꼭 신중히 작성해주세요."
         static let guidanceTitle4 = "앞의 멤버 이름은 당신이 트리하우스 커뮤니티에\n소속될 때마다 새로 만들거니 조금만 기다려주세요!"
         static let guidanceTitle5 = "가입이 가능하도록 초대된 첫 번째 초대장은 거부할 수 없어요. 앞으로 받을 다른 초대장은 거부할 수 있어요."
         static let guidanceTitle6 = "멤버 이름은 추후에 바꿀 수 있어요."
@@ -46,7 +46,7 @@ enum StringLiterals {
         static let registerTitle1 = "만나서 반가워요!\n가입과 로그인을 위해\n전화번호를 입력해주세요!"
         static let registerTitle2 = "죄송합니다.\n아직 초대받지 못한 전화번호입니다."
         static let registerTitle3 = "돌아오셨군요!\n아래 버튼을 눌러 트리하우스에\n입장해주세요!"
-        static let registerTitle4 = "새로오셨군요, 반가워요!\n당신의 유저 이름을 작성해주세요."
+        static let registerTitle4 = "새로오셨군요, 반가워요!\n당신의 유저 아이디를 작성해주세요."
         static let registerTitle5 = "축하합니다!\n이제 받은 초대장을 볼까요?"
         static let registerTitle6 = "당신의 멤버 이름을 작성해주세요."
         static let registerTitle7 = "당신의 프로필 사진을 설정해주세요!"
