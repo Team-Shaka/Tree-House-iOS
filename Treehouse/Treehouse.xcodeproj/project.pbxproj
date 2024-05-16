@@ -41,6 +41,8 @@
 		00CF35B92BC306D500D9E332 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35B82BC306D500D9E332 /* SVGKit */; };
 		00CF35BB2BC306D500D9E332 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00CF35BA2BC306D500D9E332 /* SVGKitSwift */; };
 		00CF35CB2BC3083100D9E332 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35CA2BC3083100D9E332 /* String+.swift */; };
+		00F592442BF5F4F700BF6AED /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 00F592432BF5F4F700BF6AED /* Config.xcconfig */; };
+		00F592462BF5F55F00BF6AED /* TreeHallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F592452BF5F55F00BF6AED /* TreeHallView.swift */; };
 		00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */; };
 		00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8BB442BC9A43000B23AE4 /* LoginView.swift */; };
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
@@ -126,6 +128,8 @@
 		00CF35AE2BC2F63E00D9E332 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		00CF35AF2BC2F63E00D9E332 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		00CF35CA2BC3083100D9E332 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		00F592432BF5F4F700BF6AED /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		00F592452BF5F55F00BF6AED /* TreeHallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeHallView.swift; sourceTree = "<group>"; };
 		00F8BB422BC932F000B23AE4 /* UnableRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnableRegisterView.swift; sourceTree = "<group>"; };
 		00F8BB442BC9A43000B23AE4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
@@ -181,7 +185,6 @@
 		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemberProfileView.swift; sourceTree = "<group>"; };
-		944D488B2BF108D600205B18 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		944D48902BF10B6600205B18 /* GetCheckNotificationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCheckNotificationsResponseDTO.swift; sourceTree = "<group>"; };
 		944D48922BF10C6900205B18 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		944D48942BF10CA000205B18 /* SinglePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostView.swift; sourceTree = "<group>"; };
@@ -413,7 +416,7 @@
 				00CF35AD2BC2F52C00D9E332 /* Font */,
 				00CF35852BC291FC00D9E332 /* Assets.xcassets */,
 				3FF1072A2BEA0BE700C52908 /* Config.swift */,
-				944D488B2BF108D600205B18 /* Config.xcconfig */,
+				00F592432BF5F4F700BF6AED /* Config.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 			children = (
 				9449C6D12BDBA87400FC938B /* FeedView.swift */,
 				944D48942BF10CA000205B18 /* SinglePostView.swift */,
+				00F592452BF5F55F00BF6AED /* TreeHallView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -836,6 +840,7 @@
 				944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */,
 				00CF35B02BC2F63E00D9E332 /* Pretendard-Regular.otf in Resources */,
 				00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */,
+				00F592442BF5F4F700BF6AED /* Config.xcconfig in Resources */,
 				00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,6 +909,7 @@
 				0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
+				00F592462BF5F55F00BF6AED /* TreeHallView.swift in Sources */,
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
 				3FF1071F2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
