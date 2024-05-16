@@ -1,5 +1,5 @@
 //
-//  NotificationStruct.swift
+//  NotificationModel.swift
 //  Treehouse
 //
 //  Created by 윤영서 on 4/19/24.
@@ -10,7 +10,7 @@ import SwiftUI
 
 // TODO: - targetId 추가
 
-struct NotificationStruct: Identifiable, Hashable {
+struct NotificationModel: Identifiable, Hashable {
     let id = UUID()
     let type: NotificationType
     let profileImageName: String
@@ -24,45 +24,45 @@ struct NotificationStruct: Identifiable, Hashable {
     }
 }
 
-extension NotificationStruct {
-    static let notificationDummyData: [NotificationStruct] = [
-        NotificationStruct(type: .reactionToComment(emoji: "💛"),
+extension NotificationModel {
+    static let notificationDummyData: [NotificationModel] = [
+        NotificationModel(type: .reactionToComment(emoji: "💛"),
                            profileImageName: "img_dummy",
                            userName: "useruser",
                            time: "30분전",
-                           tree: "일산팟", 
+                           tree: "일산팟",
                            isChecked: false),
         
-        NotificationStruct(type: .replyOnComment,
+        NotificationModel(type: .replyOnComment,
                            profileImageName: "ic_noti_member",
                            userName: "tamama",
                            time: "45분전",
                            tree: "지디팟",
                            isChecked: true),
         
-        NotificationStruct(type: .reactionToPost(emoji: "🍄"),
+        NotificationModel(type: .reactionToPost(emoji: "🍄"),
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟", 
+                           tree: "트리팟",
                            isChecked: false),
         
         
-        NotificationStruct(type: .replyOnComment,
+        NotificationModel(type: .replyOnComment,
                            profileImageName: "img_dummy",
                            userName: "tamama",
                            time: "45분전",
-                           tree: "지디팟", 
+                           tree: "지디팟",
                            isChecked: true),
         
-        NotificationStruct(type: .inviteToTree,
+        NotificationModel(type: .inviteToTree,
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
-                           tree: "트리팟", 
+                           tree: "트리팟",
                            isChecked: true),
         
-        NotificationStruct(type: .inviteToTree,
+        NotificationModel(type: .inviteToTree,
                            profileImageName: "img_dummy_2",
                            userName: "whowhowhwo",
                            time: "5분전",
