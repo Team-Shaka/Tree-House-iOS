@@ -15,6 +15,9 @@ struct SetMemberBioView: View {
     
     // MARK: - State Property
     
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     @State var memberBio: String = ""
     @State var isButtonEnabled: Bool = false
     @State var textFieldState: TextFieldStateType = .notFocused
@@ -23,61 +26,63 @@ struct SetMemberBioView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
+        
+        VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(StringLiterals.Register.registerTitle8)
-                        .fontWithLineHeight(fontLevel: .heading1)
-                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 18 / 852)
-                    
-                    Text(StringLiterals.Register.guidanceTitle8)
-                        .fontWithLineHeight(fontLevel: .body3)
-                        .foregroundStyle(.gray5)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 39/852)
+                Text(StringLiterals.Register.registerTitle8)
+                    .fontWithLineHeight(fontLevel: .heading1)
+                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 18 / 852)
                 
-                Image(.imgDummy)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .frame(width: 42, height: 42)
-                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 19/852)
-                
-                memberBioTextField
-                
-                Spacer()
-                
-                Button(action: {
-                    
-                }) {
-                    Text(StringLiterals.Register.buttonTitle11)
-                        .fontWithLineHeight(fontLevel: .body2)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .foregroundStyle(.gray1)
-                        .background(.treeBlack)
-                        .cornerRadius(12)
-                }
+                Text(StringLiterals.Register.guidanceTitle8)
+                    .fontWithLineHeight(fontLevel: .body3)
+                    .foregroundStyle(.gray5)
             }
-            .padding(EdgeInsets(top: 30, leading: 24, bottom: 30, trailing: 24))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(StringLiterals.Register.navigationTitle1)
-                        .fontWithLineHeight(fontLevel: .body2)
-                }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 39/852)
+            
+            Image(.imgDummy)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+                .frame(width: 42, height: 42)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 19/852)
+            
+            memberBioTextField
+            
+            Spacer()
+            
+            Button(action: {
                 
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.treeBlack)
-                    }
-                }
+            }) {
+                Text(StringLiterals.Register.buttonTitle11)
+                    .fontWithLineHeight(fontLevel: .body2)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .foregroundStyle(.gray1)
+                    .background(.treeBlack)
+                    .cornerRadius(12)
             }
         }
+        .padding(EdgeInsets(top: 30, leading: 24, bottom: 30, trailing: 24))
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(StringLiterals.Register.navigationTitle1)
+                    .fontWithLineHeight(fontLevel: .body2)
+            }
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
+        
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
@@ -122,5 +127,9 @@ private extension SetMemberBioView {
 // MARK: - Preview
 
 #Preview {
-    SetMemberBioView()
+    NavigationStack {
+        SetMemberBioView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel())
+    }
 }

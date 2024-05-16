@@ -11,14 +11,15 @@ struct ShowUserProfileView: View {
     
     // MARK: - State Property
     
-    @State var userId: String = "younkyum"
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
     
     // MARK: - View
     
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 24) {
-                Text("\(userId)\(StringLiterals.Register.registerTitle9)")
+                Text("\(viewModel.userId)\(StringLiterals.Register.registerTitle9)")
                     .fontWithLineHeight(fontLevel: .heading1)
                     .foregroundStyle(.black)
                 
@@ -31,7 +32,7 @@ struct ShowUserProfileView: View {
             profileView
             
             Button(action: {
-                
+                viewRouter.push(RegisterRouter.receivedFirstInvitationView)
             }) {
                 Text(StringLiterals.Register.buttonTitle6)
                     .fontWithLineHeight(fontLevel: .body2)
@@ -46,7 +47,7 @@ struct ShowUserProfileView: View {
             .padding(.bottom, 12)
             
             Button(action: {
-                
+
             }) {
                 Text(StringLiterals.Register.buttonTitle12)
                     .fontWithLineHeight(fontLevel: .body5)
@@ -55,7 +56,19 @@ struct ShowUserProfileView: View {
                     .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
             }
         }
-        .padding(EdgeInsets(top: 66, leading: 23, bottom: 2, trailing: 24))
+        .padding(EdgeInsets(top: 22, leading: 23, bottom: 2, trailing: 24))
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
     }
 }
 
@@ -78,7 +91,7 @@ private extension ShowUserProfileView {
                         .fontWithLineHeight(fontLevel: .heading3)
                         .foregroundStyle(.black)
                     
-                    Text("@\(userId)")
+                    Text("@\(viewModel.userId)")
                         .fontWithLineHeight(fontLevel: .body3)
                         .foregroundStyle(.gray5)
                 }
@@ -117,5 +130,9 @@ private extension ShowUserProfileView {
 // MARK: - Preview
 
 #Preview {
-    ShowUserProfileView()
+    NavigationStack {
+        ShowUserProfileView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel())
+    }
 }
