@@ -22,7 +22,7 @@ enum RegisterRouter: Router {
     case setMemberProfileImageView
     case setMemberBioView
     
-    func buildView(_ viewModel: BaseViewModel?) -> AnyView {
+    func buildView(_ viewModel: BaseViewModel?) -> ContentView {
         if let viewModel = viewModel as? UserSettingViewModel {
             switch self {
             case .setPhoneNumberView:
