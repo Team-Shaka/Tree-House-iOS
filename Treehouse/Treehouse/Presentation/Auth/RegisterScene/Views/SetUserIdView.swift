@@ -15,6 +15,7 @@ struct SetUserIdView: View {
     
     // MARK: - State Property
     
+    @State private var viewModel = SetUserIdViewModel()
     @State var userId: String = ""
     @State var isButtonEnabled: Bool = false
     @State var textFieldState: TextFieldStateType = .notFocused
@@ -41,7 +42,7 @@ struct SetUserIdView: View {
             Spacer()
             
             Button(action: {
-                
+                viewModel.checkUserName(userName: userId)
             }) {
                 Text(StringLiterals.Register.buttonTitle5)
                     .font(.fontGuide(.body2))
@@ -99,6 +100,12 @@ private extension SetUserIdView {
             
             if textFieldState == .unable {
                 Text(StringLiterals.Register.indicatorTitle3)
+                    .fontWithLineHeight(fontLevel: .caption1)
+                    .foregroundStyle(.error)
+            }
+            
+            if viewModel.isUserNameDuplicated {
+                Text(StringLiterals.Register.indicatorTitle4)
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(.error)
             }
