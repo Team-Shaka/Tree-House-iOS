@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct BaseResponse<T> {
+struct BaseResponse<T: Decodable>: Decodable {
     var isSuccess: Bool
     var code: String
     var message: String
-    var createdAt: String?
     var data: T
+    var createdAt: String?
 }
