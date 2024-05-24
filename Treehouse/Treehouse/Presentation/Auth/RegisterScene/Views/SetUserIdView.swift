@@ -15,6 +15,7 @@ struct SetUserIdView: View {
     
     // MARK: - State Property
     
+    @State private var networkViewModel = SetUserIdViewModel()
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @State var viewModel = UserSettingViewModel()
     
@@ -41,18 +42,21 @@ struct SetUserIdView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.trailing, 2)
                 .padding(.bottom, 26)
+
+            userNameTextField
+            
+            Spacer()
                 
-                userNameTextField
-                
-                Spacer()
-                
-                Button(action: {
+            Button(action: {
+                  networkViewModel.checkUserName(userName: userId)
+                  
                     if viewModel.isButtonEnabled {
                         viewModel.userId = userId
                         viewRouter.push(RegisterRouter.showUserProfileView)
                     }
                 }) {
                     Text(StringLiterals.Register.buttonTitle5)
+                        .font(.fontGuide(.body2))
                         .padding()
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
@@ -107,7 +111,7 @@ private extension SetUserIdView {
     var userNameTextField: some View {
         VStack(alignment: .leading, spacing: 8) {
             TextField(StringLiterals.Register.placeholderTitle2, text: $userId)
-                .fontWithLineHeight(fontLevel: .body2)
+                .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
                 .focused($focusedField, equals: .userId)
@@ -119,9 +123,16 @@ private extension SetUserIdView {
                         .stroke(textFieldState.borderColor, lineWidth: 1.5)
                 )
                 .cornerRadius(12)
+                .autocapitalization(.none)
             
             if textFieldState == .unable {
                 Text(StringLiterals.Register.indicatorTitle3)
+                    .fontWithLineHeight(fontLevel: .caption1)
+                    .foregroundStyle(.error)
+            }
+            
+            if networkViewModel.isUserNameDuplicated {
+                Text(StringLiterals.Register.indicatorTitle4)
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(.error)
             }

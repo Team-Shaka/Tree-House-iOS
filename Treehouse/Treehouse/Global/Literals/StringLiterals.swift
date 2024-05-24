@@ -25,7 +25,7 @@ enum StringLiterals {
         
         static let guidanceTitle1 = "당신의 전화번호는 기기에서 암호화되어 서버로 전송됩니다.\n트리하우스는 당신의 개인정보를 소중하게 여기며,\n당신의 전화번호는 저희가 확인할 수 없습니다."
         static let guidanceTitle2 = "트리하우스는 원활한 서비스 제공과\n내부 커뮤니티 유지를 위해 초대된 전화번호에\n대해서만 가입이 가능하도록 제공됩니다."
-        static let guidanceTitle3 = "유저 아이디는 한번 정해지면 바꿀 수 없습니다. 가입되는 모든 트리하우스에서 보이는 이름이니 꼭 신중히 작성해주세요."
+        static let guidanceTitle3 = "유저 아이디는 한번 정해지면 바꿀 수 없습니다. 가입되는 모든 트리하우스에서 보이는 아이디이니 꼭 신중히 작성해주세요."
         static let guidanceTitle4 = "앞의 멤버 이름은 당신이 트리하우스 커뮤니티에\n소속될 때마다 새로 만들거니 조금만 기다려주세요!"
         static let guidanceTitle5 = "가입이 가능하도록 초대된 첫 번째 초대장은 거부할 수 없어요. 앞으로 받을 다른 초대장은 거부할 수 있어요."
         static let guidanceTitle6 = "멤버 이름은 추후에 바꿀 수 있어요."
@@ -36,10 +36,11 @@ enum StringLiterals {
         
         static let indicatorTitle1 = "*전화번호 구조가 맞지 않습니다."
         static let indicatorTitle2 = "인증번호가 맞지 않습니다."
-        static let indicatorTitle3 = "*이름 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
+        static let indicatorTitle3 = "*아이디 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
+        static let indicatorTitle4 = "*중복된 아이디입니다. 다른 아이디를 입력해주세요."
         
         static let placeholderTitle1 = "전화번호 입력"
-        static let placeholderTitle2 = "유저이름 입력"
+        static let placeholderTitle2 = "유저아이디 입력"
         static let placeholderTitle3 = "멤버 이름 입력"
         static let placeholderTitle4 = "바이오 입력"
         
