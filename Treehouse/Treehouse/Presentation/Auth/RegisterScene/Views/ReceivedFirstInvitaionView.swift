@@ -19,6 +19,11 @@ struct ReceivedFirstInvitaionView: View {
     var invitedMember: String = "Chriiii0o0"
     var memberNum: Int = 20
     
+    // MARK: - State Property
+    
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     // MARK: - View
     
     var body: some View {
@@ -36,26 +41,27 @@ struct ReceivedFirstInvitaionView: View {
                     .fill(.treeDarkgreen)
                     .frame(height: SizeLiterals.Screen.screenHeight * 139 / 852)
                 
-                InvitationView(invitationType: .first,
-                               treehouseName: treehouseName,
+                InvitationView(treehouseName: treehouseName,
                                invitedMember: invitedMember,
-                               memberNum: memberNum)
+                               memberNum: memberNum,
+                               invitationType: .first,
+                               rightButtonAction: { viewRouter.push(RegisterRouter.setMemberProfileNameView) })
                 
                 DrawingView()
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .background(.gray1)
+        .navigationBarBackButtonHidden()
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
-                    
+                    viewRouter.pop()
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                        .frame(width: 24, height: 24)
+                        .foregroundColor(.treeBlack)
                 }
-                .padding(.top, 11)
+                .padding(.top, 5)
             }
         }
     }
@@ -161,5 +167,7 @@ private extension ReceivedFirstInvitaionView {
 #Preview {
     NavigationStack {
         ReceivedFirstInvitaionView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel())
     }
 }

@@ -8,7 +8,7 @@
 import Observation
 
 @Observable
-final class ReceivedInvitationViewModel {
+final class ReceivedInvitationViewModel: BaseViewModel {
     var viewState: ReceivedInvitationViewStateType = .invitation
     var presentAlert: Bool = false
     var tapInvitationData: ReceivedInvitationModel? = nil

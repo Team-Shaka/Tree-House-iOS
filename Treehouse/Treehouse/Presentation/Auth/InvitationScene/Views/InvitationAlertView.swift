@@ -29,18 +29,20 @@ struct InvitationAlertView: View {
     
     var body: some View {
         ZStack {
-            InvitationView(invitationType: invitationType,
-                           leftButtonAction:  {
-                                leftButtonAction?()
-                            }, rightButtonAction: {
-                                // MARK: - TODO
-                                rightButtonAction?()
-                            }, cancelButtonAction: {
-                                cancelButtonAction?()
-                            },
-                           treehouseName: treehouseName,
+            InvitationView(treehouseName: treehouseName, 
                            invitedMember: invitedMember,
-                           memberNum: memberNum)
+                           memberNum: memberNum,
+                           invitationType: invitationType,
+                           leftButtonAction: {
+                                leftButtonAction?()
+                           },
+                           rightButtonAction: {
+                                // MARK: - TODO
+                               rightButtonAction?()
+                           },
+                           cancelButtonAction: {
+                                cancelButtonAction?()
+                           })
                             .frame(height: SizeLiterals.Screen.screenHeight * 420 / 852)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
