@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TreeHallView: View {
     
+    // MARK: - Property
+    
     var groupName: String = "groupname"
     var subject: String = "오늘 점심 뭐 먹지?"
     var personnel: Int = 30

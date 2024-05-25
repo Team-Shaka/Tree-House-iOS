@@ -16,6 +16,9 @@
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
 		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
+		0083B4BC2C01D02500F0D252 /* GroupChangeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */; };
+		0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */; };
+		0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */; };
 		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
 		0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */; };
 		0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2962BE15E91004CED9C /* RegisterRepository.swift */; };
@@ -111,6 +114,9 @@
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
 		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
+		0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChangeBottomSheet.swift; sourceTree = "<group>"; };
+		0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
+		0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStruct.swift; sourceTree = "<group>"; };
 		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
 		0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRegisterRepository.swift; sourceTree = "<group>"; };
 		0087C2962BE15E91004CED9C /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
@@ -694,6 +700,8 @@
 				944D48942BF10CA000205B18 /* SinglePostView.swift */,
 				009B71132BFF41BD009A741C /* FeedHeaderView.swift */,
 				00F592452BF5F55F00BF6AED /* TreeHallView.swift */,
+				0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */,
+				0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -702,6 +710,7 @@
 			isa = PBXGroup;
 			children = (
 				9449C6D62BDBBEA000FC938B /* FeedModel.swift */,
+				0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -885,6 +894,7 @@
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
+				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
@@ -908,6 +918,7 @@
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */,
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
+				0083B4BC2C01D02500F0D252 /* GroupChangeBottomSheet.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
@@ -928,6 +939,7 @@
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
+				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
 				3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */,
 				0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
