@@ -11,6 +11,7 @@
 		0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */; };
 		0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */; };
 		001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001236722BD2748200CEAC53 /* PhoneNumberRow.swift */; };
+		002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C73D22C08AB8B0047592F /* HeaderView.swift */; };
 		003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */; };
 		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
@@ -109,6 +110,7 @@
 		0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenLetterView.swift; sourceTree = "<group>"; };
 		0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberSearchBar.swift; sourceTree = "<group>"; };
 		001236722BD2748200CEAC53 /* PhoneNumberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRow.swift; sourceTree = "<group>"; };
+		002C73D22C08AB8B0047592F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableInvitationStruct.swift; sourceTree = "<group>"; };
 		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 				00F592452BF5F55F00BF6AED /* TreeHallView.swift */,
 				0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */,
 				0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */,
+				002C73D22C08AB8B0047592F /* HeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
+				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemeberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,

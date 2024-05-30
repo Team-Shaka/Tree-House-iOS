@@ -102,41 +102,6 @@ struct FeedHeaderView: View {
     }
 }
 
-struct HeaderView: View {
-    
-    // MARK: - Property
-    
-    var groupName: String
-    
-    // MARK: - Binding Property
-    
-    @Binding var isPresent: Bool
-    
-    // MARK: - View
-    
-    var body: some View {
-        HStack {
-            Image(.imgGroup)
-                .frame(width: 36, height: 36)
-                .padding(.leading, 16)
-            
-            Text(groupName)
-                .fontWithLineHeight(fontLevel: .heading4)
-                .padding(.leading, 10)
-            
-            Spacer()
-            
-            Button(action: {
-                isPresent = true
-            }) {
-                Image(.icChange)
-                    .frame(width: 32, height: 32)
-                    .padding(.trailing, 16)
-            }
-        }
-    }
-}
-
 // MARK: - Preview
 
 #Preview {
