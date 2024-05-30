@@ -21,7 +21,7 @@ struct HeaderView: View {
     
     var body: some View {
         HStack {
-            Image(.imgGroup)
+            Image(.imgProfile)
                 .frame(width: 36, height: 36)
                 .padding(.leading, 16)
             
