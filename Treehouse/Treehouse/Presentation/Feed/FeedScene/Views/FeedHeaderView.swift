@@ -24,7 +24,6 @@ struct FeedHeaderView: View {
     
     var body: some View {
         ZStack {
-            
             VStack(spacing: 0) {
                 HeaderView(groupName: groupName, isPresent: $isPresent)
                     .frame(height: 56)
