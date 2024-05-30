@@ -21,7 +21,7 @@ struct GroupRow: View {
                 .stroke(group.currentTreeHouse ? .treeGreen : .gray3, lineWidth: 1)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(group.currentTreeHouse ? .treePale : .white)
+                        .fill(group.currentTreeHouse ? .treePale : .grayscaleWhite)
                 )
                 .cornerRadius(12)
                 .frame(width: SizeLiterals.Screen.screenWidth * 360 / 393, height: 73)

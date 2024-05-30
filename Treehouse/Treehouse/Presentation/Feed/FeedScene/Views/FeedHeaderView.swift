@@ -29,7 +29,7 @@ struct FeedHeaderView: View {
                 HeaderView(groupName: groupName, isPresent: $isPresent)
                     .frame(height: 56)
                     .frame(maxWidth: .infinity)
-                    .background(Color.white)
+                    .background(.grayscaleWhite)
                 
                 ScrollView {
                     VStack {

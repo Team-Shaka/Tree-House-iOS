@@ -33,7 +33,7 @@ public struct GroupChangeBottomSheet<Content>: View where Content: View {
     public var body: some View {
         VStack(spacing: .zero) {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
+                .fill(.grayscaleWhite)
                 .frame(height: 30)
                 .overlay(
                     RoundedRectangle(cornerRadius: 100)
@@ -47,7 +47,7 @@ public struct GroupChangeBottomSheet<Content>: View where Content: View {
         .frame(height: self.height+30)
         .background(
             Rectangle()
-                .fill(.white)
+                .fill(.grayscaleWhite)
                 .cornerRadius(20, corners: .topLeft)
                 .cornerRadius(20, corners: .topRight)
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
