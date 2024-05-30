@@ -20,14 +20,14 @@ struct InvitationView: View {
         return memberNum >= 3 ? 3 : memberNum
     }
     
+    var treehouseName: String
+    var invitedMember: String
+    var memberNum: Int
+    
     var invitationType: InvitationType
     var leftButtonAction: (() -> ())?
     var rightButtonAction: (() -> ())?
     var cancelButtonAction: (() -> ())?
-
-    var treehouseName: String
-    var invitedMember: String
-    var memberNum: Int
     
     // MARK: - View
     
@@ -180,8 +180,8 @@ extension InvitationView {
 // MARK: - Preview
 
 #Preview {
-    InvitationView(invitationType: .first,
-                   treehouseName: "점심팟",
+    InvitationView(treehouseName: "점심팟",
                    invitedMember: "Chriiii0o0",
-                   memberNum: 6)
+                   memberNum: 6,
+                   invitationType: .first)
 }

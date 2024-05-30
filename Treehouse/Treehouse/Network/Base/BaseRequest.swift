@@ -33,14 +33,18 @@ extension BaseRequest {
     
     var headers: [String: String]? {
         var header = [String: String]()
+        // Content-Type 헤더 추가
+        header["Content-Type"] = "application/json"
         
-        // MARK: -TODO (KeyChain)
-    
         switch headerType {
         case .accessTokenHeader:
-            header["accessToken"] = ""
+            if let accessToken = KeychainHelper.shared.load(for: "accessToken") {
+                header["Authorization"] = "Bearer \(accessToken)"
+            }
         case .refreshTokenHeader:
-            header["refreshToken"] = ""
+            if let refreshToken = KeychainHelper.shared.load(for: "refreshToken") {
+                header["Authorization"] = "Bearer \(refreshToken)"
+            }
         case .noHeader:
             break
         }
