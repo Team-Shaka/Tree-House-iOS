@@ -48,8 +48,8 @@ public struct GroupChangeBottomSheet<Content>: View where Content: View {
         .background(
             Rectangle()
                 .fill(.grayscaleWhite)
-                .cornerRadius(20, corners: .topLeft)
-                .cornerRadius(20, corners: .topRight)
+                .selectCornerRadius(radius: 20, corners: .topLeft)
+                .selectCornerRadius(radius: 20, corners: .topRight)
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
         )
         .transition(.opacity.combined(with: .move(edge: .bottom)))
@@ -68,11 +68,5 @@ public struct GroupChangeBottomSheet<Content>: View where Content: View {
                     }
                 })
         )
-    }
-}
-
-extension View {
-    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
