@@ -41,7 +41,7 @@ struct FeedHeaderView: View {
             }
             
             ZStack(alignment: .bottom) {
-                Color.black.opacity(0.1)
+                Color.black.opacity(0.5)
                     .edgesIgnoringSafeArea(.top)
                     .opacity(isPresent ? 1 : 0)
                     .onTapGesture {
