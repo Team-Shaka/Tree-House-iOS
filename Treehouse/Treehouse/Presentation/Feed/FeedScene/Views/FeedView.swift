@@ -22,6 +22,8 @@ struct FeedView: View {
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
+    @StateObject private var photoPickerManager = PhotoPickerManager()
+    @State private var isPickerPresented = false
     
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
@@ -29,7 +31,7 @@ struct FeedView: View {
     // MARK: - View
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             postTextField
             
             filledFeedView
@@ -40,6 +42,12 @@ struct FeedView: View {
             } else {
                 textFieldState = .notFocused
             }
+        }
+        .sheet(isPresented: $isPickerPresented) {
+            photoPickerManager.presentPhotoPicker()
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
     }
 }
@@ -68,6 +76,7 @@ extension FeedView {
                         ToolbarItemGroup(placement: .keyboard) {
                             Spacer()
                             Button(action: {
+                                isPickerPresented = true
                             }){
                                 Image(.icPhoto)
                             }
@@ -86,12 +95,38 @@ extension FeedView {
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
             
-            if textFieldState == .enable {
-                Image(.icUpload)
+            if !photoPickerManager.selectedImages.isEmpty {
+                selectedPhotosView
             }
         }
-        .frame(height: 36)
-        .padding(.leading, 16)
+    }
+    
+    @ViewBuilder
+    var selectedPhotosView: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(photoPickerManager.selectedImages, id: \.self) { image in
+                    ZStack(alignment: .topTrailing) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray3, lineWidth: 1))
+                            .frame(width: 54, height: 54)
+                        
+                        Button(action: {
+                            if let index = photoPickerManager.selectedImages.firstIndex(of: image) {
+                                photoPickerManager.selectedImages.remove(at: index)
+                            }
+                        }){
+                            Image(.btnImgdelete)
+                        }
+                        .offset(x: 10, y: -10)
+                    }
+                }
+            }
+            .padding(EdgeInsets(top: 11, leading: 16, bottom: 7, trailing: 16))
+        }
     }
     
     @ViewBuilder

@@ -130,6 +130,7 @@
 		9499D9542BF1CA2A007CC6CF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9532BF1CA2A007CC6CF /* NetworkError.swift */; };
 		9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9562BF280B8007CC6CF /* NetworkServiceable.swift */; };
 		94D100182C0C2A1900025D43 /* CommentCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D100172C0C2A1900025D43 /* CommentCountView.swift */; };
+		94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1001C2C0CC60A00025D43 /* PhotoPickerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +253,7 @@
 		9499D9532BF1CA2A007CC6CF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9499D9562BF280B8007CC6CF /* NetworkServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceable.swift; sourceTree = "<group>"; };
 		94D100172C0C2A1900025D43 /* CommentCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountView.swift; sourceTree = "<group>"; };
+		94D1001C2C0CC60A00025D43 /* PhotoPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				94D1001B2C0CC5FE00025D43 /* PhotoPicker */,
 				9412FF352BF7C5AC006A8A15 /* Keychain */,
 				3FE9440C2BD115EE00C3A869 /* Components */,
 				3F8835862BCC05540021C8AB /* ViewModifier */,
@@ -934,6 +937,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		94D1001B2C0CC5FE00025D43 /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				94D1001C2C0CC60A00025D43 /* PhotoPickerManager.swift */,
+			);
+			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1092,6 +1103,7 @@
 				3F8846072BF58B6A0021FB79 /* InvitationRouter.swift in Sources */,
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
+				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
