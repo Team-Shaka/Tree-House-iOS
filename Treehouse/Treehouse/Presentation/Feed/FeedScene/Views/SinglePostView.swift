@@ -63,7 +63,7 @@ struct SinglePostView: View {
                     
                     multipleImagesView
                     
-                    commentCountView
+                    CommentCountView(commentCount: 12)
                 }
             }
             .padding(16)
@@ -80,24 +80,6 @@ extension SinglePostView {
             singleImageView
         } else {
             multipleImagesView
-        }
-    }
-    
-    @ViewBuilder
-    var commentCountView: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10.0)
-                .frame(width: 315, height: 40)
-                .foregroundColor(.gray1)
-            
-            HStack(spacing: 5) {
-                Image(.icGreenReply)
-                
-                Text("nn comments")
-                    .font(.fontGuide(.body4))
-                    .foregroundStyle(.gray7)
-            }
-            .padding(.trailing, 180)
         }
     }
     

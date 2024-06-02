@@ -129,6 +129,7 @@
 		9499D9522BF1C5AD007CC6CF /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9512BF1C5AD007CC6CF /* NetworkErrorCode.swift */; };
 		9499D9542BF1CA2A007CC6CF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9532BF1CA2A007CC6CF /* NetworkError.swift */; };
 		9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9562BF280B8007CC6CF /* NetworkServiceable.swift */; };
+		94D100182C0C2A1900025D43 /* CommentCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D100172C0C2A1900025D43 /* CommentCountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,7 +193,6 @@
 		3F8835822BCBF97D0021C8AB /* SetMemberBioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberBioView.swift; sourceTree = "<group>"; };
 		3F8835842BCC00D30021C8AB /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthModifier.swift; sourceTree = "<group>"; };
-		3F8845FD2BF083D30021FB79 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3F8845FF2BF095F60021FB79 /* UserSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewModel.swift; sourceTree = "<group>"; };
 		3F8846012BF254B60021FB79 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		3F8846042BF4F13E0021FB79 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
@@ -251,6 +251,7 @@
 		9499D9512BF1C5AD007CC6CF /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		9499D9532BF1CA2A007CC6CF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9499D9562BF280B8007CC6CF /* NetworkServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceable.swift; sourceTree = "<group>"; };
+		94D100172C0C2A1900025D43 /* CommentCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -852,6 +853,7 @@
 				0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */,
 				0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */,
 				002C73D22C08AB8B0047592F /* HeaderView.swift */,
+				94D100172C0C2A1900025D43 /* CommentCountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1070,7 +1072,6 @@
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
 				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
-				9445620C2BD1879400078023 /* NotificationStruct.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,
@@ -1079,6 +1080,7 @@
 				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
 				3FC1FB302BD7749000AAE53F /* EmojiListView.swift in Sources */,
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
+				94D100182C0C2A1900025D43 /* CommentCountView.swift in Sources */,
 				3FF107172BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift in Sources */,
 				9499D9522BF1C5AD007CC6CF /* NetworkErrorCode.swift in Sources */,
 				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
@@ -1139,7 +1141,6 @@
 /* Begin XCBuildConfiguration section */
 		00CF358A2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 944D488B2BF108D600205B18 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1203,7 +1204,6 @@
 		};
 		00CF358B2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 944D488B2BF108D600205B18 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1260,7 +1260,6 @@
 		};
 		00CF358D2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 944D488B2BF108D600205B18 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1292,7 +1291,6 @@
 		};
 		00CF358E2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 944D488B2BF108D600205B18 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
