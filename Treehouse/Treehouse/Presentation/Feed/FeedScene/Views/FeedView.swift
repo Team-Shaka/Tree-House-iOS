@@ -24,6 +24,7 @@ struct FeedView: View {
     @State private var textFieldState: TextFieldStateType = .notFocused
     
     @FocusState private var focusedField: FeedField?
+    @FocusState private var isKeyboardShowing: Bool
     
     // MARK: - View
     
@@ -62,6 +63,7 @@ extension FeedView {
                     .focused($focusedField, equals: .post)
                     .keyboardType(.asciiCapable)
                     .autocorrectionDisabled(true)
+                    .focused($isKeyboardShowing)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             Spacer()
@@ -70,6 +72,7 @@ extension FeedView {
                                 Image(.icPhoto)
                             }
                             Button(action: {
+                                isKeyboardShowing = false
                             }){
                                 Image(.icDelete2)
                             }
