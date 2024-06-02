@@ -9,6 +9,11 @@ import SwiftUI
 
 struct UnableRegisterView: View {
     
+    // MARK: - State Property
+    
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     // MARK: - View
     
     var body: some View {
@@ -48,7 +53,7 @@ struct UnableRegisterView: View {
             Button {
                 print("돌아가기 버튼 탭했음")
             } label: {
-                Text("돌아가기")
+                Text(StringLiterals.Register.buttonTitle3)
                     .font(.fontGuide(.body2))
                     .foregroundStyle(.gray1)
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
@@ -58,11 +63,27 @@ struct UnableRegisterView: View {
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    UnableRegisterView()
+    NavigationStack {
+        UnableRegisterView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+    }
 }
