@@ -32,7 +32,13 @@ struct ShowUserProfileView: View {
             profileView
             
             Button(action: {
-                viewRouter.push(RegisterRouter.receivedFirstInvitationView)
+                Task {
+                    let result = await viewModel.registerUser()
+                    
+                    if result {
+                        viewRouter.push(RegisterRouter.receivedFirstInvitationView)
+                    }
+                }
             }) {
                 Text(StringLiterals.Register.buttonTitle6)
                     .fontWithLineHeight(fontLevel: .body2)
@@ -133,6 +139,6 @@ private extension ShowUserProfileView {
     NavigationStack {
         ShowUserProfileView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()), registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl())))
     }
 }

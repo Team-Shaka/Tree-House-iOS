@@ -35,14 +35,18 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let checkUserNameUseCase: PostCheckNameUseCaseProtocol
     
+    @ObservationIgnored
+    private let registerUserUseCase: PostRegisterUserUseCaseProtocol
+    
     // MARK: - init
     
-    init(checkNameUseCase: PostCheckNameUseCaseProtocol) {
+    init(checkNameUseCase: PostCheckNameUseCaseProtocol, registerUserUseCase: PostRegisterUserUseCaseProtocol) {
         self.checkUserNameUseCase = checkNameUseCase
+        self.registerUserUseCase = registerUserUseCase
     }
 }
 
-// MARK: - Extension
+// MARK: - API Extension
 
 extension UserSettingViewModel {
     func checkUserName(userName: String) async {
@@ -58,6 +62,29 @@ extension UserSettingViewModel {
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
+        }
+    }
+    
+    func registerUser() async -> Bool {
+        guard let phoneNumber = self.phoneNumber else {
+            return false
+        }
+        print(phoneNumber, userId)
+        let result = await registerUserUseCase.execute(phoneNumber: phoneNumber, userName: self.userId)
+        
+        switch result {
+        case .success(let response):
+            KeychainHelper.shared.save(response.accessToken, for: Config.accessTokenKey)
+            KeychainHelper.shared.save(response.refreshToken, for: Config.refreshTokenKey)
+            
+            return true
+            
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+            
+            return false
         }
     }
 }

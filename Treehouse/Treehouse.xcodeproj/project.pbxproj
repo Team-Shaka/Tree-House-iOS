@@ -68,6 +68,8 @@
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
 		3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */; };
+		3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */; };
+		3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -187,6 +189,8 @@
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
 		3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserUseCase.swift; sourceTree = "<group>"; };
+		3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponseEntity.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
+				3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */,
+				3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1038,6 +1044,7 @@
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
 				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
+				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
+				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				3FF107042BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift in Sources */,
