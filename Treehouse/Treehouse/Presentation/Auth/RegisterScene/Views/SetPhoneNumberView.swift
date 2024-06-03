@@ -15,6 +15,9 @@ struct SetPhoneNumberView: View {
     
     // MARK: - State Property
     
+    @Environment(ViewRouter.self) var viewRouter: ViewRouter
+    @State var viewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()))
+    
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -25,56 +28,73 @@ struct SetPhoneNumberView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationView {
+        @Bindable var viewRouter = viewRouter
+        
+        NavigationStack(path: $viewRouter.path) {
             VStack(spacing: 0) {
-                Text(StringLiterals.Register.registerTitle1)
-                    .font(.fontGuide(.heading1))
-                    .fontWithLineHeight(fontLevel: .heading1)
-                    .foregroundColor(.treeBlack)
-                    .padding(EdgeInsets(top: 34, leading: 0, bottom: 36, trailing: 100))
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    phoneNumberTextField
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(StringLiterals.Register.registerTitle1)
+                        .fontWithLineHeight(fontLevel: .heading1)
+                        .foregroundColor(.treeBlack)
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * 36 / 852)
                     
-                    if errorMessage == errorMessage {
-                        Text(errorMessage ?? "")
-                            .foregroundColor(.error)
-                            .font(.fontGuide(.caption1))
+                    VStack(alignment: .leading, spacing: 8) {
+                        phoneNumberTextField
+                        
+                        if errorMessage == errorMessage {
+                            Text(errorMessage ?? "")
+                                .foregroundColor(.error)
+                                .font(.fontGuide(.caption1))
+                        }
                     }
+                    
+                    Text(StringLiterals.Register.guidanceTitle1)
+                        .fontWithLineHeight(fontLevel: .body5)
+                        .foregroundColor(.gray5)
+                        .padding(.top, errorMessage == nil ? 0 : 24)
                 }
-                
-                Text(StringLiterals.Register.guidanceTitle1)
-                    .font(.fontGuide(.body5))
-                    .foregroundColor(.gray5)
-                    .padding(.top, errorMessage == nil ? 0 : 14)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
                 
                 Button(action: {
-                    
+                    if isButtonEnabled {
+                        viewRouter.push(RegisterRouter.verificationView)
+                        viewModel.phoneNumber = phoneNumber
+                    }
                 }) {
                     Text(StringLiterals.Register.buttonTitle1)
-                        .frame(width: 344, height: 56)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 56)
                         .font(.fontGuide(.body2))
                         .foregroundColor(isButtonEnabled ? .gray1 : .gray6)
                         .background(isButtonEnabled ? .treeBlack : .gray2)
                         .cornerRadius(12)
-                        .padding(.horizontal, 24)
                 }
-                
-                .navigationBarItems(leading: Button(action: {
-                    // 돌아가기 버튼 액션
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.treeBlack)
-                })
+            }
+            .padding(EdgeInsets(top: 22, leading: 24, bottom: 30, trailing: 24))
+            .navigationDestination(for: RegisterRouter.self) { router in
+                viewRouter.buildScene(inputRouter: router, viewModel: viewModel)
+            }
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        viewRouter.pop()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.treeBlack)
+                    }
+                    .padding(.top, 5)
+                }
             }
         }
-        
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
-        
         .onChange(of: focusedField) { _, newValue in
             if newValue == .phoneNumber {
                 textFieldState = .enable
@@ -82,17 +102,19 @@ struct SetPhoneNumberView: View {
                 textFieldState = .notFocused
             }
         }
-        
         .onChange(of: phoneNumber) { _, newValue in
             if newValue.validatePhoneNumber() {
                 errorMessage = nil
                 isButtonEnabled = true
+                textFieldState = .enable
             } else if newValue.isEmpty {
                 errorMessage = nil
                 isButtonEnabled = false
+                textFieldState = .enable
             } else {
                 errorMessage = StringLiterals.Register.indicatorTitle1
                 isButtonEnabled = false
+                textFieldState = .unable
             }
         }
     }
@@ -116,7 +138,7 @@ extension SetPhoneNumberView {
                 .tint(.treeGreen)
                 .focused($focusedField, equals: .phoneNumber)
         }
-        .frame(width: 345, height: 62)
+        .frame(height: 62)
         .background(textFieldState.backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
@@ -131,4 +153,6 @@ extension SetPhoneNumberView {
 
 #Preview {
     SetPhoneNumberView()
+        .environment(ViewRouter())
+        .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
 }

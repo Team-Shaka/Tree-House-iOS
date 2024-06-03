@@ -21,9 +21,9 @@
 		0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */; };
 		0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */; };
 		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
-		0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */; };
-		0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2962BE15E91004CED9C /* RegisterRepository.swift */; };
-		0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */; };
+		0087C2872BDEC7B0004CED9C /* RegisterRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */; };
+		0087C2972BE15E91004CED9C /* RegisterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */; };
+		0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */; };
 		0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29B2BE3609C004CED9C /* RegisterAPI.swift */; };
 		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
@@ -147,9 +147,9 @@
 		0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
 		0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStruct.swift; sourceTree = "<group>"; };
 		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
-		0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRegisterRepository.swift; sourceTree = "<group>"; };
-		0087C2962BE15E91004CED9C /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
-		0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckNameUseCase.swift; sourceTree = "<group>"; };
+		0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryImpl.swift; sourceTree = "<group>"; };
+		0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameUseCase.swift; sourceTree = "<group>"; };
 		0087C29B2BE3609C004CED9C /* RegisterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPI.swift; sourceTree = "<group>"; };
 		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				0054D72C2BDACE7A0009B9CC /* Entities */,
-				0087C28F2BDFCD5C004CED9C /* Repositories */,
+				0087C28F2BDFCD5C004CED9C /* RepositoryProtocol */,
 				0087C2902BDFCDD3004CED9C /* UseCases */,
 			);
 			path = Domain;
@@ -363,7 +363,7 @@
 		0087C2852BDEC78D004CED9C /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				0087C2862BDEC7B0004CED9C /* DefaultRegisterRepository.swift */,
+				0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -392,12 +392,12 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		0087C28F2BDFCD5C004CED9C /* Repositories */ = {
+		0087C28F2BDFCD5C004CED9C /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				0087C2962BE15E91004CED9C /* RegisterRepository.swift */,
+				0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */,
 			);
-			path = Repositories;
+			path = RepositoryProtocol;
 			sourceTree = "<group>";
 		};
 		0087C2902BDFCDD3004CED9C /* UseCases */ = {
@@ -411,7 +411,7 @@
 		0087C2982BE16193004CED9C /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				0087C2992BE161C9004CED9C /* PostCheckNameUseCase.swift */,
+				0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1075,7 +1075,7 @@
 				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
-				0087C2972BE15E91004CED9C /* RegisterRepository.swift in Sources */,
+				0087C2972BE15E91004CED9C /* RegisterRepositoryProtocol.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				3FF107232BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift in Sources */,
 				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
@@ -1104,7 +1104,7 @@
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
 				0083B4BC2C01D02500F0D252 /* GroupChangeBottomSheet.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
-				0087C29A2BE161C9004CED9C /* PostCheckNameUseCase.swift in Sources */,
+				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				00F592462BF5F55F00BF6AED /* TreeHallView.swift in Sources */,
@@ -1128,7 +1128,7 @@
 				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
 				3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */,
 				3F06C2F82BFDC2DF002B771B /* FeedService.swift in Sources */,
-				0087C2872BDEC7B0004CED9C /* DefaultRegisterRepository.swift in Sources */,
+				0087C2872BDEC7B0004CED9C /* RegisterRepositoryImpl.swift in Sources */,
 				9412FF392BFF2466006A8A15 /* TabViewType.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */,
@@ -1269,7 +1269,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = 32XV7C2B2M;
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -1302,7 +1302,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = 32XV7C2B2M;
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
