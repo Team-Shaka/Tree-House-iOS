@@ -38,16 +38,12 @@ extension RegisterAPI: BaseRequest {
     
     var headerType: HeaderType {
         switch self {
-        case .postCheckUserName:
+        case .postCheckUserName, .postRegisterUser:
             return .noHeader
-        case .postRegisterUser:
-            return .accessTokenHeader
-        case .postAcceptInvitationTreeMember:
-            return .accessTokenHeader
-        case .postRegisterTreeMember:
+        case .postAcceptInvitationTreeMember, .postRegisterTreeMember:
             return .accessTokenHeader
         case .postReissueToken:
-            return .accessTokenHeader
+            return .refreshTokenHeader
         }
     }
 
