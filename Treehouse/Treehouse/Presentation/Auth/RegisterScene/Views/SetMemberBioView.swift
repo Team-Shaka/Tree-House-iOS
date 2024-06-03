@@ -130,6 +130,6 @@ private extension SetMemberBioView {
     NavigationStack {
         SetMemberBioView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()), registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl())))
     }
 }

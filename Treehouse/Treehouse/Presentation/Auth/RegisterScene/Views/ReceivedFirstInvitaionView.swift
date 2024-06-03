@@ -168,6 +168,6 @@ private extension ReceivedFirstInvitaionView {
     NavigationStack {
         ReceivedFirstInvitaionView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()), registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl())))
     }
 }
