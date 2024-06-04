@@ -132,6 +132,11 @@ private extension SetMemberProfileNameView {
     NavigationStack {
         SetMemberProfileNameView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),           registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                             ))
     }
 }
