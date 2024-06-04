@@ -70,6 +70,8 @@
 		3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */; };
 		3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */; };
 		3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */; };
+		3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */; };
+		3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -191,6 +193,8 @@
 		3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserUseCase.swift; sourceTree = "<group>"; };
 		3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponseEntity.swift; sourceTree = "<group>"; };
+		3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberUseCase.swift; sourceTree = "<group>"; };
+		3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberResponseEntity.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 			children = (
 				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
 				3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */,
+				3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 			children = (
 				0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */,
 				3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */,
+				3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1052,6 +1058,7 @@
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
+				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
 				9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
@@ -1094,6 +1101,7 @@
 				3F06C2FF2BFDEA7D002B771B /* PostCreateCommentRequestDTO.swift in Sources */,
 				3F06C3012BFDEAB3002B771B /* PostReportFeedPostRequestDTO.swift in Sources */,
 				3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */,
+				3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */,
 				3F8846072BF58B6A0021FB79 /* InvitationRouter.swift in Sources */,

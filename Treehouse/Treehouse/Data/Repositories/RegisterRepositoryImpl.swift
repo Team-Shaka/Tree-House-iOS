@@ -29,4 +29,15 @@ final class RegisterRepositoryImpl: RegisterRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    func postRegisterTreeMember(requsetDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
+        do {
+            let response = try await registerService.postRegisterTreeMember(requestBody: requsetDTO)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }
