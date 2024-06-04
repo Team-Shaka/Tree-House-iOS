@@ -49,15 +49,20 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol
     
+    @ObservationIgnored
+    private let acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol
+    
     // MARK: - init
     
     init(checkNameUseCase: PostCheckNameUseCaseProtocol,
          registerUserUseCase: PostRegisterUserUseCaseProtocol,
-         registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol
+         registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol,
+         acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol
     ) {
         self.checkUserNameUseCase = checkNameUseCase
         self.registerUserUseCase = registerUserUseCase
         self.registerTreeMemberUseCase = registerTreeMemberUseCase
+        self.acceptInvitationTreeMemberUseCase = acceptInvitationTreeMemberUseCase
     }
 }
 
@@ -116,6 +121,18 @@ extension UserSettingViewModel {
         switch result {
         case .success(let response):
             // TODO: - userId, treehouseId 저장 ( KeyChain, UserDefaults? )
+            break
+        case .failure(let error):
+            self.errorMessage = error.localizedDescription
+        }
+    }
+    
+    func acceptInvitationTreeMember(invitationId: Int, isAccepted: Bool) async {
+        let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: invitationId, isAccepted: isAccepted)
+        
+        switch result {
+        case .success(let response):
+            // TODO: - invitationid 연결
             break
         case .failure(let error):
             self.errorMessage = error.localizedDescription

@@ -72,6 +72,11 @@
 		3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */; };
 		3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */; };
 		3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */; };
+		3F51504E2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */; };
+		3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */; };
+		3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */; };
+		3F5150562C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */; };
+		3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150572C0EC5E800AD05C3 /* InvitationService.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -195,6 +200,11 @@
 		3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponseEntity.swift; sourceTree = "<group>"; };
 		3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberUseCase.swift; sourceTree = "<group>"; };
 		3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberResponseEntity.swift; sourceTree = "<group>"; };
+		3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptInvitationTreeMemberUseCase.swift; sourceTree = "<group>"; };
+		3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptInvitationTreeMemberEntity.swift; sourceTree = "<group>"; };
+		3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationRepositoryImpl.swift; sourceTree = "<group>"; };
+		3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationReposiotryProtocol.swift; sourceTree = "<group>"; };
+		3F5150572C0EC5E800AD05C3 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -331,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				0054D7342BDAD0D60009B9CC /* Register */,
+				3F5150522C0EC43700AD05C3 /* Invitation */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -374,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */,
+				3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -406,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */,
+				3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -414,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2982BE16193004CED9C /* Register */,
+				3F5150512C0EC42E00AD05C3 /* Invitation */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -626,6 +640,22 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		3F5150512C0EC42E00AD05C3 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
+		3F5150522C0EC43700AD05C3 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
 		3F8835862BCC05540021C8AB /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,6 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF107012BEA07FB00C52908 /* InvitationAPI.swift */,
+				3F5150572C0EC5E800AD05C3 /* InvitationService.swift */,
 				3FF107282BEA0AE300C52908 /* DTO */,
 			);
 			path = Invitation;
@@ -1042,6 +1073,7 @@
 				3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */,
 				944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */,
 				3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */,
+				3F51504E2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift in Sources */,
 				3F06C30C2BFDEFD5002B771B /* GetReadFeedPostsListResponseDTO.swift in Sources */,
 				3F06C3052BFDEB1E002B771B /* PostReactionFeedPostRequestDTO.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
@@ -1063,6 +1095,7 @@
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				3FF107212BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift in Sources */,
+				3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
@@ -1076,6 +1109,7 @@
 				3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */,
 				9499D9502BF1BD04007CC6CF /* NotificationService.swift in Sources */,
 				3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */,
+				3F5150562C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift in Sources */,
 				3F8846052BF4F13E0021FB79 /* RegisterRouter.swift in Sources */,
 				3FF1071D2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
@@ -1130,6 +1164,7 @@
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
+				3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
 				944D48932BF10C6900205B18 /* NotificationModel.swift in Sources */,
 				3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */,
@@ -1138,6 +1173,7 @@
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
+				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,

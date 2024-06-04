@@ -45,7 +45,19 @@ struct ReceivedFirstInvitaionView: View {
                                invitedMember: invitedMember,
                                memberNum: memberNum,
                                invitationType: .first,
-                               rightButtonAction: { viewRouter.push(RegisterRouter.setMemberProfileNameView) })
+                               leftButtonAction: {
+                    Task {
+                        
+                    }
+                },
+                               rightButtonAction: {
+                    Task {
+                        
+                    }
+                    
+                    viewRouter.push(RegisterRouter.setMemberProfileNameView)
+                }
+                )
                 
                 DrawingView()
             }
