@@ -19,15 +19,23 @@ protocol BaseViewModel: AnyObject {}
 @Observable
 final class UserSettingViewModel: BaseViewModel {
     
+    // MARK: - UserSetting Property
+    
     var userId: String = ""
+    var memberName: String?
+    var bio: String?
+    var profileImageURL: String?
+    var phoneNumber: String?
+    var treehouseId: Int?
+
+    var errorMessage: String? = nil
+    
+    // MARK: - State Property
+    
     var isPresentedView = false
     var isDuplicateID: Bool = false
     var isButtonEnabled: Bool = false
-    var phoneNumber: String?
-    
     var isUserNameDuplicated: Bool = false
-    var errorMessage: String? = nil
-    
     var isAuthentication: UserAuthentication = .error
     
     // MARK: - UseCase Property
@@ -38,11 +46,18 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let registerUserUseCase: PostRegisterUserUseCaseProtocol
     
+    @ObservationIgnored
+    private let registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol
+    
     // MARK: - init
     
-    init(checkNameUseCase: PostCheckNameUseCaseProtocol, registerUserUseCase: PostRegisterUserUseCaseProtocol) {
+    init(checkNameUseCase: PostCheckNameUseCaseProtocol,
+         registerUserUseCase: PostRegisterUserUseCaseProtocol,
+         registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol
+    ) {
         self.checkUserNameUseCase = checkNameUseCase
         self.registerUserUseCase = registerUserUseCase
+        self.registerTreeMemberUseCase = registerTreeMemberUseCase
     }
 }
 
@@ -85,6 +100,25 @@ extension UserSettingViewModel {
             }
             
             return false
+        }
+    }
+    
+    func registerTreeMember() async {
+        guard let treehouseId = treehouseId,
+              let memberName = memberName,
+              let bio = bio,
+              let profileImageURL = profileImageURL else {
+            return
+        }
+        
+        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userId, memberName: memberName, bio: bio, profileImageURL: profileImageURL))
+        
+        switch result {
+        case .success(let response):
+            // TODO: - userId, treehouseId 저장 ( KeyChain, UserDefaults? )
+            break
+        case .failure(let error):
+            self.errorMessage = error.localizedDescription
         }
     }
 }
