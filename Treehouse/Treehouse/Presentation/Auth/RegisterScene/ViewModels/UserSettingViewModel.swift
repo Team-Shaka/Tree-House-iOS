@@ -5,6 +5,7 @@
 //  Created by ParkJunHyuk on 5/12/24.
 //
 
+import Foundation
 import Observation
 
 enum UserAuthentication {
@@ -30,6 +31,13 @@ final class UserSettingViewModel: BaseViewModel {
 
     var errorMessage: String? = nil
     
+    // MARK: - Invitation Property
+    
+    var treehouseName: String = ""
+    var invitedMember: String = ""
+    var memberNum: Int = 0
+    var memberProfileImages: [URL] = []
+    
     // MARK: - State Property
     
     var isPresentedView = false
@@ -52,21 +60,26 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol
     
+    @ObservationIgnored
+    private let checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol
+    
     // MARK: - init
     
     init(checkNameUseCase: PostCheckNameUseCaseProtocol,
          registerUserUseCase: PostRegisterUserUseCaseProtocol,
          registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol,
-         acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol
+         acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol,
+         checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol
     ) {
         self.checkUserNameUseCase = checkNameUseCase
         self.registerUserUseCase = registerUserUseCase
         self.registerTreeMemberUseCase = registerTreeMemberUseCase
         self.acceptInvitationTreeMemberUseCase = acceptInvitationTreeMemberUseCase
+        self.checkInvitationsUseCase = checkInvitationsUseCase
     }
 }
 
-// MARK: - API Extension
+// MARK: - Register API Extension
 
 extension UserSettingViewModel {
     func checkUserName(userName: String) async {
@@ -123,7 +136,9 @@ extension UserSettingViewModel {
             // TODO: - userId, treehouseId 저장 ( KeyChain, UserDefaults? )
             break
         case .failure(let error):
-            self.errorMessage = error.localizedDescription
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
     
@@ -135,7 +150,31 @@ extension UserSettingViewModel {
             // TODO: - invitationid 연결
             break
         case .failure(let error):
-            self.errorMessage = error.localizedDescription
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+}
+
+// MARK: - Invitation API Extension
+
+extension UserSettingViewModel {
+    func checkInvitations() async {
+        let result = await checkInvitationsUseCase.execute()
+        
+        switch result {
+        case .success(let response):
+            response.invitations.forEach {
+                treehouseName = $0.treehouseName
+                invitedMember = $0.senderName
+                memberNum = $0.treehouseSize
+                memberProfileImages = $0.treehouseMemberProfileImages
+            }
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
 }
