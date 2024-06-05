@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct TreehouseApp: App {
+    
+    @State var viewRouter = ViewRouter()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SetPhoneNumberView()
+                .environment(viewRouter)
         }
     }
 }

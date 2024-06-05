@@ -15,9 +15,8 @@ struct SetUserIdView: View {
     
     // MARK: - State Property
     
-    @State private var networkViewModel = SetUserIdViewModel()
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
-    @State var viewModel = UserSettingViewModel()
+    @Environment(UserSettingViewModel.self) private var viewModel
     
     @State var userId: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
@@ -26,66 +25,75 @@ struct SetUserIdView: View {
     // MARK: - View
     
     var body: some View {
-        @Bindable var viewRouter = viewRouter
-        
-        NavigationStack(path: $viewRouter.path) {
-            VStack(spacing: 0) {
-                VStack(alignment: .leading, spacing: 24) {
-                    Text(StringLiterals.Register.registerTitle4)
-                        .fontWithLineHeight(fontLevel: .heading1)
-                        .foregroundStyle(.black)
-                    
-                    Text(StringLiterals.Register.guidanceTitle3)
-                        .fontWithLineHeight(fontLevel: .body3)
-                        .foregroundStyle(.gray5)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.trailing, 2)
-                .padding(.bottom, 26)
-
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(StringLiterals.Register.registerTitle4)
+                    .fontWithLineHeight(fontLevel: .heading1)
+                    .foregroundStyle(.black)
+                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 24 / 852)
+                
+                Text(StringLiterals.Register.guidanceTitle3)
+                    .fontWithLineHeight(fontLevel: .body3)
+                    .foregroundStyle(.gray5)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.trailing, 2)
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 26 / 852)
+            
             userNameTextField
             
             Spacer()
-                
+            
             Button(action: {
-                  networkViewModel.checkUserName(userName: userId)
-                  
-                    if viewModel.isButtonEnabled {
-                        viewModel.userId = userId
-                        viewRouter.push(RegisterRouter.showUserProfileView)
-                    }
-                }) {
-                    Text(StringLiterals.Register.buttonTitle5)
-                        .font(.fontGuide(.body2))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .foregroundStyle(viewModel.isButtonEnabled ? .gray1 : .gray6)
-                        .background(viewModel.isButtonEnabled ? .treeBlack : .gray2)
-                        .cornerRadius(10)
-                        .padding(.trailing, 1)
-                }
-            }
-            .padding(EdgeInsets(top: 22, leading: 24, bottom: 30, trailing: 24))
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
+                if viewModel.isButtonEnabled {
+                    viewModel.userId = userId
+                    Task {
+                        await viewModel.checkUserName(userName: userId)
                         
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.treeBlack)
+                        if viewModel.isUserNameDuplicated == false {
+                            viewRouter.push(RegisterRouter.showUserProfileView)
+                        } else {
+                            textFieldState = .duplicated
+                        }
                     }
-                    .padding(.top, 5)
                 }
-            }
-            .navigationDestination(for: RegisterRouter.self) { router in
-                viewRouter.buildScene(inputRouter: router, viewModel: viewModel)
+            }) {
+                Text(StringLiterals.Register.buttonTitle5)
+                    .font(.fontGuide(.body2))
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .foregroundStyle(viewModel.isButtonEnabled ? .gray1 : .gray6)
+                    .background(viewModel.isButtonEnabled ? .treeBlack : .gray2)
+                    .cornerRadius(10)
+                    .padding(.trailing, 1)
             }
         }
+        .padding(EdgeInsets(top: SizeLiterals.Screen.screenHeight * 22 / 852,
+                            leading: 24,
+                            bottom: SizeLiterals.Screen.screenHeight * 30 / 852,
+                            trailing: 24))
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
+        .navigationBarBackButtonHidden()
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
         }
         .onChange(of: userId) { _, newValue in
+            viewModel.isUserNameDuplicated = false
+            
             if self.isValidInputUserId(newValue) {
                 viewModel.isButtonEnabled = true
                 textFieldState = .enable
@@ -131,7 +139,7 @@ private extension SetUserIdView {
                     .foregroundStyle(.error)
             }
             
-            if networkViewModel.isUserNameDuplicated {
+            if viewModel.isUserNameDuplicated {
                 Text(StringLiterals.Register.indicatorTitle4)
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(.error)
@@ -144,7 +152,8 @@ private extension SetUserIdView {
 
 #Preview {
     NavigationStack {
-        SetUserIdView(viewModel: UserSettingViewModel())
+        SetUserIdView()
             .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
     }
 }

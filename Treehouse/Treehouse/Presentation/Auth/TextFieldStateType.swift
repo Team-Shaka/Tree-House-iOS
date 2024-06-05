@@ -11,6 +11,7 @@ enum TextFieldStateType {
     case notFocused
     case enable
     case unable
+    case duplicated
     
     var borderColor: Color {
         switch self {
@@ -18,7 +19,7 @@ enum TextFieldStateType {
             return .gray1
         case .enable:
             return .gray8
-        case .unable:
+        case .unable, .duplicated:
             return .error
         }
     }
@@ -27,7 +28,7 @@ enum TextFieldStateType {
         switch self {
         case .notFocused:
             return .gray5
-        case .enable, .unable:
+        case .enable, .unable, .duplicated:
             return .gray8
         }
     }
@@ -36,7 +37,7 @@ enum TextFieldStateType {
         switch self {
         case .notFocused:
             return .gray1
-        case .enable, .unable:
+        case .enable, .unable, .duplicated:
             return .grayscaleWhite
         }
     }

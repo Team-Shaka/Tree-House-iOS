@@ -70,8 +70,10 @@ extension FontLevel {
             return 28
         case .heading4, .body1, .body2, .body3:
             return 26
-        case .body4, .body5:
+        case .body4:
             return 24
+        case .body5:
+            return 20
         case .caption1:
             return 18
         case .caption2:

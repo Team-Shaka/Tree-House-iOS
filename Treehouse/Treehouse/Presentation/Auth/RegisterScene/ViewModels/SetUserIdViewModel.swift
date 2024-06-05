@@ -18,12 +18,18 @@ class SetUserIdViewModel {
         self.registerService = registerService
     }
     
-    func checkUserName(userName: String) {
-        Task {
-            do {
-                let response = try await registerService.postCheckName(userName: userName)
+    func checkUserName(userName: String) async {
+        do {
+            let response = try await registerService.postCheckName(userName: userName)
+            
+            await MainActor.run {
                 self.isUserNameDuplicated = response.isDuplicated
-            } catch let error as NetworkError {
+            }
+            
+        } catch let error as NetworkError {
+            self.errorMessage = error.localizedDescription
+        } catch {
+            await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
         }

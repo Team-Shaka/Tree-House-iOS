@@ -124,6 +124,6 @@ private extension SetMemberProfileImage {
     NavigationStack {
         SetMemberProfileImage()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
     }
 }

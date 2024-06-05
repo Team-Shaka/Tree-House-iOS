@@ -9,4 +9,8 @@ import Foundation
 
 struct PostCheckUserNameResponseDTO: Decodable {
     let isDuplicated: Bool
+    
+    func toDomain() -> CheckNameResponseEntity {
+        return CheckNameResponseEntity(isDuplicated:  isDuplicated)
+    }
 }
