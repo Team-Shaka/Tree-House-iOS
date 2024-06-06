@@ -66,4 +66,12 @@ extension View {
     func selectCornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
+    
+    /// 인정번호 개수에 따른 버튼 활성화 & UI 를 처리하는 메서드
+    func disableWithOpacity(_ condition: Bool) -> some View {
+        self
+            .disabled(condition)
+            .foregroundStyle(condition ? Color.gray6 : Color.gray1)
+            .background(condition ? Color.gray2 : Color.treeBlack)
+    }
 }

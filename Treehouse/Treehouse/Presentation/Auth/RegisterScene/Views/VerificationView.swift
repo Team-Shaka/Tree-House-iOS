@@ -15,6 +15,9 @@ struct VerificationView: View {
     
     // MARK: - State Property
     
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     @State private var verificationCode: String = ""
     @State private var isValid = false
     @FocusState private var isKeyboardShowing: Bool
@@ -25,18 +28,17 @@ struct VerificationView: View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 0) {
-                    Text("\(phoneNumber ?? "nil")")
+                    Text("+82\(viewModel.phoneNumber ?? "nil")")
                         .foregroundStyle(.treeGreen)
                     +
-                    Text("로 전송된\n6자리 인증번호를 입력해주세요.")
+                    Text("로 전송된\n6자리 인증 번호를 입력해주세요.")
                         .foregroundStyle(.treeBlack)
                 }
                 .fontWithLineHeight(fontLevel: .heading1)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 72)
-                
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 40 / 852)
-                
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 50 / 852)
+   
                 HStack(spacing: 0) {
                     ForEach(0 ..< 6, id: \.self) {index in
                         verificationCodeBox(index)
@@ -55,40 +57,63 @@ struct VerificationView: View {
                 .onTapGesture {
                     isKeyboardShowing.toggle()
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 10)
-                
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 3 / 852)
-                
-                Text("*인증번호가 맞지 않습니다.")
+                .padding(.bottom, 8)
+
+                Text(isValid == false ? "" : StringLiterals.Register.indicatorTitle2)
                     .fontWithLineHeight(fontLevel: .caption1)
-                    .foregroundStyle(isValid ? .grayscaleWhite : .error)
-                    .offset(y: -SizeLiterals.Screen.screenHeight * 10 / 852)
-                
-                Spacer(minLength: SizeLiterals.Screen.screenHeight * 20 / 852)
-                
+                    .foregroundStyle(.error)
+
                 Text(StringLiterals.Register.guidanceTitle1)
                     .fontWithLineHeight(fontLevel: .body5)
                     .foregroundStyle(.gray5)
-                    .frame(height: 72)
+                    .padding(.top, SizeLiterals.Screen.screenHeight * 24 / 852)
             }
-            .padding(.top, SizeLiterals.Screen.screenHeight * 66 / 852)
-            
-            Spacer(minLength: SizeLiterals.Screen.screenHeight * 325 / 852)
+            .padding(.top, SizeLiterals.Screen.screenHeight * 22 / 852)
+
+            Spacer()
             
             Button {
-                print("다음으로 버튼 탭했음")
+                // TODO: 전화번호 인증 API 인증
+                
+                viewModel.isAuthentication = .notSignUp
+                switch viewModel.isAuthentication {
+                case .notInvitation:
+                    viewRouter.push(RegisterRouter.unableRegisterView)
+                case .notSignUp:
+                    viewRouter.push(RegisterRouter.setUserIdView)
+                case .comebackUser:
+                    viewRouter.push(RegisterRouter.loginView)
+                case .error:
+                    print("네트워크 및 어떠한 오류로 인해 인증 받지 못하였음")
+                }
             } label: {
-                Text("다음으로")
+                Text(StringLiterals.Register.buttonTitle2)
                     .font(.fontGuide(.body2))
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
                     .disableWithOpacity(verificationCode.count < 6)
                     .cornerRadius(12)
             }
-            .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
+        .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .navigationBarBackButtonHidden()
+        .onAppear {
+            isKeyboardShowing = true
+        }
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+            
             ToolbarItem(placement: .keyboard) {
                 Button("완료"){
                     isKeyboardShowing.toggle()
@@ -98,7 +123,7 @@ struct VerificationView: View {
         }
     }
     
-    // MARK: Verification Code Box
+    // MARK: - Verification Code Box
     
     @ViewBuilder
     func verificationCodeBox(_ index: Int)->some View{
@@ -124,21 +149,14 @@ struct VerificationView: View {
 // MARK: - Preview
 
 #Preview {
-    VerificationView(phoneNumber: "+82010XXXXXXXX")
-}
-
-// MARK: View Extensions
-
-extension View{
-    func disableWithOpacity(_ condition: Bool) -> some View {
-        self
-            .disabled(condition)
-            .foregroundStyle(condition ? Color.gray6 : Color.gray1)
-            .background(condition ? Color.gray2 : Color.treeBlack)
+    NavigationStack {
+        VerificationView(phoneNumber: "+82010XXXXXXXX")
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
     }
 }
 
-// MARK: Binding <String> Extension
+// MARK: - Binding <String> Extension
 
 extension Binding where Value == String {
     func limit(_ length: Int) -> Self {

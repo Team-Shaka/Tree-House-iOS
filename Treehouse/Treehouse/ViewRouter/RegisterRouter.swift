@@ -26,13 +26,17 @@ enum RegisterRouter: Router {
         if let viewModel = viewModel as? UserSettingViewModel {
             switch self {
             case .setPhoneNumberView:
-                return AnyView(SetPhoneNumberView())
+                return AnyView(SetPhoneNumberView()
+                    .environment(viewModel))
             case .verificationView:
-                return AnyView(VerificationView())
+                return AnyView(VerificationView()
+                    .environment(viewModel))
             case .unableRegisterView:
-                return AnyView(UnableRegisterView())
+                return AnyView(UnableRegisterView()
+                    .environment(viewModel))
             case .loginView:
-                return AnyView(LoginView())
+                return AnyView(LoginView()
+                    .environment(viewModel))
             case .setUserIdView:
                 return AnyView(SetUserIdView()
                     .environment(viewModel))

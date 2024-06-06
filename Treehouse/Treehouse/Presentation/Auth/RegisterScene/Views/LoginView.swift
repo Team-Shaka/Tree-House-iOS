@@ -9,6 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     
+    // MARK: - State Property
+    
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     // MARK: - View
     
     var body: some View {
@@ -53,11 +58,27 @@ struct LoginView: View {
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    LoginView()
+    NavigationStack {
+        LoginView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+    }
 }

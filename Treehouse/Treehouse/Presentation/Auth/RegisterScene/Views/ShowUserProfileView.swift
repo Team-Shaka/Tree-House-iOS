@@ -133,6 +133,6 @@ private extension ShowUserProfileView {
     NavigationStack {
         ShowUserProfileView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
     }
 }
