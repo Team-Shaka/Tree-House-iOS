@@ -60,13 +60,13 @@ struct SinglePostView: View {
                     Text("contentcontent~")
                         .font(.fontGuide(.body3))
                         .foregroundStyle(.treeBlack)
-                    
-                    multipleImagesView
-                    
-                    CommentCountView(commentCount: 12)
                 }
             }
             .padding(16)
+            multipleImagesView
+            
+            CommentCountView(commentCount: 12)
+                .padding(.leading, 62)
         }
     }
 }
@@ -104,7 +104,14 @@ extension SinglePostView {
                     .resizable()
                     .cornerRadius(6.0)
                     .frame(width: 206, height: 172)
+                
+                Image(.imgDummy)
+                    .resizable()
+                    .cornerRadius(6.0)
+                    .frame(width: 206, height: 172)
             }
+            .padding(.leading, 62)
+            .padding(.trailing, 21)
         }
     }
 }
