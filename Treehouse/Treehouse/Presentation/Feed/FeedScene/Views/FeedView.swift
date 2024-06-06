@@ -69,8 +69,8 @@ extension FeedView {
                     .tint(.treeGreen)
                     .foregroundColor(textFieldState.fontColor)
                     .focused($focusedField, equals: .post)
-                    .keyboardType(.asciiCapable)
-                    .autocorrectionDisabled(true)
+                    .keyboardType(.default)
+                    .textInputAutocapitalization(.never)
                     .focused($isKeyboardShowing)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
