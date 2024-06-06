@@ -132,4 +132,32 @@ class RegisterService: NetworkServiceable {
             throw NetworkError.jsonDecodingError
         }
     }
+    
+    /// 이전에 회원가입이 되어있는지 전화번호 인증 API
+    func postCheckUserPhone(phoneNumber: String) async throws -> PostCheckUserPhoneResponseDTO {
+        let request = NetworkRequest(requestType: RegisterAPI.postCheckUserPhone(requestBody: PostCheckUserPhoneRequestDTO(phoneNumber: phoneNumber)))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        // 응답 데이터와 상태 코드 출력
+        if let httpResponse = response as? HTTPURLResponse {
+            print("Status Code: \(httpResponse.statusCode)")
+        }
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Response JSON: \(jsonString)")
+        }
+        
+        // JSON 디코딩
+        do {
+            let model = try JSONDecoder().decode(BaseResponse<PostCheckUserPhoneResponseDTO>.self, from: data)
+            return model.data
+        } catch {
+            throw NetworkError.jsonDecodingError
+        }
+    }
 }
