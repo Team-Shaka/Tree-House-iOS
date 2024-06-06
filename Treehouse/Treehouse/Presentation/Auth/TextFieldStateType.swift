@@ -28,7 +28,7 @@ enum TextFieldStateType {
         case .notFocused:
             return .gray5
         case .enable, .unable:
-            return .gray8
+            return .grayscaleBlack
         }
     }
     
