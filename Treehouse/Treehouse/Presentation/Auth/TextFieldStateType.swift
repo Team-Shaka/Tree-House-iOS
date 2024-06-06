@@ -28,8 +28,9 @@ enum TextFieldStateType {
         switch self {
         case .notFocused:
             return .gray5
+
         case .enable, .unable, .duplicated:
-            return .gray8
+            return .grayscaleBlack
         }
     }
     
