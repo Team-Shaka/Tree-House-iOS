@@ -133,7 +133,7 @@ extension UserSettingViewModel {
         
         switch result {
         case .success(let response):
-            // TODO: - userId, treehouseId 저장 ( KeyChain, UserDefaults? )
+            // TODO: - userId, treehouseId 저장 ( SwiftData, KeyChain, UserDefaults? )
             break
         case .failure(let error):
             await MainActor.run {
@@ -148,6 +148,7 @@ extension UserSettingViewModel {
         switch result {
         case .success(let response):
             // TODO: - invitationid 연결
+            
             break
         case .failure(let error):
             await MainActor.run {
@@ -165,12 +166,17 @@ extension UserSettingViewModel {
         
         switch result {
         case .success(let response):
-            response.invitations.forEach {
-                treehouseName = $0.treehouseName
-                invitedMember = $0.senderName
-                memberNum = $0.treehouseSize
-                memberProfileImages = $0.treehouseMemberProfileImages
-            }
+//            response.invitations.forEach {
+//                treehouseName = $0.treehouseName
+//                invitedMember = $0.senderName
+//                memberNum = $0.treehouseSize
+//                memberProfileImages = $0.treehouseMemberProfileImages
+//            }
+            
+            treehouseName = "점심팟"
+            invitedMember = "Chriiii0o0"
+            memberNum = 20
+//            memberProfileImages = $0.treehouseMemberProfileImages
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription

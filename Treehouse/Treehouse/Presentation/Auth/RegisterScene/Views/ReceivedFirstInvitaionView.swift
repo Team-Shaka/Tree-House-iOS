@@ -42,20 +42,17 @@ struct ReceivedFirstInvitaionView: View {
                                memberNum: viewModel.memberNum,
                                invitationType: .first,
                                leftButtonAction: {
-//                    Task {
-//                        
-//                    }
+                    Task {
+                        await viewModel.acceptInvitationTreeMember(invitationId: 1, isAccepted: false)
+                    }
                     viewRouter.push(RegisterRouter.setMemberProfileNameView)
                 },
                                rightButtonAction: {
-//                    Task {
-//                        
-//                    }
-//                    
+                    Task {
+                        await viewModel.acceptInvitationTreeMember(invitationId: 2, isAccepted: true)
+                    }
                     viewRouter.push(RegisterRouter.setMemberProfileNameView)
-                }
-                )
-                
+                })
                 DrawingView()
             }
         }
