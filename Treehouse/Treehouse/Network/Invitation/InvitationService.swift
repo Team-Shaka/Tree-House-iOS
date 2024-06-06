@@ -10,7 +10,7 @@ import Foundation
 final class InvitationService {
     /// 트리 멤버 초대 수락 / 거부 API
     func postAcceptInvitationTreeMember(invitationId: Int, isAccepted: Bool) async throws -> PostAcceptInvitationTreeMemberResponseDTO {
-        let request = NetworkRequest(requestType: RegisterAPI.postAcceptInvitationTreeMember(requestBody: PostAcceptInvitationTreeMemberRequestDTO(invitationId: invitationId, isAccepted: isAccepted)))
+        let request = NetworkRequest(requestType: InvitationAPI.postAcceptInvitationTreeMember(requestBody: PostAcceptInvitationTreeMemberRequestDTO(invitationId: invitationId, isAccepted: isAccepted)))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")

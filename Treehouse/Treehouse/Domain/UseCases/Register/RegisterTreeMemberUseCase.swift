@@ -19,6 +19,6 @@ final class RegisterTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol {
     }
 
     func execute(requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
-        return await repository.postRegisterTreeMember(requsetDTO: requestDTO)
+        return await repository.postRegisterTreeMember(requestDTO: requestDTO)
     }
 }

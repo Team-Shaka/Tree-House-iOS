@@ -10,9 +10,9 @@ import Foundation
 enum RegisterAPI {
     case postCheckUserName(requestBody: PostCheckUserNameRequestDTO)
     case postRegisterUser(requestBody: PostRegisterUserRequestDTO)
-    case postAcceptInvitationTreeMember(requestBody: PostAcceptInvitationTreeMemberRequestDTO)
     case postRegisterTreeMember(requestBody: PostRegisterTreeMemberRequestDTO)
     case postReissueToken(requestBody: PostReissueTokenRequestDTO)
+    case postCheckUserPhone(requestBody: PostCheckUserPhoneRequestDTO)
 }
 
 extension RegisterAPI: BaseRequest {
@@ -20,9 +20,9 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName: return "users/checkName"
         case .postRegisterUser: return "users/register"
-        case .postAcceptInvitationTreeMember: return "treehouses/members/invitation/accept"
         case .postRegisterTreeMember: return "treehouses/members/register"
         case .postReissueToken: return "users/reissue"
+        case .postCheckUserPhone: return "/users/phone"
         }
     }
 
@@ -30,17 +30,17 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName: return .post
         case .postRegisterUser: return .post
-        case .postAcceptInvitationTreeMember: return .post
         case .postRegisterTreeMember: return .post
         case .postReissueToken: return .post
+        case .postCheckUserPhone: return .post
         }
     }
     
     var headerType: HeaderType {
         switch self {
-        case .postCheckUserName, .postRegisterUser:
+        case .postCheckUserName, .postRegisterUser, .postCheckUserPhone:
             return .noHeader
-        case .postAcceptInvitationTreeMember, .postRegisterTreeMember:
+        case .postRegisterTreeMember:
             return .accessTokenHeader
         case .postReissueToken:
             return .refreshTokenHeader
@@ -55,9 +55,9 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName(requestBody: let requestBody): return requestBody
         case .postRegisterUser(requestBody: let requestBody): return requestBody
-        case .postAcceptInvitationTreeMember(requestBody: let requestBody): return requestBody
         case .postRegisterTreeMember(requestBody: let requestBody): return requestBody
         case .postReissueToken(requestBody: let requestBody): return requestBody
+        case .postCheckUserPhone(requestBody: let requestBody): return requestBody
         }
     }
 }
