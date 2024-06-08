@@ -78,4 +78,12 @@ enum StringLiterals {
     enum Notification {
         static let notificationTitle1 = "아직 받은 알림이 없어요."
     }
+    
+    enum Profile {
+        static let editProfileLabel = "프로필 편집하기"
+        
+        static let profileBranchCountTitle = "총 Branch"
+        static let profileTreeHouseCountTitle = "소속 트리하우스"
+        static let profileRootTitle = "나로부터"
+    }
 }
