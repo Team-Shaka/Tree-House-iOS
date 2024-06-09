@@ -28,7 +28,8 @@
 		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B71132BFF41BD009A741C /* FeedHeaderView.swift */; };
-		00C2F5652C11C1010009C6A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* ProfileView.swift */; };
+		00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* MyProfileView.swift */; };
+		00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5662C15B5560009C6A1 /* SettingView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -156,7 +157,8 @@
 		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		009B71132BFF41BD009A741C /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
-		00C2F5642C11C1010009C6A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		00C2F5642C11C1010009C6A1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		00C2F5662C15B5560009C6A1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -440,7 +442,8 @@
 		00C2F5602C11C0AA0009C6A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00C2F5642C11C1010009C6A1 /* ProfileView.swift */,
+				00C2F5642C11C1010009C6A1 /* MyProfileView.swift */,
+				00C2F5662C15B5560009C6A1 /* SettingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1113,7 +1116,7 @@
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
-				00C2F5652C11C1010009C6A1 /* ProfileView.swift in Sources */,
+				00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
 				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
@@ -1171,6 +1174,7 @@
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
+				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
 				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
