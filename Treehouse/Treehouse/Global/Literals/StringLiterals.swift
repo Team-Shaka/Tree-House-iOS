@@ -80,7 +80,9 @@ enum StringLiterals {
     }
     
     enum Profile {
-        static let editProfileLabel = "프로필 편집하기"
+        static let buttonLabel1 = "프로필 편집하기"
+        static let buttonLabel2 = "브랜치 보기"
+        static let buttonLabel3 = "다른 트리에 초대하기"
         
         static let profileBranchCountTitle = "총 Branch"
         static let profileTreeHouseCountTitle = "소속 트리하우스"

@@ -1,13 +1,13 @@
 //
-//  ProfileView.swift
+//  MemberProfileView.swift
 //  Treehouse
 //
-//  Created by 티모시 킴 on 6/6/24.
+//  Created by 티모시 킴 on 6/10/24.
 //
 
 import SwiftUI
 
-struct MyProfileView: View {
+struct MemberProfileView: View {
     
     @State private var userName: String = "username"
     @State private var userId: String = "userid"
@@ -98,33 +98,38 @@ struct MyProfileView: View {
                 }
                 .padding(.top, 10)
                 
-                Button {} label: {
-                    Text(StringLiterals.Profile.buttonLabel1)
-                        .font(.fontGuide(.body2))
-                        .foregroundStyle(.gray1)
-                        .frame(width: SizeLiterals.Screen.screenWidth * 360 / 393, height: 48)
-                        .background(.treeBlack)
-                        .cornerRadius(12)
+                HStack(spacing: SizeLiterals.Screen.screenWidth * 17 / 393) {
+                    Button {} label: {
+                        Text(StringLiterals.Profile.buttonLabel2)
+                            .font(.fontGuide(.body2))
+                            .foregroundStyle(.gray1)
+                            .frame(width: SizeLiterals.Screen.screenWidth * 172 / 393, height: 48)
+                            .background(.treeGreen)
+                            .cornerRadius(12)
+                    }
+                    .padding(.top, 26)
+                    
+                    Button {} label: {
+                        Text(StringLiterals.Profile.buttonLabel3)
+                            .font(.fontGuide(.body2))
+                            .foregroundStyle(.gray1)
+                            .frame(width: SizeLiterals.Screen.screenWidth * 172 / 393, height: 48)
+                            .background(.treeBlack)
+                            .cornerRadius(12)
+                    }
+                    .padding(.top, 26)
                 }
-                .padding(.top, 26)
                 
                 Rectangle()
                     .frame(height: 10)
                     .foregroundColor(.gray2)
                     .padding(.top, 20)
-                
-                SettingView(state: .accountSetting)
-                
-                SettingView(state: .systemSetting)
-                
-                SettingView(state: .aboutTreeHouse)
-                
-                SettingView(state: .serviceSetting)
             }
         }
     }
 }
 
 #Preview {
-    MyProfileView()
+    MemberProfileView()
 }
+

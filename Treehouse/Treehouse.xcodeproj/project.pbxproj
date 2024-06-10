@@ -30,6 +30,7 @@
 		009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B71132BFF41BD009A741C /* FeedHeaderView.swift */; };
 		00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* MyProfileView.swift */; };
 		00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5662C15B5560009C6A1 /* SettingView.swift */; };
+		00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -159,6 +160,7 @@
 		009B71132BFF41BD009A741C /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
 		00C2F5642C11C1010009C6A1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		00C2F5662C15B5560009C6A1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				00C2F5642C11C1010009C6A1 /* MyProfileView.swift */,
+				00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */,
 				00C2F5662C15B5560009C6A1 /* SettingView.swift */,
 			);
 			path = Views;
@@ -1143,6 +1146,7 @@
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
+				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
