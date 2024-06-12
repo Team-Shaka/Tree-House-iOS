@@ -88,4 +88,9 @@ enum StringLiterals {
         static let profileTreeHouseCountTitle = "소속 트리하우스"
         static let profileRootTitle = "나로부터"
     }
+    
+    enum MemberProfile {
+        static let bottomSheetLabel1 = "초대하기"
+        static let bottomSheetLabel2 = "초대할 트리하우스 선택"
+    }
 }
