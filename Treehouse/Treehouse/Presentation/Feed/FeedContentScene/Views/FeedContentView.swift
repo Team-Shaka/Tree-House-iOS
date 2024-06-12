@@ -34,7 +34,7 @@ struct FeedContentView: View {
                 }
             }
         }
-        .bottomSheet(isPresented: $viewModel.isSelectEmojiView) {
+        .bottomSheet(isPresented: $viewModel.isSelectEmojiView, topPadding: 30) {
             EmojiGridView(viewModel: viewModel)
                 .task {
                     viewModel.loadEmojis()

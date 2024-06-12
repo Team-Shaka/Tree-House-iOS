@@ -19,6 +19,7 @@ struct CustomBottomSheet<Content: View>: View {
     
     @State private var offsetY: CGFloat = 0
     @State private var backgroundOpacity: CGFloat = 0
+    @State var topPadding: CGFloat = 0
     
     // MARK: - View
     
@@ -53,7 +54,7 @@ struct CustomBottomSheet<Content: View>: View {
                     .background(.gray2)
                     .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
                     .transition(AnyTransition.move(edge: .bottom))
-                    .padding(.top, 30)
+                    .padding(.top, topPadding)
                     .offset(y: max(self.offsetY, 0))
                     .gesture (
                         DragGesture()

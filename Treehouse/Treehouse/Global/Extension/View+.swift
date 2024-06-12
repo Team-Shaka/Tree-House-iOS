@@ -76,10 +76,10 @@ extension View {
     }
     
     /// Bottom Sheet 를 보여주는 메서드
-    func bottomSheet<Content>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+    func bottomSheet<Content>(isPresented: Binding<Bool>, topPadding: CGFloat, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
         ZStack {
             self
-            CustomBottomSheet(content: content, isPresented: isPresented)
+            CustomBottomSheet(content: content, isPresented: isPresented, topPadding: topPadding)
         }
     }
 }
