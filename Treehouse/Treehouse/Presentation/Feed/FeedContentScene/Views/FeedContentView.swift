@@ -16,6 +16,8 @@ struct FeedContentView: View {
     // MARK: - View
     
     var body: some View {
+        @Bindable var viewModel = viewModel
+        
         ScrollView {
             LazyVStack(spacing: 0) {
                 ForEach(viewModel.commentModels.indices, id: \.self) { index in
@@ -25,12 +27,18 @@ struct FeedContentView: View {
                                 comment: viewModel.commentModels[index].comment,
                                 commentyType: .comment,
                                 viewModel: viewModel)
-                        .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                    .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                     
                     replyView(replay: viewModel.commentModels[index].reply, commentIndex: index)
                         .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
                 }
             }
+        }
+        .bottomSheet(isPresented: $viewModel.isSelectEmojiView) {
+            EmojiGridView(viewModel: viewModel)
+                .task {
+                    viewModel.loadEmojis()
+                }
         }
     }
 }

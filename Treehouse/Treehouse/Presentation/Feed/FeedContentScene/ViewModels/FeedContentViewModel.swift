@@ -11,6 +11,9 @@ import Observation
 @Observable
 final public class FeedContentViewModel {
     
+    var isSelectEmojiView = false
+    var emojis = [EmojiDatas]()
+    
     var commentModels: [CommentModel] = [CommentModel(userName: "영서",
                                                       comment: "우와",
                                                       time: "3분 전",
@@ -53,6 +56,23 @@ final public class FeedContentViewModel {
         } else {
             commentModels[commentIndex.0].reply?[commentIndex.1 ?? 0].emojiComment?[emojiIndex].isPressed.toggle()
             commentModels[commentIndex.0].reply?[commentIndex.1 ?? 0].emojiComment?[emojiIndex].count += 1
+        }
+    }
+    
+    func loadEmojis() {
+        guard let url = Bundle.main.url(forResource: "structuredEmojis", withExtension: "json") else {
+            print("JSON 파일이 존재하지 않습니다.")
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let decodeData = try JSONDecoder().decode([EmojiDatas].self, from: data)
+            DispatchQueue.main.async {
+                self.emojis = decodeData
+            }
+        } catch {
+            print("JSON 파일 디코딩 실패: \(error)")
         }
     }
 }
