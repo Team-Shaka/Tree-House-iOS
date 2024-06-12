@@ -74,4 +74,12 @@ extension View {
             .foregroundStyle(condition ? Color.gray6 : Color.gray1)
             .background(condition ? Color.gray2 : Color.treeBlack)
     }
+    
+    /// Bottom Sheet 를 보여주는 메서드
+    func bottomSheet<Content>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+        ZStack {
+            self
+            CustomBottomSheet(content: content, isPresented: isPresented)
+        }
+    }
 }
