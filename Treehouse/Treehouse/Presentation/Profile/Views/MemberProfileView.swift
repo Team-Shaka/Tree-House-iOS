@@ -238,7 +238,8 @@ struct MemberProfileView: View {
                             Spacer()
                             
                             Button {
-                                print("탭 수행")
+                                isPresent = false
+                                selectedGroupId = nil
                             } label: {
                                 Text("초대하기")
                                     .font(.fontGuide(.body2))

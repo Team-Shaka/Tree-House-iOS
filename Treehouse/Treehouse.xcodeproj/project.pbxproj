@@ -33,6 +33,7 @@
 		00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */; };
 		00C2F56D2C1863980009C6A1 /* MemberGroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F56C2C1863980009C6A1 /* MemberGroupStruct.swift */; };
 		00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */; };
+		00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -165,6 +166,7 @@
 		00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
 		00C2F56C2C1863980009C6A1 /* MemberGroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberGroupStruct.swift; sourceTree = "<group>"; };
 		00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberGroupRow.swift; sourceTree = "<group>"; };
+		00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				00C2F5642C11C1010009C6A1 /* MyProfileView.swift */,
 				00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */,
 				00C2F5662C15B5560009C6A1 /* SettingView.swift */,
+				00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1096,6 +1099,7 @@
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
+				00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
