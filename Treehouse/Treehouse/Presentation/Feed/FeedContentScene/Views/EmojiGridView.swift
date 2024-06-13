@@ -68,7 +68,6 @@ struct EmojiGridView: View {
                             }
                             .disabled(selectedId != nil && selectedId != data.id)
                             .popover(isPresented: self.makeIsPresented(item: data), attachmentAnchor: .point(.center), content: {
-                                
                                 ColorEmojiPopover(selectEmoji: data)
                                     .font(.system(size: 30))
                                     .presentationCompactAdaptation(.popover)
