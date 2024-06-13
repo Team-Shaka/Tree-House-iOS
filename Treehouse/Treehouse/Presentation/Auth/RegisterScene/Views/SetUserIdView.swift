@@ -26,11 +26,10 @@ struct SetUserIdView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 24) {
                 Text(StringLiterals.Register.registerTitle4)
                     .fontWithLineHeight(fontLevel: .heading1)
                     .foregroundStyle(.black)
-                    .padding(.bottom, SizeLiterals.Screen.screenHeight * 24 / 852)
                 
                 Text(StringLiterals.Register.guidanceTitle3)
                     .fontWithLineHeight(fontLevel: .body3)
@@ -154,6 +153,11 @@ private extension SetUserIdView {
     NavigationStack {
         SetUserIdView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                             ))
     }
 }

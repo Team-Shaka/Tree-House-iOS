@@ -52,10 +52,10 @@ struct InvitationView: View {
                             .fontWithLineHeight(fontLevel: .body3)
                             .frame(maxWidth: .infinity)
                             .frame(height: 48)
-                            .foregroundStyle(.treeBlack)
+                            .foregroundStyle(invitationType == .first ? .gray5 : .treeBlack)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(.treeBlack, lineWidth: 1.5)
+                                    .stroke(invitationType == .first ? .gray5 : .treeBlack, lineWidth: 1.5)
                             )
                             .cornerRadius(8)
                     }

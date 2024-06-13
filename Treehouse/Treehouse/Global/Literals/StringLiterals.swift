@@ -16,7 +16,7 @@ enum StringLiterals {
         static let buttonTitle5 = "내 프로필 보러가기"
         static let buttonTitle6 = "좋아요!"
         static let buttonTitle7 = "거절하기"
-        static let buttonTitle8 = "트리 가입하기"
+        static let buttonTitle8 = "초대 수락하기"
         static let buttonTitle9 = "프로필 사진 설정하러 가기"
         static let buttonTitle10 = "바이오 설정하러 가기"
         static let buttonTitle11 = "내 프로필 보러가기"

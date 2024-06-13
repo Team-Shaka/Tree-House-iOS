@@ -12,13 +12,9 @@ struct ReceivedFirstInvitaionView: View {
     // MARK: - Property
     
     var iterater: Int {
-        return memberNum >= 3 ? 3 : memberNum
+        return viewModel.memberNum >= 3 ? 3 : viewModel.memberNum
     }
 
-    var treehouseName: String = "점심팟"
-    var invitedMember: String = "Chriiii0o0"
-    var memberNum: Int = 20
-    
     // MARK: - State Property
     
     @Environment(UserSettingViewModel.self) private var viewModel
@@ -41,12 +37,22 @@ struct ReceivedFirstInvitaionView: View {
                     .fill(.treeDarkgreen)
                     .frame(height: SizeLiterals.Screen.screenHeight * 139 / 852)
                 
-                InvitationView(treehouseName: treehouseName,
-                               invitedMember: invitedMember,
-                               memberNum: memberNum,
+                InvitationView(treehouseName: viewModel.treehouseName,
+                               invitedMember: viewModel.invitedMember,
+                               memberNum: viewModel.memberNum,
                                invitationType: .first,
-                               rightButtonAction: { viewRouter.push(RegisterRouter.setMemberProfileNameView) })
-                
+                               leftButtonAction: {
+                    Task {
+                        await viewModel.acceptInvitationTreeMember(invitationId: 1, isAccepted: false)
+                    }
+                    viewRouter.push(RegisterRouter.setMemberProfileNameView)
+                },
+                               rightButtonAction: {
+                    Task {
+                        await viewModel.acceptInvitationTreeMember(invitationId: 2, isAccepted: true)
+                    }
+                    viewRouter.push(RegisterRouter.setMemberProfileNameView)
+                })
                 DrawingView()
             }
         }
@@ -63,6 +69,9 @@ struct ReceivedFirstInvitaionView: View {
                 }
                 .padding(.top, 5)
             }
+        }
+        .task {
+            await viewModel.checkInvitations()
         }
     }
 }
@@ -93,13 +102,13 @@ private extension ReceivedFirstInvitaionView {
                 .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
                 .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
             
-            Text(treehouseName)
+            Text(viewModel.treehouseName)
                 .fontWithLineHeight(fontLevel: .heading2)
                 .foregroundStyle(.treeBlack)
                 .padding(.bottom, 6)
             
             HStack(spacing: 0) {
-                Text("\(invitedMember)님")
+                Text("\(viewModel.invitedMember)님")
                     .fontWithLineHeight(fontLevel: .body2)
                 
                 Text("이 당신을 초대했습니다.")
@@ -111,12 +120,12 @@ private extension ReceivedFirstInvitaionView {
             HStack(spacing: 0) {
                 HStack(spacing: -3) {
                     ForEach(0..<iterater) { index in
-                        memberProfileImage(index, memberNum-2)
+                        memberProfileImage(index, viewModel.memberNum-2)
                     }
                 }
                 .padding(.trailing, 8)
                 
-                Text("\(memberNum)명의 멤버들이 함께하고 있어요.")
+                Text("\(viewModel.memberNum)명의 멤버들이 함께하고 있어요.")
                     .fontWithLineHeight(fontLevel: .body5)
             }
         }
@@ -131,7 +140,7 @@ private extension ReceivedFirstInvitaionView {
                     .stroke(.grayscaleWhite, lineWidth: 1.5)
                     .frame(width: 29, height: 29)
                 
-                Text("+\(memberNum-2)")
+                Text("+\(viewModel.memberNum-2)")
                     .fontWithLineHeight(fontLevel: .caption2)
                     .foregroundStyle(.grayscaleWhite)
             }
@@ -168,6 +177,11 @@ private extension ReceivedFirstInvitaionView {
     NavigationStack {
         ReceivedFirstInvitaionView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                             ))
     }
 }

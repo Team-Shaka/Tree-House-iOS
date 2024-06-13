@@ -16,8 +16,11 @@ struct SetPhoneNumberView: View {
     // MARK: - State Property
     
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
-    @State var viewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()))
-    
+    @State var viewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                                registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                                registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                                acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()))
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -154,5 +157,10 @@ extension SetPhoneNumberView {
 #Preview {
     SetPhoneNumberView()
         .environment(ViewRouter())
-        .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+        .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                          registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                          registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                          acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                          checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                         ))
 }
