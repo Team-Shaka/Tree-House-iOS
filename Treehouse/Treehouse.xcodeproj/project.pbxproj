@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000844EF2C1C607600FF33FD /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000844EE2C1C607600FF33FD /* ProfileRouter.swift */; };
 		0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */; };
 		0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */; };
 		0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */; };
@@ -140,6 +141,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000844EE2C1C607600FF33FD /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBranchView.swift; sourceTree = "<group>"; };
 		0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenLetterView.swift; sourceTree = "<group>"; };
 		0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberSearchBar.swift; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				3F8846012BF254B60021FB79 /* ViewRouter.swift */,
 				3F8846042BF4F13E0021FB79 /* RegisterRouter.swift */,
 				3F8846062BF58B6A0021FB79 /* InvitationRouter.swift */,
+				000844EE2C1C607600FF33FD /* ProfileRouter.swift */,
 			);
 			path = ViewRouter;
 			sourceTree = "<group>";
@@ -1151,6 +1154,7 @@
 				3F06C3012BFDEAB3002B771B /* PostReportFeedPostRequestDTO.swift in Sources */,
 				3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
+				000844EF2C1C607600FF33FD /* ProfileRouter.swift in Sources */,
 				9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */,
 				3F8846072BF58B6A0021FB79 /* InvitationRouter.swift in Sources */,
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,

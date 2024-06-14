@@ -11,6 +11,8 @@ struct MyProfileView: View {
     
     // MARK: - State Property
     
+    @Environment(ViewRouter.self) private var viewRouter
+    
     @State private var userName: String = "username"
     @State private var userId: String = "userid"
     @State private var bio: String = "바이오입니다."
@@ -102,7 +104,9 @@ struct MyProfileView: View {
                 }
                 .padding(.top, 10)
                 
-                Button {} label: {
+                Button {
+                    viewRouter.push(ProfileRouter.editProfileView)
+                } label: {
                     Text(StringLiterals.Profile.buttonLabel1)
                         .font(.fontGuide(.body2))
                         .foregroundStyle(.gray1)
@@ -133,4 +137,5 @@ struct MyProfileView: View {
 
 #Preview {
     MyProfileView()
+        .environment(ViewRouter())
 }
