@@ -112,7 +112,7 @@ struct MemberProfileView: View {
                     .padding(.top, 10)
                     
                     HStack(spacing: SizeLiterals.Screen.screenWidth * 17 / 393) {
-                        Button {} label: {
+                        Button(action: {}) {
                             Text(StringLiterals.Profile.buttonLabel2)
                                 .font(.fontGuide(.body2))
                                 .foregroundStyle(.gray1)
@@ -122,9 +122,9 @@ struct MemberProfileView: View {
                         }
                         .padding(.top, 26)
                         
-                        Button {
+                        Button(action: {
                             isPresent = true
-                        } label: {
+                        }) {
                             Text(StringLiterals.Profile.buttonLabel3)
                                 .font(.fontGuide(.body2))
                                 .foregroundStyle(.gray1)
@@ -243,10 +243,10 @@ struct MemberProfileView: View {
                             
                             Spacer()
                             
-                            Button {
+                            Button(action: {
                                 isPresent = false
                                 selectedGroupId = nil
-                            } label: {
+                            }) {
                                 Text("초대하기")
                                     .font(.fontGuide(.body2))
                                     .foregroundStyle((selectedGroupId != nil) ? .gray1 : .gray6)

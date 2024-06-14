@@ -30,12 +30,12 @@ struct EditProfileView: View {
                 
                 Button(action: {
                     isPhotoPickerPresented.toggle()
-                }, label: {
+                }) {
                     Image(isEditing ? .btnProfileimg2 : .btnProfileimg1)
                         .resizable()
                         .frame(width: 32, height: 32)
                         .offset(x: 40, y: 33)
-                })
+                }
                 .disabled(!isEditing)
                 .sheet(isPresented: $isPhotoPickerPresented) {
                     photoPickerManager.presentPhotoPicker(selectionLimit: 1)
@@ -123,9 +123,9 @@ struct EditProfileView: View {
             
             Spacer()
             
-            Button {
+            Button(action: {
                 isEditing = true
-            } label: {
+            }) {
                 Text(isEditing ? "저장하기" : "수정하기")
                     .font(.fontGuide(.body2))
                     .foregroundStyle(.gray1)

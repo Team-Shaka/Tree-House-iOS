@@ -104,9 +104,9 @@ struct MyProfileView: View {
                 }
                 .padding(.top, 10)
                 
-                Button {
+                Button(action: {
                     viewRouter.push(ProfileRouter.editProfileView)
-                } label: {
+                }) {
                     Text(StringLiterals.Profile.buttonLabel1)
                         .font(.fontGuide(.body2))
                         .foregroundStyle(.gray1)
