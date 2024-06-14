@@ -139,7 +139,6 @@ struct MemberProfileView: View {
                         .frame(height: 10)
                         .foregroundColor(.gray2)
                         .padding(.top, 20)
-                    
                 }
             }
             

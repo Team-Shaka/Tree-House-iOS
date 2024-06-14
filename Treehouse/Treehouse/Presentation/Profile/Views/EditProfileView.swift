@@ -48,7 +48,6 @@ struct EditProfileView: View {
             }
             .padding(.top, 15)
             
-            
             HStack {
                 Text("이름")
                     .fontWithLineHeight(fontLevel: .body4)
