@@ -45,8 +45,6 @@ struct MyProfileView: View {
                                     .fontWithLineHeight(fontLevel: .body5)
                                     .foregroundColor(.grayscaleBlack)
                                     .padding(12)
-                                    .lineLimit(nil)
-                                    .fixedSize(horizontal: false, vertical: true)
                                     .frame(width: SizeLiterals.Screen.screenWidth * 268 / 393, alignment: .leading)
                             }
                         }
