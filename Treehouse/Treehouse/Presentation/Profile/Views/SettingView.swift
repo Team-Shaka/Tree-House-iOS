@@ -22,18 +22,18 @@ struct SettingView: View {
     public var settingList: [String]
     
     public init(state: SettingTitleState) {
-            self.settingTitle = state.rawValue
-            switch state {
-            case .accountSetting:
-                self.settingList = ["멤버 계정", "유저 계정"]
-            case .systemSetting:
-                self.settingList = ["알림"]
-            case .aboutTreeHouse:
-                self.settingList = ["고객센터", "운영정책", "개인정보정책", "앱스토어에 평가하기"]
-            case .serviceSetting:
-                self.settingList = ["로그아웃 하기", "회원탈퇴 하기"]
-            }
+        self.settingTitle = state.rawValue
+        switch state {
+        case .accountSetting:
+            self.settingList = ["멤버 계정", "유저 계정"]
+        case .systemSetting:
+            self.settingList = ["알림"]
+        case .aboutTreeHouse:
+            self.settingList = ["고객센터", "운영정책", "개인정보정책", "앱스토어에 평가하기"]
+        case .serviceSetting:
+            self.settingList = ["로그아웃 하기", "회원탈퇴 하기"]
         }
+    }
     
     // MARK: - View
     
