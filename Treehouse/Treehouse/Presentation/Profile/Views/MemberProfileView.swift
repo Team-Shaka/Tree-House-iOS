@@ -9,8 +9,12 @@ import SwiftUI
 
 struct MemberProfileView: View {
     
+    // MARK: - Property
+    
     let groupList = MemberGroupStruct.memberGroupStructDummyData
     let availableInvitaion = AvailableInvitationStruct.availableInvitationDummyData
+    
+    // MARK: - State Property
     
     @State var isPresent = false
     @State private var userName: String = "username"
@@ -20,6 +24,8 @@ struct MemberProfileView: View {
     @State private var treeHouseCount: Int = 0
     @State private var root: String = "Root"
     @State private var selectedGroupId: UUID?
+    
+    // MARK: - View
     
     var body: some View {
         ZStack {
@@ -259,6 +265,8 @@ struct MemberProfileView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     MemberProfileView()

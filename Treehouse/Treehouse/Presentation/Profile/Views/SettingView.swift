@@ -16,6 +16,8 @@ enum SettingTitleState: String {
 
 struct SettingView: View {
     
+    // MARK: - Property
+    
     public var settingTitle: String
     public var settingList: [String]
     
@@ -32,6 +34,8 @@ struct SettingView: View {
                 self.settingList = ["로그아웃 하기", "회원탈퇴 하기"]
             }
         }
+    
+    // MARK: - View
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -55,11 +59,15 @@ struct SettingView: View {
 
 struct SettingRow: View {
     
+    // MARK: - Property
+    
     public var settingOption: String
     
     public init(settingOption: String) {
         self.settingOption = settingOption
     }
+    
+    // MARK: - View
     
     var body: some View {
         Text(settingOption)
@@ -69,6 +77,8 @@ struct SettingRow: View {
             .padding(.leading, 16)
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     SettingView(state: .aboutTreeHouse)

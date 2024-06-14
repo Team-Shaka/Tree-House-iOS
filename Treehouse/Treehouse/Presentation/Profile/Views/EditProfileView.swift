@@ -9,12 +9,16 @@ import SwiftUI
 
 struct EditProfileView: View {
     
+    // MARK: - State Property
+    
+    @State private var profileImage: Image? = Image(.imgUser)
     @State private var name: String = "username"
     @State private var bio: String = "바이오입니다."
     @State private var isEditing: Bool = false
     @ObservedObject private var photoPickerManager = PhotoPickerManager()
     @State private var isPhotoPickerPresented: Bool = false
-    @State private var profileImage: Image? = Image(.imgUser)
+    
+    // MARK: - View
     
     var body: some View {
         VStack(spacing: 0) {
@@ -133,6 +137,8 @@ struct EditProfileView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     EditProfileView()

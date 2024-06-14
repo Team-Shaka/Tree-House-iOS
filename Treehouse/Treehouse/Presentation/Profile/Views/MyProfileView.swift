@@ -9,12 +9,16 @@ import SwiftUI
 
 struct MyProfileView: View {
     
+    // MARK: - State Property
+    
     @State private var userName: String = "username"
     @State private var userId: String = "userid"
     @State private var bio: String = "바이오입니다."
     @State private var branchCount: Int = 0
     @State private var treeHouseCount: Int = 0
     @State private var root: String = "Root"
+    
+    // MARK: - View
     
     var body: some View {
         ScrollView() {
@@ -124,6 +128,8 @@ struct MyProfileView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     MyProfileView()
