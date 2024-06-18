@@ -20,9 +20,9 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName: return "users/checkName"
         case .postRegisterUser: return "users/register"
-        case .postRegisterTreeMember: return "treehouses/members/register"
+        case .postRegisterTreeMember: return "members/register"
         case .postReissueToken: return "users/reissue"
-        case .postCheckUserPhone: return "/users/phone"
+        case .postCheckUserPhone: return "users/phone"
         }
     }
 

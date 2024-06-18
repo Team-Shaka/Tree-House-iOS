@@ -11,7 +11,6 @@ enum InvitationAPI {
     case getCheckInvitations
     case getCheckAvailableInvitation
     case postAcceptInvitationTreeMember(requestBody: PostAcceptInvitationTreeMemberRequestDTO)
-    case postWhetherInvitations(requestBody: PostWhetherInvitationsRequestDTO)
 }
 
 extension InvitationAPI: BaseRequest {
@@ -19,8 +18,7 @@ extension InvitationAPI: BaseRequest {
         switch self {
         case .getCheckInvitations: return "users/invitation"
         case .getCheckAvailableInvitation: return "users/availableInvitation"
-        case .postAcceptInvitationTreeMember: return "treehouses/members/invitation/accept"
-        case .postWhetherInvitations: return "users/invitations/accept"
+        case .postAcceptInvitationTreeMember: return "users/invitations/accept"
         }
     }
     
@@ -29,19 +27,12 @@ extension InvitationAPI: BaseRequest {
         case .getCheckInvitations: return .get
         case .getCheckAvailableInvitation: return .get
         case .postAcceptInvitationTreeMember: return .post
-        case .postWhetherInvitations: return .post
         }
     }
     
     var headerType: HeaderType {
         switch self {
-        case .getCheckInvitations:
-            return .accessTokenHeader
-        case .getCheckAvailableInvitation:
-            return .accessTokenHeader
-        case .postAcceptInvitationTreeMember:
-            return .accessTokenHeader
-        case .postWhetherInvitations:
+        case .getCheckInvitations, .getCheckAvailableInvitation, .postAcceptInvitationTreeMember:
             return .accessTokenHeader
         }
     }
@@ -53,7 +44,6 @@ extension InvitationAPI: BaseRequest {
     var requestBodyParameter: (any Codable)? {
         switch self {
         case .postAcceptInvitationTreeMember(requestBody: let requestBody): return requestBody
-        case .postWhetherInvitations(requestBody: let requestBody): return requestBody
         default: return .none
         }
     }
