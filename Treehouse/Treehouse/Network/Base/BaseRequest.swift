@@ -38,11 +38,11 @@ extension BaseRequest {
         
         switch headerType {
         case .accessTokenHeader:
-            if let accessToken = KeychainHelper.shared.load(for: "accessToken") {
+            if let accessToken = KeychainHelper.shared.load(for: Config.accessTokenKey) {
                 header["Authorization"] = "Bearer \(accessToken)"
             }
         case .refreshTokenHeader:
-            if let refreshToken = KeychainHelper.shared.load(for: "refreshToken") {
+            if let refreshToken = KeychainHelper.shared.load(for: Config.refreshTokenKey) {
                 header["Authorization"] = "Bearer \(refreshToken)"
             }
         case .noHeader:
