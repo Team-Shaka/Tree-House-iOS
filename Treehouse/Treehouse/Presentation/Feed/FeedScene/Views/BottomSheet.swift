@@ -1,5 +1,5 @@
 //
-//  GroupChangeBottomSheet.swift
+//  BottomSheet.swift
 //  Treehouse
 //
 //  Created by 티모시 킴 on 5/25/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct GroupChangeBottomSheet<Content>: View where Content: View {
+public struct BottomSheet<Content>: View where Content: View {
     
     // MARK: - Property
     
