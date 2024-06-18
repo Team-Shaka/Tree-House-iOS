@@ -38,6 +38,7 @@ enum StringLiterals {
         static let indicatorTitle2 = "*인증번호가 맞지 않습니다."
         static let indicatorTitle3 = "*아이디 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
         static let indicatorTitle4 = "*중복된 아이디입니다. 다른 아이디를 입력해주세요."
+        static let indicatorTitle5 = "*글자수가 맞지 않습니다(4자 이상, 20자 이하)"
         
         static let placeholderTitle1 = "전화번호 입력"
         static let placeholderTitle2 = "유저아이디 입력"
@@ -53,7 +54,7 @@ enum StringLiterals {
         static let registerTitle7 = "당신의 프로필 사진을 설정해주세요!"
         static let registerTitle8 = "마지막으로 짧은 바이오를\n작성해주세요."
         static let registerTitle9 = "님 반갑습니다!\n아마 다른 트리 멤버에게는\n당신이 이렇게 보일거에요!"
-        static let registerTitle10 = ", 멋진데요!\n이 트리하우스에서\n당신은 이렇게 보일거에요!"
+        static let registerTitle10 = "멋진데요!\n이 트리하우스에서\n당신은 이렇게 보일거에요!"
         
         static let etcTitle1 = "추후 누구나 가입이 가능하도록\n변경할 예정이니 기다려주세요!"
         
