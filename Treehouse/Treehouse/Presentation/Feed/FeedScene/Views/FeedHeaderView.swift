@@ -48,7 +48,7 @@ struct FeedHeaderView: View {
                     }
                 
                 if self.isPresent {
-                    GroupChangeBottomSheet($isPresent, height: calculateBottomSheetHeight(groupCount: groupList.count)) {
+                    BottomSheet($isPresent, height: calculateBottomSheetHeight(groupCount: groupList.count)) {
                         VStack {
                             Spacer()
                             
