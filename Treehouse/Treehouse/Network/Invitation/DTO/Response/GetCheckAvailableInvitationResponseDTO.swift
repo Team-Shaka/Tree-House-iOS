@@ -10,4 +10,8 @@ import Foundation
 struct GetCheckAvailableInvitationResponseDTO: Decodable {
     let availableInvitation: Int
     let activeRate: Int
+    
+    func toDomain() -> CheckAvailableInvitationReponseEntity {
+        return CheckAvailableInvitationReponseEntity(availableInvitation: availableInvitation, activeRate: activeRate)
+    }
 }

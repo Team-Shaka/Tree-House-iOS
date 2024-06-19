@@ -16,6 +16,14 @@ struct InviteBranchView: View {
     
     // MARK: - State Property
     
+    @State var viewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                                registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                                registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                                acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()))
+    @Environment(ViewRouter.self) private var viewRouter
+    
     @State private var inviteCount: Int = 0
     @State private var searchText: String = ""
     @State private var showPopover: Bool = false
@@ -75,7 +83,7 @@ struct InviteBranchView: View {
                             .fontWithLineHeight(fontLevel: .heading4)
                             .foregroundStyle(.grayscaleBlack)
                         
-                        Text("가진 초대장 : \(availableInvitaion.availableInvitation)장")
+                        Text("가진 초대장 : \(viewModel.availableInvitation)장")
                             .fontWithLineHeight(fontLevel: .body2)
                             .foregroundStyle(.treeGreen)
                     }
@@ -99,7 +107,7 @@ struct InviteBranchView: View {
                         
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.treeBlack)
-                            .frame(width: CGFloat(availableInvitaion.activeRate)/100 * SizeLiterals.Screen.screenWidth * 292/393)
+                            .frame(width: CGFloat(viewModel.activeRate)/100 * SizeLiterals.Screen.screenWidth * 292/393)
                             .frame(height: 10)
                             .padding(.top, 16)
                     }
@@ -111,7 +119,7 @@ struct InviteBranchView: View {
                 .frame(height: 42)
                 
                 HStack(spacing: 0) {
-                    Text("\(100 - availableInvitaion.activeRate)%")
+                    Text("\(100 - viewModel.activeRate)%")
                         .foregroundStyle(.treeGreen)
                     +
                     Text(StringLiterals.Invitation.guidanceTitle2)
@@ -154,6 +162,11 @@ struct InviteBranchView: View {
             .onTapGesture {
                 hideKeyboard()
             }
+            .onAppear {
+                Task {
+                    await viewModel.checkAvailableInvitation()
+                }
+            }
         }
     }
 }
@@ -161,5 +174,15 @@ struct InviteBranchView: View {
 // MARK: - Preview
 
 #Preview {
-    InviteBranchView()
+    NavigationStack {
+        InviteBranchView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                             ))
+    }
 }

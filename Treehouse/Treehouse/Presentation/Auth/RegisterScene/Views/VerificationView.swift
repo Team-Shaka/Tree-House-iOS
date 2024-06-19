@@ -38,7 +38,7 @@ struct VerificationView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 72)
                 .padding(.bottom, SizeLiterals.Screen.screenHeight * 50 / 852)
-   
+                
                 HStack(spacing: 0) {
                     ForEach(0 ..< 6, id: \.self) {index in
                         verificationCodeBox(index)
@@ -58,18 +58,18 @@ struct VerificationView: View {
                     isKeyboardShowing.toggle()
                 }
                 .padding(.bottom, 8)
-
+                
                 Text(isValid == false ? "" : StringLiterals.Register.indicatorTitle2)
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(.error)
-
+                
                 Text(StringLiterals.Register.guidanceTitle1)
                     .fontWithLineHeight(fontLevel: .body5)
                     .foregroundStyle(.gray5)
                     .padding(.top, SizeLiterals.Screen.screenHeight * 24 / 852)
             }
             .padding(.top, SizeLiterals.Screen.screenHeight * 22 / 852)
-
+            
             Spacer()
             
             Button {
@@ -156,7 +156,8 @@ struct VerificationView: View {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
                                              ))
     }
 }

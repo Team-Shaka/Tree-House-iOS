@@ -29,6 +29,8 @@
 		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B71132BFF41BD009A741C /* FeedHeaderView.swift */; };
+		00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B591942C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift */; };
+		00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B591962C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift */; };
 		00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* MyProfileView.swift */; };
 		00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5662C15B5560009C6A1 /* SettingView.swift */; };
 		00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */; };
@@ -179,6 +181,8 @@
 		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		009B71132BFF41BD009A741C /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
+		00B591942C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklAvailableInvitationUseCase.swift; sourceTree = "<group>"; };
+		00B591962C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailableInvitationReponseEntity.swift; sourceTree = "<group>"; };
 		00C2F5642C11C1010009C6A1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		00C2F5662C15B5560009C6A1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
@@ -715,6 +719,7 @@
 			children = (
 				3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */,
 				3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */,
+				00B591942C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 			children = (
 				3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */,
 				3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */,
+				00B591962C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -1238,6 +1244,7 @@
 				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
+				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
 				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				3FF107042BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift in Sources */,
@@ -1274,6 +1281,7 @@
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
+				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
 				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
@@ -1293,6 +1301,7 @@
 /* Begin XCBuildConfiguration section */
 		00CF358A2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F592432BF5F4F700BF6AED /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1356,6 +1365,7 @@
 		};
 		00CF358B2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F592432BF5F4F700BF6AED /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1412,6 +1422,7 @@
 		};
 		00CF358D2BC291FC00D9E332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F592432BF5F4F700BF6AED /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1444,6 +1455,7 @@
 		};
 		00CF358E2BC291FC00D9E332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00F592432BF5F4F700BF6AED /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

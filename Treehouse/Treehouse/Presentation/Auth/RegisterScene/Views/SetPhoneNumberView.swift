@@ -20,7 +20,8 @@ struct SetPhoneNumberView: View {
                                                 registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                                 registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                                 acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()))
+                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()))
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -161,6 +162,7 @@ extension SetPhoneNumberView {
                                           registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                           registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                           acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                          checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                          checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                          checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
                                          ))
 }

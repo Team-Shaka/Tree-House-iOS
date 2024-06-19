@@ -19,6 +19,6 @@ final class CheckInvitationsUseCase: GetCheckInvitationsUseCaseProtocol {
     }
     
     func execute() async -> Result<CheckInvitationsReponseEntity, NetworkError> {
-        return await repository.getCheckAvailableInvitation()
+        return await repository.getCheckInvitation()
     }
 }

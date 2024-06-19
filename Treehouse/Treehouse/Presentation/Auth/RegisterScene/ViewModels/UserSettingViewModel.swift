@@ -37,6 +37,8 @@ final class UserSettingViewModel: BaseViewModel {
     var invitedMember: String = ""
     var memberNum: Int = 0
     var memberProfileImages: [URL] = []
+    var availableInvitation: Int = 0
+    var activeRate: Int = 0
     
     // MARK: - State Property
     
@@ -63,19 +65,24 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol
     
+    @ObservationIgnored
+    private let checkAvailableInvitationUseCase: GetCheckAvailableInvitationUseCaseProtocol
+    
     // MARK: - init
     
     init(checkNameUseCase: PostCheckNameUseCaseProtocol,
          registerUserUseCase: PostRegisterUserUseCaseProtocol,
          registerTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol,
          acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol,
-         checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol
+         checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol,
+         checkAvailableInvitationUseCase: GetCheckAvailableInvitationUseCaseProtocol
     ) {
         self.checkUserNameUseCase = checkNameUseCase
         self.registerUserUseCase = registerUserUseCase
         self.registerTreeMemberUseCase = registerTreeMemberUseCase
         self.acceptInvitationTreeMemberUseCase = acceptInvitationTreeMemberUseCase
         self.checkInvitationsUseCase = checkInvitationsUseCase
+        self.checkAvailableInvitationUseCase = checkAvailableInvitationUseCase
     }
 }
 
@@ -177,6 +184,20 @@ extension UserSettingViewModel {
             invitedMember = "Chriiii0o0"
             memberNum = 20
 //            memberProfileImages = $0.treehouseMemberProfileImages
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func checkAvailableInvitation() async {
+        let result = await checkAvailableInvitationUseCase.execute()
+        
+        switch result {
+        case .success(let response):
+            availableInvitation = response.availableInvitation
+            activeRate = response.activeRate
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription

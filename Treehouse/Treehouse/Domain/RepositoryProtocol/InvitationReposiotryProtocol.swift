@@ -9,5 +9,6 @@ import Foundation
 
 protocol InvitationReposiotryProtocol {
     func postAcceptInvitationTreeMember(invitationId: Int, isAccepted: Bool) async -> Result<AcceptInvitationTreeMemberResponseEntity, NetworkError>
-    func getCheckAvailableInvitation() async -> Result<CheckInvitationsReponseEntity,NetworkError>
+    func getCheckInvitation() async -> Result<CheckInvitationsReponseEntity,NetworkError>
+    func getCheckAvailableInvitation() async -> Result<CheckAvailableInvitationReponseEntity,NetworkError>
 }
