@@ -8,8 +8,31 @@
 import SwiftUI
 import PhotosUI
 
+enum PhotoType {
+    case profileImage
+    case postImage
+    case notImage
+    
+    var imageSize: CGSize {
+        switch self {
+        case .profileImage:
+            return CGSize(width: SizeLiterals.Screen.screenWidth * 130.24 / 393, height: SizeLiterals.Screen.screenHeight * 130.24 / 852)
+        case .postImage:
+            return CGSize(width: SizeLiterals.Screen.screenWidth * 54 / 393, height: SizeLiterals.Screen.screenHeight * 54 / 852)
+        case .notImage:
+            return CGSize(width: SizeLiterals.Screen.screenWidth * 70 / 393, height: SizeLiterals.Screen.screenHeight * 70 / 852)
+        }
+    }
+}
+
 class PhotoPickerManager: ObservableObject {
     @Published var selectedImages: [UIImage] = []
+    
+    private var type: PhotoType?
+    
+    init(type: PhotoType) {
+        self.type = type
+    }
     
     func makeBinding() -> Binding<[UIImage]> {
         Binding(
@@ -19,13 +42,14 @@ class PhotoPickerManager: ObservableObject {
     }
     
     func presentPhotoPicker(selectionLimit: Int = 10) -> PhotoPicker {
-        PhotoPicker(selectedImages: makeBinding(), selectionLimit: selectionLimit)
+        PhotoPicker(selectedImages: makeBinding(), selectionLimit: selectionLimit, type: type ?? .notImage)
     }
 }
 
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
     let selectionLimit: Int
+    let type: PhotoType
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var configuration = PHPickerConfiguration()
@@ -40,14 +64,26 @@ struct PhotoPicker: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, type: type)
     }
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
         let parent: PhotoPicker
+        let type: PhotoType
         
-        init(_ parent: PhotoPicker) {
+        init(_ parent: PhotoPicker, type: PhotoType) {
             self.parent = parent
+            self.type = type
+        }
+        
+        func resizeImage(image: UIImage) async -> UIImage {
+            guard let imageData = image.pngData() else { return image }
+            
+            if let downsampledImage = UIImage.downsample(imageData: imageData, to: self.type.imageSize, scale: UIScreen.main.scale) {
+                return downsampledImage
+            } else {
+                return image
+            }
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -62,9 +98,16 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                         defer { group.leave() }
                         if let image = image as? UIImage {
-                            images.append(image)
+                            Task {
+                                let resizedImage = await self.resizeImage(image: image)
+                                DispatchQueue.main.async {
+                                    images.append(resizedImage)
+                                }
+                            }
                         }
                     }
+                } else {
+                    group.leave()
                 }
             }
             
