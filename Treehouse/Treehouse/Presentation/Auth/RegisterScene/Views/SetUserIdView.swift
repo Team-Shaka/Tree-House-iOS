@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum SetUserIdField {
-    case userId
-}
-
 struct SetUserIdView: View {
     
     // MARK: - State Property
@@ -18,9 +14,14 @@ struct SetUserIdView: View {
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @Environment(UserSettingViewModel.self) private var viewModel
     
-    @State var userId: String = ""
+    @State var userName: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
-    @FocusState private var focusedField: SetUserIdField?
+    @FocusState private var focusedField: Bool
+    
+    @State var isLengthValid = false
+    @State var isValidInput = false
+    
+    @State var errorMessage = ""
     
     // MARK: - View
     
@@ -45,14 +46,15 @@ struct SetUserIdView: View {
             
             Button(action: {
                 if viewModel.isButtonEnabled {
-                    viewModel.userId = userId
+                    viewModel.userName = userName
                     Task {
-                        await viewModel.checkUserName(userName: userId)
+                        await viewModel.checkUserName(userName: userName)
                         
                         if viewModel.isUserNameDuplicated == false {
                             viewRouter.push(RegisterRouter.showUserProfileView)
                         } else {
                             textFieldState = .duplicated
+                            errorMessage = StringLiterals.Register.indicatorTitle4
                         }
                     }
                 }
@@ -72,9 +74,6 @@ struct SetUserIdView: View {
                             leading: 24,
                             bottom: SizeLiterals.Screen.screenHeight * 30 / 852,
                             trailing: 24))
-        .onTapGesture {
-            hideKeyboard()
-        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
@@ -89,21 +88,41 @@ struct SetUserIdView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
+            UIApplication.shared.hideKeyboard()
         }
-        .onChange(of: userId) { _, newValue in
+        .onChange(of: userName) { _, newValue in
             viewModel.isUserNameDuplicated = false
             
-            if self.isValidInputUserId(newValue) {
-                viewModel.isButtonEnabled = true
-                textFieldState = .enable
-            } else {
+            if self.isLengthValid(newValue) { // 글자수 체크
+                isLengthValid = true
+                
+                if self.isValidInputUserId(newValue) { // 글자 종류
+                    isValidInput = true
+                    textFieldState = .enable
+                    errorMessage = ""
+                    viewModel.isButtonEnabled = true
+                } else {
+                    isValidInput = false
+                    errorMessage = StringLiterals.Register.indicatorTitle3
+                    textFieldState = .unable
+                    viewModel.isButtonEnabled = false
+                }
+            } else if newValue.isEmpty { // 글자가 아에 없을 때
                 viewModel.isButtonEnabled = false
+                textFieldState = .enable
+                errorMessage = ""
+            } else {
+                isLengthValid = false
+                errorMessage = StringLiterals.Register.indicatorTitle5
                 textFieldState = .unable
+                viewModel.isButtonEnabled = false
             }
         }
         .onChange(of: focusedField) { _, newValue in
-            if newValue == .userId {
+            if newValue == true {
                 textFieldState = .enable
+            } else if isLengthValid == false || isValidInput == false {
+                textFieldState = .unable
             } else {
                 textFieldState = .notFocused
             }
@@ -117,11 +136,11 @@ private extension SetUserIdView {
     @ViewBuilder
     var userNameTextField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            TextField(StringLiterals.Register.placeholderTitle2, text: $userId)
+            TextField(StringLiterals.Register.placeholderTitle2, text: $userName)
                 .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
-                .focused($focusedField, equals: .userId)
+                .focused($focusedField)
                 .padding(EdgeInsets(top: 18, leading: 18, bottom: 18, trailing: 10))
                 .frame(height: 62)
                 .background(textFieldState.backgroundColor)
@@ -132,17 +151,9 @@ private extension SetUserIdView {
                 .cornerRadius(12)
                 .autocapitalization(.none)
             
-            if textFieldState == .unable {
-                Text(StringLiterals.Register.indicatorTitle3)
-                    .fontWithLineHeight(fontLevel: .caption1)
-                    .foregroundStyle(.error)
-            }
-            
-            if viewModel.isUserNameDuplicated {
-                Text(StringLiterals.Register.indicatorTitle4)
-                    .fontWithLineHeight(fontLevel: .caption1)
-                    .foregroundStyle(.error)
-            }
+            Text(errorMessage)
+                .fontWithLineHeight(fontLevel: .caption1)
+                .foregroundStyle(.error)
         }
     }
 }
@@ -157,7 +168,7 @@ private extension SetUserIdView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }

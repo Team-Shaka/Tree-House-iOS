@@ -20,7 +20,8 @@ struct SetPhoneNumberView: View {
                                                 registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                                 registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                                 acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()))
+                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                                presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()))
     @State private var phoneNumber: String = ""
     @State private var errorMessage: String? = nil
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -80,9 +81,6 @@ struct SetPhoneNumberView: View {
             .navigationDestination(for: RegisterRouter.self) { router in
                 viewRouter.buildScene(inputRouter: router, viewModel: viewModel)
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
@@ -97,6 +95,7 @@ struct SetPhoneNumberView: View {
         }
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
+            UIApplication.shared.hideKeyboard()
         }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .phoneNumber {
@@ -161,6 +160,6 @@ extension SetPhoneNumberView {
                                           registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                           registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                           acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                          checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                          checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                          ))
 }

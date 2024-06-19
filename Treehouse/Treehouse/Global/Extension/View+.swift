@@ -62,6 +62,11 @@ extension View {
         return regex.firstMatch(in: input, options: [], range: range) != nil
     }
     
+    /// 입력 조건(글자수) 설정하는 메서드
+    func isLengthValid(_ input: String) -> Bool {
+        return input.count >= 4 && input.count <= 20
+    }
+    
     /// 원하는 모서리에 라운드 처리해주는 메서드
     func selectCornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))

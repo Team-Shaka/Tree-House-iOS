@@ -8,17 +8,17 @@
 import Foundation
 
 protocol PostAcceptInvitationTreeMemberUseCaseProtocol {
-    func execute(invitationId: Int, isAccepted: Bool) async -> Result<AcceptInvitationTreeMemberResponseEntity, NetworkError>
+    func execute(invitationId: Int, acceptDecision: Bool) async -> Result<AcceptInvitationTreeMemberResponseEntity, NetworkError>
 }
 
 final class AcceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol {
-    private let repository: InvitationReposiotryProtocol
+    private let repository: InvitationRepositoryProtocol
     
-    init(repository: InvitationReposiotryProtocol) {
+    init(repository: InvitationRepositoryProtocol) {
         self.repository = repository
     }
 
-    func execute(invitationId: Int, isAccepted: Bool) async -> Result<AcceptInvitationTreeMemberResponseEntity, NetworkError> {
-        return await repository.postAcceptInvitationTreeMember(invitationId: invitationId, isAccepted: isAccepted)
+    func execute(invitationId: Int, acceptDecision: Bool) async -> Result<AcceptInvitationTreeMemberResponseEntity, NetworkError> {
+        return await repository.postAcceptInvitationTreeMember(invitationId: invitationId, acceptDecision: acceptDecision)
     }
 }

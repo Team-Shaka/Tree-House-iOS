@@ -15,7 +15,7 @@ struct CheckInvitationsReponseData: Decodable {
     let invitationId: Int
     let treehouseName: String
     let senderName: String
-    let senderProfileImageUrl: String
+    let senderProfileImageUrl: String?
     let treehouseSize: Int
-    let treehouseMemberProfileImages: [URL]
+    let treehouseMemberProfileImages: [String?]
 }

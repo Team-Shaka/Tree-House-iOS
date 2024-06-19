@@ -9,5 +9,4 @@ import Foundation
 
 struct AcceptInvitationTreeMemberResponseEntity: Decodable {
     let treehouseId: Int
-    let isAccepted: Bool
 }

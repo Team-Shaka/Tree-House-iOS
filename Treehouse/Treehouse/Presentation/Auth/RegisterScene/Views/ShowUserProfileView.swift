@@ -19,8 +19,9 @@ struct ShowUserProfileView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 24) {
-                Text("\(viewModel.userId)\(StringLiterals.Register.registerTitle9)")
+                Text("\(viewModel.userName)\(StringLiterals.Register.registerTitle9)")
                     .fontWithLineHeight(fontLevel: .heading1)
+                    .lineLimit(3)
                     .foregroundStyle(.black)
                 
                 Text(StringLiterals.Register.guidanceTitle4)
@@ -30,6 +31,8 @@ struct ShowUserProfileView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             
             profileView
+            
+            Spacer()
             
             Button(action: {
                 Task {
@@ -53,7 +56,7 @@ struct ShowUserProfileView: View {
             .padding(.bottom, 12)
             
             Button(action: {
-
+                viewRouter.pop()
             }) {
                 Text(StringLiterals.Register.buttonTitle12)
                     .fontWithLineHeight(fontLevel: .body5)
@@ -86,10 +89,12 @@ private extension ShowUserProfileView {
         ZStack(alignment: .top) {
             RoundedRectangle(cornerRadius: 12.0)
                 .stroke(.gray3, lineWidth: 1)
-                .padding(.top, 56)
+                .padding(.top, SizeLiterals.Screen.screenHeight * 56 / 852)
+            
             
             Image(.imgUser3)
-                .padding(.top, 0)
+                .resizable()
+                .frame(width: SizeLiterals.Screen.screenHeight * 112 / 852, height: SizeLiterals.Screen.screenHeight * 112 / 852)
             
             VStack(spacing: 0) {
                 VStack(spacing: 2) {
@@ -97,11 +102,11 @@ private extension ShowUserProfileView {
                         .fontWithLineHeight(fontLevel: .heading3)
                         .foregroundStyle(.black)
                     
-                    Text("@\(viewModel.userId)")
+                    Text("@\(viewModel.userName)")
                         .fontWithLineHeight(fontLevel: .body3)
                         .foregroundStyle(.gray5)
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 10 / 852)
                 
                 ZStack(alignment: .center) {
                         
@@ -114,10 +119,10 @@ private extension ShowUserProfileView {
                 }
                 .padding(.bottom, 16)
             }
-            .padding(.top, 124)
+            .padding(.top, SizeLiterals.Screen.screenHeight * 124 / 852)
         }
-        .padding(.top, 48)
-        .padding(.bottom, 73)
+        .padding(.top, SizeLiterals.Screen.screenHeight * 42 / 852)
+        .padding(.bottom, SizeLiterals.Screen.screenHeight * 73 / 852)
     }
     
     @ViewBuilder
@@ -143,7 +148,7 @@ private extension ShowUserProfileView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }

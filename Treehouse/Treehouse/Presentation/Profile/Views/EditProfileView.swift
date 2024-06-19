@@ -15,7 +15,7 @@ struct EditProfileView: View {
     @State private var name: String = "username"
     @State private var bio: String = "바이오입니다."
     @State private var isEditing: Bool = false
-    @ObservedObject private var photoPickerManager = PhotoPickerManager()
+    @ObservedObject private var photoPickerManager = PhotoPickerManager(type: .profileImage)
     @State private var isPhotoPickerPresented: Bool = false
     
     // MARK: - View

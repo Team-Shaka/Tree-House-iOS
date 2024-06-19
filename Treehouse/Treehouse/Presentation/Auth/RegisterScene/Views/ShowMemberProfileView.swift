@@ -14,6 +14,9 @@ struct ShowMemberProfileView: View {
     
     // MARK: - State Property
     
+    @Environment(UserSettingViewModel.self) private var viewModel
+    @Environment(ViewRouter.self) private var viewRouter
+    
     @State var userId: String = "younkyum"
     @State var bio: String = "안녕하세요, 진윤겸입니다!"
     @State var isRetryButtonDisabled = false
@@ -21,60 +24,67 @@ struct ShowMemberProfileView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
-            Text("\(userId)\(StringLiterals.Register.registerTitle10)")
-                .foregroundColor(.treeBlack)
-                .font(.fontGuide(.heading1))
-                .fontWithLineHeight(fontLevel: .heading1)
-                .padding(.top, 30)
-                .padding(.leading, 25)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        Text("\(StringLiterals.Register.registerTitle10)")
+            .foregroundColor(.treeBlack)
+            .font(.fontGuide(.heading1))
+            .fontWithLineHeight(fontLevel: .heading1)
+            .padding(.top, 30)
+            .padding(.leading, 25)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        
+        profileView
+        
+        Spacer()
+        
+        Button(action: {
+            // MARK: - TODO
+            // lottie 추가
+            viewModel.isSignUp = true
+            isRetryButtonDisabled = true
             
-            profileView
-            
-            Spacer()
-            
-            Button(action: {
-                // MARK: - TODO
-                // lottie 추가
-                isRetryButtonDisabled = true
-            }) {
-                Text(StringLiterals.Register.buttonTitle6)
-                    .frame(width: 344, height: 56)
+            Task {
+                let result = await viewModel.registerTreeMember()
+                
+                if result {
+                    viewRouter.navigate(viewType: .enterTreehouse)
+                }
+            }
+        }) {
+            Text(StringLiterals.Register.buttonTitle6)
+                .frame(width: 344, height: 56)
+                .font(.fontGuide(.body2))
+                .foregroundColor(.gray1)
+                .background(.treeBlack)
+                .cornerRadius(12)
+                .padding(.horizontal, 24)
+        }
+        
+        Button(action: {
+            viewRouter.popMultiple(count: 3)
+        }) {
+            Text(StringLiterals.Register.buttonTitle12)
+                .fontWithLineHeight(fontLevel: .body5)
+                .foregroundStyle(.gray6)
+                .underline()
+                .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
+        }
+        .disabled(isRetryButtonDisabled)
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                    print("뒤로가기 버튼")
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+            ToolbarItem(placement: .principal) {
+                Text(StringLiterals.Register.navigationTitle1)
                     .font(.fontGuide(.body2))
-                    .foregroundColor(.gray1)
-                    .background(.treeBlack)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 24)
-            }
-            
-            Button(action: {
-                // MARK: - TODO
-                // 뷰 연결 - SetMemberProfileName
-            }) {
-                Text(StringLiterals.Register.buttonTitle12)
-                    .fontWithLineHeight(fontLevel: .body5)
-                    .foregroundStyle(.gray6)
-                    .underline()
-                    .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
-            }
-            .disabled(isRetryButtonDisabled)
-            
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // MARK: - TODO
-                        // 뷰 연결 - SetProfileBio
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.black)
-                    }
-                }
-                ToolbarItem(placement: .principal) {
-                    Text(StringLiterals.Register.navigationTitle1)
-                        .font(.fontGuide(.body2))
-                }
             }
         }
     }
@@ -94,15 +104,15 @@ extension ShowMemberProfileView {
             
             VStack(spacing: 0) {
                 VStack(spacing: 2) {
-                    Text(userId)
+                    Text(viewModel.memberName ?? "이름 없음")
                         .fontWithLineHeight(fontLevel: .heading3)
                         .foregroundStyle(.black)
                     
-                    Text("@\(userId)")
+                    Text("@\(viewModel.userName)")
                         .fontWithLineHeight(fontLevel: .body3)
                         .foregroundStyle(.gray5)
                 }
-                Text(bio)
+                Text(viewModel.bio ?? "바이오 없음")
                     .font(.fontGuide(.body5))
                     .foregroundColor(.gray7)
                     .padding(.top, 22)
@@ -126,7 +136,7 @@ extension ShowMemberProfileView {
                 
                 Circle().fill(.treePale)
                 
-                Image(.imgDummy)
+                Image(uiImage: viewModel.profileImage[0])
                     .resizable()
                     .scaledToFill()
                     .frame(width: 99, height: 99)
@@ -138,5 +148,14 @@ extension ShowMemberProfileView {
 // MARK: - Preview
 
 #Preview {
-    ShowMemberProfileView()
+    NavigationStack {
+        ShowMemberProfileView()
+            .environment(ViewRouter())
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
+                                             ))
+    }
 }

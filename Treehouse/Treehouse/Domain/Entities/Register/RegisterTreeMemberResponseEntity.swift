@@ -9,5 +9,5 @@ import Foundation
 
 struct RegisterTreeMemberResponseEntity: Decodable {
     let userId: Int
-    let treehouseId: Bool
+    let treehouseId: Int
 }
