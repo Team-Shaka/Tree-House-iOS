@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ColorEmojiPopover: View {
+    
+    // MARK: - Property
+    
     let selectEmoji: EmojiDatas
+    
+    // MARK: - View
     
     var body: some View {
         HStack(spacing: 10) {
@@ -32,6 +37,8 @@ struct ColorEmojiPopover: View {
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     ColorEmojiPopover(selectEmoji: EmojiDatas(unicode: "U+1F590",
