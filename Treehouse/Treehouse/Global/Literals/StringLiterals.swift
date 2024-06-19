@@ -16,7 +16,7 @@ enum StringLiterals {
         static let buttonTitle5 = "내 프로필 보러가기"
         static let buttonTitle6 = "좋아요!"
         static let buttonTitle7 = "거절하기"
-        static let buttonTitle8 = "트리 가입하기"
+        static let buttonTitle8 = "초대 수락하기"
         static let buttonTitle9 = "프로필 사진 설정하러 가기"
         static let buttonTitle10 = "바이오 설정하러 가기"
         static let buttonTitle11 = "내 프로필 보러가기"
@@ -77,5 +77,20 @@ enum StringLiterals {
     
     enum Notification {
         static let notificationTitle1 = "아직 받은 알림이 없어요."
+    }
+    
+    enum Profile {
+        static let buttonLabel1 = "프로필 편집하기"
+        static let buttonLabel2 = "브랜치 보기"
+        static let buttonLabel3 = "다른 트리에 초대하기"
+        
+        static let profileBranchCountTitle = "총 Branch"
+        static let profileTreeHouseCountTitle = "소속 트리하우스"
+        static let profileRootTitle = "나로부터"
+    }
+    
+    enum MemberProfile {
+        static let bottomSheetLabel1 = "초대하기"
+        static let bottomSheetLabel2 = "초대할 트리하우스 선택"
     }
 }

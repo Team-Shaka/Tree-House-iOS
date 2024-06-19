@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000844EF2C1C607600FF33FD /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000844EE2C1C607600FF33FD /* ProfileRouter.swift */; };
 		0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */; };
 		0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */; };
 		0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */; };
@@ -17,7 +18,7 @@
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
 		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
-		0083B4BC2C01D02500F0D252 /* GroupChangeBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */; };
+		0083B4BC2C01D02500F0D252 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BB2C01D02500F0D252 /* BottomSheet.swift */; };
 		0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */; };
 		0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */; };
 		0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */; };
@@ -28,6 +29,12 @@
 		0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087C29D2BE360A6004CED9C /* RegisterService.swift */; };
 		008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */; };
 		009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B71132BFF41BD009A741C /* FeedHeaderView.swift */; };
+		00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* MyProfileView.swift */; };
+		00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5662C15B5560009C6A1 /* SettingView.swift */; };
+		00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */; };
+		00C2F56D2C1863980009C6A1 /* MemberGroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F56C2C1863980009C6A1 /* MemberGroupStruct.swift */; };
+		00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */; };
+		00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */; };
 		00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35812BC291FA00D9E332 /* TreehouseApp.swift */; };
 		00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CF35832BC291FA00D9E332 /* ContentView.swift */; };
 		00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CF35852BC291FC00D9E332 /* Assets.xcassets */; };
@@ -67,6 +74,18 @@
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
+		3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */; };
+		3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */; };
+		3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */; };
+		3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */; };
+		3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */; };
+		3F51504E2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */; };
+		3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */; };
+		3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */; };
+		3F5150562C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */; };
+		3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150572C0EC5E800AD05C3 /* InvitationService.swift */; };
+		3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */; };
+		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -83,6 +102,10 @@
 		3F8B72742C19DF8700299C24 /* ColorEmojiPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B72732C19DF8700299C24 /* ColorEmojiPopover.swift */; };
 		3F8F2A812C18AB1400D8CB9F /* structuredEmojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */; };
 		3F8F2A832C18AB2500D8CB9F /* emojiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2A822C18AB2500D8CB9F /* emojiData.swift */; };
+		3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */; };
+		3F94635D2C11644600229940 /* CheckUserPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635C2C11644600229940 /* CheckUserPhone.swift */; };
+		3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */; };
+		3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
 		3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */; };
 		3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */; };
@@ -139,6 +162,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000844EE2C1C607600FF33FD /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		0012366A2BCEBBAA00CEAC53 /* InviteBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteBranchView.swift; sourceTree = "<group>"; };
 		0012366C2BCED9BD00CEAC53 /* GreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenLetterView.swift; sourceTree = "<group>"; };
 		0012366E2BD1831300CEAC53 /* PhoneNumberSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberSearchBar.swift; sourceTree = "<group>"; };
@@ -149,7 +173,7 @@
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
 		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
-		0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChangeBottomSheet.swift; sourceTree = "<group>"; };
+		0083B4BB2C01D02500F0D252 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
 		0083B4BF2C01DF4800F0D252 /* GroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStruct.swift; sourceTree = "<group>"; };
 		0087C27A2BDD337D004CED9C /* CheckNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseDTO.swift; sourceTree = "<group>"; };
@@ -160,6 +184,12 @@
 		0087C29D2BE360A6004CED9C /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		008B67FD2BC57EEF001E3AB5 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		009B71132BFF41BD009A741C /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
+		00C2F5642C11C1010009C6A1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		00C2F5662C15B5560009C6A1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
+		00C2F56C2C1863980009C6A1 /* MemberGroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberGroupStruct.swift; sourceTree = "<group>"; };
+		00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberGroupRow.swift; sourceTree = "<group>"; };
+		00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		00CF357E2BC291FA00D9E332 /* Treehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Treehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CF35812BC291FA00D9E332 /* TreehouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseApp.swift; sourceTree = "<group>"; };
 		00CF35832BC291FA00D9E332 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -192,6 +222,18 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserUseCase.swift; sourceTree = "<group>"; };
+		3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponseEntity.swift; sourceTree = "<group>"; };
+		3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberUseCase.swift; sourceTree = "<group>"; };
+		3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTreeMemberResponseEntity.swift; sourceTree = "<group>"; };
+		3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptInvitationTreeMemberUseCase.swift; sourceTree = "<group>"; };
+		3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptInvitationTreeMemberEntity.swift; sourceTree = "<group>"; };
+		3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationRepositoryImpl.swift; sourceTree = "<group>"; };
+		3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationReposiotryProtocol.swift; sourceTree = "<group>"; };
+		3F5150572C0EC5E800AD05C3 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
+		3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsReponseEntity.swift; sourceTree = "<group>"; };
+		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -208,6 +250,10 @@
 		3F8B72732C19DF8700299C24 /* ColorEmojiPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEmojiPopover.swift; sourceTree = "<group>"; };
 		3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = structuredEmojis.json; sourceTree = "<group>"; };
 		3F8F2A822C18AB2500D8CB9F /* emojiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiData.swift; sourceTree = "<group>"; };
+		3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserPhoneRequestDTO.swift; sourceTree = "<group>"; };
+		3F94635C2C11644600229940 /* CheckUserPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhone.swift; sourceTree = "<group>"; };
+		3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhoneResponseEntity.swift; sourceTree = "<group>"; };
+		3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserPhoneResponseDTO.swift; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentView.swift; sourceTree = "<group>"; };
@@ -335,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				0054D7342BDAD0D60009B9CC /* Register */,
+				3F5150522C0EC43700AD05C3 /* Invitation */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -343,6 +390,9 @@
 			isa = PBXGroup;
 			children = (
 				0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */,
+				3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */,
+				3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */,
+				3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -376,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */,
+				3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -408,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */,
+				3F5150552C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -416,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				0087C2982BE16193004CED9C /* Register */,
+				3F5150512C0EC42E00AD05C3 /* Invitation */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -424,8 +477,47 @@
 			isa = PBXGroup;
 			children = (
 				0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */,
+				3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */,
+				3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */,
+				3F94635C2C11644600229940 /* CheckUserPhone.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		00C2F55E2C11C0910009C6A1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				00C2F5612C11C0B80009C6A1 /* Models */,
+				00C2F55F2C11C0A00009C6A1 /* ViewModels */,
+				00C2F5602C11C0AA0009C6A1 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		00C2F55F2C11C0A00009C6A1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		00C2F5602C11C0AA0009C6A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00C2F5642C11C1010009C6A1 /* MyProfileView.swift */,
+				00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */,
+				00C2F5662C15B5560009C6A1 /* SettingView.swift */,
+				00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00C2F5612C11C0B80009C6A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00C2F56C2C1863980009C6A1 /* MemberGroupStruct.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		00CF35752BC291FA00D9E332 = {
@@ -515,6 +607,7 @@
 		00CF35992BC2E2E200D9E332 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				00C2F55E2C11C0910009C6A1 /* Profile */,
 				9449C6CD2BDBA7CF00FC938B /* Feed */,
 				94561F642BD115C000B005CE /* Notification */,
 				00CF359A2BC2E2FF00D9E332 /* Auth */,
@@ -628,6 +721,24 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		3F5150512C0EC42E00AD05C3 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				3F51504D2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift */,
+				3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
+		3F5150522C0EC43700AD05C3 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				3F51504F2C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift */,
+				3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
 		3F8835862BCC05540021C8AB /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +761,7 @@
 				3F8846012BF254B60021FB79 /* ViewRouter.swift */,
 				3F8846042BF4F13E0021FB79 /* RegisterRouter.swift */,
 				3F8846062BF58B6A0021FB79 /* InvitationRouter.swift */,
+				000844EE2C1C607600FF33FD /* ProfileRouter.swift */,
 			);
 			path = ViewRouter;
 			sourceTree = "<group>";
@@ -726,6 +838,7 @@
 				3FF106F92BEA077E00C52908 /* BaseRequest.swift */,
 				3FF106FB2BEA078C00C52908 /* BaseResponse.swift */,
 				3FF106FD2BEA079500C52908 /* HttpMethod.swift */,
+				3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -734,6 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF107012BEA07FB00C52908 /* InvitationAPI.swift */,
+				3F5150572C0EC5E800AD05C3 /* InvitationService.swift */,
 				3FF107282BEA0AE300C52908 /* DTO */,
 			);
 			path = Invitation;
@@ -784,6 +898,7 @@
 				3FF107222BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift */,
 				3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */,
 				3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */,
+				3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -796,6 +911,7 @@
 				3FF107182BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift */,
 				3FF1071A2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift */,
 				3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */,
+				3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -868,8 +984,9 @@
 				944D48942BF10CA000205B18 /* SinglePostView.swift */,
 				009B71132BFF41BD009A741C /* FeedHeaderView.swift */,
 				00F592452BF5F55F00BF6AED /* TreeHallView.swift */,
-				0083B4BB2C01D02500F0D252 /* GroupChangeBottomSheet.swift */,
+				0083B4BB2C01D02500F0D252 /* BottomSheet.swift */,
 				0083B4BD2C01DE9E00F0D252 /* GroupRow.swift */,
+				00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */,
 				002C73D22C08AB8B0047592F /* HeaderView.swift */,
 				94D100172C0C2A1900025D43 /* CommentCountView.swift */,
 			);
@@ -1051,20 +1168,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */,
 				3F06C30E2BFDF16B002B771B /* GetReadDetailFeedPostsResponseDTO.swift in Sources */,
 				3F06C3072BFDEB40002B771B /* PostReactionCommentRequestDTO.swift in Sources */,
 				3F06C2FA2BFDC2E8002B771B /* FeedAPI.swift in Sources */,
 				3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */,
 				944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */,
 				3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */,
+				3F51504E2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift in Sources */,
 				3F06C30C2BFDEFD5002B771B /* GetReadFeedPostsListResponseDTO.swift in Sources */,
 				3F06C3052BFDEB1E002B771B /* PostReactionFeedPostRequestDTO.swift in Sources */,
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
+				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
+				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
+				00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
 				3F8B72742C19DF8700299C24 /* ColorEmojiPopover.swift in Sources */,
@@ -1073,10 +1195,12 @@
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
+				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
 				9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				3FF107212BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift in Sources */,
+				3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
@@ -1084,18 +1208,22 @@
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
+				3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */,
+				3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */,
 				9499D9542BF1CA2A007CC6CF /* NetworkError.swift in Sources */,
 				3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */,
 				3F06C3032BFDEAEE002B771B /* PostReportFeedCommentRequestDTO.swift in Sources */,
 				3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */,
 				9499D9502BF1BD04007CC6CF /* NotificationService.swift in Sources */,
 				3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */,
+				3F5150562C0EC47E00AD05C3 /* InvitationReposiotryProtocol.swift in Sources */,
 				3F8846052BF4F13E0021FB79 /* RegisterRouter.swift in Sources */,
 				3FF1071D2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
+				00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
 				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
@@ -1116,24 +1244,30 @@
 				3F06C2FF2BFDEA7D002B771B /* PostCreateCommentRequestDTO.swift in Sources */,
 				3F06C3012BFDEAB3002B771B /* PostReportFeedPostRequestDTO.swift in Sources */,
 				3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */,
+				3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
+				000844EF2C1C607600FF33FD /* ProfileRouter.swift in Sources */,
+				3F94635D2C11644600229940 /* CheckUserPhone.swift in Sources */,
 				9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */,
 				3F8846072BF58B6A0021FB79 /* InvitationRouter.swift in Sources */,
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				3F8F2A832C18AB2500D8CB9F /* emojiData.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
 				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
+				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
+				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				3FF1070A2BEA08C600C52908 /* PostWhetherInvitationsResponseDTO.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				3FF107042BEA082A00C52908 /* PostWhetherInvitationsRequestDTO.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
+				3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */,
 				3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */,
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
-				0083B4BC2C01D02500F0D252 /* GroupChangeBottomSheet.swift in Sources */,
+				0083B4BC2C01D02500F0D252 /* BottomSheet.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
@@ -1146,18 +1280,24 @@
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
+				3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
 				944D48932BF10C6900205B18 /* NotificationModel.swift in Sources */,
 				3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
 				009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */,
+				00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
+				3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
+				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
+				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
 				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
+				00C2F56D2C1863980009C6A1 /* MemberGroupStruct.swift in Sources */,
 				3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */,
 				3F06C2F82BFDC2DF002B771B /* FeedService.swift in Sources */,
 				0087C2872BDEC7B0004CED9C /* RegisterRepositoryImpl.swift in Sources */,
@@ -1302,6 +1442,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1333,6 +1474,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

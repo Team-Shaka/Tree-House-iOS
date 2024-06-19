@@ -11,6 +11,8 @@ enum Config {
     enum Keys {
         enum Plist {
             static let baseURL = "BASE_URL"
+            static let accessTokenKey = "ACCESS_TOKEN_KEY"
+            static let refreshTokenKey = "REFRESH_TOKEN_KEY"
         }
     }
     
@@ -26,6 +28,20 @@ extension Config {
     static let baseURL: String = {
         guard let key = Config.infoDictionary[Keys.Plist.baseURL] as? String else {
             fatalError("🎄⛔️BASE_URL is not set in plist for this configuration⛔️🎄")
+        }
+        return key
+    }()
+    
+    static let accessTokenKey: String = {
+        guard let key = Config.infoDictionary[Keys.Plist.accessTokenKey] as? String else {
+            fatalError("🍞⛔️ACCESS_TOKEN_KEY is not set in plist for this configuration⛔️🍞")
+        }
+        return key
+    }()
+    
+    static let refreshTokenKey: String = {
+        guard let key = Config.infoDictionary[Keys.Plist.refreshTokenKey] as? String else {
+            fatalError("🍞⛔️REFRESH_TOKEN_KEY is not set in plist for this configuration⛔️🍞")
         }
         return key
     }()

@@ -8,14 +8,9 @@
 import Foundation
 
 struct GetCheckInvitationsReponseDTO: Decodable {
-    let invitations: [GetCheckInvitationsReponseData]
-}
-
-struct GetCheckInvitationsReponseData: Decodable {
-    let invitationId: Int
-    let treehouseName: String
-    let senderName: String
-    let senderProfileImageUrl: String
-    let treehouseSize: Int
-    let treehouseMemberProfileImages: [URL]
+    let invitations: [CheckInvitationsReponseData]
+    
+    func toDomain() -> CheckInvitationsReponseEntity {
+        return CheckInvitationsReponseEntity(invitations: invitations)
+    }
 }

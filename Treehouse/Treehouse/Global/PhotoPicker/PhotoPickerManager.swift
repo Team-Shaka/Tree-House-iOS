@@ -18,18 +18,19 @@ class PhotoPickerManager: ObservableObject {
         )
     }
     
-    func presentPhotoPicker() -> PhotoPicker {
-        PhotoPicker(selectedImages: makeBinding())
+    func presentPhotoPicker(selectionLimit: Int = 10) -> PhotoPicker {
+        PhotoPicker(selectedImages: makeBinding(), selectionLimit: selectionLimit)
     }
 }
 
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
+    let selectionLimit: Int
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
-        configuration.selectionLimit = 10
+        configuration.selectionLimit = selectionLimit
         
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = context.coordinator
@@ -52,16 +53,23 @@ struct PhotoPicker: UIViewControllerRepresentable {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true, completion: nil)
             
-            parent.selectedImages = []
+            var images: [UIImage] = []
+            let group = DispatchGroup()
+            
             for result in results {
+                group.enter()
                 if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
-                    result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
-                        guard let self = self, let image = image as? UIImage else { return }
-                        DispatchQueue.main.async {
-                            self.parent.selectedImages.append(image)
+                    result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                        defer { group.leave() }
+                        if let image = image as? UIImage {
+                            images.append(image)
                         }
                     }
                 }
+            }
+            
+            group.notify(queue: DispatchQueue.main) {
+                self.parent.selectedImages = images
             }
         }
     }
