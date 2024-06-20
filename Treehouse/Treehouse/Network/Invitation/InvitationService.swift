@@ -47,6 +47,7 @@ final class InvitationService {
     /// 초대장 조회 API
     func getCheckInvitation() async throws -> GetCheckInvitationsReponseDTO {
         print("1️⃣ 🔑 GetCheckAvailableInvitation API 호출 ========================================")
+
         let request = NetworkRequest(requestType: InvitationAPI.getCheckInvitations)
         
         guard let urlRequest = request.request() else {
@@ -93,7 +94,7 @@ final class InvitationService {
         }
         
         if let jsonString = String(data: data, encoding: .utf8) {
-            print("Response JSON: \(jsonString)")
+            print("3️⃣ Response JSON")
         }
         
         // JSON 디코딩
@@ -101,6 +102,7 @@ final class InvitationService {
             let model = try JSONDecoder().decode(BaseResponse<GetCheckAvailableInvitationResponseDTO>.self, from: data)
             return model.data
         } catch {
+            print("4️⃣ GetCheckAvailableInvitation API Error: \(String(describing: NetworkError.jsonDecodingError.errorDescription))========================================")
             throw NetworkError.jsonDecodingError
         }
     }
