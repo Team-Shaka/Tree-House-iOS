@@ -102,7 +102,7 @@ struct SetMemberProfileImage: View {
             }
         }
         .sheet(isPresented: $isPickerPresented) {
-            photoPickerManager.presentPhotoPicker()
+            photoPickerManager.presentPhotoPicker(selectionLimit: 1)
                 .ignoresSafeArea(edges: .bottom)
         }
     }
