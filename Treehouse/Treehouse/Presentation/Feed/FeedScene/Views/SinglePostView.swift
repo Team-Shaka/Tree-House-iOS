@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct SelectedImage: Identifiable {
     var id: Int
@@ -55,8 +56,6 @@ struct SinglePostView: View {
                         Spacer()
                         
                         Button(action: {
-                            print("meatball button tapped")
-                            // TODO: - Bottom Sheet 연결
                             self.isBottomSheetShowing.toggle()
                         }) {
                             Image(.icMeatball)
@@ -69,8 +68,17 @@ struct SinglePostView: View {
                 }
             }
             .padding(16)
-            
             multipleImagesView
+        }
+        .popup(isPresented: $isBottomSheetShowing) {
+            FeedBottomSheetRowView(sheetCase: .isWriterOnPost)
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
 }
