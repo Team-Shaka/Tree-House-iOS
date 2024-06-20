@@ -12,6 +12,11 @@ struct EditPostPopupView: View {
     // MARK: - State Property
     
     @State private var isCancelPopupShowing: Bool = false
+    @State private var postContent: String = "ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅣㅏㅣㅏㅣㅏㅣㅏㅏ"
+    
+    // MARK: - Property
+    
+    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
     
     // MARK: - View
     
@@ -21,7 +26,34 @@ struct EditPostPopupView: View {
                 editPostPopupHeaderView
                 
                 ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(.imgDummy2)
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 36, height: 36)
+                        
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .center, spacing: 9) {
+                                Text("username")
+                                    .font(.fontGuide(.body2))
+                                    .foregroundStyle(.treeBlack)
+                                    .fontWithLineHeight(fontLevel: .body2)
+                                
+                                Text("branch 3분 전")
+                                    .font(.fontGuide(.caption1))
+                                    .foregroundStyle(.gray5)
+                                    .fontWithLineHeight(fontLevel: .caption1)
+                                
+                                Spacer()
+                            }
+                            
+                            DynamicHeightTextEditorView(text: $postContent)
+
+                            singlePostView.contentImageView()
+                                .opacity(0.5)
+                        }
+                    }
+                    .padding(16)
                 }
             }
             
@@ -51,6 +83,8 @@ struct EditPostPopupView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
     }
 }
 
