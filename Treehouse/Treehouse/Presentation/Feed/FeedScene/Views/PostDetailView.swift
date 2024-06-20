@@ -14,27 +14,32 @@ struct PostDetailView: View {
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
-    @State private var isPostEditPopupShowing: Bool = false
-    
     @FocusState private var focusedField: FeedField?
-    
+    @ObservedObject var viewModel: PostDetailViewModel
+
     // MARK: - View
     
     var body: some View {
         NavigationStack {
-            VStack {
-                ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+            ZStack {
+                VStack {
+                    ScrollView {
+                        SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+                    }
+                    
+                    feedDetailTextField
+                        .onChange(of: focusedField) { _, newValue in
+                            if newValue == .post {
+                                textFieldState = .enable
+                            } else {
+                                textFieldState = .notFocused
+                            }
+                        }
                 }
                 
-                feedDetailTextField
-                    .onChange(of: focusedField) { _, newValue in
-                        if newValue == .post {
-                            textFieldState = .enable
-                        } else {
-                            textFieldState = .notFocused
-                        }
-                    }
+                if viewModel.isDeletePostPopupShowing {
+                    deletePostPopupView
+                }
             }
             .onTapGesture {
                 hideKeyboard()
@@ -107,6 +112,32 @@ extension PostDetailView {
             .padding(.top, 8)
             .padding(.trailing, 16)
         }
+    }
+    
+    @ViewBuilder
+    var deletePostPopupView: some View {
+        Color.black.opacity(0.5)
+            .edgesIgnoringSafeArea(.all)
+        
+        VStack {
+            Spacer()
+            
+            PostAlertView(
+                alertContent: "작성한 포스트를 삭제하시겠어요?",
+                onCancel: {
+                    viewModel.isDeletePostPopupShowing = false
+                },
+                onConfirm: {
+                    viewModel.isDeletePostPopupShowing = false
+                }
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(.white)
+                    .shadow(radius: 10)
+            )
+            
+            Spacer()
         }
     }
 }
@@ -114,5 +145,5 @@ extension PostDetailView {
 // MARK: - Preview
 
 #Preview {
-    PostDetailView()
+    PostDetailView(viewModel: PostDetailViewModel())
 }
