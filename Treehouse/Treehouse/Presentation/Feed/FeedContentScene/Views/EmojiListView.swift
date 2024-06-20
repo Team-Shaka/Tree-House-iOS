@@ -39,7 +39,7 @@ struct EmojiListView: View {
             }
 
             Button(action: {
-                
+                viewModel.isSelectEmojiView = true
             }) {
                 Image(systemName: "plus")
                     .foregroundStyle(.gray5)

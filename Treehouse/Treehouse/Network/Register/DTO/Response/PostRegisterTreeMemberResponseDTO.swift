@@ -9,5 +9,9 @@ import Foundation
 
 struct PostRegisterTreeMemberResponseDTO: Decodable {
     let userId: Int
-    let treehouseId: Bool
+    let treehouseId: Int
+    
+    func toDomain() -> RegisterTreeMemberResponseEntity {
+        return RegisterTreeMemberResponseEntity(userId: userId, treehouseId: treehouseId)
+    }
 }

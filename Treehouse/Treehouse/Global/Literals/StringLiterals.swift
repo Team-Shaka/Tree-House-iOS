@@ -16,7 +16,7 @@ enum StringLiterals {
         static let buttonTitle5 = "내 프로필 보러가기"
         static let buttonTitle6 = "좋아요!"
         static let buttonTitle7 = "거절하기"
-        static let buttonTitle8 = "트리 가입하기"
+        static let buttonTitle8 = "초대 수락하기"
         static let buttonTitle9 = "프로필 사진 설정하러 가기"
         static let buttonTitle10 = "바이오 설정하러 가기"
         static let buttonTitle11 = "내 프로필 보러가기"
@@ -38,6 +38,7 @@ enum StringLiterals {
         static let indicatorTitle2 = "*인증번호가 맞지 않습니다."
         static let indicatorTitle3 = "*아이디 양식과 맞지 않습니다.(숫자, 소문자 영어, _, . 사용 가능)"
         static let indicatorTitle4 = "*중복된 아이디입니다. 다른 아이디를 입력해주세요."
+        static let indicatorTitle5 = "*글자수가 맞지 않습니다(4자 이상, 20자 이하)"
         
         static let placeholderTitle1 = "전화번호 입력"
         static let placeholderTitle2 = "유저아이디 입력"
@@ -53,7 +54,7 @@ enum StringLiterals {
         static let registerTitle7 = "당신의 프로필 사진을 설정해주세요!"
         static let registerTitle8 = "마지막으로 짧은 바이오를\n작성해주세요."
         static let registerTitle9 = "님 반갑습니다!\n아마 다른 트리 멤버에게는\n당신이 이렇게 보일거에요!"
-        static let registerTitle10 = ", 멋진데요!\n이 트리하우스에서\n당신은 이렇게 보일거에요!"
+        static let registerTitle10 = "멋진데요!\n이 트리하우스에서\n당신은 이렇게 보일거에요!"
         
         static let etcTitle1 = "추후 누구나 가입이 가능하도록\n변경할 예정이니 기다려주세요!"
         
@@ -77,5 +78,20 @@ enum StringLiterals {
     
     enum Notification {
         static let notificationTitle1 = "아직 받은 알림이 없어요."
+    }
+    
+    enum Profile {
+        static let buttonLabel1 = "프로필 편집하기"
+        static let buttonLabel2 = "브랜치 보기"
+        static let buttonLabel3 = "다른 트리에 초대하기"
+        
+        static let profileBranchCountTitle = "총 Branch"
+        static let profileTreeHouseCountTitle = "소속 트리하우스"
+        static let profileRootTitle = "나로부터"
+    }
+    
+    enum MemberProfile {
+        static let bottomSheetLabel1 = "초대하기"
+        static let bottomSheetLabel2 = "초대할 트리하우스 선택"
     }
 }

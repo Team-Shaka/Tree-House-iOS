@@ -62,6 +62,11 @@ extension View {
         return regex.firstMatch(in: input, options: [], range: range) != nil
     }
     
+    /// 입력 조건(글자수) 설정하는 메서드
+    func isLengthValid(_ input: String) -> Bool {
+        return input.count >= 4 && input.count <= 20
+    }
+    
     /// 원하는 모서리에 라운드 처리해주는 메서드
     func selectCornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
@@ -73,5 +78,13 @@ extension View {
             .disabled(condition)
             .foregroundStyle(condition ? Color.gray6 : Color.gray1)
             .background(condition ? Color.gray2 : Color.treeBlack)
+    }
+    
+    /// Bottom Sheet 를 보여주는 메서드
+    func bottomSheet<Content>(isPresented: Binding<Bool>, topPadding: CGFloat, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+        ZStack {
+            self
+            CustomBottomSheet(content: content, isPresented: isPresented, topPadding: topPadding)
+        }
     }
 }

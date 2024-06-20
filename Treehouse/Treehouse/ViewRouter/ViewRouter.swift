@@ -20,9 +20,21 @@ protocol Router: Hashable {
     func buildView(_ viewModel: BaseViewModel?) -> ContentView
 }
 
+enum ViewType {
+    case userAuthentication
+    case enterTreehouse
+}
+
 @Observable
 final class ViewRouter: RouterAction {
-    var path = NavigationPath()
+    
+    private(set) var currentView: ViewType = .userAuthentication
+    
+    var path = NavigationPath() {
+        didSet {
+            print(self.path.count)
+        }
+    }
     
     func push(_ router: any Router) {
         print("router: \(router)")
@@ -33,8 +45,23 @@ final class ViewRouter: RouterAction {
         path.removeLast()
     }
     
+    func popMultiple(count: Int) {
+        guard count > 0 else { return }
+        let removeCount = min(count, path.count)
+        path.removeLast(removeCount)
+    }
+    
     func popToRoot() {
         path.removeLast(path.count)
+    }
+    
+    func navigate(viewType: ViewType) {
+        currentView = viewType
+        setNavigationStack(NavigationPath()) // 화면 전환 시 NavigationPath를 초기화
+    }
+    
+    private func setNavigationStack(_ newPath: NavigationPath) {
+        path = newPath
     }
     
     @ViewBuilder

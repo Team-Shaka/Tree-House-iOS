@@ -16,6 +16,9 @@ struct SetMemberProfileImage: View {
     
     @State var isProfileImage: Bool = false
     
+    @StateObject private var photoPickerManager = PhotoPickerManager(type: .profileImage)
+    @State private var isPickerPresented = false
+    
     // MARK: - View
     
     var body: some View {
@@ -37,7 +40,7 @@ struct SetMemberProfileImage: View {
                 memberProfileImage
                 
                 Button(action: {
-                    
+                    isPickerPresented = true
                 }) {
                     Text(StringLiterals.Register.buttonTitle13)
                         .fontWithLineHeight(fontLevel: .body2)
@@ -57,7 +60,16 @@ struct SetMemberProfileImage: View {
             Spacer()
             
             Button(action: {
-                viewRouter.push(RegisterRouter.setMemberBioView)
+                Task {
+                    let result = await viewModel.presignedURL()
+                    if result {
+                        await viewModel.loadImageAWS()
+                    }
+                }
+                
+                if viewModel.isPresignedURL == viewModel.isloadImageAWS {
+                    viewRouter.push(RegisterRouter.setMemberBioView)
+                }
             }) {
                 Text(StringLiterals.Register.buttonTitle10)
                     .fontWithLineHeight(fontLevel: .body2)
@@ -89,6 +101,10 @@ struct SetMemberProfileImage: View {
                 .padding(.top, 5)
             }
         }
+        .sheet(isPresented: $isPickerPresented) {
+            photoPickerManager.presentPhotoPicker()
+                .ignoresSafeArea(edges: .bottom)
+        }
     }
 }
 
@@ -101,15 +117,18 @@ private extension SetMemberProfileImage {
             Image(.imgBackground)
                 .aspectRatio(contentMode: .fill)
 
-            if isProfileImage {
+            if photoPickerManager.selectedImages.count != 0 {
                 ZStack {
                     Image(.imgUserRing)
                     
-                    Image(.imgDummy)
+                    Image(uiImage: photoPickerManager.selectedImages[0])
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
                         .frame(width: SizeLiterals.Screen.screenWidth * 130.24 / 393, height: SizeLiterals.Screen.screenHeight * 130.24 / 852)
+                }
+                .onAppear {
+                    viewModel.profileImage.append(photoPickerManager.selectedImages[0])
                 }
             } else {
                 Image(.imgUser2)
@@ -124,6 +143,11 @@ private extension SetMemberProfileImage {
     NavigationStack {
         SetMemberProfileImage()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
+                                             ))
     }
 }

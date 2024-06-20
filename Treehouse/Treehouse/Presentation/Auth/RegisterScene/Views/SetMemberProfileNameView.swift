@@ -45,6 +45,7 @@ struct SetMemberProfileNameView: View {
             Spacer()
             
             Button(action: {
+                viewModel.memberName = memberName
                 viewRouter.push(RegisterRouter.setMemberProfileImageView)
             }) {
                 Text(StringLiterals.Register.buttonTitle9)
@@ -79,10 +80,14 @@ struct SetMemberProfileNameView: View {
         }
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
+            UIApplication.shared.hideKeyboard()
         }
         .onChange(of: memberName) { _, newValue in
             if self.isValidInputUserId(newValue) {
                 isButtonEnabled = true
+                textFieldState = .enable
+            } else if newValue.isEmpty {
+                isButtonEnabled = false
                 textFieldState = .enable
             } else {
                 isButtonEnabled = false
@@ -119,9 +124,25 @@ private extension SetMemberProfileNameView {
                 )
                 .cornerRadius(12)
             
-            Text("( \(0) / \(memberName.count) )")
-                .fontWithLineHeight(fontLevel: .caption1)
-                .foregroundStyle(.gray6)
+            HStack(spacing: 0) {
+                if textFieldState == .unable {
+                    Text(StringLiterals.Register.indicatorTitle3)
+                        .fontWithLineHeight(fontLevel: .caption1)
+                        .foregroundStyle(.error)
+                }
+                
+                if viewModel.isUserNameDuplicated {
+                    Text(StringLiterals.Register.indicatorTitle5)
+                        .fontWithLineHeight(fontLevel: .caption1)
+                        .foregroundStyle(.error)
+                }
+                
+                Spacer()
+                
+                Text("( \(memberName.count) / 20 )")
+                    .fontWithLineHeight(fontLevel: .caption1)
+                    .foregroundStyle(.gray6)
+            }
         }
     }
 }
@@ -132,6 +153,11 @@ private extension SetMemberProfileNameView {
     NavigationStack {
         SetMemberProfileNameView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl())))
+            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
+                                             ))
     }
 }

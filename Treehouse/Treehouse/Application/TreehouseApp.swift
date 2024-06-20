@@ -14,8 +14,14 @@ struct TreehouseApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SetPhoneNumberView()
-                .environment(viewRouter)
+            switch viewRouter.currentView {
+            case .userAuthentication:
+                SetPhoneNumberView()
+                    .environment(viewRouter)
+            case .enterTreehouse:
+                TreeTabView()
+                    .environment(viewRouter)
+            }
         }
     }
 }

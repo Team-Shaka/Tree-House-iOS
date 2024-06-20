@@ -9,5 +9,5 @@ import Foundation
 
 struct PostAcceptInvitationTreeMemberRequestDTO: Codable {
     let invitationId: Int
-    let isAccepted: Bool
+    let acceptDecision: Bool
 }

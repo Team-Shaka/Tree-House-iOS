@@ -22,7 +22,7 @@ struct FeedView: View {
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
-    @StateObject private var photoPickerManager = PhotoPickerManager()
+    @StateObject private var photoPickerManager = PhotoPickerManager(type: .postImage)
     @State private var isPickerPresented = false
     
     @FocusState private var focusedField: FeedField?
