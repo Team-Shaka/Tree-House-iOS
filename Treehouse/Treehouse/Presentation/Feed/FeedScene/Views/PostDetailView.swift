@@ -95,8 +95,7 @@ extension PostDetailView {
                     if textFieldState == .enable {
                         Button(action: {
                             // TODO: - 댓글 게시 API 연결
-                            // TODO: - 미트벌 버튼 통해서 팝업 bool 변경
-                            self.isPostEditPopupShowing.toggle()
+                            print("댓글 게시 버튼")
                         }) {
                             Image(.icReply)
                         }
@@ -108,17 +107,6 @@ extension PostDetailView {
             .padding(.top, 8)
             .padding(.trailing, 16)
         }
-        .popup(isPresented: $isPostEditPopupShowing) {
-            EditPostPopupView()
-                .background(.grayscaleWhite)
-                .frame(height: 790)
-                .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
-        } customize: {
-            $0
-                .type(.toast)
-                .dragToDismiss(true)
-                .isOpaque(true)
-                .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
 }

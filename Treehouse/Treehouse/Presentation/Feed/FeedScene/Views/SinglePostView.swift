@@ -24,58 +24,76 @@ struct SinglePostView: View {
     
     // MARK:  - State Property
     
-    @State private var isBottomSheetShowing = false
     @State private var selectedImage: SelectedImage? = nil
+    @StateObject private var viewModel = PostDetailViewModel()
     
     // MARK: - View
     
     var body: some View {
-        VStack(spacing: 0) {
-            Rectangle()
-                .frame(maxWidth: .infinity, maxHeight: 1)
-                .foregroundColor(.gray3)
-            
-            HStack(alignment: .top, spacing: 10) {
-                Image(.imgDummy2)
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 36, height: 36)
+        ZStack {
+            VStack(spacing: 0) {
+                Rectangle()
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+                    .foregroundColor(.gray3)
                 
-                VStack(alignment: .leading) {
-                    HStack(alignment: .center, spacing: 9) {
-                        Text("username")
-                            .font(.fontGuide(.body2))
-                            .foregroundStyle(.treeBlack)
-                            .fontWithLineHeight(fontLevel: .body2)
-                        
-                        Text("branch 3분 전")
-                            .font(.fontGuide(.caption1))
-                            .foregroundStyle(.gray5)
-                            .fontWithLineHeight(fontLevel: .caption1)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            self.isBottomSheetShowing.toggle()
-                        }) {
-                            Image(.icMeatball)
-                        }
-                    }
+                HStack(alignment: .top, spacing: 10) {
+                    Image(.imgDummy2)
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 36, height: 36)
                     
-                    Text("contentcontent~")
-                        .font(.fontGuide(.body3))
-                        .foregroundStyle(.treeBlack)
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .center, spacing: 9) {
+                            Text("username")
+                                .font(.fontGuide(.body2))
+                                .foregroundStyle(.treeBlack)
+                                .fontWithLineHeight(fontLevel: .body2)
+                            
+                            Text("branch 3분 전")
+                                .font(.fontGuide(.caption1))
+                                .foregroundStyle(.gray5)
+                                .fontWithLineHeight(fontLevel: .caption1)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                viewModel.isBottomSheetShowing.toggle()
+                            }) {
+                                Image(.icMeatball)
+                            }
+                        }
+                        
+                        Text("contentcontent~")
+                            .font(.fontGuide(.body3))
+                            .foregroundStyle(.treeBlack)
+                    }
                 }
+                .padding(16)
+                multipleImagesView
             }
-            .padding(16)
-            multipleImagesView
         }
-        .popup(isPresented: $isBottomSheetShowing) {
-            FeedBottomSheetRowView(sheetCase: .isWriterOnPost)
+        // 바텀시트 표출
+        .popup(isPresented: $viewModel.isBottomSheetShowing) {
+            FeedBottomSheetRowView(sheetCase: viewModel.sheetCase) { action in
+                viewModel.handleSheetAction(action)
+            }
         } customize: {
             $0
                 .type(.toast)
                 .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        // 게시글 수정 바텀시트 표출
+        .popup(isPresented: $viewModel.isEditPostPopupShowing) {
+            EditPostPopupView()
+                .background(.grayscaleWhite)
+                .frame(height: 790)
+                .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
+        } customize: {
+            $0
+                .type(.toast)
                 .dragToDismiss(true)
                 .isOpaque(true)
                 .backgroundColor(.treeBlack.opacity(0.5))

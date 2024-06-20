@@ -151,6 +151,7 @@
 		3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */; };
 		3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */; };
 		3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1072A2BEA0BE700C52908 /* Config.swift */; };
+		94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */; };
 		9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */; };
 		9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */; };
 		9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF362BFF2409006A8A15 /* TreeTabView.swift */; };
@@ -320,6 +321,7 @@
 		3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterUserResponseDTO.swift; sourceTree = "<group>"; };
 		3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FF1072A2BEA0BE700C52908 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdViewModel.swift; sourceTree = "<group>"; };
 		9412FF362BFF2409006A8A15 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
@@ -1180,6 +1182,7 @@
 			isa = PBXGroup;
 			children = (
 				9474FA552BECDC88006265E9 /* FeedViewModel.swift */,
+				94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1323,6 +1326,7 @@
 				3F8B72742C19DF8700299C24 /* ColorEmojiPopover.swift in Sources */,
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
+				94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
