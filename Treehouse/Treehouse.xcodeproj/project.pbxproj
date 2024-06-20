@@ -165,6 +165,13 @@
 		944D48932BF10C6900205B18 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48922BF10C6900205B18 /* NotificationModel.swift */; };
 		944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48942BF10CA000205B18 /* SinglePostView.swift */; };
 		94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94561F6C2BD11C4800B005CE /* NotificationRow.swift */; };
+		947326192C1C8D640030A182 /* EditPostPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947326182C1C8D640030A182 /* EditPostPopupView.swift */; };
+		9473261B2C1D90850030A182 /* ImageDetailCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */; };
+		9473261D2C2156400030A182 /* FullScreenModalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473261C2C2156400030A182 /* FullScreenModalModifier.swift */; };
+		947326232C23F8350030A182 /* DynamicHeightTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947326222C23F8350030A182 /* DynamicHeightTextEditorView.swift */; };
+		9475A6092C133D2C00333A72 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A6082C133D2C00333A72 /* PostDetailView.swift */; };
+		9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A6102C1A59DC00333A72 /* PostAlertView.swift */; };
+		9475A6142C1A5AEF00333A72 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 9475A6132C1A5AEF00333A72 /* PopupView */; };
 		9499D9502BF1BD04007CC6CF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D94F2BF1BD04007CC6CF /* NotificationService.swift */; };
 		9499D9522BF1C5AD007CC6CF /* NetworkErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9512BF1C5AD007CC6CF /* NetworkErrorCode.swift */; };
 		9499D9542BF1CA2A007CC6CF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499D9532BF1CA2A007CC6CF /* NetworkError.swift */; };
@@ -327,7 +334,13 @@
 		944D48922BF10C6900205B18 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		944D48942BF10CA000205B18 /* SinglePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostView.swift; sourceTree = "<group>"; };
 		94561F6C2BD11C4800B005CE /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
+		947326182C1C8D640030A182 /* EditPostPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostPopupView.swift; sourceTree = "<group>"; };
+		9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailCarouselView.swift; sourceTree = "<group>"; };
+		9473261C2C2156400030A182 /* FullScreenModalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenModalModifier.swift; sourceTree = "<group>"; };
+		947326222C23F8350030A182 /* DynamicHeightTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTextEditorView.swift; sourceTree = "<group>"; };
 		9474FA552BECDC88006265E9 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		9475A6082C133D2C00333A72 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		9475A6102C1A59DC00333A72 /* PostAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAlertView.swift; sourceTree = "<group>"; };
 		9499D94F2BF1BD04007CC6CF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9499D9512BF1C5AD007CC6CF /* NetworkErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorCode.swift; sourceTree = "<group>"; };
 		9499D9532BF1CA2A007CC6CF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -344,6 +357,7 @@
 				00CF35BB2BC306D500D9E332 /* SVGKitSwift in Frameworks */,
 				00CF35AC2BC2F4C900D9E332 /* Kingfisher in Frameworks */,
 				00CF35B92BC306D500D9E332 /* SVGKit in Frameworks */,
+				9475A6142C1A5AEF00333A72 /* PopupView in Frameworks */,
 				00CF35A92BC2F48800D9E332 /* Lottie in Frameworks */,
 				00CF35A22BC2F42F00D9E332 /* Moya in Frameworks */,
 				00CF35A02BC2F42F00D9E332 /* CombineMoya in Frameworks */,
@@ -829,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				3F8835872BCC058A0021C8AB /* MaxLengthModifier.swift */,
+				9473261C2C2156400030A182 /* FullScreenModalModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -1089,6 +1104,11 @@
 				00C2F56E2C18667E0009C6A1 /* MemberGroupRow.swift */,
 				002C73D22C08AB8B0047592F /* HeaderView.swift */,
 				94D100172C0C2A1900025D43 /* CommentCountView.swift */,
+				9475A6082C133D2C00333A72 /* PostDetailView.swift */,
+				9475A6102C1A59DC00333A72 /* PostAlertView.swift */,
+				947326182C1C8D640030A182 /* EditPostPopupView.swift */,
+				9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */,
+				947326222C23F8350030A182 /* DynamicHeightTextEditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1202,6 +1222,7 @@
 				00CF35AB2BC2F4C900D9E332 /* Kingfisher */,
 				00CF35B82BC306D500D9E332 /* SVGKit */,
 				00CF35BA2BC306D500D9E332 /* SVGKitSwift */,
+				9475A6132C1A5AEF00333A72 /* PopupView */,
 			);
 			productName = Treehouse;
 			productReference = 00CF357E2BC291FA00D9E332 /* Treehouse.app */;
@@ -1236,6 +1257,7 @@
 				00CF35A72BC2F48800D9E332 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				00CF35AA2BC2F4C900D9E332 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				00CF35B72BC306D500D9E332 /* XCRemoteSwiftPackageReference "SVGKit" */,
+				9475A6122C1A5AEF00333A72 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 00CF357F2BC291FA00D9E332 /* Products */;
 			projectDirPath = "";
@@ -1298,6 +1320,7 @@
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
+				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
@@ -1341,6 +1364,7 @@
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepositoryProtocol.swift in Sources */,
+				947326192C1C8D640030A182 /* EditPostPopupView.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				3FF107232BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift in Sources */,
 				3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */,
@@ -1369,10 +1393,12 @@
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
+				9475A6092C133D2C00333A72 /* PostDetailView.swift in Sources */,
 				3FA175D92C1AC2A200A57987 /* UIImage+.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
 				3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
+				947326232C23F8350030A182 /* DynamicHeightTextEditorView.swift in Sources */,
 				944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */,
 				3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */,
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
@@ -1380,6 +1406,7 @@
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
+				9473261D2C2156400030A182 /* FullScreenModalModifier.swift in Sources */,
 				0012366B2BCEBBAA00CEAC53 /* InviteBranchView.swift in Sources */,
 				3F8B72702C192CEA00299C24 /* CustomBottomSheet.swift in Sources */,
 				00F592462BF5F55F00BF6AED /* TreeHallView.swift in Sources */,
@@ -1401,6 +1428,7 @@
 				3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */,
 				3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
+				9473261B2C1D90850030A182 /* ImageDetailCarouselView.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
@@ -1666,6 +1694,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		9475A6122C1A5AEF00333A72 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1708,6 +1744,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 00CF35B72BC306D500D9E332 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
+		};
+		9475A6132C1A5AEF00333A72 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9475A6122C1A5AEF00333A72 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
