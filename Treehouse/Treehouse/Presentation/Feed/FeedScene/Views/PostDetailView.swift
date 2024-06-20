@@ -35,26 +35,29 @@ struct PostDetailView: View {
                             textFieldState = .notFocused
                         }
                     }
-                
-                    .onTapGesture {
-                        hideKeyboard()
+            }
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        // TODO: - 뒤로 가기 액션
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.treeBlack)
                     }
+                }
                 
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button(action: {
-                                // TODO: - 뒤로 가기 액션
-                            }) {
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(.treeBlack)
-                                Text("게시글")
-                                    .font(.fontGuide(.heading3))
-                                    .foregroundStyle(.treeBlack)
-                            }
-                            .padding(.top, 5)
-                            .padding(.bottom, 14)
-                        }
-                    }
+                ToolbarItem(placement: .principal) {
+                    Text("게시글")
+                        .font(.fontGuide(.body2))
+                        .foregroundStyle(.treeBlack)
+                }
+            }
+            .sheet(isPresented: $isPostEditPopupShowing) {
+                EditPostPopupView()
             }
         }
     }
