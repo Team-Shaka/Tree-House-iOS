@@ -16,12 +16,10 @@ struct InviteBranchView: View {
     
     // MARK: - State Property
     
-    @State var viewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
-                                                registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
-                                                registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
-                                                acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+    @State var viewModel = InvitationViewModel(acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
                                                 checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()))
+                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+    )
     @Environment(ViewRouter.self) private var viewRouter
     
     @State private var inviteCount: Int = 0
@@ -177,12 +175,5 @@ struct InviteBranchView: View {
     NavigationStack {
         InviteBranchView()
             .environment(ViewRouter())
-            .environment(UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
-                                              registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
-                                              registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
-                                              acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
-                                             ))
     }
 }

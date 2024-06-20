@@ -31,6 +31,7 @@
 		009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B71132BFF41BD009A741C /* FeedHeaderView.swift */; };
 		00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B591942C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift */; };
 		00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B591962C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift */; };
+		00B5919F2C240ECF00F7C38C /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B5919E2C240ECF00F7C38C /* InvitationViewModel.swift */; };
 		00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5642C11C1010009C6A1 /* MyProfileView.swift */; };
 		00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5662C15B5560009C6A1 /* SettingView.swift */; };
 		00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */; };
@@ -183,6 +184,7 @@
 		009B71132BFF41BD009A741C /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
 		00B591942C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklAvailableInvitationUseCase.swift; sourceTree = "<group>"; };
 		00B591962C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailableInvitationReponseEntity.swift; sourceTree = "<group>"; };
+		00B5919E2C240ECF00F7C38C /* InvitationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationViewModel.swift; sourceTree = "<group>"; };
 		00C2F5642C11C1010009C6A1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		00C2F5662C15B5560009C6A1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 		3FE944132BD63F9600C3A869 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				00B5919E2C240ECF00F7C38C /* InvitationViewModel.swift */,
 				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -1211,6 +1214,7 @@
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
+				00B5919F2C240ECF00F7C38C /* InvitationViewModel.swift in Sources */,
 				00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
 				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
