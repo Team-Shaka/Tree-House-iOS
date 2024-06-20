@@ -98,12 +98,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                         defer { group.leave() }
                         if let image = image as? UIImage {
-                            Task {
-                                let resizedImage = await self.resizeImage(image: image)
-                                DispatchQueue.main.async {
-                                    images.append(resizedImage)
-                                }
-                            }
+                            images.append(image)
                         }
                     }
                 } else {
