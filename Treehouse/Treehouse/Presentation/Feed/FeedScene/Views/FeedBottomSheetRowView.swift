@@ -19,6 +19,7 @@ struct FeedBottomSheetRowView: View {
     // MARK: - Property
     
     let sheetCase: FeedBottomSheetCase
+    let onAction: (String) -> Void
     
     // MARK: - View
     
@@ -31,22 +32,34 @@ struct FeedBottomSheetRowView: View {
             
             switch sheetCase {
             case .isWriterOnPost:
-                BottomSheetButton(imageName: "ic_edit", text: "포스트 수정하기")
-                BottomSheetButton(imageName: "ic_delete", text: "포스트 삭제하기")
+                BottomSheetButton(imageName: "ic_edit", text: "포스트 수정하기") {
+                    onAction("editPost")
+                }
+                BottomSheetButton(imageName: "ic_delete", text: "포스트 삭제하기") {
+                    onAction("deletePost")
+                }
                 
             case .isReaderOnPost:
-                BottomSheetButton(imageName: "ic_report", text: "신고하기", textColor: .red)
-                BottomSheetButton(imageName: "ic_block", text: "해당포스트 차단하기", textColor: .red)
+                BottomSheetButton(imageName: "ic_report", text: "신고하기", textColor: .red) {
+                    onAction("reportPost")
+                }
+                BottomSheetButton(imageName: "ic_block", text: "해당포스트 차단하기", textColor: .red) {
+                    onAction("blockPost")
+                }
                 
             case .isWriterOnComment:
-                BottomSheetButton(imageName: "ic_delete", text: "댓글 삭제하기")
+                BottomSheetButton(imageName: "ic_delete", text: "댓글 삭제하기") {
+                    onAction("deleteComment")
+                }
                 
             case .isReaderOnComment:
-                BottomSheetButton(imageName: "ic_report", text: "신고하기", textColor: .red)
+                BottomSheetButton(imageName: "ic_report", text: "신고하기", textColor: .red) {
+                    onAction("reportComment")
+                }
             }
         }
-        .frame(width: .infinity)
         .padding(.bottom, 33)
+        .frame(width: .infinity)
         .background(.grayscaleWhite)
         .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
     }
@@ -55,31 +68,34 @@ struct FeedBottomSheetRowView: View {
 struct BottomSheetButton: View {
     let imageName: String
     let text: String
-    var textColor: Color = .treeBlack
+    var textColor: Color = .primary
+    let action: () -> Void
     
     var body: some View {
-        HStack {
-            Image(imageName)
-                .foregroundColor(textColor)
-            
-            Text(text)
-                .foregroundColor(textColor)
-            
-            Spacer()
+        Button(action: action) {
+            HStack {
+                Image(imageName)
+                    .foregroundColor(textColor)
+                
+                Text(text)
+                    .foregroundColor(textColor)
+                
+                Spacer()
+            }
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
         }
-        .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
     }
 }
 
-// MARK: -Preview
+// MARK: - Preview
 
 struct FeedBottomSheetRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FeedBottomSheetRowView(sheetCase: .isWriterOnPost)
-            FeedBottomSheetRowView(sheetCase: .isReaderOnPost)
-            FeedBottomSheetRowView(sheetCase: .isWriterOnComment)
-            FeedBottomSheetRowView(sheetCase: .isReaderOnComment)
+            FeedBottomSheetRowView(sheetCase: .isWriterOnPost, onAction: { _ in })
+            FeedBottomSheetRowView(sheetCase: .isReaderOnPost, onAction: { _ in })
+            FeedBottomSheetRowView(sheetCase: .isWriterOnComment, onAction: { _ in })
+            FeedBottomSheetRowView(sheetCase: .isReaderOnComment, onAction: { _ in })
         }
         .previewLayout(.sizeThatFits)
     }
