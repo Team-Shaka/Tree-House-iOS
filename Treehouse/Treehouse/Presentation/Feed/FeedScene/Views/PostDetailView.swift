@@ -98,8 +98,8 @@ extension PostDetailView {
                     if textFieldState == .enable {
                         Button(action: {
                             // TODO: - 댓글 게시 API 연결
-                            // TODO: - 미트벌 머튼 통해서 팝업 bool 변경
-                            isPostEditPopupShowing.toggle()
+                            // TODO: - 미트벌 버튼 통해서 팝업 bool 변경
+                            self.isPostEditPopupShowing.toggle()
                         }) {
                             Image(.icReply)
                         }
