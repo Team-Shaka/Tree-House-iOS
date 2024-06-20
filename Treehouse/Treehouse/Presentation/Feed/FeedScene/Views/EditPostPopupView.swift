@@ -58,29 +58,7 @@ struct EditPostPopupView: View {
             }
             
             if isCancelPopupShowing {
-                Color.black.opacity(0.5)
-                    .edgesIgnoringSafeArea(.all)
-                
-                VStack {
-                    Spacer()
-                    
-                    PostAlertView(
-                        alertContent: "수정한 내용을 삭제하시겠어요?",
-                        onCancel: {
-                            self.isCancelPopupShowing = false
-                        },
-                        onConfirm: {
-                            self.isCancelPopupShowing = false
-                        }
-                    )
-                    .background(
-                        RoundedRectangle(cornerRadius: 12.0)
-                            .foregroundColor(.white)
-                            .shadow(radius: 10)
-                    )
-                    
-                    Spacer()
-                }
+                cancleEditPopupView
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -123,6 +101,33 @@ extension EditPostPopupView {
             .padding(.trailing, 16)
         }
         .padding(.top, 18)
+    }
+    
+    @ViewBuilder
+    var cancleEditPopupView: some View {
+        Color.black.opacity(0.5)
+            .edgesIgnoringSafeArea(.all)
+        
+        VStack {
+            Spacer()
+            
+            PostAlertView(
+                alertContent: "수정한 내용을 삭제하시겠어요?",
+                onCancel: {
+                    self.isCancelPopupShowing = false
+                },
+                onConfirm: {
+                    self.isCancelPopupShowing = false
+                }
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .foregroundColor(.white)
+                    .shadow(radius: 10)
+            )
+            
+            Spacer()
+        }
     }
 }
 
