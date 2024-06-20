@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import PopupView
+
+struct SelectedImage: Identifiable {
+    var id: Int
+}
 
 struct SinglePostView: View {
     
@@ -15,10 +20,12 @@ struct SinglePostView: View {
     let sentTime: Int
     let postContent: String
     let postImageURLs: [String]
+    let dummyImages = ["img_dummy", "img_dummy_2"]
     
     // MARK:  - State Property
     
     @State private var isBottomSheetShowing = false
+    @State private var selectedImage: SelectedImage? = nil
     
     // MARK: - View
     
@@ -49,8 +56,6 @@ struct SinglePostView: View {
                         Spacer()
                         
                         Button(action: {
-                            print("meatball button tapped")
-                            // TODO: - Bottom Sheet 연결
                             self.isBottomSheetShowing.toggle()
                         }) {
                             Image(.icMeatball)
@@ -64,9 +69,16 @@ struct SinglePostView: View {
             }
             .padding(16)
             multipleImagesView
-            
-            CommentCountView(commentCount: 12)
-                .padding(.leading, 62)
+        }
+        .popup(isPresented: $isBottomSheetShowing) {
+            FeedBottomSheetRowView(sheetCase: .isWriterOnPost)
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
 }
@@ -75,7 +87,7 @@ struct SinglePostView: View {
 
 extension SinglePostView {
     @ViewBuilder
-    var contentImageView: some View {
+    func contentImageView() -> some View {
         if postImageURLs.count == 1 {
             singleImageView
         } else {
@@ -94,24 +106,22 @@ extension SinglePostView {
     @ViewBuilder
     var multipleImagesView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
-                Image(.imgDummy)
-                    .resizable()
-                    .cornerRadius(6.0)
-                    .frame(width: 206, height: 172)
-                
-                Image(.imgDummy2)
-                    .resizable()
-                    .cornerRadius(6.0)
-                    .frame(width: 206, height: 172)
-                
-                Image(.imgDummy)
-                    .resizable()
-                    .cornerRadius(6.0)
-                    .frame(width: 206, height: 172)
+            HStack {
+                ForEach(0..<dummyImages.count, id: \.self) { index in
+                    Image(dummyImages[index])
+                        .resizable()
+                        .cornerRadius(6.0)
+                        .frame(width: 206, height: 172)
+                        .onTapGesture {
+                            selectedImage = SelectedImage(id: index)
+                        }
+                }
             }
             .padding(.leading, 62)
             .padding(.trailing, 21)
+        }
+        .fullScreenCover(item: $selectedImage) { selectedImage in
+            ImageDetailCarouselView(images: dummyImages, selectedIndex: selectedImage.id)
         }
     }
 }
@@ -124,4 +134,3 @@ extension SinglePostView {
                    postContent: "",
                    postImageURLs: ["", ""])
 }
-    

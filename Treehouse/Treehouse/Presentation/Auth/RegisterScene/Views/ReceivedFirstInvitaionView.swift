@@ -43,13 +43,13 @@ struct ReceivedFirstInvitaionView: View {
                                invitationType: .first,
                                leftButtonAction: {
                     Task {
-                        await viewModel.acceptInvitationTreeMember(invitationId: 1, isAccepted: false)
+                        await viewModel.acceptInvitationTreeMember(acceptDecision: false)
                     }
                     viewRouter.push(RegisterRouter.setMemberProfileNameView)
                 },
                                rightButtonAction: {
                     Task {
-                        await viewModel.acceptInvitationTreeMember(invitationId: 2, isAccepted: true)
+                        await viewModel.acceptInvitationTreeMember(acceptDecision: true)
                     }
                     viewRouter.push(RegisterRouter.setMemberProfileNameView)
                 })
@@ -72,6 +72,9 @@ struct ReceivedFirstInvitaionView: View {
         }
         .task {
             await viewModel.checkInvitations()
+        }
+        .onDisappear {
+            print("ReceivedFirstInvitationView disappeared")
         }
     }
 }
@@ -181,8 +184,7 @@ private extension ReceivedFirstInvitaionView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }

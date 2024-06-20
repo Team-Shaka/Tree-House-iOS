@@ -88,8 +88,7 @@ struct UnableRegisterView: View {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }

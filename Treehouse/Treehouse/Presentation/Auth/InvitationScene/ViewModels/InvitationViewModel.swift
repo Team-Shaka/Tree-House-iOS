@@ -50,7 +50,7 @@ final class InvitationViewModel: BaseViewModel {
 
 extension InvitationViewModel {
     func acceptInvitationTreeMember(invitationId: Int, isAccepted: Bool) async {
-        let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: invitationId, isAccepted: isAccepted)
+        let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: invitationId, acceptDecision: isAccepted)
         
         switch result {
         case .success(let response):

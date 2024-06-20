@@ -31,7 +31,6 @@ struct NotificationView: View {
                     emptyNotificationView
                 }
             }
-            
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

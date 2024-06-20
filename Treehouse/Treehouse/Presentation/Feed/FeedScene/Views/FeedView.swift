@@ -22,7 +22,7 @@ struct FeedView: View {
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
-    @StateObject private var photoPickerManager = PhotoPickerManager()
+    @StateObject private var photoPickerManager = PhotoPickerManager(type: .postImage)
     @State private var isPickerPresented = false
     
     @FocusState private var focusedField: FeedField?
@@ -35,6 +35,9 @@ struct FeedView: View {
             postTextField
             
             filledFeedView
+            
+            CommentCountView(commentCount: 12)
+                .padding(.leading, 62)
         }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .post {
@@ -65,9 +68,9 @@ extension FeedView {
                     .tint(.treeGreen)
                     .foregroundColor(textFieldState.fontColor)
                     .focused($focusedField, equals: .post)
+                    .focused($isKeyboardShowing)
                     .keyboardType(.default)
                     .textInputAutocapitalization(.never)
-                    .focused($isKeyboardShowing)
                     .frame(width: 320)
                     .lineLimit(2)
                     .background(.gray2)
@@ -88,9 +91,9 @@ extension FeedView {
                         }
                     }
                     .padding(.leading, 16)
-                                
-                    Image(textFieldState == .enable ? .icReply : .icReplyUnable)
-                        .padding(.trailing, 16)
+                
+                Image(textFieldState == .enable ? .icReply : .icReplyUnable)
+                    .padding(.trailing, 16)
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
             

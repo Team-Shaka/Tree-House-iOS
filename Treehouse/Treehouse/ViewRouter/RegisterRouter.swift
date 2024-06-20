@@ -21,6 +21,7 @@ enum RegisterRouter: Router {
     case setMemberProfileNameView
     case setMemberProfileImageView
     case setMemberBioView
+    case showMemberProfileView
     
     func buildView(_ viewModel: BaseViewModel?) -> ContentView {
         if let viewModel = viewModel as? UserSettingViewModel {
@@ -54,6 +55,9 @@ enum RegisterRouter: Router {
                     .environment(viewModel))
             case .setMemberBioView:
                 return AnyView(SetMemberBioView()
+                    .environment(viewModel))
+            case .showMemberProfileView:
+                return AnyView(ShowMemberProfileView()
                     .environment(viewModel))
             }
         } else {

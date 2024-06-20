@@ -12,9 +12,9 @@ protocol GetCheckInvitationsUseCaseProtocol {
 }
 
 final class CheckInvitationsUseCase: GetCheckInvitationsUseCaseProtocol {
-    private let repository: InvitationReposiotryProtocol
+    private let repository: InvitationRepositoryProtocol
     
-    init(repository: InvitationReposiotryProtocol) {
+    init(repository: InvitationRepositoryProtocol) {
         self.repository = repository
     }
     

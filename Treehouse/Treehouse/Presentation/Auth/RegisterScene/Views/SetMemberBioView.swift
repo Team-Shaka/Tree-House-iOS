@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum SetMemberBioField {
-    case memberBio
-}
-
 struct SetMemberBioView: View {
     
     // MARK: - State Property
@@ -21,12 +17,11 @@ struct SetMemberBioView: View {
     @State var memberBio: String = ""
     @State var isButtonEnabled: Bool = false
     @State var textFieldState: TextFieldStateType = .notFocused
-    @FocusState private var focusedField: SetMemberBioField?
+    @FocusState private var focusedField: Bool
     
     // MARK: - View
     
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(StringLiterals.Register.registerTitle8)
@@ -39,8 +34,9 @@ struct SetMemberBioView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 39/852)
+            .fixedSize(horizontal: false, vertical: true)
             
-            Image(.imgDummy)
+            Image(uiImage: viewModel.profileImage[0])
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
@@ -52,17 +48,21 @@ struct SetMemberBioView: View {
             Spacer()
             
             Button(action: {
-                
+                if isButtonEnabled {
+                    viewModel.bio = memberBio
+                    viewRouter.push(RegisterRouter.showMemberProfileView)
+                }
             }) {
                 Text(StringLiterals.Register.buttonTitle11)
                     .fontWithLineHeight(fontLevel: .body2)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
-                    .foregroundStyle(.gray1)
-                    .background(.treeBlack)
+                    .foregroundStyle(isButtonEnabled == false ? .gray6 : .gray1)
+                    .background(isButtonEnabled == false ? .gray2 : .treeBlack)
                     .cornerRadius(12)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(EdgeInsets(top: 30, leading: 24, bottom: 30, trailing: 24))
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
@@ -82,17 +82,30 @@ struct SetMemberBioView: View {
                 .padding(.top, 5)
             }
         }
-        
         .onAppear {
             UITextField.appearance().clearButtonMode = .whileEditing
+            UIApplication.shared.hideKeyboard()
+        }
+        .onChange(of: memberBio) { _, newValue in
+            if memberBio.count >= 4 && memberBio.count <= 20  {
+                textFieldState = .enable
+                isButtonEnabled = true
+            } else if newValue.isEmpty {
+                isButtonEnabled = false
+                textFieldState = .enable
+            } else {
+                textFieldState = .unable
+                isButtonEnabled = false
+            }
         }
         .onChange(of: focusedField) { _, newValue in
-            if newValue == .memberBio {
+            if newValue == true {
                 textFieldState = .enable
             } else {
                 textFieldState = .notFocused
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
@@ -103,11 +116,10 @@ private extension SetMemberBioView {
     var memberBioTextField: some View {
         VStack(alignment: .trailing, spacing: 8) {
             TextField(StringLiterals.Register.placeholderTitle4, text: $memberBio)
-                .maxLength(text: $memberBio, 20)
                 .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
-                .focused($focusedField, equals: .memberBio)
+                .focused($focusedField)
                 .padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 10))
                 .frame(height: 62)
                 .background(textFieldState.backgroundColor)
@@ -117,9 +129,19 @@ private extension SetMemberBioView {
                 )
                 .cornerRadius(12)
             
-            Text("( \(memberBio.count) / 20 )")
-                .fontWithLineHeight(fontLevel: .caption1)
-                .foregroundStyle(.gray6)
+            HStack(spacing: 0) {
+                if textFieldState == .unable {
+                    Text(StringLiterals.Register.indicatorTitle5)
+                        .fontWithLineHeight(fontLevel: .caption1)
+                        .foregroundStyle(.error)
+                }
+                
+                Spacer()
+                
+                Text("( \(memberBio.count) / 20 )")
+                    .fontWithLineHeight(fontLevel: .caption1)
+                    .foregroundStyle(.gray6)
+            }
         }
     }
 }
@@ -134,8 +156,7 @@ private extension SetMemberBioView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }

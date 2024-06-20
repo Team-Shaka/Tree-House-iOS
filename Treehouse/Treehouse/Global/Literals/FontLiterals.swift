@@ -44,41 +44,45 @@ extension FontLevel {
     var fontSize: CGFloat {
         switch self {
         case .heading1:
-            return 24
+            return reSize(24)
         case .heading2:
-            return 22
+            return reSize(22)
         case .heading3:
-            return 20
+            return reSize(20)
         case .heading4, .body1:
-            return 18
+            return reSize(18)
         case .body2, .body3:
-            return 16
+            return reSize(16)
         case .body4, .body5:
-            return 14
+            return reSize(14)
         case .caption1:
-            return 12
+            return reSize(12)
         case .caption2:
-            return 10
+            return reSize(10)
         }
     }
     
     var lineHeight: CGFloat {
         switch self {
         case .heading1, .heading2:
-            return 36
+            return reSize(36)
         case .heading3:
-            return 28
+            return reSize(28)
         case .heading4, .body1, .body2, .body3:
-            return 26
+            return reSize(26)
         case .body4:
-            return 24
+            return reSize(24)
         case .body5:
-            return 20
+            return reSize(20)
         case .caption1:
-            return 18
+            return reSize(18)
         case .caption2:
-            return 16
+            return reSize(16)
         }
+    }
+    
+    func reSize(_ size: CGFloat) -> CGFloat{
+        return SizeLiterals.Screen.screenHeight * size / 852
     }
 }
 

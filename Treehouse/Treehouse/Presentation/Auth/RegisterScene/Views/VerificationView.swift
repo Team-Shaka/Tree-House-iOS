@@ -74,7 +74,6 @@ struct VerificationView: View {
             
             Button {
                 // TODO: 전화번호 인증 API 인증
-                
                 viewModel.isAuthentication = .notSignUp
                 switch viewModel.isAuthentication {
                 case .notInvitation:
@@ -156,8 +155,7 @@ struct VerificationView: View {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                              checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
                                              ))
     }
 }
