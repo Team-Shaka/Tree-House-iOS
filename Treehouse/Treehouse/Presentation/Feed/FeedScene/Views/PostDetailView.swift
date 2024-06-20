@@ -56,9 +56,6 @@ struct PostDetailView: View {
                         .foregroundStyle(.treeBlack)
                 }
             }
-            .sheet(isPresented: $isPostEditPopupShowing) {
-                EditPostPopupView()
-            }
         }
     }
 }
