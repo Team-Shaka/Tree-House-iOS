@@ -14,11 +14,7 @@ struct CreateTreehouseNameView: View {
     @State var treehouseName: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: Bool
-    
-    @State var isLengthValid = false
-    @State var isValidInput = false
     @State var isButtonEnabled = false
-    
     @State var errorMessage = ""
     
     // MARK: - View
@@ -60,6 +56,7 @@ struct CreateTreehouseNameView: View {
                         .cornerRadius(10)
                         .padding(.trailing, 1)
                 }
+                .padding(.bottom, 30)
             }
             .padding(.leading, 16)
             .padding(.trailing, 16)
@@ -87,10 +84,15 @@ struct CreateTreehouseNameView: View {
             .onChange(of: focusedField) { _, newValue in
                 if newValue == true {
                     textFieldState = .enable
-                } else if isLengthValid == false || isValidInput == false {
-                    textFieldState = .unable
                 } else {
                     textFieldState = .notFocused
+                }
+            }
+            .onChange(of: treehouseName) { _, newValue in
+                if newValue.isEmpty {
+                    isButtonEnabled = false
+                } else {
+                    isButtonEnabled = true
                 }
             }
         }
