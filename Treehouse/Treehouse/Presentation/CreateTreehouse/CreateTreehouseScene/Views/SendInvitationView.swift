@@ -84,28 +84,29 @@ struct SendInvitationView: View {
             }) {
                 Text("다 초대했어요")
                     .font(.fontGuide(.body2))
-                    .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .foregroundStyle(.grayscaleWhite)
                     .background(.grayscaleBlack)
                     .cornerRadius(10)
-                    .padding(.trailing, 1)
             }
+            .padding(.leading, 8)
+            .padding(.trailing, 9)
             
             Button(action: {
                 // TODO: - 다음 뷰로 연결
             }) {
                 Text("지금은 건너뛸래요")
                     .font(.fontGuide(.body2))
-                    .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .foregroundStyle(.gray5)
                     .background(.grayscaleWhite)
                     .cornerRadius(10)
-                    .padding(.trailing, 1)
             }
+            .padding(.leading, 8)
+            .padding(.trailing, 9)
+            
             .onTapGesture {
                 hideKeyboard()
             }

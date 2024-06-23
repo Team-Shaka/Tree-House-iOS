@@ -37,14 +37,14 @@ struct CreateTreeHallNameView: View {
                     .padding(.leading, 8)
                 
                 treeHallNameTextField
-                    .padding(.top, 32)
+                    .padding(.top, 6)
                 
                 Spacer()
                 
                 Button(action: {
-                    
+                    // TODO: - 다음 뷰 연결
                 }) {
-                    Text("트리홀 이름 입력")
+                    Text("트리홀 이름 정하기")
                         .font(.fontGuide(.body2))
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -54,6 +54,9 @@ struct CreateTreeHallNameView: View {
                         .cornerRadius(10)
                         .padding(.trailing, 1)
                 }
+                .padding(.bottom, 30)
+                .padding(.leading, 8)
+                .padding(.trailing, 9)
             }
             .padding(.leading, 16)
             .padding(.trailing, 16)

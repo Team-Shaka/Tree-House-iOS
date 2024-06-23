@@ -55,32 +55,34 @@ struct PreviewCreatedTreehouseView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    // TODO: - 다음 뷰로 연결
-                }) {
-                    Text("좋아요!")
-                        .font(.fontGuide(.body2))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .foregroundStyle(.grayscaleWhite)
-                        .background(.grayscaleBlack)
-                        .cornerRadius(10)
-                        .padding(.trailing, 1)
-                }
-                
-                Button(action: {
-                    // TODO: - 이전 뷰로 연결
-                }) {
-                    Text("다시 작성하고 싶어요")
-                        .font(.fontGuide(.body2))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .foregroundStyle(.gray5)
-                        .background(.grayscaleWhite)
-                        .cornerRadius(10)
-                        .padding(.trailing, 1)
+                VStack(spacing: 12) {
+                    Button(action: {
+                        // TODO: - 다음 뷰로 연결
+                    }) {
+                        Text("좋아요!")
+                            .font(.fontGuide(.body2))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .foregroundStyle(.grayscaleWhite)
+                            .background(.grayscaleBlack)
+                            .cornerRadius(10)
+                            .padding(.trailing, 1)
+                    }
+                    
+                    Button(action: {
+                        // TODO: - 이전 뷰로 연결
+                    }) {
+                        Text("다시 작성하고 싶어요")
+                            .font(.fontGuide(.body2))
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .foregroundStyle(.gray5)
+                            .background(.grayscaleWhite)
+                            .cornerRadius(10)
+                            .padding(.trailing, 1)
+                    }
                 }
             }
             .padding(.leading, 16)

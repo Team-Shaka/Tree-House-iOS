@@ -57,6 +57,8 @@ struct CreateTreehouseNameView: View {
                         .padding(.trailing, 1)
                 }
                 .padding(.bottom, 30)
+                .padding(.leading, 8)
+                .padding(.trailing, 9)
             }
             .padding(.leading, 16)
             .padding(.trailing, 16)
