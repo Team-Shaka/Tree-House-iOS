@@ -69,6 +69,8 @@ struct PreviewCreatedTreehouseView: View {
                             .cornerRadius(10)
                             .padding(.trailing, 1)
                     }
+                    .padding(.leading, 8)
+                    .padding(.trailing, 9)
                     
                     Button(action: {
                         // TODO: - 이전 뷰로 연결
@@ -83,6 +85,8 @@ struct PreviewCreatedTreehouseView: View {
                             .cornerRadius(10)
                             .padding(.trailing, 1)
                     }
+                    .padding(.leading, 8)
+                    .padding(.trailing, 9)
                 }
             }
             .padding(.leading, 16)
