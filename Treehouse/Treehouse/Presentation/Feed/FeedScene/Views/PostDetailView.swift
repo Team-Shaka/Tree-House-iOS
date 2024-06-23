@@ -16,7 +16,7 @@ struct PostDetailView: View {
     @State private var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: FeedField?
     @ObservedObject var viewModel: PostDetailViewModel
-
+    
     // MARK: - View
     
     var body: some View {

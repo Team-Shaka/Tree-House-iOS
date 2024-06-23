@@ -8,7 +8,6 @@
 import UIKit
 
 extension String {
-    
     var containsEmoji: Bool {
         for scalar in unicodeScalars where scalar.properties.isEmoji {
             return true
