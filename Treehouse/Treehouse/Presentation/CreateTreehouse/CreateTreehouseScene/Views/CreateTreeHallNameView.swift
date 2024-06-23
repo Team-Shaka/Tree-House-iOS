@@ -11,15 +11,10 @@ struct CreateTreeHallNameView: View {
     
     // MARK: - State Property
     
-    @State var treehouseName: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: Bool
-    
-    @State var isLengthValid = false
-    @State var isValidInput = false
     @State var isButtonEnabled = false
-    
-    @State var errorMessage = ""
+    @State var treeHallName: String = ""
     
     // MARK: - View
     
@@ -86,10 +81,15 @@ struct CreateTreeHallNameView: View {
             .onChange(of: focusedField) { _, newValue in
                 if newValue == true {
                     textFieldState = .enable
-                } else if isLengthValid == false || isValidInput == false {
-                    textFieldState = .unable
                 } else {
                     textFieldState = .notFocused
+                }
+            }
+            .onChange(of: treeHallName) { _, newValue in
+                if newValue.isEmpty {
+                    isButtonEnabled = false
+                } else {
+                    isButtonEnabled = true
                 }
             }
         }
@@ -100,7 +100,7 @@ private extension CreateTreeHallNameView {
     @ViewBuilder
     var treeHallNameTextField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            TextField("트리홀 이름 입력", text: $treehouseName)
+            TextField("트리홀 이름 입력", text: $treeHallName)
                 .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(textFieldState.fontColor)
                 .tint(.treeGreen)
@@ -114,10 +114,6 @@ private extension CreateTreeHallNameView {
                 )
                 .cornerRadius(12)
                 .autocapitalization(.none)
-            
-            Text(errorMessage)
-                .fontWithLineHeight(fontLevel: .caption1)
-                .foregroundStyle(.error)
         }
     }
 }
