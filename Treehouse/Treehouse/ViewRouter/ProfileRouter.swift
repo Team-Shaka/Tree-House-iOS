@@ -12,11 +12,14 @@ enum ProfileRouter: Router {
     typealias ContentView = AnyView
     
     case editProfileView
+    case memberProfileView
     
     func buildView(_ viewModel: BaseViewModel?) -> ContentView {
         switch self {
         case .editProfileView:
             return AnyView(EditProfileView())
+        case .memberProfileView:
+            return AnyView(MemberProfileView())
         }
     }
 }
