@@ -84,6 +84,9 @@
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
+		3F44C13C2C24394600A5CAFE /* FeedHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C13B2C24394600A5CAFE /* FeedHomeView.swift */; };
+		3F44C13E2C25732E00A5CAFE /* FeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C13D2C25732E00A5CAFE /* FeedRouter.swift */; };
+		3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44C13F2C27E8DC00A5CAFE /* UserInfoView.swift */; };
 		3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */; };
 		3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */; };
 		3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */; };
@@ -256,6 +259,9 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		3F44C13B2C24394600A5CAFE /* FeedHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHomeView.swift; sourceTree = "<group>"; };
+		3F44C13D2C25732E00A5CAFE /* FeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouter.swift; sourceTree = "<group>"; };
+		3F44C13F2C27E8DC00A5CAFE /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserUseCase.swift; sourceTree = "<group>"; };
 		3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponseEntity.swift; sourceTree = "<group>"; };
@@ -565,6 +571,7 @@
 				00C2F5682C16F82F0009C6A1 /* MemberProfileView.swift */,
 				00C2F5662C15B5560009C6A1 /* SettingView.swift */,
 				00C2F5702C1AFEBC0009C6A1 /* EditProfileView.swift */,
+				3F44C13F2C27E8DC00A5CAFE /* UserInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -874,6 +881,7 @@
 				3F8846012BF254B60021FB79 /* ViewRouter.swift */,
 				3F8846042BF4F13E0021FB79 /* RegisterRouter.swift */,
 				3F8846062BF58B6A0021FB79 /* InvitationRouter.swift */,
+				3F44C13D2C25732E00A5CAFE /* FeedRouter.swift */,
 				000844EE2C1C607600FF33FD /* ProfileRouter.swift */,
 			);
 			path = ViewRouter;
@@ -1123,6 +1131,7 @@
 				9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */,
 				947326222C23F8350030A182 /* DynamicHeightTextEditorView.swift */,
 				94C7B4422C2407AD00CA378E /* FeedBottomSheetRowView.swift */,
+				3F44C13B2C24394600A5CAFE /* FeedHomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1338,6 +1347,7 @@
 				94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
+				3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
@@ -1407,6 +1417,7 @@
 				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
 				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
+				3F44C13E2C25732E00A5CAFE /* FeedRouter.swift in Sources */,
 				3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
@@ -1422,6 +1433,7 @@
 				3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */,
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
 				0083B4BC2C01D02500F0D252 /* BottomSheet.swift in Sources */,
+				3F44C13C2C24394600A5CAFE /* FeedHomeView.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
