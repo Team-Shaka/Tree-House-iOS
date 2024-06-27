@@ -10,37 +10,27 @@ import SwiftUI
 struct NotificationView: View {
     
     // MARK: - Property
-    
+    @Environment(ViewRouter.self) var viewRouter: ViewRouter
     let notifications = NotificationModel.notificationDummyData
     
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
-            Group {
-                if !notifications.isEmpty {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 0) {
-                            ForEach(notifications) { notification in
-                                NotificationRow(notification: notification)
-                            }
+        Group {
+            if !notifications.isEmpty {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        ForEach(notifications) { notification in
+                            NotificationRow(notification: notification)
                         }
                     }
-                    
-                } else {
-                    emptyNotificationView
                 }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("알림")
-                        .font(.fontGuide(.heading3))
-                        .padding(.leading, 14)
-                        .padding(.bottom, 13)
-                }
+                
+            } else {
+                emptyNotificationView
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -63,4 +53,5 @@ extension NotificationView {
 
 #Preview {
     NotificationView()
+        .environment(ViewRouter())
 }

@@ -11,6 +11,8 @@ struct EditProfileView: View {
     
     // MARK: - State Property
     
+    @Environment(ViewRouter.self) var viewRouter: ViewRouter
+    
     @State private var profileImage: Image? = Image(.imgUser)
     @State private var name: String = "username"
     @State private var bio: String = "바이오입니다."
@@ -134,11 +136,26 @@ struct EditProfileView: View {
             }
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 64 / 852)
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+                .padding(.top, 5)
+            }
+        }
     }
 }
 
 // MARK: - Preview
 
 #Preview {
-    EditProfileView()
+    NavigationStack {
+        EditProfileView()
+            .environment(ViewRouter())
+    }
 }
