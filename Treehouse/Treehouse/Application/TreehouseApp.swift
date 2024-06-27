@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct TreehouseApp: App {
     
     @State var viewRouter = ViewRouter()
+    let container = try! ModelContainer(for: UserInfoData.self)
     
     var body: some Scene {
         WindowGroup {
@@ -22,6 +24,6 @@ struct TreehouseApp: App {
                 TreeTabView()
                     .environment(viewRouter)
             }
-        }
+        }.modelContainer(container)
     }
 }

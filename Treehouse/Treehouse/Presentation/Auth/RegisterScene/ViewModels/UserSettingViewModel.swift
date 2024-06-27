@@ -106,6 +106,17 @@ final class UserSettingViewModel: BaseViewModel {
     deinit {
         print("Deinit UserSettingViewModel")
     }
+    
+    func createUserInfoData() -> UserInfoData? {
+        guard let userId = userId,
+              let treehouseId = treehouseId,
+              let memberName = memberName,
+              let bio = bio else {
+            return nil
+        }
+        
+        return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId], bio: bio)
+    }
 }
 
 // MARK: - Register API Extension
@@ -192,7 +203,9 @@ extension UserSettingViewModel {
         
         switch result {
         case .success(let response):
-            // TODO: - userId, treehouseId 저장 ( SwiftData, KeyChain, UserDefaults? )
+            self.userId = response.userId
+            self.treehouseId = response.treehouseId
+            
             return true
         case .failure(let error):
             await MainActor.run {

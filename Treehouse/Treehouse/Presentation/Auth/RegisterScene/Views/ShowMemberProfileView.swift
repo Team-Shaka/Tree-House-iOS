@@ -17,6 +17,7 @@ struct ShowMemberProfileView: View {
     @Environment(UserSettingViewModel.self) private var viewModel
     @Environment(ViewRouter.self) private var viewRouter
     
+    @State private var userInfoViewModel = UserInfoViewModel()
     @State var userId: String = "younkyum"
     @State var bio: String = "안녕하세요, 진윤겸입니다!"
     @State var isRetryButtonDisabled = false
@@ -45,7 +46,11 @@ struct ShowMemberProfileView: View {
             Task {
                 let result = await viewModel.registerTreeMember()
                 
-                if result {
+                guard let createResult = viewModel.createUserInfoData() else { return }
+                                
+                let userDataResult = userInfoViewModel.createData(newData: createResult)
+                
+                if result && userDataResult {
                     viewRouter.navigate(viewType: .enterTreehouse)
                 }
             }
