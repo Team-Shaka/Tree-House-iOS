@@ -28,7 +28,7 @@ enum ViewType {
 @Observable
 final class ViewRouter: RouterAction {
     
-    private(set) var currentView: ViewType = .userAuthentication
+    private(set) var currentView: ViewType = .enterTreehouse
     
     var path = NavigationPath() {
         didSet {
@@ -67,5 +67,10 @@ final class ViewRouter: RouterAction {
     @ViewBuilder
     func buildScene<RouterType: Router, ViewModelType: BaseViewModel>(inputRouter: RouterType, viewModel: ViewModelType?) -> some View {
         inputRouter.buildView(viewModel)
+    }
+    
+    @ViewBuilder
+    func buildScene<RouterType: Router>(inputRouter: RouterType) -> some View {
+        inputRouter.buildView(nil)
     }
 }
