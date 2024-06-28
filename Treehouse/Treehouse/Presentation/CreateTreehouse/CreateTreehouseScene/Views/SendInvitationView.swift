@@ -108,7 +108,7 @@ struct SendInvitationView: View {
             .padding(.trailing, 9)
             
             .onTapGesture {
-                hideKeyboard()
+                UIApplication.shared.hideKeyboard()
             }
             .onAppear {
                 Task {
