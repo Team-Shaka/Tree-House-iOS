@@ -94,4 +94,8 @@ enum StringLiterals {
         static let bottomSheetLabel1 = "초대하기"
         static let bottomSheetLabel2 = "초대할 트리하우스 선택"
     }
+    
+    enum EditProfile {
+        static let editProfileTitle = "멤버 프로필 변경"
+    }
 }
