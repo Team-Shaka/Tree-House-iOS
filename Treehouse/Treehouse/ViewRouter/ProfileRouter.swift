@@ -15,11 +15,21 @@ enum ProfileRouter: Router {
     case memberProfileView
     
     func buildView(_ viewModel: BaseViewModel?) -> ContentView {
-        switch self {
-        case .editProfileView:
-            return AnyView(EditProfileView())
-        case .memberProfileView:
-            return AnyView(MemberProfileView())
+        if let viewModel = viewModel as? UserInfoViewModel {
+            switch self {
+            case .editProfileView:
+                return AnyView(EditProfileView()
+                    .environment(viewModel))
+            default:
+                return AnyView(EmptyView())
+            }
+        } else {
+            switch self {
+            case .memberProfileView:
+                return AnyView(MemberProfileView())
+            default:
+                return AnyView(EmptyView())
+            }
         }
     }
 }
