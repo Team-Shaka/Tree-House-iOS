@@ -32,8 +32,9 @@ struct MemberProfileView: View {
         ScrollView(.vertical) {
             VStack(spacing: 0) {
                 UserInfoView(infoType: .memberProfile,
-                             userName: "memberName",
-                             userId: "memberid",
+                             treememberName: "memberName",
+                             userName: "memberid",
+                             profileImage: Image(.imgDummy),
                              bio: "멤버 바이오입니다.",
                              branchCount: 0,
                              treeHouseCount: 0,
