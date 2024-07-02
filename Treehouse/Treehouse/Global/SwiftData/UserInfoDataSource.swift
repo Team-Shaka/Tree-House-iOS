@@ -21,9 +21,12 @@ final class UserInfoDataSource {
         self.modelContext = modelContainer.mainContext
     }
     
-    func saveUserInfo(data: UserInfoData) -> Result<Bool, Error> {
+    func insertUserInfo(data: UserInfoData) -> Bool {
         modelContext.insert(data)
-        
+        return true
+    }
+    
+    func saveUserInfo() -> Result<Bool, Error> {
         do {
             try modelContext.save()
             return .success(true)
@@ -34,8 +37,16 @@ final class UserInfoDataSource {
     
     func fetchItem() -> UserInfoData? {
         do {
-            let items = try modelContext.fetch(FetchDescriptor<UserInfoData>())
-            return items.first
+            let data = try modelContext.fetch(FetchDescriptor<UserInfoData>())
+            data.forEach {
+                print($0.userName)
+                print($0.treeMemberName)
+                print($0.bio)
+            }
+            print("유저 정보 불러오기: \(String(describing: data.first?.userName))")
+            print("유저 정보 불러오기: \(String(describing: data.first?.bio))")
+
+            return data.first
         } catch {
             fatalError(error.localizedDescription)
         }
