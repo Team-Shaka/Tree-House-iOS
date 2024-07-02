@@ -43,7 +43,7 @@ final class UserSettingViewModel: BaseViewModel {
     var memberNum: Int = 0
     var memberProfileImages: [String?] = []
     
-    var profileImage = [UIImage]()
+    var profileImage: [UIImage]?
     
     // MARK: - State Property
     
@@ -115,7 +115,15 @@ final class UserSettingViewModel: BaseViewModel {
             return nil
         }
         
-        return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId], bio: bio)
+        if let profileImageData = profileImage?.first?.pngData() {
+            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId: treehouseName], bio: bio, profileImageData: profileImageData)
+        } else {
+            guard let imageData = UIImage(resource: .imgUser).pngData() else {
+                return nil
+            }
+             
+            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId: treehouseName], bio: bio, profileImageData: imageData)
+        }
     }
 }
 
@@ -262,12 +270,12 @@ extension UserSettingViewModel {
 extension UserSettingViewModel {
     func presignedURL() async -> Bool {
         
-        guard let treehouseId = treehouseId else {
+        guard let treehouseId = treehouseId, let imageDataSize = profileImage?.first?.getImageBitSize()else {
             print("treehouseId")
             return false
         }
 
-        let result = await presignedURLUseCase.execute(treehouseId: treehouseId, fileName: "\(userName)_ProfileImage", fileSize: profileImage[0].getImageBitSize())
+        let result = await presignedURLUseCase.execute(treehouseId: treehouseId, fileName: "\(userName)_ProfileImage", fileSize: imageDataSize)
         
         switch result {
         case .success(let response):
@@ -288,7 +296,9 @@ extension UserSettingViewModel {
     
     func loadImageAWS() async {
         
-        let result = await uploadImageToAWSUseCase.execute(presignedUrls: presignedUrlImage, uploadImages: profileImage)
+        guard let uploadImages = profileImage else { return }
+        
+        let result = await uploadImageToAWSUseCase.execute(presignedUrls: presignedUrlImage, uploadImages: uploadImages)
 
         switch result {
         case .success(let response):
