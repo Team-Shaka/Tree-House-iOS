@@ -97,5 +97,12 @@ enum StringLiterals {
     
     enum EditProfile {
         static let editProfileTitle = "멤버 프로필 변경"
+        
+    enum CreateTreehouse {
+        static let createTreehouseTitle1 = "아직 상대가 초대장을 수락하지 않았어요.\n수락이 완료되면 새로운 트리하우스가 개설됩니다!"
+        static let createTreehouseTitle2 = "15일 안에 수락하지 않을 경우 \n트리하우스 개설이 취소됩니다."
+        static let createTreehouseTitle3 = "새롭게 만든 트리하우스예요. \n어떤가요?"
+        static let createTreehouseTitle4 = "새로운 트리하우스의 트리홀 이름을 정해주세요!"
+        static let createTreehouseTitle5 = "트리홀은 트리하우스의 음성 채팅 채널로, \n언제 어디서든 이야기를 나눌 수 있는 곳이에요!"
     }
 }
