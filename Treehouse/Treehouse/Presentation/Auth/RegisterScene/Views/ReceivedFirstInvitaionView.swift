@@ -43,15 +43,17 @@ struct ReceivedFirstInvitaionView: View {
                                invitationType: .first,
                                leftButtonAction: {
                     Task {
-                        await viewModel.acceptInvitationTreeMember(acceptDecision: false)
+                        let _ = await viewModel.acceptInvitationTreeMember(acceptDecision: false)
                     }
-                    viewRouter.push(RegisterRouter.setMemberProfileNameView)
                 },
                                rightButtonAction: {
                     Task {
-                        await viewModel.acceptInvitationTreeMember(acceptDecision: true)
+                        let result = await viewModel.acceptInvitationTreeMember(acceptDecision: true)
+                        
+                        if result {
+                            viewRouter.push(RegisterRouter.setMemberProfileNameView)
+                        }
                     }
-                    viewRouter.push(RegisterRouter.setMemberProfileNameView)
                 })
                 DrawingView()
             }

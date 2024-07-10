@@ -33,7 +33,11 @@ final class UserSettingViewModel: BaseViewModel {
     var phoneNumber: String?
     var treehouseId: Int?
 
-    var errorMessage: String? = nil
+    var errorMessage: String? = nil {
+        didSet {
+            print(errorMessage)
+        }
+    }
     
     // MARK: - Invitation Property
     
@@ -202,8 +206,8 @@ extension UserSettingViewModel {
         }
     }
     
-    func acceptInvitationTreeMember(acceptDecision: Bool) async {
-        guard let invitationId = invitationId else { return }
+    func acceptInvitationTreeMember(acceptDecision: Bool) async -> Bool {
+        guard let invitationId = invitationId else { return false }
         
         let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: invitationId, acceptDecision: acceptDecision)
         
@@ -212,10 +216,12 @@ extension UserSettingViewModel {
             // TODO: - invitationid 연결
             
             treehouseId = response.treehouseId
+            return true
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
+            return false
         }
     }
 }

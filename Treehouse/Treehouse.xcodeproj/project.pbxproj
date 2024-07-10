@@ -74,6 +74,7 @@
 		3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */; };
 		3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */; };
 		3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */; };
+		3F0A69872C3595C0003A64EC /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */; };
 		3F1BE12C2C1FDF6700D3AF1D /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */; };
 		3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */; };
 		3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */; };
@@ -249,6 +250,7 @@
 		3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUpdateFeedPostResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateCommentResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadCommentResponseDTO.swift; sourceTree = "<group>"; };
+		3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageToAWSUseCase.swift; sourceTree = "<group>"; };
 		3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSImageRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 				3FF106FB2BEA078C00C52908 /* BaseResponse.swift */,
 				3FF106FD2BEA079500C52908 /* HttpMethod.swift */,
 				3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */,
+				3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1460,6 +1463,7 @@
 				3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
 				9473261B2C1D90850030A182 /* ImageDetailCarouselView.swift in Sources */,
+				3F0A69872C3595C0003A64EC /* NetworkServiceManager.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
