@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct TreeTabView: View {
+    
+    // MARK: - State Property
+    
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
+    @State private var userInfoViewModel = UserInfoViewModel()
+    
+    // MARK: - View
     
     var body: some View {
         @Bindable var viewRouter = viewRouter
@@ -34,13 +40,27 @@ struct TreeTabView: View {
                     .tabItem {
                         Label("설정", image: "ic_setting")
                     }
+                    .environment(userInfoViewModel)
             }
-            .font(.fontGuide(.caption2))
+            .fontWithLineHeight(fontLevel: .caption2)
             .tint(.treeGreen)
             .environment(viewRouter)
+            .navigationDestination(for: FeedRouter.self) { router in
+                viewRouter.buildScene(inputRouter: router)
+            }
+            .navigationDestination(for: ProfileRouter.self) { router in
+                switch router {
+                case .editProfileView:
+                    viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
+                case .memberProfileView:
+                    viewRouter.buildScene(inputRouter: router)
+                }
+            }
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     TreeTabView()

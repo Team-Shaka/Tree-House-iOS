@@ -18,6 +18,7 @@ struct PostDetailView: View {
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: FeedField?
+    @ObservedObject var viewModel: PostDetailViewModel
     
     // MARK: - View
     
@@ -25,7 +26,7 @@ struct PostDetailView: View {
         ZStack {
             VStack {
                 ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .DetailView)
                 }
                 
                 feedDetailTextField

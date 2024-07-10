@@ -163,7 +163,7 @@ extension FeedView {
     
     @ViewBuilder
     var filledFeedView: some View {
-        SinglePostView(userProfileImageURL: "", sentTime: 4, postContent: "", postImageURLs: ["", ""])
+        SinglePostView(userProfileImageURL: "", sentTime: 4, postContent: "", postImageURLs: ["", ""], postType: .feedView)
             .environment(viewRouter)
     }
 }
