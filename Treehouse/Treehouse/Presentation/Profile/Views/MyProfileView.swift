@@ -13,10 +13,8 @@ struct MyProfileView: View {
     // MARK: - State Property
     
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
+    @Environment(UserInfoViewModel.self) var userInfoViewModel: UserInfoViewModel
     
-    @State private var userName: String = "username"
-    @State private var userId: String = "userid"
-    @State private var bio: String = "바이오입니다."
     @State private var branchCount: Int = 0
     @State private var treeHouseCount: Int = 0
     @State private var root: String = "Root"
@@ -35,12 +33,13 @@ struct MyProfileView: View {
             ScrollView(.vertical) {
                 VStack(spacing: 0) {
                     UserInfoView(infoType: .myProfile,
-                                 userName: "userName",
-                                 userId: "userid",
-                                 bio: "바이오입니다.",
-                                 branchCount: 0,
-                                 treeHouseCount: 0,
-                                 root: "Root",
+                                 treememberName: userInfoViewModel.safeUserInfo.treeMemberName,
+                                 userName: userInfoViewModel.safeUserInfo.userName,
+                                 profileImage: Image(uiImage: UIImage(data: userInfoViewModel.safeUserInfo.profileImageData) ?? UIImage(resource: .imgDummy)),
+                                 bio: userInfoViewModel.safeUserInfo.bio,
+                                 branchCount: branchCount,
+                                 treeHouseCount: treeHouseCount,
+                                 root: root,
                                  inviteAction: nil,
                                  branchAction: nil,
                                  profileAction: { viewRouter.push(ProfileRouter.editProfileView) })
@@ -53,12 +52,9 @@ struct MyProfileView: View {
                     
                     SettingView(state: .serviceSetting)
                 }
+                .padding(.top, 16)
             }
-            .padding(.top, 10)
             .padding(.bottom, 16)
-            .navigationDestination(for: ProfileRouter.self) { router in
-                viewRouter.buildScene(inputRouter: router)
-            }
             // 바텀시트 표출
             .popup(isPresented: $isPresent) {
                 Text("asdfasdf")

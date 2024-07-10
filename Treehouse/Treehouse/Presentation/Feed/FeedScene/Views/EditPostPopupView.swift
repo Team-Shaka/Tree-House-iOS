@@ -16,7 +16,7 @@ struct EditPostPopupView: View {
     
     // MARK: - Property
     
-    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .feedView)
     
     // MARK: - View
     
@@ -35,14 +35,12 @@ struct EditPostPopupView: View {
                         VStack(alignment: .leading) {
                             HStack(alignment: .center, spacing: 9) {
                                 Text("username")
-                                    .font(.fontGuide(.body2))
-                                    .foregroundStyle(.treeBlack)
                                     .fontWithLineHeight(fontLevel: .body2)
+                                    .foregroundStyle(.treeBlack)
                                 
                                 Text("branch 3분 전")
-                                    .font(.fontGuide(.caption1))
-                                    .foregroundStyle(.gray5)
                                     .fontWithLineHeight(fontLevel: .caption1)
+                                    .foregroundStyle(.gray5)
                                 
                                 Spacer()
                             }
@@ -74,7 +72,7 @@ extension EditPostPopupView {
                 self.isCancelPopupShowing.toggle()
             }) {
                 Text("취소")
-                    .font(.fontGuide(.body3))
+                    .fontWithLineHeight(fontLevel: .body3)
                     .foregroundStyle(.gray7)
             }
             .frame(width: 44, height: 32)
@@ -83,7 +81,7 @@ extension EditPostPopupView {
             Spacer()
             
             Text("게시글 수정")
-                .font(.fontGuide(.body2))
+                .fontWithLineHeight(fontLevel: .body2)
                 .foregroundStyle(.grayscaleBlack)
             
             Spacer()
@@ -92,7 +90,7 @@ extension EditPostPopupView {
                 // TODO: - 완료 액션 = PATCH 서버 통신
             }) {
                 Text("완료")
-                    .font(.fontGuide(.body3))
+                    .fontWithLineHeight(fontLevel: .body3)
                     .foregroundStyle(.grayscaleWhite)
             }
             .frame(width: 49, height: 32)

@@ -13,12 +13,13 @@ enum userInfoType {
 }
 
 struct UserInfoView: View {
-    
+
     // MARK: - Property
     
     var infoType: userInfoType
+    var treememberName: String
     var userName: String
-    var userId: String
+    var profileImage: Image
     var bio: String
     var branchCount: Int
     var treeHouseCount: Int
@@ -35,17 +36,19 @@ struct UserInfoView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top, spacing: 0) {
-                Image(.imgUser)
+                profileImage
+                    .resizable()
+                    .clipShape(Circle())
                     .frame(width: 80, height: 80)
                     .padding(.leading, SizeLiterals.Screen.screenWidth * 16 / 393)
                 
                 VStack(alignment: .leading, spacing: 5) {
                     HStack(spacing: 6) {
-                        Text(userName)
+                        Text(treememberName)
                             .fontWithLineHeight(fontLevel: .heading4)
                             .foregroundColor(.grayscaleBlack)
                         
-                        Text("@\(userId)")
+                        Text("@\(userName)")
                             .fontWithLineHeight(fontLevel: .body3)
                             .foregroundColor(.gray6)
                     }
@@ -175,14 +178,7 @@ private extension UserInfoView {
 // MARK: - Preview
 
 #Preview {
-    UserInfoView(infoType: .memberProfile,
-                 userName: "username", 
-                 userId: "userId",
-                 bio: "userBio",
-                 branchCount: 0,
-                 treeHouseCount: 0,
-                 root: "Root",
-                 inviteAction: nil,
+    UserInfoView(infoType: .memberProfile, treememberName: "", userName: "", profileImage: Image(.imgDummy), bio: "", branchCount: 0, treeHouseCount: 0, root: "", inviteAction: nil,
                  branchAction: nil,
                  profileAction: nil)
 }

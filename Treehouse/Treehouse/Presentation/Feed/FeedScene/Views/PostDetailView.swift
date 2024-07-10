@@ -26,7 +26,7 @@ struct PostDetailView: View {
         ZStack {
             VStack {
                 ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .DetailView)
                 }
                 
                 feedDetailTextField

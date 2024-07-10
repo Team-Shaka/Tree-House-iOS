@@ -29,19 +29,13 @@ struct FeedHomeView: View {
             
             ScrollView(.vertical) {
                 TreeHallView(groupName: groupName, subject: subject, personnel: personnel)
+                    .padding(.top, 10)
                 
                 FeedView()
                     .frame(width: SizeLiterals.Screen.screenWidth)
                     .environment(viewRouter)
             }
-            .padding(.top, 10)
             .padding(.bottom, 16)
-        }
-        .navigationDestination(for: FeedRouter.self) { router in
-            viewRouter.buildScene(inputRouter: router)
-        }
-        .navigationDestination(for: ProfileRouter.self) { router in
-            viewRouter.buildScene(inputRouter: router)
         }
     }
 }

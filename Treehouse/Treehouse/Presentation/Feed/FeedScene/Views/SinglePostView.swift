@@ -30,7 +30,7 @@ struct SinglePostView: View {
     let postContent: String
     let postImageURLs: [String]
     let dummyImages = ["img_dummy", "img_dummy_2"]
-    var postType: PostType = .feedView
+    var postType: PostType
     
     // MARK:  - State Property
     
@@ -170,6 +170,7 @@ extension SinglePostView {
     SinglePostView(userProfileImageURL: "",
                    sentTime: 5,
                    postContent: "",
-                   postImageURLs: ["", ""])
+                   postImageURLs: ["", ""],
+                   postType: .feedView)
         .environment(ViewRouter())
 }

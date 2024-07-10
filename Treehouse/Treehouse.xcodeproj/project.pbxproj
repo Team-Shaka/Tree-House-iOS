@@ -74,6 +74,9 @@
 		3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */; };
 		3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */; };
 		3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */; };
+		3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */; };
+		3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */; };
+		3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */; };
 		3F1BE12C2C1FDF6700D3AF1D /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */; };
 		3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */; };
 		3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */; };
@@ -157,6 +160,8 @@
 		3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */; };
 		3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */; };
 		3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1072A2BEA0BE700C52908 /* Config.swift */; };
+		3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73132C3178F800C3AF4F /* Image+.swift */; };
+		3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73152C318CC000C3AF4F /* Data+.swift */; };
 		94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */; };
 		9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */; };
 		9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */; };
@@ -254,6 +259,9 @@
 		3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUpdateFeedPostResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateCommentResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadCommentResponseDTO.swift; sourceTree = "<group>"; };
+		3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataSource.swift; sourceTree = "<group>"; };
+		3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageToAWSUseCase.swift; sourceTree = "<group>"; };
 		3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSImageRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -338,6 +346,8 @@
 		3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterUserResponseDTO.swift; sourceTree = "<group>"; };
 		3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FF1072A2BEA0BE700C52908 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3FFA73132C3178F800C3AF4F /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		3FFA73152C318CC000C3AF4F /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdViewModel.swift; sourceTree = "<group>"; };
@@ -646,6 +656,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3F0AC2FD2C2D539B009F8F46 /* SwiftData */,
 				94D1001B2C0CC5FE00025D43 /* PhotoPicker */,
 				9412FF352BF7C5AC006A8A15 /* Keychain */,
 				3FE9440C2BD115EE00C3A869 /* Components */,
@@ -749,6 +760,8 @@
 				3F8835842BCC00D30021C8AB /* TextField+.swift */,
 				3FA175D82C1AC2A200A57987 /* UIImage+.swift */,
 				3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */,
+				3FFA73132C3178F800C3AF4F /* Image+.swift */,
+				3FFA73152C318CC000C3AF4F /* Data+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -798,6 +811,16 @@
 				3FA175D52C1ABDED00A57987 /* PostPresignedURLResponseDTO.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		3F0AC2FD2C2D539B009F8F46 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */,
+				3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */,
+				3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		3F1BE12E2C2118AA00D3AF1D /* AWSImage */ = {
@@ -1402,8 +1425,10 @@
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
 				0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */,
+				3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */,
+				3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */,
 				3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */,
@@ -1432,7 +1457,9 @@
 				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
 				94D388D32C257BBC0058231B /* CreateTreeHallNameView.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
+				3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
+				3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepositoryProtocol.swift in Sources */,
 				947326192C1C8D640030A182 /* EditPostPopupView.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
@@ -1520,6 +1547,7 @@
 				9412FF392BFF2466006A8A15 /* TabViewType.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */,
+				3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

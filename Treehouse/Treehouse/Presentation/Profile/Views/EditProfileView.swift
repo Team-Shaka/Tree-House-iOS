@@ -12,10 +12,11 @@ struct EditProfileView: View {
     // MARK: - State Property
     
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
+    @Environment(UserInfoViewModel.self) var userInfoViewModel: UserInfoViewModel
     
-    @State private var profileImage: Image? = Image(.imgUser)
-    @State private var name: String = "username"
-    @State private var bio: String = "바이오입니다."
+    @State private var profileImage: UIImage = UIImage(resource: .imgUser)
+    @State private var memberName: String = ""
+    @State private var bio: String = ""
     @State private var isEditing: Bool = false
     @ObservedObject private var photoPickerManager = PhotoPickerManager(type: .profileImage)
     @State private var isPhotoPickerPresented: Bool = false
@@ -25,7 +26,7 @@ struct EditProfileView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                profileImage!
+                Image(uiImage: profileImage)
                     .resizable()
                     .frame(width: 98, height: 98)
                     .clipShape(Circle())
@@ -41,10 +42,11 @@ struct EditProfileView: View {
                 .disabled(!isEditing)
                 .sheet(isPresented: $isPhotoPickerPresented) {
                     photoPickerManager.presentPhotoPicker(selectionLimit: 1)
+                        .ignoresSafeArea(edges: .bottom)
                 }
                 .onReceive(photoPickerManager.$selectedImages) { selectedImages in
                     if let selectedImage = selectedImages.first {
-                        profileImage = Image(uiImage: selectedImage)
+                        profileImage = selectedImage
                     }
                 }
             }
@@ -60,7 +62,7 @@ struct EditProfileView: View {
             .padding(.top, 17)
             .padding(.leading, SizeLiterals.Screen.screenWidth * 16 / 393)
             
-            TextField(name, text: $name)
+            TextField(memberName, text: $memberName)
                 .disabled(!isEditing)
                 .padding()
                 .background(isEditing ? .grayscaleWhite : .gray1)
@@ -75,7 +77,7 @@ struct EditProfileView: View {
             HStack {
                 Spacer()
                 
-                Text("( \(name.count) / 20 )")
+                Text("( \(memberName.count) / 20 )")
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundColor(isEditing ? .gray6 : .grayscaleWhite)
             }
@@ -125,6 +127,17 @@ struct EditProfileView: View {
             Spacer()
             
             Button(action: {
+                if isEditing  {
+                    //TODO: - 프로필 수정 API 연결
+                    let nameResult = userInfoViewModel.modifyMemberName(memberName: memberName)
+                    let bioResult = userInfoViewModel.modifyBio(bio: bio)
+                    let imageResult = userInfoViewModel.modifyProfileImage(imageData: profileImage)
+                    
+                    if nameResult && bioResult && imageResult {
+                        viewRouter.pop()
+                    }
+                }
+                
                 isEditing = true
             }) {
                 Text(isEditing ? "저장하기" : "수정하기")
@@ -134,7 +147,7 @@ struct EditProfileView: View {
                     .background(isEditing ? .treeGreen : .treeBlack)
                     .cornerRadius(12)
             }
-            .padding(.bottom, SizeLiterals.Screen.screenHeight * 64 / 852)
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -147,6 +160,16 @@ struct EditProfileView: View {
                 }
                 .padding(.top, 5)
             }
+            
+            ToolbarItem(placement: .principal) {
+                Text(StringLiterals.EditProfile.editProfileTitle)
+                    .fontWithLineHeight(fontLevel: .body2)
+            }
+        }
+        .onAppear {
+            memberName = userInfoViewModel.safeUserInfo.treeMemberName
+            profileImage = UIImage(data: userInfoViewModel.safeUserInfo.profileImageData) ?? UIImage(resource: .imgUser)
+            bio = userInfoViewModel.safeUserInfo.bio
         }
     }
 }
@@ -157,5 +180,6 @@ struct EditProfileView: View {
     NavigationStack {
         EditProfileView()
             .environment(ViewRouter())
+            .environment(UserInfoViewModel())
     }
 }
