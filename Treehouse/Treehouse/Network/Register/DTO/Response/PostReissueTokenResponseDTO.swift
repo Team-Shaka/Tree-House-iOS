@@ -8,7 +8,6 @@
 import Foundation
 
 struct PostReissueTokenResponseDTO: Decodable {
-    let userId: Int
     let refreshToken: String
     let accessToken: String
 }
