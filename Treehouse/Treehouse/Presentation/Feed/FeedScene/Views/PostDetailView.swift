@@ -12,6 +12,9 @@ struct PostDetailView: View {
     
     // MARK: - State Property
     
+    @Environment (ViewRouter.self) var viewRouter
+    @ObservedObject var viewModel: PostDetailViewModel
+    
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: FeedField?
@@ -20,48 +23,48 @@ struct PostDetailView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                VStack {
-                    ScrollView {
-                        SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
-                    }
-                    
-                    feedDetailTextField
-                        .onChange(of: focusedField) { _, newValue in
-                            if newValue == .post {
-                                textFieldState = .enable
-                            } else {
-                                textFieldState = .notFocused
-                            }
+        ZStack {
+            VStack {
+                ScrollView {
+                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""])
+                }
+                
+                feedDetailTextField
+                    .onChange(of: focusedField) { _, newValue in
+                        if newValue == .post {
+                            textFieldState = .enable
+                        } else {
+                            textFieldState = .notFocused
                         }
-                }
-                
-                if viewModel.isDeletePostPopupShowing {
-                    deletePostPopupView
-                }
-            }
-            .onTapGesture {
-                hideKeyboard()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        // TODO: - 뒤로 가기 액션
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.treeBlack)
                     }
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    Text("게시글")
-                        .font(.fontGuide(.body2))
-                        .foregroundStyle(.treeBlack)
-                }
+            }
+            
+            if viewModel.isDeletePostPopupShowing {
+                deletePostPopupView
             }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                Text("게시글")
+                    .font(.fontGuide(.body2))
+                    .foregroundStyle(.treeBlack)
+            }
+        }
+        
     }
 }
 
@@ -146,4 +149,5 @@ extension PostDetailView {
 
 #Preview {
     PostDetailView(viewModel: PostDetailViewModel())
+        .environment(ViewRouter())
 }

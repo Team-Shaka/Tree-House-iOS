@@ -27,6 +27,7 @@ struct FeedView: View {
     
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
+    @Environment (ViewRouter.self) var viewRouter
     
     // MARK: - View
     
@@ -35,6 +36,13 @@ struct FeedView: View {
             postTextField
             
             filledFeedView
+                .background(
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewRouter.push(FeedRouter.postDetailView)
+                        }
+                )
             
             CommentCountView(commentCount: 12)
                 .padding(.leading, 62)
@@ -156,6 +164,7 @@ extension FeedView {
     @ViewBuilder
     var filledFeedView: some View {
         SinglePostView(userProfileImageURL: "", sentTime: 4, postContent: "", postImageURLs: ["", ""])
+            .environment(viewRouter)
     }
 }
 
@@ -163,4 +172,5 @@ extension FeedView {
 
 #Preview {
     FeedView()
+        .environment(ViewRouter())
 }

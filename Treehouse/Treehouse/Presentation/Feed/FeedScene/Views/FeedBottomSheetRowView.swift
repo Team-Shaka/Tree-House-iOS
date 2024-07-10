@@ -59,7 +59,6 @@ struct FeedBottomSheetRowView: View {
             }
         }
         .padding(.bottom, 33)
-        .frame(width: .infinity)
         .background(.grayscaleWhite)
         .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
     }
@@ -78,6 +77,7 @@ struct BottomSheetButton: View {
                     .foregroundColor(textColor)
                 
                 Text(text)
+                    .fontWithLineHeight(fontLevel: .body1)
                     .foregroundColor(textColor)
                 
                 Spacer()

@@ -12,7 +12,16 @@ struct SelectedImage: Identifiable {
     var id: Int
 }
 
+enum PostType {
+    case feedView
+    case DetailView
+}
+
 struct SinglePostView: View {
+    
+    // MARK: - State Property
+    
+    @Environment (ViewRouter.self) var viewRouter
     
     // MARK: - Property
     
@@ -21,6 +30,7 @@ struct SinglePostView: View {
     let postContent: String
     let postImageURLs: [String]
     let dummyImages = ["img_dummy", "img_dummy_2"]
+    var postType: PostType = .feedView
     
     // MARK:  - State Property
     
@@ -41,6 +51,9 @@ struct SinglePostView: View {
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 36, height: 36)
+                        .onTapGesture {
+                            viewRouter.push(ProfileRouter.memberProfileView)
+                        }
                     
                     VStack(alignment: .leading) {
                         HStack(alignment: .center, spacing: 9) {
@@ -48,6 +61,9 @@ struct SinglePostView: View {
                                 .font(.fontGuide(.body2))
                                 .foregroundStyle(.treeBlack)
                                 .fontWithLineHeight(fontLevel: .body2)
+                                .onTapGesture {
+                                    viewRouter.push(ProfileRouter.memberProfileView)
+                                }
                             
                             Text("branch 3분 전")
                                 .font(.fontGuide(.caption1))
@@ -131,7 +147,11 @@ extension SinglePostView {
                         .cornerRadius(6.0)
                         .frame(width: 206, height: 172)
                         .onTapGesture {
-                            selectedImage = SelectedImage(id: index)
+                            if postType == .DetailView {
+                                selectedImage = SelectedImage(id: index)
+                            } else {
+                                viewRouter.push(FeedRouter.postDetailView)
+                            }
                         }
                 }
             }
@@ -151,4 +171,5 @@ extension SinglePostView {
                    sentTime: 5,
                    postContent: "",
                    postImageURLs: ["", ""])
+        .environment(ViewRouter())
 }
