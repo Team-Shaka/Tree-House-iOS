@@ -26,4 +26,15 @@ extension String {
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return predicate.evaluate(with: self)
     }
+    
+    // 전화번호 형식으로 포맷하는 변수
+    var formatPhoneNumber: String {
+        guard self.count == 11 else { return self }
+        
+        let firstPart = self.prefix(3)
+        let secondPart = self.dropFirst(3).prefix(4)
+        let thirdPart = self.dropFirst(7)
+        
+        return "\(firstPart)-\(secondPart)-\(thirdPart)"
+    }
 }
