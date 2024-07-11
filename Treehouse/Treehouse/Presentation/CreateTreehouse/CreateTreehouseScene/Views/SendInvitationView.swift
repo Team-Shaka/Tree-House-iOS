@@ -12,7 +12,7 @@ struct SendInvitationView: View {
     // MARK: - Property
     
     let availableInvitaion = AvailableInvitationStruct.availableInvitationDummyData
-    let phoneNumberList = PhoneNumberStruct.phoneNumberStructDummyData
+//    let phoneNumberList = UserPhoneNumberInfo.phoneNumberStructDummyData
     
     // MARK: - State Property
     
@@ -20,7 +20,7 @@ struct SendInvitationView: View {
                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
     )
-    
+    @State var phoneNumberViewModel = PhoneNumberViewModel()
     @State private var inviteCount: Int = 0
     @State private var searchText: String = ""
     @State private var showPopover: Bool = false
@@ -65,14 +65,14 @@ struct SendInvitationView: View {
                         .padding(.bottom, 12)
                     
                     if searchText.isEmpty {
-                        ForEach(phoneNumberList) { phoneNumber in
-                            PhoneNumberRow(phoneNumber: phoneNumber)
+                        ForEach(phoneNumberViewModel.phoneNumberList) { userData in
+                            PhoneNumberRow(userInfo: userData)
                         }
                     } else {
-                        ForEach(phoneNumberList.filter {
+                        ForEach(phoneNumberViewModel.phoneNumberList.filter {
                             $0.name.contains(searchText) || $0.phoneNumber.contains(searchText)
-                        }) { phoneNumber in
-                            PhoneNumberRow(phoneNumber: phoneNumber)
+                        }) { userData in
+                            PhoneNumberRow(userInfo: userData)
                         }
                     }
                 }

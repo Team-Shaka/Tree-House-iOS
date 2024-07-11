@@ -17,6 +17,7 @@ struct PhoneNumberSearchBar: View {
     // MARK: - Binding Property
     
     @Binding var text: String
+    @FocusState private var focusedField: Bool
     
     // MARK: - View
     
@@ -26,8 +27,10 @@ struct PhoneNumberSearchBar: View {
                 Image(systemName: "magnifyingglass")
                 
                 TextField(StringLiterals.Invitation.placeholderTitle1, text: $text)
-                    .foregroundColor(.primary)
                     .fontWithLineHeight(fontLevel: .body3)
+                    .foregroundStyle(.primary)
+                    .tint(.treeGreen)
+                    .focused($focusedField)
                 
                 if text.isEmpty {
                     xmarkView(viewState: .empty)

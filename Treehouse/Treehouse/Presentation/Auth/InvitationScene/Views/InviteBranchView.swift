@@ -12,7 +12,7 @@ struct InviteBranchView: View {
     // MARK: - Property
     
     let availableInvitaion = AvailableInvitationStruct.availableInvitationDummyData
-    let phoneNumberList = PhoneNumberStruct.phoneNumberStructDummyData
+    let phoneNumberList = UserPhoneNumberInfo.phoneNumberStructDummyData
     
     // MARK: - State Property
     
@@ -20,15 +20,18 @@ struct InviteBranchView: View {
                                                 checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
                                                 checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
     )
+    
+    @State var phoneNumberViewModel = PhoneNumberViewModel()
     @Environment(ViewRouter.self) private var viewRouter
     
     @State private var inviteCount: Int = 0
-    @State private var searchText: String = ""
     @State private var showPopover: Bool = false
     
     // MARK: - View
     
     var body: some View {
+        @Bindable var phoneNumberViewModel = phoneNumberViewModel
+        
         ScrollView() {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
@@ -139,20 +142,14 @@ struct InviteBranchView: View {
                 .fontWithLineHeight(fontLevel: .body4)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                PhoneNumberSearchBar(text: $searchText)
+                PhoneNumberSearchBar(text: $phoneNumberViewModel.searchText)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 14)
                     .padding(.bottom, 12)
                 
-                if searchText.isEmpty {
-                    ForEach(phoneNumberList) { phoneNumber in
-                        PhoneNumberRow(phoneNumber: phoneNumber)
-                    }
-                } else {
-                    ForEach(phoneNumberList.filter {
-                        $0.name.contains(searchText) || $0.phoneNumber.contains(searchText)
-                    }) { phoneNumber in
-                        PhoneNumberRow(phoneNumber: phoneNumber)
+                LazyVStack(spacing: 0) {
+                    ForEach(phoneNumberViewModel.searchPhoneNumberList) { userData in
+                        PhoneNumberRow(userInfo: userData)
                     }
                 }
             }
@@ -163,6 +160,11 @@ struct InviteBranchView: View {
             .onAppear {
                 Task {
                     await viewModel.checkAvailableInvitation()
+                }
+            }
+            .onChange(of: phoneNumberViewModel.searchText) { _, _ in
+                Task {
+                    await phoneNumberViewModel.searchData()
                 }
             }
         }
