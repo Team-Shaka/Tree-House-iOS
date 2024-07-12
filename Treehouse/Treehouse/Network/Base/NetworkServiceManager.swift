@@ -134,10 +134,11 @@ extension NetworkServiceManager {
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
         // 응답 데이터와 상태 코드 출력
-        if let httpResponse = response as? HTTPURLResponse {
-            print("2️⃣ Status Code: \(httpResponse.statusCode)")
-            print("\(httpResponse.statusCode)")
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.serverError
         }
+        
+        print("2️⃣ Status Code: \(httpResponse.statusCode)")
         
         if let jsonString = String(data: data, encoding: .utf8) {
             print("3️⃣ Response JSON: \(jsonString)")
@@ -145,13 +146,21 @@ extension NetworkServiceManager {
         
         // JSON 디코딩
         do {
-            let model = try JSONDecoder().decode(BaseResponse<PostReissueTokenResponseDTO>.self, from: data)
-            
-            // KeyChain 을 통해 AccessToken, RefreshToken 갱신
-            if let newToken = model.data {
+            switch httpResponse.statusCode {
+            case 200:
+                let model = try JSONDecoder().decode(BaseResponse<PostReissueTokenResponseDTO>.self, from: data)
+                
+                guard let newToken = model.data else { throw NetworkError.reIssueJWT }
+                
+                // KeyChain 을 통해 AccessToken, RefreshToken 갱신
                 KeychainHelper.shared.save(newToken.accessToken, for: Config.accessTokenKey)
                 KeychainHelper.shared.save(newToken.refreshToken, for: Config.refreshTokenKey)
                 print("4️⃣ PostReissueToken API 종료 ========================================")
+            case 401:
+                /// RefreshToken 도 만료되었을 때 다시
+                throw NetworkError.clientError(message: "로그인이 만료되었습니다. 다시 로그인해주세요.")
+            default:
+                throw NetworkError.serverError
             }
         } catch {
             print("4️⃣ PostReissueToken API Error: \(String(describing: NetworkError.jsonDecodingError.errorDescription))========================================")
