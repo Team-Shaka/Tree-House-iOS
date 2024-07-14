@@ -14,7 +14,7 @@
 		001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001236722BD2748200CEAC53 /* PhoneNumberRow.swift */; };
 		002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C73D22C08AB8B0047592F /* HeaderView.swift */; };
 		003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */; };
-		003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */; };
+		003E6EF62BD51D84001C7613 /* UserPhoneNumberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003E6EF52BD51D84001C7613 /* UserPhoneNumberInfo.swift */; };
 		005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C12BD65CAB007D209A /* InvitationTooltip.swift */; };
 		005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */; };
 		0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */; };
@@ -166,6 +166,7 @@
 		3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */; };
 		3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */; };
 		3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1072A2BEA0BE700C52908 /* Config.swift */; };
+		3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */; };
 		3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73132C3178F800C3AF4F /* Image+.swift */; };
 		3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73152C318CC000C3AF4F /* Data+.swift */; };
 		94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */; };
@@ -212,7 +213,7 @@
 		001236722BD2748200CEAC53 /* PhoneNumberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRow.swift; sourceTree = "<group>"; };
 		002C73D22C08AB8B0047592F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableInvitationStruct.swift; sourceTree = "<group>"; };
-		003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberStruct.swift; sourceTree = "<group>"; };
+		003E6EF52BD51D84001C7613 /* UserPhoneNumberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneNumberInfo.swift; sourceTree = "<group>"; };
 		005296C12BD65CAB007D209A /* InvitationTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTooltip.swift; sourceTree = "<group>"; };
 		005296C32BD6AABF007D209A /* DarkGreenLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkGreenLetterView.swift; sourceTree = "<group>"; };
 		0054D7352BDAD1630009B9CC /* CheckNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNameResponseEntity.swift; sourceTree = "<group>"; };
@@ -358,6 +359,7 @@
 		3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterUserResponseDTO.swift; sourceTree = "<group>"; };
 		3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FF1072A2BEA0BE700C52908 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		3FFA73132C3178F800C3AF4F /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		3FFA73152C318CC000C3AF4F /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
@@ -447,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				003E6EF32BD5105A001C7613 /* AvailableInvitationStruct.swift */,
-				003E6EF52BD51D84001C7613 /* PhoneNumberStruct.swift */,
+				003E6EF52BD51D84001C7613 /* UserPhoneNumberInfo.swift */,
 				3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */,
 			);
 			path = Models;
@@ -1016,6 +1018,7 @@
 			children = (
 				00B5919E2C240ECF00F7C38C /* InvitationViewModel.swift */,
 				3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */,
+				3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1469,7 +1472,7 @@
 				00B5919F2C240ECF00F7C38C /* InvitationViewModel.swift in Sources */,
 				3F1BE13E2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift in Sources */,
 				00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */,
-				003E6EF62BD51D84001C7613 /* PhoneNumberStruct.swift in Sources */,
+				003E6EF62BD51D84001C7613 /* UserPhoneNumberInfo.swift in Sources */,
 				0083B4BE2C01DE9E00F0D252 /* GroupRow.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
@@ -1528,6 +1531,7 @@
 				0083B4BC2C01D02500F0D252 /* BottomSheet.swift in Sources */,
 				3F44C13C2C24394600A5CAFE /* FeedHomeView.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
+				3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
 				9473261D2C2156400030A182 /* FullScreenModalModifier.swift in Sources */,
