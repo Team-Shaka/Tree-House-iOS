@@ -11,22 +11,22 @@ struct PhoneNumberRow: View {
     
     // MARK: - Property
     
-    var phoneNumber: PhoneNumberStruct
+    var userInfo: UserPhoneNumberInfo
     
     // MARK: - View
     
     var body: some View {
         HStack(spacing: 0) {
-            Image("ic_noti_member")
+            Image(data: userInfo.profileImage, defaultImage: .icNotiMember)
                 .resizable()
                 .frame(width: 36, height: 36)
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(phoneNumber.name)
+                Text(userInfo.name)
                     .font(.fontGuide(.body2))
                     .foregroundColor(.grayscaleBlack)
                 
-                Text(phoneNumber.phoneNumber)
+                Text(userInfo.phoneNumber)
                     .font(.fontGuide(.body5))
                     .foregroundColor(.gray5)
             }
@@ -52,9 +52,9 @@ struct PhoneNumberRow: View {
 // MARK: - Preview
 
 #Preview {
-    let phoneNumbers = PhoneNumberStruct.phoneNumberStructDummyData
+    let phoneNumbers = UserPhoneNumberInfo.phoneNumberStructDummyData
     return Group {
-        PhoneNumberRow(phoneNumber: phoneNumbers[0])
-        PhoneNumberRow(phoneNumber: phoneNumbers[1])
+        PhoneNumberRow(userInfo: phoneNumbers[0])
+        PhoneNumberRow(userInfo: phoneNumbers[1])
     }
 }

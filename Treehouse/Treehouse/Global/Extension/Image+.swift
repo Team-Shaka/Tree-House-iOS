@@ -30,4 +30,12 @@ extension Image {
             return nil
         }
     }
+    
+    init(data: Data?, defaultImage: ImageResource) {
+        if let imageData = data, let uiImage = UIImage(data: imageData) {
+            self = Image(uiImage: uiImage)
+        } else {
+            self = Image(defaultImage)
+        }
+    }
 }
