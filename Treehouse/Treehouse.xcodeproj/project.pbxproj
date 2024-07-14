@@ -74,6 +74,7 @@
 		3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */; };
 		3F06C3122BFDF320002B771B /* PostCreateCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */; };
 		3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */; };
+		3F0A69872C3595C0003A64EC /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */; };
 		3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */; };
 		3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */; };
 		3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */; };
@@ -260,6 +261,7 @@
 		3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUpdateFeedPostResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateCommentResponseDTO.swift; sourceTree = "<group>"; };
 		3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadCommentResponseDTO.swift; sourceTree = "<group>"; };
+		3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataSource.swift; sourceTree = "<group>"; };
 		3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				3FF106FB2BEA078C00C52908 /* BaseResponse.swift */,
 				3FF106FD2BEA079500C52908 /* HttpMethod.swift */,
 				3F5150432C0D96BE00AD05C3 /* NetworkRequest.swift */,
+				3F0A69862C3595C0003A64EC /* NetworkServiceManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1535,6 +1538,7 @@
 				3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
 				9473261B2C1D90850030A182 /* ImageDetailCarouselView.swift in Sources */,
+				3F0A69872C3595C0003A64EC /* NetworkServiceManager.swift in Sources */,
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,

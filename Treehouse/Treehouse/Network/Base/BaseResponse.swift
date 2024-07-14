@@ -11,6 +11,6 @@ struct BaseResponse<T: Decodable>: Decodable {
     var isSuccess: Bool
     var code: String
     var message: String
-    var data: T
+    var data: T?
     var createdAt: String?
 }
