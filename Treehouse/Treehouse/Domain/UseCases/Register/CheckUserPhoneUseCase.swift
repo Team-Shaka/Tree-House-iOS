@@ -1,5 +1,5 @@
 //
-//  CheckUserPhone.swift
+//  CheckUserPhoneUseCase.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 6/6/24.
