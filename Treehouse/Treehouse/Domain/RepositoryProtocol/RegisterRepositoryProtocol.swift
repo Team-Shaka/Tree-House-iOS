@@ -12,4 +12,5 @@ protocol RegisterRepositoryProtocol {
     func postRegisterUser(phoneNumber: String, userName: String) async -> Result<RegisterUserResponseEntity, NetworkError>
     func postRegisterTreeMember(requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError>
     func postCheckUserPhone(phoneNumber: String) async -> Result<CheckUserPhoneResponseEntity, NetworkError>
+    func postExistsUserLogin(phoneNumber: String) async -> Result<ExistsUserLoginResponseEntity, NetworkError>
 }
