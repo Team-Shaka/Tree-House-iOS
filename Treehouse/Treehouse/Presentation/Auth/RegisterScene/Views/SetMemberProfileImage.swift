@@ -128,7 +128,7 @@ private extension SetMemberProfileImage {
                         .frame(width: SizeLiterals.Screen.screenWidth * 130.24 / 393, height: SizeLiterals.Screen.screenHeight * 130.24 / 852)
                 }
                 .onAppear {
-                    viewModel.profileImage.append(photoPickerManager.selectedImages[0])
+                    viewModel.profileImage?.append(photoPickerManager.selectedImages[0])
                 }
             } else {
                 Image(.imgUser2)
