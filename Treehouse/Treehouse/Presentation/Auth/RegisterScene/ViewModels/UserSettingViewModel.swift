@@ -120,13 +120,13 @@ final class UserSettingViewModel: BaseViewModel {
         }
         
         if let profileImageData = profileImage?.first?.pngData() {
-            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId: treehouseName], bio: bio, profileImageData: profileImageData)
+            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [Treehouse(treehouseId: treehouseId, treehouseName: treehouseName)], bio: bio, profileImageData: profileImageData)
         } else {
             guard let imageData = UIImage(resource: .imgUser).pngData() else {
                 return nil
             }
              
-            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [treehouseId: treehouseName], bio: bio, profileImageData: imageData)
+            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [Treehouse(treehouseId: treehouseId, treehouseName: treehouseName)], bio: bio, profileImageData: imageData)
         }
     }
 }
@@ -308,6 +308,9 @@ extension UserSettingViewModel {
 
         switch result {
         case .success(let response):
+            response.forEach { data in
+                isloadImageAWS = data.result
+            }
             break
         case .failure(let error):
             await MainActor.run {
