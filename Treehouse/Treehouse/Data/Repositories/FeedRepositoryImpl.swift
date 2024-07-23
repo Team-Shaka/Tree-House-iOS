@@ -21,4 +21,16 @@ final class FeedRepositoryImpl: FeedRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    /// Feed 의 게시글을 불러오기 위한 API
+    func getReadPost(treehouseId: Int) async -> Result<[GetReadFeedPostListResponseEntity], NetworkError>{
+        do {
+            let response = try await feedService.getReadPost(treehouseId: treehouseId)
+            return .success(response.map { $0.toDomain() })
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }

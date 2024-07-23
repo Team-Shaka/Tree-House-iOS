@@ -11,7 +11,7 @@ import UIKit
 final class AWSImageRepositoryImpl: AWSImageRepositoryProtocol {
     private var awsService = AWSImageService()
     
-    /// S3 에 이미지를 올리기 위한 PresignedURL 을 받는 API
+    /// S3 에 이미지를 올리기 위한 API
     func putUploadImages(presignedUrls: [String], uploadImages: [UIImage]) async -> Result<[PutUploadImagesResponseEntity], NetworkError> {
         do {
             let response = try await awsService.uploadImages(presignedUrls: presignedUrls, uploadImages: uploadImages)

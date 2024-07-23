@@ -9,4 +9,5 @@ import Foundation
 
 protocol FeedRepositoryProtocol {
     func postPresignedURL(treehouseId: Int, fileName: String, fileSize: Int) async -> Result<PresignedURLResponseEntity,NetworkError>
+    func getReadPost(treehouseId: Int) async -> Result<[GetReadFeedPostListResponseEntity], NetworkError>
 }
