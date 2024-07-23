@@ -8,5 +8,5 @@
 import Foundation
 
 struct PostCreateCommentRequestDTO: Codable {
-    let centext: String
+    let context: String
 }

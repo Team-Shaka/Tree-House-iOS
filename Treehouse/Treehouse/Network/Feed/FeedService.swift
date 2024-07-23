@@ -26,4 +26,14 @@ final class FeedService {
         
         return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostPresignedURLResponseDTO.self)
     }
+    
+    func getReadPost(treehouseId: Int) async throws -> [GetReadFeedPostsListResponseDTO] {
+        let request = NetworkRequest(requestType: FeedAPI.getReadFeedPostsList(treehouseId: treehouseId))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: [GetReadFeedPostsListResponseDTO].self)
+    }
 }
