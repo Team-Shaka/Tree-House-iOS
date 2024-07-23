@@ -18,6 +18,7 @@ struct VerificationView: View {
     @Environment(UserSettingViewModel.self) private var viewModel
     @Environment(ViewRouter.self) private var viewRouter
     
+    @State private var checkUserPhoneViewModel = CheckUserPhoneViewModel(checkUserPhoneUseCase: CheckUserPhoneUseCase(repository: RegisterRepositoryImpl()))
     @State private var verificationCode: String = ""
     @State private var isValid = false
     @FocusState private var isKeyboardShowing: Bool
@@ -73,17 +74,20 @@ struct VerificationView: View {
             Spacer()
             
             Button {
-                // TODO: 전화번호 인증 API 인증
-                viewModel.isAuthentication = .notSignUp
-                switch viewModel.isAuthentication {
-                case .notInvitation:
-                    viewRouter.push(RegisterRouter.unableRegisterView)
-                case .notSignUp:
-                    viewRouter.push(RegisterRouter.setUserIdView)
-                case .comebackUser:
-                    viewRouter.push(RegisterRouter.loginView)
-                case .error:
-                    print("네트워크 및 어떠한 오류로 인해 인증 받지 못하였음")
+                Task {
+                    // TODO: 전화번호 인증 API 인증
+                    await checkUserPhoneViewModel.checkUserPhone(phoneNumber: viewModel.phoneNumber ?? "")
+                    
+                    switch checkUserPhoneViewModel.isAuthentication {
+                    case .notInvitation:
+                        viewRouter.push(RegisterRouter.unableRegisterView)
+                    case .notSignUp:
+                        viewRouter.push(RegisterRouter.setUserIdView)
+                    case .comebackUser:
+                        viewRouter.push(RegisterRouter.loginView)
+                    case .error:
+                        print("네트워크 및 어떠한 오류로 인해 인증 받지 못하였음")
+                    }
                 }
             } label: {
                 Text(StringLiterals.Register.buttonTitle2)

@@ -36,7 +36,7 @@ struct SetMemberBioView: View {
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 39/852)
             .fixedSize(horizontal: false, vertical: true)
             
-            Image(uiImage: (viewModel.profileImage?[0])!)
+            Image(uiImage: viewModel.profileImage?[0] ?? .imgUser1)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())

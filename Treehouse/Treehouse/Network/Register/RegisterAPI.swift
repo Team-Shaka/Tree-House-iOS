@@ -13,6 +13,7 @@ enum RegisterAPI {
     case postRegisterTreeMember(requestBody: PostRegisterTreeMemberRequestDTO)
     case postReissueToken(requestBody: PostReissueTokenRequestDTO)
     case postCheckUserPhone(requestBody: PostCheckUserPhoneRequestDTO)
+    case postExistsUserLogin(phoneNumber: String)
 }
 
 extension RegisterAPI: BaseRequest {
@@ -23,6 +24,7 @@ extension RegisterAPI: BaseRequest {
         case .postRegisterTreeMember: return "members/register"
         case .postReissueToken: return "users/reissue"
         case .postCheckUserPhone: return "users/phone"
+        case .postExistsUserLogin: return "users/login"
         }
     }
 
@@ -33,6 +35,7 @@ extension RegisterAPI: BaseRequest {
         case .postRegisterTreeMember: return .post
         case .postReissueToken: return .post
         case .postCheckUserPhone: return .post
+        case .postExistsUserLogin: return .post
         }
     }
     
@@ -44,6 +47,8 @@ extension RegisterAPI: BaseRequest {
             return .accessTokenHeader
         case .postReissueToken:
             return .refreshTokenHeader
+        default:
+            return .noHeader
         }
     }
 
@@ -58,6 +63,7 @@ extension RegisterAPI: BaseRequest {
         case .postRegisterTreeMember(requestBody: let requestBody): return requestBody
         case .postReissueToken(requestBody: let requestBody): return requestBody
         case .postCheckUserPhone(requestBody: let requestBody): return requestBody
+        case .postExistsUserLogin(phoneNumber: let phoneNumber): return phoneNumber
         }
     }
 }
