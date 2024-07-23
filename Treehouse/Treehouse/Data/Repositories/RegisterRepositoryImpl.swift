@@ -51,4 +51,15 @@ final class RegisterRepositoryImpl: RegisterRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    func postExistsUserLogin(phoneNumber: String) async -> Result<ExistsUserLoginResponseEntity, NetworkError> {
+        do {
+            let response = try await registerService.postExistsUserLogin(phoneNumber: phoneNumber)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }

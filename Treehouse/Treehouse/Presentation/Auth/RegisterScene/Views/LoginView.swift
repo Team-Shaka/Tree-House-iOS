@@ -14,6 +14,9 @@ struct LoginView: View {
     @Environment(UserSettingViewModel.self) private var viewModel
     @Environment(ViewRouter.self) private var viewRouter
     
+    @State private var userLoginViewModel: UserLoginViewModel = UserLoginViewModel(existsUserLoginUseCase: ExistsUserLoginUserCase(repository: RegisterRepositoryImpl()))
+    @State private var userInfoViewModel: UserInfoViewModel = UserInfoViewModel()
+    
     // MARK: - View
     
     var body: some View {
@@ -46,7 +49,10 @@ struct LoginView: View {
             Spacer(minLength: SizeLiterals.Screen.screenHeight * 26 / 852)
             
             Button {
-                print("로그인 버튼 탭했음")
+                // TODO: - 내 정보에 관한 데이터가 부족, Treehouse API (내 프로필 조회) 를 통해 저장 필요
+                Task {
+                    await userLoginViewModel.existsUserLogin(phoneNumber: viewModel.phoneNumber ?? "")
+                }
             } label: {
                 Text("로그인")
                     .fontWithLineHeight(fontLevel: .body2)

@@ -103,6 +103,11 @@
 		3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150572C0EC5E800AD05C3 /* InvitationService.swift */; };
 		3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */; };
 		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
+		3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */; };
+		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
+		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
+		3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */; };
+		3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -120,7 +125,7 @@
 		3F8F2A812C18AB1400D8CB9F /* structuredEmojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */; };
 		3F8F2A832C18AB2500D8CB9F /* emojiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2A822C18AB2500D8CB9F /* emojiData.swift */; };
 		3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */; };
-		3F94635D2C11644600229940 /* CheckUserPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635C2C11644600229940 /* CheckUserPhone.swift */; };
+		3F94635D2C11644600229940 /* CheckUserPhoneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635C2C11644600229940 /* CheckUserPhoneUseCase.swift */; };
 		3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */; };
 		3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */; };
 		3FA175D42C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA175D32C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift */; };
@@ -290,6 +295,11 @@
 		3F5150572C0EC5E800AD05C3 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
 		3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsReponseEntity.swift; sourceTree = "<group>"; };
 		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
+		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
+		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
+		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
+		3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewModel.swift; sourceTree = "<group>"; };
+		3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneViewModel.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -307,7 +317,7 @@
 		3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = structuredEmojis.json; sourceTree = "<group>"; };
 		3F8F2A822C18AB2500D8CB9F /* emojiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiData.swift; sourceTree = "<group>"; };
 		3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserPhoneRequestDTO.swift; sourceTree = "<group>"; };
-		3F94635C2C11644600229940 /* CheckUserPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhone.swift; sourceTree = "<group>"; };
+		3F94635C2C11644600229940 /* CheckUserPhoneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhoneUseCase.swift; sourceTree = "<group>"; };
 		3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhoneResponseEntity.swift; sourceTree = "<group>"; };
 		3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckUserPhoneResponseDTO.swift; sourceTree = "<group>"; };
 		3FA175D32C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresignedURLRequestDTO.swift; sourceTree = "<group>"; };
@@ -473,6 +483,7 @@
 				3F5150472C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift */,
 				3F51504B2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift */,
 				3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */,
+				3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -566,7 +577,8 @@
 				0087C2992BE161C9004CED9C /* CheckNameUseCase.swift */,
 				3F5150452C0DD47600AD05C3 /* RegisterUserUseCase.swift */,
 				3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */,
-				3F94635C2C11644600229940 /* CheckUserPhone.swift */,
+				3F94635C2C11644600229940 /* CheckUserPhoneUseCase.swift */,
+				3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -909,6 +921,8 @@
 			isa = PBXGroup;
 			children = (
 				3F8845FF2BF095F60021FB79 /* UserSettingViewModel.swift */,
+				3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */,
+				3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1075,6 +1089,7 @@
 				3FF107242BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift */,
 				3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */,
 				3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */,
+				3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1405,6 +1420,7 @@
 				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
 				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
+				3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
 				00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
@@ -1414,6 +1430,7 @@
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
 				94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */,
+				3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
 				3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */,
@@ -1463,6 +1480,7 @@
 				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
 				94D388D32C257BBC0058231B /* CreateTreeHallNameView.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
+				3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */,
 				3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */,
@@ -1483,12 +1501,13 @@
 				3F51504A2C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift in Sources */,
 				005296C42BD6AABF007D209A /* DarkGreenLetterView.swift in Sources */,
 				000844EF2C1C607600FF33FD /* ProfileRouter.swift in Sources */,
-				3F94635D2C11644600229940 /* CheckUserPhone.swift in Sources */,
+				3F94635D2C11644600229940 /* CheckUserPhoneUseCase.swift in Sources */,
 				9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */,
 				3F8846072BF58B6A0021FB79 /* InvitationRouter.swift in Sources */,
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				3F8F2A832C18AB2500D8CB9F /* emojiData.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
+				3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */,
 				94D388D92C287DC00058231B /* SendInvitationView.swift in Sources */,
 				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
 				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
@@ -1557,6 +1576,7 @@
 				944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */,
 				3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
+				3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

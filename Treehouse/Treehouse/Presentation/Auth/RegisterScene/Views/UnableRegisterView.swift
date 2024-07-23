@@ -19,7 +19,7 @@ struct UnableRegisterView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
-                Image("error")
+                Image(.error)
                     .frame(width: 57, height: 57)
                 
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 28 / 852)
@@ -32,16 +32,16 @@ struct UnableRegisterView: View {
                 Spacer(minLength: SizeLiterals.Screen.screenHeight * 24 / 852)
                 
                 Text(StringLiterals.Register.guidanceTitle2)
-                    .fontWithLineHeight(fontLevel: .body1)
+                    .fontWithLineHeight(fontLevel: .body3)
                     .foregroundStyle(.gray5)
                     .frame(height: 78)
             }
-            .padding(.top, SizeLiterals.Screen.screenHeight * 60 / 852)
+            .padding(.top, SizeLiterals.Screen.screenHeight * 7 / 852)
             
             Spacer(minLength: SizeLiterals.Screen.screenHeight * 269 / 852)
             
             Text(StringLiterals.Register.etcTitle1)
-                .fontWithLineHeight(fontLevel: .body1)
+                .fontWithLineHeight(fontLevel: .body4)
                 .foregroundStyle(.treeGreen)
                 .frame(maxWidth: .infinity)
                 .frame(height: 70)
@@ -54,7 +54,7 @@ struct UnableRegisterView: View {
                 print("돌아가기 버튼 탭했음")
             } label: {
                 Text(StringLiterals.Register.buttonTitle3)
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.gray1)
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
                     .background(.treeBlack)
