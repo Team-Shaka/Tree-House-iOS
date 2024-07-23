@@ -23,7 +23,7 @@ final class UserInfoViewModel: BaseViewModel {
     }
     
     var safeUserInfo: UserInfoData {
-        userInfo ?? UserInfoData(userId: 0, userName: "Unknown", treeMemberName: "Unknown", treehouseId: [:], bio: "Unknown", profileImageData: Data())
+        userInfo ?? UserInfoData(userId: 0, userName: "Unknown", treeMemberName: "Unknown", treehouseId: [Treehouse(treehouseId: 0, treehouseName: "")], bio: "Unknown", profileImageData: Data())
     }
 
     init(dataSource: UserInfoDataSource = UserInfoDataSource.shared) {
