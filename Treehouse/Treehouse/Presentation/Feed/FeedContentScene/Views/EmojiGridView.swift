@@ -22,10 +22,13 @@ struct EmojiGridView: View {
     
     // MARK: - State Property
     
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (PostViewModel.self) var postViewmodel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    
     @State var serachEmoji: String = ""
     @FocusState private var focusedField: Bool
     @State private var showPopover = false
-    @Bindable var viewModel: FeedContentViewModel
     
     @State var selectedId: UUID?
     
@@ -54,13 +57,23 @@ struct EmojiGridView: View {
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(viewModel.emojis) { data in
+                    ForEach(emojiViewModel.emojis) { data in
                         VStack {
                             Button(action: {
                                 if self.selectedId == data.id {
                                     self.selectedId = nil
+                                    emojiViewModel.selectEmoji = nil
                                 } else {
                                     self.selectedId = data.id
+                                    emojiViewModel.selectEmoji = data.unicodeEmoji
+                                }
+                                
+                                Task {
+                                    await emojiViewModel.createReactionComment(
+                                        treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                        postId: feedViewModel.currentPostId ?? 0,
+                                        commentId: feedViewModel.currentCommentId ?? 0
+                                    )
                                 }
                             }) {
                                 Text(data.unicodeEmoji)
@@ -82,6 +95,10 @@ struct EmojiGridView: View {
         .onTapGesture {
             selectedId = nil
             focusedField = false
+            emojiViewModel.selectEmoji = nil
+        }
+        .task {
+            emojiViewModel.loadEmojis()
         }
     }
 }
@@ -89,7 +106,7 @@ struct EmojiGridView: View {
 // MARK: - Preview
 
 #Preview {
-    EmojiGridView(viewModel: FeedContentViewModel())
+    EmojiGridView()
 }
 
 // MARK: - extension function

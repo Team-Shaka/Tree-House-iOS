@@ -11,34 +11,35 @@ struct FeedContentView: View {
     
     // MARK: - ViewModel Property
     
-    var viewModel = FeedContentViewModel()
-    
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (CommentViewModel.self) var commentViewModel
+
+    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()))
+
     // MARK: - View
     
     var body: some View {
-        @Bindable var viewModel = viewModel
+        @Bindable var commentViewModel = commentViewModel
         
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ForEach(viewModel.commentModels.indices, id: \.self) { index in
-                    CommentView(commentIndex: index,
-                                userName: viewModel.commentModels[index].userName,
-                                time: viewModel.commentModels[index].time,
-                                comment: viewModel.commentModels[index].comment,
-                                commentyType: .comment,
-                                viewModel: viewModel)
+        LazyVStack(spacing: 0) {
+            ForEach(commentViewModel.unwrappedReadCommentData) {
+                CommentView(commentId: $0.commentId, 
+                            userName: $0.memberProfile.memberName,
+                            time: $0.commentedAt,
+                            comment: $0.context,
+                            reactionData: $0.reactionList ?? [])
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-                    
-                    replyView(replay: viewModel.commentModels[index].reply, commentIndex: index)
-                        .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
-                }
+                
+                replyView(reply: $0.replyList)
+                    .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
             }
         }
-        .bottomSheet(isPresented: $viewModel.isSelectEmojiView, topPadding: 30) {
-            EmojiGridView(viewModel: viewModel)
-                .task {
-                    viewModel.loadEmojis()
-                }
+        .bottomSheet(isPresented: $commentViewModel.isSelectEmojiView, topPadding: 30) {
+            EmojiGridView()
+                .environment(emojiViewModel)
+        }
+        .onAppear {
+            commentViewModel.injectionViewModel(emojiViewModel)
         }
     }
 }
@@ -47,16 +48,14 @@ struct FeedContentView: View {
 
 private extension FeedContentView {
     @ViewBuilder
-    func replyView(replay: [ReplyCommentModel]?, commentIndex: Int) -> some View {
-        if let data = replay {
-            ForEach(Array(data.enumerated()), id: \.element.id) { replyIndex, data in
-                CommentView(commentIndex: commentIndex,
-                            replyIndex: replyIndex,
-                            userName: data.userName,
-                            time: data.time,
-                            comment: data.comment,
-                            commentyType: .reply,
-                            viewModel: viewModel)
+    func replyView(reply: [ReplyListEntity]?) -> some View {
+        if let data = reply {
+            ForEach(data) {
+                CommentView(commentId: $0.commentId,
+                            userName: $0.memberProfile.memberName,
+                            time: $0.commentedAt,
+                            comment: $0.context,
+                            reactionData: $0.reactionList)
             }
         }
     }

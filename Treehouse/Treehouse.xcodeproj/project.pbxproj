@@ -103,6 +103,16 @@
 		3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150572C0EC5E800AD05C3 /* InvitationService.swift */; };
 		3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */; };
 		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
+		3F8171682C43FE6F00CEE21E /* CreateCommentResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */; };
+		3F81716A2C43FEB800CEE21E /* CreateCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */; };
+		3F81716C2C44002900CEE21E /* ReadCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */; };
+		3F81716E2C44006F00CEE21E /* ReadCommentResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81716D2C44006F00CEE21E /* ReadCommentResponseEntity.swift */; };
+		3F8171702C44273A00CEE21E /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81716F2C44273A00CEE21E /* CommentViewModel.swift */; };
+		3F8171712C44385000CEE21E /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9474FA552BECDC88006265E9 /* FeedViewModel.swift */; };
+		3F8171722C44386000CEE21E /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9449C6D62BDBBEA000FC938B /* FeedModel.swift */; };
+		3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81719A2C46D18D00CEE21E /* EmojiViewModel.swift */; };
+		3F8171A12C474A4A00CEE21E /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171A02C474A4A00CEE21E /* CommentService.swift */; };
+		3F8171A32C474A5B00CEE21E /* CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171A22C474A5B00CEE21E /* CommentAPI.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -162,9 +172,16 @@
 		3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */; };
 		3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1072A2BEA0BE700C52908 /* Config.swift */; };
 		3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */; };
+		3FF48FD42C4DF69E00A6DD8A /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FD32C4DF69E00A6DD8A /* PostViewModel.swift */; };
+		3FF48FD62C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FD52C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift */; };
+		3FF48FD82C4E3C9300A6DD8A /* ReadPostResponsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FD72C4E3C9300A6DD8A /* ReadPostResponsEntity.swift */; };
+		3FF48FDB2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FDA2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift */; };
+		3FF48FDD2C4E908B00A6DD8A /* CommentRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FDC2C4E908B00A6DD8A /* CommentRepositoryImpl.swift */; };
+		3FF48FE02C4F84C400A6DD8A /* CreateReactionToCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FDF2C4F84C400A6DD8A /* CreateReactionToCommentUseCase.swift */; };
+		3FF48FE22C4F91D700A6DD8A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FE12C4F91D700A6DD8A /* PostDetailViewModel.swift */; };
 		3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73132C3178F800C3AF4F /* Image+.swift */; };
 		3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73152C318CC000C3AF4F /* Data+.swift */; };
-		94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */; };
+		94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* SheetActionViewModel.swift */; };
 		9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */; };
 		9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */; };
 		9412FF372BFF2409006A8A15 /* TreeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412FF362BFF2409006A8A15 /* TreeTabView.swift */; };
@@ -290,6 +307,14 @@
 		3F5150572C0EC5E800AD05C3 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
 		3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsReponseEntity.swift; sourceTree = "<group>"; };
 		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
+		3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentResponseEntity.swift; sourceTree = "<group>"; };
+		3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
+		3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCommentUseCase.swift; sourceTree = "<group>"; };
+		3F81716D2C44006F00CEE21E /* ReadCommentResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCommentResponseEntity.swift; sourceTree = "<group>"; };
+		3F81716F2C44273A00CEE21E /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		3F81719A2C46D18D00CEE21E /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
+		3F8171A02C474A4A00CEE21E /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		3F8171A22C474A5B00CEE21E /* CommentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAPI.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -350,9 +375,16 @@
 		3FF107262BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FF1072A2BEA0BE700C52908 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		3FF48FD32C4DF69E00A6DD8A /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		3FF48FD52C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFeedPostUseCase.swift; sourceTree = "<group>"; };
+		3FF48FD72C4E3C9300A6DD8A /* ReadPostResponsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostResponsEntity.swift; sourceTree = "<group>"; };
+		3FF48FDA2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepositoryPorotocol.swift; sourceTree = "<group>"; };
+		3FF48FDC2C4E908B00A6DD8A /* CommentRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepositoryImpl.swift; sourceTree = "<group>"; };
+		3FF48FDF2C4F84C400A6DD8A /* CreateReactionToCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReactionToCommentUseCase.swift; sourceTree = "<group>"; };
+		3FF48FE12C4F91D700A6DD8A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		3FFA73132C3178F800C3AF4F /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		3FFA73152C318CC000C3AF4F /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
-		94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		94103F3F2C24226800CCF44A /* SheetActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetActionViewModel.swift; sourceTree = "<group>"; };
 		9412FF2E2BF6663A006A8A15 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		9412FF312BF670FD006A8A15 /* SetUserIdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdViewModel.swift; sourceTree = "<group>"; };
 		9412FF362BFF2409006A8A15 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
@@ -461,6 +493,7 @@
 				0054D7342BDAD0D60009B9CC /* Register */,
 				3F5150522C0EC43700AD05C3 /* Invitation */,
 				3FA175E12C1AC45B00A57987 /* Feed */,
+				3FF48FDE2C4E917700A6DD8A /* Comment */,
 				3F1BE13F2C2173FD00D3AF1D /* AWSImage */,
 			);
 			path = Entities;
@@ -508,6 +541,7 @@
 				0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */,
 				3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */,
 				3FA175DF2C1AC42100A57987 /* FeedRepositoryImpl.swift */,
+				3FF48FDC2C4E908B00A6DD8A /* CommentRepositoryImpl.swift */,
 				3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */,
 			);
 			path = Repositories;
@@ -523,6 +557,7 @@
 				3FF106F72BEA074800C52908 /* Invitation */,
 				3FF106F82BEA074E00C52908 /* Notification */,
 				3F06C2F52BFDC2B9002B771B /* Feed */,
+				3F81719C2C474A0C00CEE21E /* Comment */,
 				3F1BE1332C211DF400D3AF1D /* AWSImage */,
 			);
 			path = Network;
@@ -544,6 +579,7 @@
 				0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */,
 				3F5150552C0EC47E00AD05C3 /* InvitationRepositoryProtocol.swift */,
 				3FA175DD2C1AC34B00A57987 /* FeedRepositoryProtocol.swift */,
+				3FF48FDA2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift */,
 				3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
@@ -555,6 +591,7 @@
 				0087C2982BE16193004CED9C /* Register */,
 				3F5150512C0EC42E00AD05C3 /* Invitation */,
 				3FA175DA2C1AC2D700A57987 /* Feed */,
+				3FF48FD92C4E8FE100A6DD8A /* Comment */,
 				3F1BE12E2C2118AA00D3AF1D /* AWSImage */,
 			);
 			path = UseCases;
@@ -797,7 +834,6 @@
 				3F06C3002BFDEAB3002B771B /* PostReportFeedPostRequestDTO.swift */,
 				3F06C3022BFDEAEE002B771B /* PostReportFeedCommentRequestDTO.swift */,
 				3F06C3042BFDEB1E002B771B /* PostReactionFeedPostRequestDTO.swift */,
-				3F06C3062BFDEB40002B771B /* PostReactionCommentRequestDTO.swift */,
 				3FA175D32C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift */,
 			);
 			path = Request;
@@ -810,8 +846,6 @@
 				3F06C30B2BFDEFD5002B771B /* GetReadFeedPostsListResponseDTO.swift */,
 				3F06C30D2BFDF16B002B771B /* GetReadDetailFeedPostsResponseDTO.swift */,
 				3F06C30F2BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift */,
-				3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */,
-				3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */,
 				3FA175D52C1ABDED00A57987 /* PostPresignedURLResponseDTO.swift */,
 			);
 			path = Response;
@@ -896,6 +930,42 @@
 			path = Invitation;
 			sourceTree = "<group>";
 		};
+		3F81719C2C474A0C00CEE21E /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				3F8171A22C474A5B00CEE21E /* CommentAPI.swift */,
+				3F8171A02C474A4A00CEE21E /* CommentService.swift */,
+				3F81719D2C474A2800CEE21E /* DTO */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		3F81719D2C474A2800CEE21E /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				3F81719F2C474A3700CEE21E /* Request */,
+				3F81719E2C474A2F00CEE21E /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		3F81719E2C474A2F00CEE21E /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3F06C3112BFDF320002B771B /* PostCreateCommentResponseDTO.swift */,
+				3F06C3132BFDF34C002B771B /* GetReadCommentResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		3F81719F2C474A3700CEE21E /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				3F06C3062BFDEB40002B771B /* PostReactionCommentRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		3F8835862BCC05540021C8AB /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,6 +999,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA175DB2C1AC2FD00A57987 /* PresignedURLUseCase.swift */,
+				3FF48FD52C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -937,6 +1008,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA175E22C1AC47A00A57987 /* PresignedURLResponseEntity.swift */,
+				3FF48FD72C4E3C9300A6DD8A /* ReadPostResponsEntity.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1101,6 +1173,25 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		3FF48FD92C4E8FE100A6DD8A /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */,
+				3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */,
+				3FF48FDF2C4F84C400A6DD8A /* CreateReactionToCommentUseCase.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		3FF48FDE2C4E917700A6DD8A /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */,
+				3F81716D2C44006F00CEE21E /* ReadCommentResponseEntity.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		9412FF302BF670A8006A8A15 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1240,7 +1331,11 @@
 			isa = PBXGroup;
 			children = (
 				9474FA552BECDC88006265E9 /* FeedViewModel.swift */,
-				94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */,
+				94103F3F2C24226800CCF44A /* SheetActionViewModel.swift */,
+				3FF48FD32C4DF69E00A6DD8A /* PostViewModel.swift */,
+				3FF48FE12C4F91D700A6DD8A /* PostDetailViewModel.swift */,
+				3F81716F2C44273A00CEE21E /* CommentViewModel.swift */,
+				3F81719A2C46D18D00CEE21E /* EmojiViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1382,6 +1477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF48FD42C4DF69E00A6DD8A /* PostViewModel.swift in Sources */,
 				3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */,
 				3F06C30E2BFDF16B002B771B /* GetReadDetailFeedPostsResponseDTO.swift in Sources */,
 				3FA175D62C1ABDED00A57987 /* PostPresignedURLResponseDTO.swift in Sources */,
@@ -1393,6 +1489,7 @@
 				3F06C2FA2BFDC2E8002B771B /* FeedAPI.swift in Sources */,
 				3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */,
 				3F1BE12C2C1FDF6700D3AF1D /* UIApplication+.swift in Sources */,
+				3FF48FE22C4F91D700A6DD8A /* PostDetailViewModel.swift in Sources */,
 				944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */,
 				3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */,
 				3F51504E2C0EA03A00AD05C3 /* AcceptInvitationTreeMemberUseCase.swift in Sources */,
@@ -1406,16 +1503,19 @@
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
 				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
+				3F8171712C44385000CEE21E /* FeedViewModel.swift in Sources */,
 				00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */,
 				0012366D2BCED9BD00CEAC53 /* GreenLetterView.swift in Sources */,
 				3F1BE13A2C211F8200D3AF1D /* AWSImageService.swift in Sources */,
+				3F81716C2C44002900CEE21E /* ReadCommentUseCase.swift in Sources */,
 				3F8835852BCC00D30021C8AB /* TextField+.swift in Sources */,
 				3F8B72742C19DF8700299C24 /* ColorEmojiPopover.swift in Sources */,
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
-				94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */,
+				94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
+				3FF48FD62C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift in Sources */,
 				3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
@@ -1423,6 +1523,7 @@
 				9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */,
 				3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */,
 				3F1BE1412C21741000D3AF1D /* PutUploadImagesResponseEntity.swift in Sources */,
+				3F8171A32C474A5B00CEE21E /* CommentAPI.swift in Sources */,
 				94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */,
 				3FF107212BEA0A8A00C52908 /* PostCheckUserNameResponseDTO.swift in Sources */,
 				3FA175DE2C1AC34B00A57987 /* FeedRepositoryProtocol.swift in Sources */,
@@ -1430,12 +1531,14 @@
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
+				3FF48FE02C4F84C400A6DD8A /* CreateReactionToCommentUseCase.swift in Sources */,
 				0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */,
 				3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */,
 				3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
+				3F81716A2C43FEB800CEE21E /* CreateCommentUseCase.swift in Sources */,
 				3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */,
 				3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */,
 				9499D9542BF1CA2A007CC6CF /* NetworkError.swift in Sources */,
@@ -1443,6 +1546,7 @@
 				3F06C3032BFDEAEE002B771B /* PostReportFeedCommentRequestDTO.swift in Sources */,
 				3FA175D42C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift in Sources */,
 				3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */,
+				3FF48FD82C4E3C9300A6DD8A /* ReadPostResponsEntity.swift in Sources */,
 				9499D9502BF1BD04007CC6CF /* NotificationService.swift in Sources */,
 				3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */,
 				3F5150562C0EC47E00AD05C3 /* InvitationRepositoryProtocol.swift in Sources */,
@@ -1475,6 +1579,7 @@
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
 				94D100182C0C2A1900025D43 /* CommentCountView.swift in Sources */,
 				3FF107172BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift in Sources */,
+				3F8171682C43FE6F00CEE21E /* CreateCommentResponseEntity.swift in Sources */,
 				9499D9522BF1C5AD007CC6CF /* NetworkErrorCode.swift in Sources */,
 				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
 				3F06C2FF2BFDEA7D002B771B /* PostCreateCommentRequestDTO.swift in Sources */,
@@ -1494,17 +1599,21 @@
 				00C2F5692C16F82F0009C6A1 /* MemberProfileView.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3F44C13E2C25732E00A5CAFE /* FeedRouter.swift in Sources */,
+				3FF48FDB2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift in Sources */,
 				3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
 				94D388D12C256DBF0058231B /* CreateTreehouseNameView.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
+				3FF48FDD2C4E908B00A6DD8A /* CommentRepositoryImpl.swift in Sources */,
 				9475A6092C133D2C00333A72 /* PostDetailView.swift in Sources */,
+				3F8171A12C474A4A00CEE21E /* CommentService.swift in Sources */,
 				3FA175D92C1AC2A200A57987 /* UIImage+.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
 				3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
+				3F81716E2C44006F00CEE21E /* ReadCommentResponseEntity.swift in Sources */,
 				947326232C23F8350030A182 /* DynamicHeightTextEditorView.swift in Sources */,
 				944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */,
 				3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */,
@@ -1528,9 +1637,11 @@
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
 				3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
+				3F8171722C44386000CEE21E /* FeedModel.swift in Sources */,
 				944D48932BF10C6900205B18 /* NotificationModel.swift in Sources */,
 				3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */,
 				3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */,
+				3F8171702C44273A00CEE21E /* CommentViewModel.swift in Sources */,
 				009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */,
 				00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
@@ -1543,6 +1654,7 @@
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
 				3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */,
+				3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
 				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
@@ -1698,6 +1810,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "초대를 위해 연락처에 접근합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Treehouse에서 사진을 선택하기 위해 사진첩에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1731,6 +1845,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "초대를 위해 연락처에 접근합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Treehouse에서 사진을 선택하기 위해 사진첩에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

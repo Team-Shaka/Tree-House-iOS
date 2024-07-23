@@ -91,6 +91,6 @@ struct CustomBottomSheet<Content: View>: View {
 
 #Preview {
     CustomBottomSheet<EmojiGridView>(content: {
-        EmojiGridView(viewModel: FeedContentViewModel())
+        EmojiGridView()
     }, isPresented: .constant(true))
 }

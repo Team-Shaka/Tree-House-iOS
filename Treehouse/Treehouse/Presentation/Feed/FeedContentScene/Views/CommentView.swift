@@ -14,18 +14,20 @@ enum CommentType {
 
 struct CommentView: View {
     
+    // MARK: - ViewModel Property
+
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    
     // MARK: - Property
     
-    let commentIndex: Int
+    let commentId: Int
     var replyIndex: Int? = nil
     let userName: String
     let time: String
     let comment: String
-    let commentyType: CommentType
-    
-    // MARK: - ViewModel Property
-    
-    @Bindable var viewModel: FeedContentViewModel
+    @State var reactionData: [ReactionListEntity]
     
     // MARK: - View
     
@@ -33,7 +35,8 @@ struct CommentView: View {
         HStack(alignment: .top, spacing: 0) {
             Image(.icNotiMember)
                 .frame(width: 36, height: 36)
-                .padding(.trailing, commentyType == .comment ? 8 : 10)
+                .padding(.trailing, 10)
+//                .padding(.trailing, commentyType == .comment ? 8 : 10)
             
             VStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 1) {
@@ -76,33 +79,19 @@ struct CommentView: View {
 private extension CommentView {
     @ViewBuilder
     var commentyTypeEmojiListView: some View {
-        switch commentyType {
-        case .comment:
-            if let data = viewModel.commentModels[commentIndex].emojiComment {
-                EmojiListView(emojiData: data,
-                              commentType: .comment,
-                              index: (commentIndex, nil),
-                              viewModel: viewModel)
-            }
-        case .reply:
-            if let data = viewModel.commentModels[commentIndex].reply?[replyIndex ?? 0].emojiComment {
-                EmojiListView(emojiData: data,
-                              commentType: .reply,
-                              index: (commentIndex, replyIndex ?? 0),
-                              viewModel: viewModel)
-            }
-        }
+        EmojiListView(
+            emojiData: $reactionData,
+            commentId: commentId
+        )
     }
 }
 
 // MARK: - Preview
 
-#Preview {
-    CommentView(commentIndex: 0,
-                replyIndex: 0,
-                userName: "영서",
-                time: "3분 전",
-                comment: "댓글을 입력해주세요.",
-                commentyType: .comment,
-                viewModel: FeedContentViewModel())
-}
+//#Preview {
+//    CommentView(replyIndex: 0,
+//                userName: "영서",
+//                time: "3분 전",
+//                comment: "댓글을 입력해주세요.", reactionData: <#[ReactionListEntity]?#>
+//                viewModel: CommentViewModel(createCommentUseCase: CreateCommentUseCase(repository: FeedRepositoryImpl()), readCommentUseCase: ReadCommentUseCase(repository: FeedRepositoryImpl())))
+//}

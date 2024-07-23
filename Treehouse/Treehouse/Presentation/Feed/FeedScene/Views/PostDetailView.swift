@@ -13,8 +13,12 @@ struct PostDetailView: View {
     // MARK: - State Property
     
     @Environment (ViewRouter.self) var viewRouter
-    @ObservedObject var viewModel: PostDetailViewModel
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (PostViewModel.self) var postViewModel
     
+    @State var commentViewModel: CommentViewModel
+    
+    @State var viewModel: SheetActionViewModel = SheetActionViewModel()
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: FeedField?
@@ -22,21 +26,38 @@ struct PostDetailView: View {
     // MARK: - View
     
     var body: some View {
-        ZStack {
-            VStack {
-                ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .DetailView)
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                if let postId = feedViewModel.currentPostId {
+                    SinglePostView(userProfileImageURL: postViewModel.feedListData[postId].memberProfile.memberProfileImageUrl,
+                                   sentTime: postViewModel.feedListData[postId].postedAt,
+                                   postContent: postViewModel.feedListData[postId].context,
+                                   postImageURLs: postViewModel.feedListData[postId].pictureUrlList,
+                                   postType: .DetailView)
+                } else {
+                    SinglePostView(userProfileImageURL: "",
+                                   sentTime: "",
+                                   postContent: "정보없음",
+                                   postImageURLs: [""],
+                                   postType: .DetailView)
                 }
                 
-                feedDetailTextField
-                    .onChange(of: focusedField) { _, newValue in
-                        if newValue == .post {
-                            textFieldState = .enable
-                        } else {
-                            textFieldState = .notFocused
-                        }
-                    }
+                Divider()
+                
+                if commentViewModel.isReadCommentData {
+                    FeedContentView()
+                        .environment(commentViewModel)
+                }
             }
+            
+            feedDetailTextField
+                .onChange(of: focusedField) { _, newValue in
+                    if newValue == .post {
+                        textFieldState = .enable
+                    } else {
+                        textFieldState = .notFocused
+                    }
+                }
             
             if viewModel.isDeletePostPopupShowing {
                 deletePostPopupView
@@ -63,7 +84,14 @@ struct PostDetailView: View {
                     .foregroundStyle(.treeBlack)
             }
         }
-        
+        .onAppear {
+            Task {
+                await commentViewModel.readComment(
+                    treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                    postId: feedViewModel.currentPostId ?? 0
+                )
+            }
+        }
     }
 }
 
@@ -85,7 +113,7 @@ extension PostDetailView {
                     .padding(.bottom, 4)
                 
                 ZStack(alignment: .trailing) {
-                    TextField("username에게 댓글쓰기", text: $postContent, axis: .vertical)
+                    TextField("username에게 댓글쓰기", text: $viewModel.postContent, axis: .vertical)
                         .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
                         .font(.fontGuide(.body5))
                         .tint(.treeGreen)
@@ -147,6 +175,19 @@ extension PostDetailView {
 // MARK: - Preview
 
 #Preview {
-    PostDetailView(viewModel: PostDetailViewModel())
-        .environment(ViewRouter())
+    NavigationStack {
+        PostDetailView(
+            commentViewModel: CommentViewModel(
+                createCommentUseCase: CreateCommentUseCase(
+                    repository: CommentRepositoryImpl()
+                ),
+                readCommentUseCase: ReadCommentUseCase(
+                    repository: CommentRepositoryImpl()
+                )
+            )
+        )
+        .environment(
+            ViewRouter()
+        )
+    }
 }

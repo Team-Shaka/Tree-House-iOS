@@ -20,6 +20,8 @@ struct FeedView: View {
     
     // MARK: - State Property
     
+    @State var postViewModel: PostViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
+    
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
     @StateObject private var photoPickerManager = PhotoPickerManager(type: .postImage)
@@ -28,6 +30,7 @@ struct FeedView: View {
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
     @Environment (ViewRouter.self) var viewRouter
+    @Environment (FeedViewModel.self) var feedViewModel
     
     // MARK: - View
     
@@ -36,13 +39,6 @@ struct FeedView: View {
             postTextField
             
             filledFeedView
-                .background(
-                    Color.clear
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            viewRouter.push(FeedRouter.postDetailView)
-                        }
-                )
             
             CommentCountView(commentCount: 12)
                 .padding(.leading, 62)
@@ -59,6 +55,9 @@ struct FeedView: View {
         }
         .onTapGesture {
             hideKeyboard()
+        }
+        .task {
+            await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
         }
     }
 }
@@ -163,8 +162,21 @@ extension FeedView {
     
     @ViewBuilder
     var filledFeedView: some View {
-        SinglePostView(userProfileImageURL: "", sentTime: 4, postContent: "", postImageURLs: ["", ""], postType: .feedView)
-            .environment(viewRouter)
+        ForEach(postViewModel.feedListData) { data in
+            SinglePostView(userProfileImageURL: data.memberProfile.memberProfileImageUrl,
+                           sentTime: data.postedAt,
+                           postContent: data.context,
+                           postImageURLs: data.pictureUrlList,
+                           postType: .feedView)
+            .background(
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        feedViewModel.currentPostId = data.postId
+                        viewRouter.push(FeedRouter.postDetailView)
+                    }
+            )
+        }
     }
 }
 

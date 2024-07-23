@@ -9,37 +9,41 @@ import SwiftUI
 
 struct EmojiListView: View {
     
+    // MARK: - ViewModel Property
+    
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    
     // MARK: - Property
     
-    var emojiData: [EmojiModel]
-    let commentType: CommentType
-    var index: (Int,Int?)
-    
-    // MARK: - State Property
+    @Binding var emojiData: [ReactionListEntity]
+    let commentId: Int
 
-    @Bindable var viewModel: FeedContentViewModel
-    
     // MARK: - View
     
     var body: some View {
         FlowlayoutStack(verticalSpacing: 8, horizontalSpacing: 10) {
-            ForEach(emojiData.indices, id: \.self) { emojiIndex in
+            ForEach(emojiData) { data in
                 Button(action: {
-                    switch commentType {
-                    case .comment:
-                        viewModel.emojiButtonTapped(commentIndex: index.0, emojiIndex: emojiIndex)
-                    case .reply:
-                        viewModel.emojiButtonTapped(commentIndex: index, emojiIndex: emojiIndex)
+                    Task {
+                        await emojiViewModel.createReactionComment(
+                            treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                            postId: feedViewModel.currentPostId ?? 0,
+                            commentId: commentId
+                        )
                     }
                 }) {
-                    emojiView(emojiData[emojiIndex].emoji,
-                              emojiData[emojiIndex].count,
-                              emojiData[emojiIndex].isPressed)
+                    emojiView(
+                        data.reactionName,
+                        data.reactionCount,
+                        data.isPushed
+                    )
                 }
             }
-
+            
             Button(action: {
-                viewModel.isSelectEmojiView = true
+                commentViewModel.isSelectEmojiView = true
             }) {
                 Image(systemName: "plus")
                     .foregroundStyle(.gray5)
@@ -49,6 +53,33 @@ struct EmojiListView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15.0))
             }
         }
+//        FlowlayoutStack(verticalSpacing: 8, horizontalSpacing: 10) {
+//            ForEach(emojiData.indices, id: \.self) { emojiIndex in
+//                Button(action: {
+//                    switch commentType {
+//                    case .comment:
+//                        viewModel.emojiButtonTapped(commentIndex: index.0, emojiIndex: emojiIndex)
+//                    case .reply:
+//                        viewModel.emojiButtonTapped(commentIndex: index, emojiIndex: emojiIndex)
+//                    }
+//                }) {
+//                    emojiView(emojiData[emojiIndex].emoji,
+//                              emojiData[emojiIndex].count,
+//                              emojiData[emojiIndex].isPressed)
+//                }
+//            }
+//
+//            Button(action: {
+//                viewModel.isSelectEmojiView = true
+//            }) {
+//                Image(systemName: "plus")
+//                    .foregroundStyle(.gray5)
+//                    .padding(9)
+//                    .frame(width:30, height: 30)
+//                    .background(.gray1)
+//                    .clipShape(RoundedRectangle(cornerRadius: 15.0))
+//            }
+//        }
     }
 }
 
@@ -82,11 +113,10 @@ private extension EmojiListView {
 
 // MARK: - Preview
 
-#Preview {
-    EmojiListView(emojiData: [EmojiModel(emoji: "😄", count: 124, isPressed: false),
-                              EmojiModel(emoji: "😢", count: 2, isPressed: false),
-                              EmojiModel(emoji: "🥱", count: 3, isPressed: false)],
-                  commentType: .comment,
-                  index: (0,0),
-                  viewModel: FeedContentViewModel())
-}
+//#Preview {
+//    EmojiListView(emojiData: [EmojiModel(emoji: "😄", count: 124, isPressed: false),
+//                              EmojiModel(emoji: "😢", count: 2, isPressed: false),
+//                              EmojiModel(emoji: "🥱", count: 3, isPressed: false)],
+//                  index: (0,0),
+//                  viewModel: FeedContentViewModel())
+//}

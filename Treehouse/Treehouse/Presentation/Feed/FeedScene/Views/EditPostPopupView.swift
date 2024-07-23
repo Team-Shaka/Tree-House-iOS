@@ -16,7 +16,7 @@ struct EditPostPopupView: View {
     
     // MARK: - Property
     
-    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .feedView)
+    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: "1", postContent: "", postImageURLs: [""], postType: .feedView)
     
     // MARK: - View
     

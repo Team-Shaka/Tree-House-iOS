@@ -26,7 +26,7 @@ struct SinglePostView: View {
     // MARK: - Property
     
     let userProfileImageURL: String
-    let sentTime: Int
+    let sentTime: String
     let postContent: String
     let postImageURLs: [String]
     let dummyImages = ["img_dummy", "img_dummy_2"]
@@ -35,7 +35,7 @@ struct SinglePostView: View {
     // MARK:  - State Property
     
     @State private var selectedImage: SelectedImage? = nil
-    @StateObject private var viewModel = PostDetailViewModel()
+    @State private var viewModel = SheetActionViewModel()
     
     // MARK: - View
     
@@ -168,7 +168,7 @@ extension SinglePostView {
 
 #Preview {
     SinglePostView(userProfileImageURL: "",
-                   sentTime: 5,
+                   sentTime: "5",
                    postContent: "",
                    postImageURLs: ["", ""],
                    postType: .feedView)

@@ -25,6 +25,7 @@ struct TreeTabView: View {
                     .tabItem {
                         Label("홈", image: "ic_home")
                     }
+                    .environment(userInfoViewModel)
                 
                 TreeTab()
                     .tabItem {
