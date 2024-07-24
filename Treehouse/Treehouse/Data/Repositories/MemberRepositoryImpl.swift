@@ -22,14 +22,14 @@ final class MemberRepositoryImpl: MemberRepositoryProtocol {
     }
     
     func getReadMemberFeed(treehouseId: Int, memberId: Int) async -> Result<ReadMemberFeedResponseEntity, NetworkError> {
-//        do {
-//            let response = try await memberService.getReadMemberFeed(treehouseId: treehouseId, memberId: memberId)
-//            return .success(response.toDomain())
-//        } catch let error as NetworkError {
-//            return .failure(error)
-//        } catch {
-//            return .failure(NetworkError.unknown)
-//        }
+        do {
+            let response = try await memberService.getReadMemberFeed(treehouseId: treehouseId, memberId: memberId)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
     }
     
     func getReadMyProfileInfo(treehouseId: Int) async -> Result<ReadMyProfileInfoResponseEntity, NetworkError> {

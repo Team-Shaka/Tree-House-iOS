@@ -17,6 +17,6 @@ struct PostListResponseEntity: Decodable {
     let context: String
     let pictureUrlList: [String]
     let commentCount: Int
-    let reactionList: [ReactionListResponseData]
+    let reactionList: [ReactionListEntity]
     let postedAt: String
 }
