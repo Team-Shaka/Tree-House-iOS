@@ -141,7 +141,7 @@ extension ShowMemberProfileView {
                 
                 Circle().fill(.treePale)
                 
-                Image(uiImage: viewModel.profileImage?.first ?? .imgUser1)
+                Image(uiImage: viewModel.profileImage, defaultImage: .imgUser1)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 99, height: 99)

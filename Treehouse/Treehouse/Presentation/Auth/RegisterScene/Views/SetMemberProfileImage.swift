@@ -61,8 +61,7 @@ struct SetMemberProfileImage: View {
             
             Button(action: {
                 Task {
-                    let result = await viewModel.presignedURL()
-                    if result {
+                    if await viewModel.presignedURL() {
                         await viewModel.loadImageAWS()
                     }
                 }
@@ -117,18 +116,18 @@ private extension SetMemberProfileImage {
             Image(.imgBackground)
                 .aspectRatio(contentMode: .fill)
 
-            if photoPickerManager.selectedImages.count != 0 {
+            if let selecteImage = photoPickerManager.selectedImages.first {
                 ZStack {
                     Image(.imgUserRing)
                     
-                    Image(uiImage: photoPickerManager.selectedImages[0])
+                    Image(uiImage: selecteImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
                         .frame(width: SizeLiterals.Screen.screenWidth * 130.24 / 393, height: SizeLiterals.Screen.screenHeight * 130.24 / 852)
                 }
                 .onAppear {
-                    viewModel.profileImage?.append(photoPickerManager.selectedImages[0])
+                    viewModel.profileImage = selecteImage
                 }
             } else {
                 Image(.imgUser2)
