@@ -18,8 +18,8 @@ struct GetReadFeedPostsListResponseDTO: Decodable {
 
 struct MemberProfileResponseData: Decodable {
     let memberId: Int
-    let memberProfileImageUrl: String
     let memberName: String
+    let memberProfileImageUrl: String
     let memberBranch: Int
 }
 
