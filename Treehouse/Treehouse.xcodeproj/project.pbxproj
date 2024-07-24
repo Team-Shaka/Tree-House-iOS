@@ -169,16 +169,32 @@
 		3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */; };
 		3FF48FE72C50E8D600A6DD8A /* TreehouseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FE62C50E8D600A6DD8A /* TreehouseService.swift */; };
 		3FF48FE92C50E8DE00A6DD8A /* TreehouseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FE82C50E8DE00A6DD8A /* TreehouseAPI.swift */; };
-		3FF48FEC2C50E98600A6DD8A /* PostCreateTreehousesRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FEB2C50E98600A6DD8A /* PostCreateTreehousesRequestDTO.swift */; };
-		3FF48FEE2C50E9A900A6DD8A /* PostCreateTreehousesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FED2C50E9A900A6DD8A /* PostCreateTreehousesResponseDTO.swift */; };
-		3FF48FF02C50E9BF00A6DD8A /* GetReadTreehousesInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehousesInfoResponseDTO.swift */; };
+		3FF48FEC2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FEB2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift */; };
+		3FF48FEE2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FED2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift */; };
+		3FF48FF02C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift */; };
 		3FF48FF42C50ED1300A6DD8A /* MemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FF32C50ED1300A6DD8A /* MemberAPI.swift */; };
 		3FF48FF62C50ED1C00A6DD8A /* MemberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FF52C50ED1C00A6DD8A /* MemberService.swift */; };
 		3FF48FFA2C50ED9D00A6DD8A /* GetReadMemberInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FF92C50ED9D00A6DD8A /* GetReadMemberInfoResponseDTO.swift */; };
 		3FF48FFC2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FFB2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift */; };
-		3FF48FFE2C50EDE500A6DD8A /* GetReadMyProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfo.swift */; };
+		3FF48FFE2C50EDE500A6DD8A /* GetReadMyProfileInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfoResponseDTO.swift */; };
 		3FF490002C50EE1600A6DD8A /* PatchModifyMyProfileRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF48FFF2C50EE1600A6DD8A /* PatchModifyMyProfileRequestDTO.swift */; };
 		3FF490022C50F2C700A6DD8A /* PatchModifyMyProfileResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490012C50F2C700A6DD8A /* PatchModifyMyProfileResponseDTO.swift */; };
+		3FF490042C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490032C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift */; };
+		3FF490072C50FDB600A6DD8A /* CreateTreehouseResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490062C50FDB500A6DD8A /* CreateTreehouseResponseEntity.swift */; };
+		3FF490092C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490082C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift */; };
+		3FF4900C2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4900B2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift */; };
+		3FF4900E2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4900D2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift */; };
+		3FF490102C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4900F2C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift */; };
+		3FF490132C51013200A6DD8A /* MemberRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490122C51013200A6DD8A /* MemberRepositoryProtocol.swift */; };
+		3FF490162C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490152C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift */; };
+		3FF490182C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490172C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift */; };
+		3FF4901A2C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490192C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift */; };
+		3FF4901C2C51021200A6DD8A /* PatchModifyMyProfileResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4901B2C51021200A6DD8A /* PatchModifyMyProfileResponseEntity.swift */; };
+		3FF4901E2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4901D2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift */; };
+		3FF490202C51117400A6DD8A /* MemberRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF4901F2C51117400A6DD8A /* MemberRepositoryImpl.swift */; };
+		3FF490222C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490212C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift */; };
+		3FF490242C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490232C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift */; };
+		3FF490262C51166D00A6DD8A /* ModifyMyProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF490252C51166D00A6DD8A /* ModifyMyProfileUseCase.swift */; };
 		3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73132C3178F800C3AF4F /* Image+.swift */; };
 		3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA73152C318CC000C3AF4F /* Data+.swift */; };
 		94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */; };
@@ -374,16 +390,32 @@
 		3FF10CA02C3F5E12000CE3B1 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		3FF48FE62C50E8D600A6DD8A /* TreehouseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseService.swift; sourceTree = "<group>"; };
 		3FF48FE82C50E8DE00A6DD8A /* TreehouseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseAPI.swift; sourceTree = "<group>"; };
-		3FF48FEB2C50E98600A6DD8A /* PostCreateTreehousesRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateTreehousesRequestDTO.swift; sourceTree = "<group>"; };
-		3FF48FED2C50E9A900A6DD8A /* PostCreateTreehousesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateTreehousesResponseDTO.swift; sourceTree = "<group>"; };
-		3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehousesInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadTreehousesInfoResponseDTO.swift; sourceTree = "<group>"; };
+		3FF48FEB2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateTreehouseRequestDTO.swift; sourceTree = "<group>"; };
+		3FF48FED2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateTreehouseResponseDTO.swift; sourceTree = "<group>"; };
+		3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadTreehouseInfoResponseDTO.swift; sourceTree = "<group>"; };
 		3FF48FF32C50ED1300A6DD8A /* MemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAPI.swift; sourceTree = "<group>"; };
 		3FF48FF52C50ED1C00A6DD8A /* MemberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberService.swift; sourceTree = "<group>"; };
 		3FF48FF92C50ED9D00A6DD8A /* GetReadMemberInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMemberInfoResponseDTO.swift; sourceTree = "<group>"; };
 		3FF48FFB2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMemberFeedResponseDTO.swift; sourceTree = "<group>"; };
-		3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyProfileInfo.swift; sourceTree = "<group>"; };
+		3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyProfileInfoResponseDTO.swift; sourceTree = "<group>"; };
 		3FF48FFF2C50EE1600A6DD8A /* PatchModifyMyProfileRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchModifyMyProfileRequestDTO.swift; sourceTree = "<group>"; };
 		3FF490012C50F2C700A6DD8A /* PatchModifyMyProfileResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchModifyMyProfileResponseDTO.swift; sourceTree = "<group>"; };
+		3FF490032C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseRepositoryProtocol.swift; sourceTree = "<group>"; };
+		3FF490062C50FDB500A6DD8A /* CreateTreehouseResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseResponseEntity.swift; sourceTree = "<group>"; };
+		3FF490082C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTreehouseInfoResponseEntity.swift; sourceTree = "<group>"; };
+		3FF4900B2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseUseCase.swift; sourceTree = "<group>"; };
+		3FF4900D2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseRepositoryImpl.swift; sourceTree = "<group>"; };
+		3FF4900F2C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTreehouseInfoUseCase.swift; sourceTree = "<group>"; };
+		3FF490122C51013200A6DD8A /* MemberRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepositoryProtocol.swift; sourceTree = "<group>"; };
+		3FF490152C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMemberInfoResponseEntity.swift; sourceTree = "<group>"; };
+		3FF490172C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMemberFeedResponseEntity.swift; sourceTree = "<group>"; };
+		3FF490192C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMyProfileInfoResponseEntity.swift; sourceTree = "<group>"; };
+		3FF4901B2C51021200A6DD8A /* PatchModifyMyProfileResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchModifyMyProfileResponseEntity.swift; sourceTree = "<group>"; };
+		3FF4901D2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMemberInfoUseCase.swift; sourceTree = "<group>"; };
+		3FF4901F2C51117400A6DD8A /* MemberRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepositoryImpl.swift; sourceTree = "<group>"; };
+		3FF490212C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMemberFeedUseCase.swift; sourceTree = "<group>"; };
+		3FF490232C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMyProfileInfoUseCase.swift; sourceTree = "<group>"; };
+		3FF490252C51166D00A6DD8A /* ModifyMyProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMyProfileUseCase.swift; sourceTree = "<group>"; };
 		3FFA73132C3178F800C3AF4F /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		3FFA73152C318CC000C3AF4F /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		94103F3F2C24226800CCF44A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
@@ -495,6 +527,8 @@
 				0054D7342BDAD0D60009B9CC /* Register */,
 				3F5150522C0EC43700AD05C3 /* Invitation */,
 				3FA175E12C1AC45B00A57987 /* Feed */,
+				3FF490052C50FD7200A6DD8A /* Treehouse */,
+				3FF490112C51011E00A6DD8A /* Member */,
 				3F1BE13F2C2173FD00D3AF1D /* AWSImage */,
 			);
 			path = Entities;
@@ -543,6 +577,8 @@
 				0087C2862BDEC7B0004CED9C /* RegisterRepositoryImpl.swift */,
 				3F5150532C0EC46100AD05C3 /* InvitationRepositoryImpl.swift */,
 				3FA175DF2C1AC42100A57987 /* FeedRepositoryImpl.swift */,
+				3FF4900D2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift */,
+				3FF4901F2C51117400A6DD8A /* MemberRepositoryImpl.swift */,
 				3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */,
 			);
 			path = Repositories;
@@ -581,6 +617,8 @@
 				0087C2962BE15E91004CED9C /* RegisterRepositoryProtocol.swift */,
 				3F5150552C0EC47E00AD05C3 /* InvitationRepositoryProtocol.swift */,
 				3FA175DD2C1AC34B00A57987 /* FeedRepositoryProtocol.swift */,
+				3FF490032C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift */,
+				3FF490122C51013200A6DD8A /* MemberRepositoryProtocol.swift */,
 				3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
@@ -592,6 +630,8 @@
 				0087C2982BE16193004CED9C /* Register */,
 				3F5150512C0EC42E00AD05C3 /* Invitation */,
 				3FA175DA2C1AC2D700A57987 /* Feed */,
+				3FF4900A2C50FE9400A6DD8A /* Treehouse */,
+				3FF490142C51014D00A6DD8A /* Member */,
 				3F1BE12E2C2118AA00D3AF1D /* AWSImage */,
 			);
 			path = UseCases;
@@ -1155,8 +1195,8 @@
 		3FF48FE42C50E8C200A6DD8A /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				3FF48FED2C50E9A900A6DD8A /* PostCreateTreehousesResponseDTO.swift */,
-				3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehousesInfoResponseDTO.swift */,
+				3FF48FED2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift */,
+				3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1173,7 +1213,7 @@
 		3FF48FEA2C50E8EC00A6DD8A /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				3FF48FEB2C50E98600A6DD8A /* PostCreateTreehousesRequestDTO.swift */,
+				3FF48FEB2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1210,10 +1250,50 @@
 			children = (
 				3FF48FF92C50ED9D00A6DD8A /* GetReadMemberInfoResponseDTO.swift */,
 				3FF48FFB2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift */,
-				3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfo.swift */,
+				3FF48FFD2C50EDE500A6DD8A /* GetReadMyProfileInfoResponseDTO.swift */,
 				3FF490012C50F2C700A6DD8A /* PatchModifyMyProfileResponseDTO.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		3FF490052C50FD7200A6DD8A /* Treehouse */ = {
+			isa = PBXGroup;
+			children = (
+				3FF490062C50FDB500A6DD8A /* CreateTreehouseResponseEntity.swift */,
+				3FF490082C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift */,
+			);
+			path = Treehouse;
+			sourceTree = "<group>";
+		};
+		3FF4900A2C50FE9400A6DD8A /* Treehouse */ = {
+			isa = PBXGroup;
+			children = (
+				3FF4900B2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift */,
+				3FF4900F2C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift */,
+			);
+			path = Treehouse;
+			sourceTree = "<group>";
+		};
+		3FF490112C51011E00A6DD8A /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				3FF490152C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift */,
+				3FF490172C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift */,
+				3FF490192C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift */,
+				3FF4901B2C51021200A6DD8A /* PatchModifyMyProfileResponseEntity.swift */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		3FF490142C51014D00A6DD8A /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				3FF4901D2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift */,
+				3FF490212C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift */,
+				3FF490232C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift */,
+				3FF490252C51166D00A6DD8A /* ModifyMyProfileUseCase.swift */,
+			);
+			path = Member;
 			sourceTree = "<group>";
 		};
 		9412FF302BF670A8006A8A15 /* ViewModels */ = {
@@ -1499,6 +1579,7 @@
 			files = (
 				3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */,
 				3F06C30E2BFDF16B002B771B /* GetReadDetailFeedPostsResponseDTO.swift in Sources */,
+				3FF490102C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift in Sources */,
 				3FA175D62C1ABDED00A57987 /* PostPresignedURLResponseDTO.swift in Sources */,
 				94D388D52C2599B10058231B /* PreviewCreatedTreehouseView.swift in Sources */,
 				3FA175DC2C1AC2FD00A57987 /* PresignedURLUseCase.swift in Sources */,
@@ -1517,10 +1598,12 @@
 				00CF35982BC2E22200D9E332 /* SizeLiterals.swift in Sources */,
 				9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
+				3FF4900C2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift in Sources */,
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
 				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
 				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
+				3FF490182C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift in Sources */,
 				3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */,
 				3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */,
 				00C2F5712C1AFEBC0009C6A1 /* EditProfileView.swift in Sources */,
@@ -1537,6 +1620,7 @@
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
 				3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
+				3FF490222C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
 				9412FF322BF670FD006A8A15 /* SetUserIdViewModel.swift in Sources */,
@@ -1548,12 +1632,15 @@
 				3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
+				3FF490162C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
 				0087C29E2BE360A6004CED9C /* RegisterService.swift in Sources */,
 				3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */,
+				3FF490132C51013200A6DD8A /* MemberRepositoryProtocol.swift in Sources */,
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */,
 				3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */,
+				3FF490242C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
 				3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */,
 				3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */,
@@ -1561,6 +1648,7 @@
 				3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */,
 				3F06C3032BFDEAEE002B771B /* PostReportFeedCommentRequestDTO.swift in Sources */,
 				3FA175D42C1ABDB900A57987 /* PostPresignedURLRequestDTO.swift in Sources */,
+				3FF4901C2C51021200A6DD8A /* PatchModifyMyProfileResponseEntity.swift in Sources */,
 				3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */,
 				9499D9502BF1BD04007CC6CF /* NotificationService.swift in Sources */,
 				3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */,
@@ -1568,8 +1656,10 @@
 				3F8846052BF4F13E0021FB79 /* RegisterRouter.swift in Sources */,
 				3FF1071D2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift in Sources */,
 				3F8835882BCC058A0021C8AB /* MaxLengthModifier.swift in Sources */,
+				3FF490092C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
+				3FF4901A2C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
 				00B5919F2C240ECF00F7C38C /* InvitationViewModel.swift in Sources */,
 				3F1BE13E2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift in Sources */,
@@ -1585,13 +1675,13 @@
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
 				3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */,
 				3FF48FE92C50E8DE00A6DD8A /* TreehouseAPI.swift in Sources */,
-				3FF48FF02C50E9BF00A6DD8A /* GetReadTreehousesInfoResponseDTO.swift in Sources */,
+				3FF48FF02C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift in Sources */,
 				3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */,
-				3FF48FEE2C50E9A900A6DD8A /* PostCreateTreehousesResponseDTO.swift in Sources */,
+				3FF48FEE2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift in Sources */,
 				944562062BD1211000078023 /* NotificationType.swift in Sources */,
 				3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */,
 				0087C2972BE15E91004CED9C /* RegisterRepositoryProtocol.swift in Sources */,
-				3FF48FEC2C50E98600A6DD8A /* PostCreateTreehousesRequestDTO.swift in Sources */,
+				3FF48FEC2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift in Sources */,
 				947326192C1C8D640030A182 /* EditPostPopupView.swift in Sources */,
 				00CF35822BC291FA00D9E332 /* TreehouseApp.swift in Sources */,
 				3FF107232BEA0AA700C52908 /* PostRegisterTreeMemberResponseDTO.swift in Sources */,
@@ -1614,7 +1704,7 @@
 				9449C6D22BDBA87400FC938B /* FeedView.swift in Sources */,
 				3F8F2A832C18AB2500D8CB9F /* emojiData.swift in Sources */,
 				001236732BD2748200CEAC53 /* PhoneNumberRow.swift in Sources */,
-				3FF48FFE2C50EDE500A6DD8A /* GetReadMyProfileInfo.swift in Sources */,
+				3FF48FFE2C50EDE500A6DD8A /* GetReadMyProfileInfoResponseDTO.swift in Sources */,
 				3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */,
 				94D388D92C287DC00058231B /* SendInvitationView.swift in Sources */,
 				94D1001D2C0CC60A00025D43 /* PhotoPickerManager.swift in Sources */,
@@ -1624,16 +1714,19 @@
 				3F44C13E2C25732E00A5CAFE /* FeedRouter.swift in Sources */,
 				3FF48FFC2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift in Sources */,
 				3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */,
+				3FF4901E2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
 				94D388D12C256DBF0058231B /* CreateTreehouseNameView.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
 				005296C22BD65CAB007D209A /* InvitationTooltip.swift in Sources */,
+				3FF490262C51166D00A6DD8A /* ModifyMyProfileUseCase.swift in Sources */,
 				3FF48FF62C50ED1C00A6DD8A /* MemberService.swift in Sources */,
 				3FF490022C50F2C700A6DD8A /* PatchModifyMyProfileResponseDTO.swift in Sources */,
 				9475A6092C133D2C00333A72 /* PostDetailView.swift in Sources */,
 				3FA175D92C1AC2A200A57987 /* UIImage+.swift in Sources */,
 				3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */,
+				3FF4900E2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift in Sources */,
 				3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				947326232C23F8350030A182 /* DynamicHeightTextEditorView.swift in Sources */,
@@ -1665,6 +1758,7 @@
 				009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */,
 				00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
+				3FF490072C50FDB600A6DD8A /* CreateTreehouseResponseEntity.swift in Sources */,
 				3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */,
 				3F94635F2C11650600229940 /* CheckUserPhoneResponseEntity.swift in Sources */,
 				3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */,
@@ -1675,12 +1769,14 @@
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
 				3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
+				3FF490042C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift in Sources */,
 				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,
 				3FF1072B2BEA0BE700C52908 /* Config.swift in Sources */,
 				0083B4C02C01DF4800F0D252 /* GroupStruct.swift in Sources */,
 				00C2F56D2C1863980009C6A1 /* MemberGroupStruct.swift in Sources */,
 				3FF107062BEA083D00C52908 /* GetCheckAvailableInvitationResponseDTO.swift in Sources */,
+				3FF490202C51117400A6DD8A /* MemberRepositoryImpl.swift in Sources */,
 				3F06C2F82BFDC2DF002B771B /* FeedService.swift in Sources */,
 				0087C2872BDEC7B0004CED9C /* RegisterRepositoryImpl.swift in Sources */,
 				9412FF392BFF2466006A8A15 /* TabViewType.swift in Sources */,

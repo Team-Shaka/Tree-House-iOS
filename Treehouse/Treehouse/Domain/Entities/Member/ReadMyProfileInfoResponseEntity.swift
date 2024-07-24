@@ -1,5 +1,5 @@
 //
-//  GetReadMyProfileInfo.swift
+//  ReadMyProfileInfoResponseEntity.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 7/24/24.
@@ -7,14 +7,13 @@
 
 import Foundation
 
-
-struct GetReadMyProfileInfo: Decodable{
+struct ReadMyProfileInfoResponseEntity: Decodable {
     let memberId: Int
     let memberName: String
     let userName: String
-    let closetMemberCount: Int
+    let closestMemberCount: Int
     let treehouseCount: Int
-    let fromeMe: Int
+    let fromMe: Int
     let profileImageUrl: String
     let bio: String
 }

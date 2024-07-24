@@ -38,7 +38,7 @@ final class MemberService {
     }
     
     /// 내 프로필을 조회하는 API
-    func getReadMyProfileInfo(treehouseId: Int) async throws -> GetReadMyProfileInfo {
+    func getReadMyProfileInfo(treehouseId: Int) async throws -> GetReadMyProfileInfoResponseDTO {
         
         // 요청 DTO 생성
         let request = NetworkRequest(requestType: MemberAPI.getReadMyProfileInfo(treehouseId: treehouseId))
@@ -47,7 +47,7 @@ final class MemberService {
             throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadMyProfileInfo.self)
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadMyProfileInfoResponseDTO.self)
     }
     
     /// 내 프로필을 수정하는 API

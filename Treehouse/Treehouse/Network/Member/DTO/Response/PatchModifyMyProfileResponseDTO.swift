@@ -9,4 +9,8 @@ import Foundation
 
 struct PatchModifyMyProfileResponseDTO: Decodable {
     let memberId: Int
+    
+    func toDomain() -> PatchModifyMyProfileResponseEntity {
+        PatchModifyMyProfileResponseEntity(memberId: memberId)
+    }
 }

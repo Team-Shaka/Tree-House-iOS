@@ -1,5 +1,5 @@
 //
-//  GetReadMemberInfoResponseDTO.swift
+//  GetReadMyProfileInfo.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 7/24/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetReadMemberInfoResponseDTO: Decodable {
+struct GetReadMyProfileInfoResponseDTO: Decodable{
     let memberId: Int
     let memberName: String
     let userName: String
@@ -17,8 +17,8 @@ struct GetReadMemberInfoResponseDTO: Decodable {
     let profileImageUrl: String
     let bio: String
     
-    func toDomain() -> ReadMemberInfoResponseEntity {
-        return ReadMemberInfoResponseEntity(
+    func toDomain() -> ReadMyProfileInfoResponseEntity {
+        return ReadMyProfileInfoResponseEntity(
             memberId: memberId,
             memberName: memberName,
             userName: userName,
