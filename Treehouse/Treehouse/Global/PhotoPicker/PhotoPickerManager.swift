@@ -102,8 +102,6 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     print(image.pngData()!)
                     resizeImages[index] = image
                 }
-                
-                await group.waitForAll()
             }
             
             return resizeImages
