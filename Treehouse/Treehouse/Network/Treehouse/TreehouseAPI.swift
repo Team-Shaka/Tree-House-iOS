@@ -8,22 +8,22 @@
 import Foundation
 
 enum TreehouseAPI {
-    case postCreateTreehouses(requestBody: PostCreateTreehousesRequestDTO)
-    case getReadTreehousesInfo(treehouseId : Int)
+    case postCreateTreehouse(requestBody: PostCreateTreehouseRequestDTO)
+    case getReadTreehouseInfo(treehouseId : Int)
 }
 
 extension TreehouseAPI: BaseRequest {
     var path: String {
         switch self {
-        case .postCreateTreehouses: return "treehouses"
-        case .getReadTreehousesInfo(let treehouseId): return "treehouses/\(treehouseId)"
+        case .postCreateTreehouse: return "treehouses"
+        case .getReadTreehouseInfo(let treehouseId): return "treehouses/\(treehouseId)"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .postCreateTreehouses: return .post
-        case .getReadTreehousesInfo: return .get
+        case .postCreateTreehouse: return .post
+        case .getReadTreehouseInfo: return .get
         }
     }
     
@@ -37,7 +37,7 @@ extension TreehouseAPI: BaseRequest {
     
     var requestBodyParameter: (any Codable)? {
         switch self {
-        case .postCreateTreehouses(requestBody: let requestBody): return requestBody
+        case .postCreateTreehouse(requestBody: let requestBody): return requestBody
         default: return .none
         }
     }

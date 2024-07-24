@@ -1,5 +1,5 @@
 //
-//  GetReadTreehousesInfoResponseDTO.swift
+//  ReadTreehouseInfoResponseEntity.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 7/24/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetReadTreehousesInfoResponseDTO: Decodable {
+struct ReadTreehouseInfoResponseEntity: Decodable {
     let treehouseId: Int
     let treehouseName: String
     let treehouseSize: Int

@@ -12,28 +12,28 @@ final class TreehouseService {
     private let networkServiceManager = NetworkServiceManager()
     
     /// 트리하우스를 생성하는 API
-    func postCreateTreehouses(request: PostCreateTreehousesRequestDTO) async throws -> PostCreateTreehousesResponseDTO {
+    func postCreateTreehouse(request: PostCreateTreehouseRequestDTO) async throws -> PostCreateTreehouseResponseDTO {
         
         // 요청 DTO 생성
-        let request = NetworkRequest(requestType: TreehouseAPI.postCreateTreehouses(requestBody: request))
+        let request = NetworkRequest(requestType: TreehouseAPI.postCreateTreehouse(requestBody: request))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostCreateTreehousesResponseDTO.self)
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostCreateTreehouseResponseDTO.self)
     }
     
     /// 트리하우스의 정보를 받는 API
-    func getReadTreehousesInfo(treehouseId: Int) async throws -> GetReadTreehousesInfoResponseDTO {
+    func getReadTreehouseInfo(treehouseId: Int) async throws -> GetReadTreehouseInfoResponseDTO {
         
         // 요청 DTO 생성
-        let request = NetworkRequest(requestType: TreehouseAPI.getReadTreehousesInfo(treehouseId: treehouseId))
+        let request = NetworkRequest(requestType: TreehouseAPI.getReadTreehouseInfo(treehouseId: treehouseId))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadTreehousesInfoResponseDTO.self)
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadTreehouseInfoResponseDTO.self)
     }
 }
