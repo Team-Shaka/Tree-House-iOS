@@ -35,7 +35,7 @@ final class CheckUserPhoneViewModel: BaseViewModel {
 extension CheckUserPhoneViewModel {
     func checkUserPhone(phoneNumber: String) async {
         
-        let result = await checkUserPhoneUseCase.execute(phoneNumber: phoneNumber)
+        let result = await checkUserPhoneUseCase.execute(phoneNumber: phoneNumber.formatPhoneNumber)
         
         switch result {
         case .success(let response):

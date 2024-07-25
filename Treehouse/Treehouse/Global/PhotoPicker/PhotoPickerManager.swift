@@ -80,10 +80,31 @@ struct PhotoPicker: UIViewControllerRepresentable {
             guard let imageData = image.pngData() else { return image }
             
             if let downsampledImage = UIImage.downsample(imageData: imageData, to: self.type.imageSize, scale: UIScreen.main.scale) {
+                print("이미지 줄이기 성공")
                 return downsampledImage
             } else {
                 return image
             }
+        }
+        
+        func resizeImageInParallel(images: [UIImage]) async -> [UIImage] {
+            var resizeImages = images
+            
+            await withTaskGroup(of: (Int, UIImage).self) { group in
+                for (index, image) in images.enumerated() {
+                    group.addTask {
+                        let result = await self.resizeImage(image: image)
+                        return (index, result)
+                    }
+                }
+                
+                for await (index, image) in group {
+                    print(image.pngData()!)
+                    resizeImages[index] = image
+                }
+            }
+            
+            return resizeImages
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -107,7 +128,10 @@ struct PhotoPicker: UIViewControllerRepresentable {
             }
             
             group.notify(queue: DispatchQueue.main) {
-                self.parent.selectedImages = images
+                Task {
+                    let resizedImages = await self.resizeImageInParallel(images: images)
+                    self.parent.selectedImages = resizedImages
+                }
             }
         }
     }

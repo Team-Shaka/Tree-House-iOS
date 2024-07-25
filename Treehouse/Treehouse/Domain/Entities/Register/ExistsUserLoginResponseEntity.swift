@@ -9,7 +9,7 @@ import Foundation
 
 struct ExistsUserLoginResponseEntity: Decodable {
     let userId: Int
-    let refreshToken: String
     let accessToken: String
+    let refreshToken: String
     let treehouseIdList: [Int]
 }

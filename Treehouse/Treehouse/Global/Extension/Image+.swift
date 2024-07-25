@@ -38,4 +38,12 @@ extension Image {
             self = Image(defaultImage)
         }
     }
+    
+    init(uiImage: UIImage?, defaultImage: ImageResource) {
+        if let uiImage = uiImage {
+            self = Image(uiImage: uiImage)
+        } else {
+            self = Image(defaultImage)
+        }
+    }
 }
