@@ -9,11 +9,11 @@ import Foundation
 
 struct PostExistsUserLoginResponseDTO: Decodable {
     let userId: Int
-    let refreshToken: String
     let accessToken: String
+    let refreshToken: String
     let treehouseIdList: [Int]
 
     func toDomain() -> ExistsUserLoginResponseEntity {
-        return ExistsUserLoginResponseEntity(userId: userId, refreshToken: refreshToken, accessToken: accessToken, treehouseIdList: treehouseIdList)
+        return ExistsUserLoginResponseEntity(userId: userId, accessToken: accessToken, refreshToken: refreshToken, treehouseIdList: treehouseIdList)
     }
 }

@@ -8,46 +8,46 @@
 import Foundation
 
 enum FeedAPI {
-    case postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO)
     case getReadFeedPostsList(treehouseId: Int)
+    case postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO)
     case getReadDetailFeedPosts(treehouseId: Int, postId: Int)
-    case patchUpdateFeedPost(treehouseId: Int, postId: Int)
     case deleteFeedPost(treehouseId: Int, postId: Int)
-    case postPresignedURL(treehouseId: Int, requestBody: PostPresignedURLRequestDTO)
-    case postReportFeedPost(treehouseId: Int, postId: Int, requestBody: PostReportFeedPostRequestDTO)
+    case patchUpdateFeedPost(treehouseId: Int, postId: Int)
     case postReactionFeedPost(treehouseId: Int, postId: Int, requestBody: PostReactionFeedPostRequestDTO)
+    case postReportFeedPost(treehouseId: Int, postId: Int, requestBody: PostReportFeedPostRequestDTO)
+    case postPresignedURL(treehouseId: Int, requestBody: PostPresignedURLRequestDTO)
 }
 
 extension FeedAPI: BaseRequest {
     var path: String {
         switch self {
-        case .postCreateFeedPosts(let treehouseId, _):
-            return "treehouses/\(treehouseId)/feeds/posts"
-        case .getReadFeedPostsList(let treehouseId):
+        case .getReadFeedPostsList(treehouseId: let treehouseId):
             return "treehouses/\(treehouseId)/feeds"
-        case .getReadDetailFeedPosts(let treehouseId, let postId),
-                .patchUpdateFeedPost(let treehouseId, let postId),
-                .deleteFeedPost(let treehouseId, let postId):
+        case .postCreateFeedPosts(treehouseId: let treehouseId, _):
+            return "treehouses/\(treehouseId)/feeds/posts"
+        case .getReadDetailFeedPosts(treehouseId: let treehouseId, postId: let postId),
+                .deleteFeedPost(let treehouseId, let postId),
+                .patchUpdateFeedPost(let treehouseId, let postId):
             return "treehouses/\(treehouseId)/feeds/posts/\(postId)"
-        case .postPresignedURL(let treehouseId, _):
-            return "treehouses/\(treehouseId)/feeds/posts/images"
-        case .postReportFeedPost(let treehouseId, let postId, _):
-            return "treehouses/\(treehouseId)/feeds/posts/\(postId)/reports"
-        case .postReactionFeedPost(let treehouseId, let postId, _):
+        case .postReactionFeedPost(treehouseId: let treehouseId, postId: let postId, _):
             return "treehouses/\(treehouseId)/feeds/posts/\(postId)/reactions"
+        case .postReportFeedPost(treehouseId: let treehouseId, postId: let postId, _):
+            return "treehouses/\(treehouseId)/feeds/posts/\(postId)/reports"
+        case .postPresignedURL(treehouseId: let treehouseId, _):
+            return "treehouses/\(treehouseId)/feeds/posts/images"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .postCreateFeedPosts, .postPresignedURL, .postReportFeedPost, .postReactionFeedPost:
-            return .post
         case .getReadFeedPostsList, .getReadDetailFeedPosts:
             return .get
-        case .patchUpdateFeedPost:
-            return .patch
+        case .postCreateFeedPosts, .postReactionFeedPost, .postReportFeedPost, .postPresignedURL:
+            return .post
         case .deleteFeedPost:
             return .delete
+        case .patchUpdateFeedPost:
+            return .patch
         }
     }
     
@@ -62,9 +62,9 @@ extension FeedAPI: BaseRequest {
     var requestBodyParameter: (any Codable)? {
         switch self {
         case .postCreateFeedPosts(_ , requestBody: let requestBody): return requestBody
-        case .postPresignedURL(_, requestBody: let requestBody): return requestBody
-        case .postReportFeedPost(_, _, requestBody: let requestBody): return requestBody
         case .postReactionFeedPost(_, _, requestBody: let requestBody): return requestBody
+        case .postReportFeedPost(_, _, requestBody: let requestBody): return requestBody
+        case .postPresignedURL(_, requestBody: let requestBody): return requestBody
         default: return .none
         }
     }

@@ -19,6 +19,7 @@ final class PostViewModel: BaseViewModel {
     // MARK: - Property
     
     var feedListData =  [GetReadFeedPostListResponseEntity]()
+    var emojiListData = [ReactionListEntity]()
     var errorMessage: String = ""
     
     // MARK: - init
@@ -42,6 +43,7 @@ extension PostViewModel {
         switch result {
         case .success(let response):
             feedListData = response
+//            emojiListData = response
             break
         case .failure(let error):
             await MainActor.run {

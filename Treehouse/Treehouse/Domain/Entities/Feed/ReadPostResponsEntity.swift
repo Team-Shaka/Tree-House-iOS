@@ -13,6 +13,7 @@ struct GetReadFeedPostListResponseEntity: Decodable, Identifiable {
     let postId: Int
     let context: String
     let pictureUrlList: [String]
+    let commentCount: Int
     let reactionList: ReactionListDataEntity
     let postedAt: String
 }

@@ -20,7 +20,7 @@ struct LoginView: View {
     // MARK: - View
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(StringLiterals.Register.registerTitle3)
                     .fontWithLineHeight(fontLevel: .heading1)
@@ -51,7 +51,11 @@ struct LoginView: View {
             Button {
                 // TODO: - 내 정보에 관한 데이터가 부족, Treehouse API (내 프로필 조회) 를 통해 저장 필요
                 Task {
-                    await userLoginViewModel.existsUserLogin(phoneNumber: viewModel.phoneNumber ?? "")
+                    await userLoginViewModel.existsUserLogin(phoneNumber: viewModel.phoneNumber?.formatPhoneNumber ?? "")
+                    
+                    if userLoginViewModel.isLogin {
+                        viewRouter.navigate(viewType: .enterTreehouse)
+                    }
                 }
             } label: {
                 Text("로그인")

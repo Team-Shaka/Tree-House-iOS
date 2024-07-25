@@ -13,6 +13,7 @@ final class UserLoginViewModel: BaseViewModel {
     
     // MARK: - Property
     
+    var isLogin: Bool = false
     var errorMessage: String?
     
     // MARK: - UseCase Property
@@ -33,7 +34,7 @@ final class UserLoginViewModel: BaseViewModel {
 
 extension UserLoginViewModel {
     func existsUserLogin(phoneNumber: String) async {
-        
+        print(phoneNumber)
         let result = await existsUserLoginUseCase.execute(phoneNumber: phoneNumber)
         
         switch result {
@@ -41,10 +42,13 @@ extension UserLoginViewModel {
             KeychainHelper.shared.save(response.accessToken, for: Config.accessTokenKey)
             KeychainHelper.shared.save(response.refreshToken, for: Config.refreshTokenKey)
             
+            isLogin = true
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
+            
+            isLogin = false
         }
     }
 }

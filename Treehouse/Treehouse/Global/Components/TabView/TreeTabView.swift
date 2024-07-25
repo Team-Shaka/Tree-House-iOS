@@ -46,9 +46,9 @@ struct TreeTabView: View {
             .fontWithLineHeight(fontLevel: .caption2)
             .tint(.treeGreen)
             .environment(viewRouter)
-            .navigationDestination(for: FeedRouter.self) { router in
-                viewRouter.buildScene(inputRouter: router)
-            }
+//            .navigationDestination(for: FeedRouter.self) { router in
+//                viewRouter.buildScene(inputRouter: router)
+//            }
             .navigationDestination(for: ProfileRouter.self) { router in
                 switch router {
                 case .editProfileView:

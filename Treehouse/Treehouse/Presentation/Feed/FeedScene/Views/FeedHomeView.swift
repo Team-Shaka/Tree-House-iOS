@@ -29,11 +29,12 @@ struct FeedHomeView: View {
                 .background(.grayscaleWhite)
             
             ScrollView(.vertical) {
-                TreeHallView(groupName: feedViewModel.groupName, subject: subject, personnel: personnel)
-                    .padding(.top, 10)
+//                TreeHallView(groupName: feedViewModel.groupName, subject: subject, personnel: personnel)
+//                    .padding(.top, 10)
                 
                 FeedView()
                     .frame(width: SizeLiterals.Screen.screenWidth)
+                    .environment(feedViewModel)
             }
             .padding(.bottom, 16)
         }

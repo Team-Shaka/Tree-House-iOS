@@ -103,6 +103,12 @@
 		3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150572C0EC5E800AD05C3 /* InvitationService.swift */; };
 		3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */; };
 		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
+		3F5189E72C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */; };
+		3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */; };
+		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
+		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
+		3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */; };
+		3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */; };
 		3F8171682C43FE6F00CEE21E /* CreateCommentResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */; };
 		3F81716A2C43FEB800CEE21E /* CreateCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */; };
 		3F81716C2C44002900CEE21E /* ReadCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */; };
@@ -113,11 +119,6 @@
 		3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81719A2C46D18D00CEE21E /* EmojiViewModel.swift */; };
 		3F8171A12C474A4A00CEE21E /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171A02C474A4A00CEE21E /* CommentService.swift */; };
 		3F8171A32C474A5B00CEE21E /* CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171A22C474A5B00CEE21E /* CommentAPI.swift */; };
-		3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */; };
-		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
-		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
-		3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */; };
-		3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */; };
 		3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */; };
 		3F88357D2BCA51BA0021C8AB /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357C2BCA51BA0021C8AB /* DrawingView.swift */; };
 		3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */; };
@@ -312,6 +313,12 @@
 		3F5150572C0EC5E800AD05C3 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
 		3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsReponseEntity.swift; sourceTree = "<group>"; };
 		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
+		3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginRequestDTO.swift; sourceTree = "<group>"; };
+		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
+		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
+		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
+		3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewModel.swift; sourceTree = "<group>"; };
+		3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneViewModel.swift; sourceTree = "<group>"; };
 		3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentResponseEntity.swift; sourceTree = "<group>"; };
 		3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
 		3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCommentUseCase.swift; sourceTree = "<group>"; };
@@ -320,11 +327,6 @@
 		3F81719A2C46D18D00CEE21E /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
 		3F8171A02C474A4A00CEE21E /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		3F8171A22C474A5B00CEE21E /* CommentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAPI.swift; sourceTree = "<group>"; };
-		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
-		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
-		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
-		3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewModel.swift; sourceTree = "<group>"; };
-		3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneViewModel.swift; sourceTree = "<group>"; };
 		3F88357A2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedFirstInvitaionView.swift; sourceTree = "<group>"; };
 		3F88357C2BCA51BA0021C8AB /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		3F88357E2BCBA5C10021C8AB /* SetMemberProfileNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMemberProfileNameView.swift; sourceTree = "<group>"; };
@@ -1175,6 +1177,7 @@
 				3FF1071A2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift */,
 				3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */,
 				3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */,
+				3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1529,7 +1532,7 @@
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
 				94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */,
-				94103F402C24226800CCF44A /* PostDetailViewModel.swift in Sources */,
+				94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */,
 				3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
 				9475A6112C1A59DC00333A72 /* PostAlertView.swift in Sources */,
@@ -1575,6 +1578,7 @@
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
 				00B5919F2C240ECF00F7C38C /* InvitationViewModel.swift in Sources */,
+				3F5189E72C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift in Sources */,
 				3F1BE13E2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift in Sources */,
 				00C2F5652C11C1010009C6A1 /* MyProfileView.swift in Sources */,
 				003E6EF62BD51D84001C7613 /* UserPhoneNumberInfo.swift in Sources */,

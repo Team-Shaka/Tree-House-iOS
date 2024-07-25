@@ -21,6 +21,7 @@ struct GetReadFeedPostsListResponseDTO: Decodable {
                                                  postId: postId,
                                                  context: context,
                                                  pictureUrlList: pictureUrlList,
+                                                 commentCount: commentCount, 
                                                  reactionList: convertReactionListDataEntity(reactionList),
                                                  postedAt: postedAt)
     }

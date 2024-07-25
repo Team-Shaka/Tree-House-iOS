@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum EmojiListType {
+    case feedView
+    case detailView
+}
+
 struct EmojiListView: View {
     
     // MARK: - ViewModel Property
@@ -17,20 +22,39 @@ struct EmojiListView: View {
     
     // MARK: - Property
     
-    @Binding var emojiData: [ReactionListEntity]
-    let commentId: Int
+    var emojiType: EmojiListType
+    var emojiData: ReactionListDataEntity?
+    var emojiArrayData: [ReactionListEntity]?
+    var commentId: Int?
+    var postId: Int?
+    
+    init(emojiType: EmojiListType, emojiData: ReactionListDataEntity, postId: Int) {
+        self.emojiType = emojiType
+        self.emojiData = emojiData
+        commentId = nil
+        emojiArrayData = nil
+        self.postId = postId
+    }
+    
+    init(emojiType: EmojiListType, emojiArrayData: [ReactionListEntity], commentId: Int) {
+        self.emojiType = emojiType
+        self.emojiArrayData = emojiArrayData
+        self.commentId = commentId
+        postId = nil
+        emojiData = nil
+    }
 
     // MARK: - View
     
     var body: some View {
         FlowlayoutStack(verticalSpacing: 8, horizontalSpacing: 10) {
-            ForEach(emojiData) { data in
+            ForEach((emojiType == .feedView ? emojiData?.reactionList : emojiArrayData) ?? []) { data in
                 Button(action: {
                     Task {
                         await emojiViewModel.createReactionComment(
                             treehouseId: feedViewModel.currentTreehouseId ?? 0,
                             postId: feedViewModel.currentPostId ?? 0,
-                            commentId: commentId
+                            commentId: commentId ?? 0
                         )
                     }
                 }) {

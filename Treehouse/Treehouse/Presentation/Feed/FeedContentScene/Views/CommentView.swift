@@ -27,7 +27,7 @@ struct CommentView: View {
     let userName: String
     let time: String
     let comment: String
-    @State var reactionData: [ReactionListEntity]
+    var reactionData: [ReactionListEntity]
     
     // MARK: - View
     
@@ -68,21 +68,9 @@ struct CommentView: View {
                 .background(.gray1)
                 .selectCornerRadius(radius: 12.0, corners: [.bottomLeft, .bottomRight, .topRight])
                 
-                commentyTypeEmojiListView
+                EmojiListView(emojiType: .detailView, emojiArrayData: reactionData, commentId: commentId)
             }
         }
-    }
-}
-
-// MARK: - ViewBuilder
-
-private extension CommentView {
-    @ViewBuilder
-    var commentyTypeEmojiListView: some View {
-        EmojiListView(
-            emojiData: $reactionData,
-            commentId: commentId
-        )
     }
 }
 
