@@ -20,7 +20,9 @@ struct FeedView: View {
     
     // MARK: - State Property
     
-    @State var postViewModel: PostViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
+    @Environment (ViewRouter.self) var viewRouter
+    @Environment (FeedViewModel.self) var feedViewModel
+    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -29,19 +31,14 @@ struct FeedView: View {
     
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
-    @Environment (ViewRouter.self) var viewRouter
-    @Environment (FeedViewModel.self) var feedViewModel
     
     // MARK: - View
     
     var body: some View {
-        VStack(spacing: 0) {
+        LazyVStack(spacing: 0) {
             postTextField
             
-            filledFeedView
-            
-            CommentCountView(commentCount: 12)
-                .padding(.leading, 62)
+            feedRowView
         }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .post {
@@ -161,21 +158,30 @@ extension FeedView {
     }
     
     @ViewBuilder
-    var filledFeedView: some View {
+    var feedRowView: some View {
         ForEach(postViewModel.feedListData) { data in
-            SinglePostView(userProfileImageURL: data.memberProfile.memberProfileImageUrl,
-                           sentTime: data.postedAt,
-                           postContent: data.context,
-                           postImageURLs: data.pictureUrlList,
-                           postType: .feedView)
-            .background(
-                Color.clear
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        feedViewModel.currentPostId = data.postId
-                        viewRouter.push(FeedRouter.postDetailView)
-                    }
-            )
+            VStack(spacing: 0) {
+                SinglePostView(userProfileImageURL: data.memberProfile.memberProfileImageUrl,
+                               sentTime: data.postedAt,
+                               postContent: data.context,
+                               postImageURLs: data.pictureUrlList,
+                               postType: .feedView)
+                .background(
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            feedViewModel.currentPostId = data.postId
+                            viewRouter.push(FeedRouter.postDetailView)
+                        }
+                )
+                
+                EmojiListView(emojiType: .detailView, emojiData: data.reactionList, postId: data.postId)
+                    .padding(.top, 10)
+                
+                CommentCountView(commentCount: data.commentCount)
+                    .padding(.top, 10)
+                    .padding(.leading, 62)
+            }
         }
     }
 }
