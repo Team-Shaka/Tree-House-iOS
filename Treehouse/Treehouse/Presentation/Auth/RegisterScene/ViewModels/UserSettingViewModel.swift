@@ -47,7 +47,7 @@ final class UserSettingViewModel: BaseViewModel {
     var memberNum: Int = 0
     var memberProfileImages: [String?] = []
     
-    var profileImage: [UIImage]?
+    var profileImage: UIImage?
     
     // MARK: - State Property
     
@@ -207,11 +207,12 @@ extension UserSettingViewModel {
     func registerTreeMember() async -> Bool {
         guard let treehouseId = treehouseId,
               let memberName = memberName,
-              let bio = bio else {
+              let bio = bio,
+              let accessUrlImage = accessUrlImage.first else {
             return false
         }
         
-        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage[0]))
+        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage))
         
         switch result {
         case .success(let response):
@@ -263,7 +264,6 @@ extension UserSettingViewModel {
                 memberProfileImages = $0.treehouseMemberProfileImages
             }
             
-//            await loadImagesAWS(images: memberProfileImages)
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
@@ -276,7 +276,8 @@ extension UserSettingViewModel {
 extension UserSettingViewModel {
     func presignedURL() async -> Bool {
         
-        guard let treehouseId = treehouseId, let imageDataSize = profileImage?.first?.getImageBitSize()else {
+        guard let treehouseId = treehouseId, 
+                let imageDataSize = profileImage?.getImageBitSize() else {
             print("treehouseId")
             return false
         }
@@ -304,7 +305,7 @@ extension UserSettingViewModel {
         
         guard let uploadImages = profileImage else { return }
         
-        let result = await uploadImageToAWSUseCase.execute(presignedUrls: presignedUrlImage, uploadImages: uploadImages)
+        let result = await uploadImageToAWSUseCase.execute(presignedUrls: presignedUrlImage, uploadImages: [uploadImages])
 
         switch result {
         case .success(let response):
@@ -316,6 +317,7 @@ extension UserSettingViewModel {
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
+            isloadImageAWS = false
         }
     }
 }
