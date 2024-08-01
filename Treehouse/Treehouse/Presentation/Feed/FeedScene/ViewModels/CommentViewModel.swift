@@ -8,8 +8,16 @@
 import Foundation
 import Observation
 
+enum CommentStateType {
+    case createComment
+    case createReplyComment
+}
+
 @Observable
 final class CommentViewModel: BaseViewModel {
+    
+    var commentState: CommentStateType = .createComment
+    var createCommentMemberName = ""
     
     var isReadCommentData: Bool = false
     
@@ -22,6 +30,7 @@ final class CommentViewModel: BaseViewModel {
     var postContent: String = ""
     var errorMessage: String = ""
     var isSelectEmojiView = false
+    var isKeyboardShowing = false
     
     // MARK: - UseCase Property
     
@@ -32,19 +41,24 @@ final class CommentViewModel: BaseViewModel {
     private let readCommentUseCase: GetReadCommentUseCaseProtocol
     
     @ObservationIgnored
+    private let createReplyCommentUseCase: PostCreateReplyCommentUseCaseProtocol
+    
+    @ObservationIgnored
     private var emojiViewModel: EmojiViewModel?
     
     // MARK: - init
     
     init(createCommentUseCase: PostCreateCommentUseCaseProtocol,
-         readCommentUseCase: GetReadCommentUseCaseProtocol
+         readCommentUseCase: GetReadCommentUseCaseProtocol,
+         createReplyCommentUseCase: PostCreateReplyCommentUseCaseProtocol
     ) {
         self.createCommentUseCase = createCommentUseCase
         self.readCommentUseCase = readCommentUseCase
+        self.createReplyCommentUseCase = createReplyCommentUseCase
     }
     
     deinit {
-        print("Deinit CommetViewModel")
+        print("Deinit CommentViewModel")
     }
     
     func injectionViewModel(_ emojiViewModel: BaseViewModel) {
@@ -54,37 +68,94 @@ final class CommentViewModel: BaseViewModel {
     func changeReactionState() {
         let emoji = emojiViewModel?.selectEmoji
     }
+    
+    func changeEmojiData(commentId: Int, selectEmoji: String) async {
+        if let commentIndex = readCommentData?.firstIndex(where: { $0.commentId == commentId }) {
+            if let index = readCommentData?[commentIndex].reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
+                if readCommentData?[commentIndex].reactionList.reactionList[index].isPushed == false {
+                    readCommentData?[commentIndex].reactionList.reactionList[index].isPushed = true
+                    readCommentData?[commentIndex].reactionList.reactionList[index].reactionCount += 1
+                } else {
+                    readCommentData?[commentIndex].reactionList.reactionList[index].isPushed = false
+                    readCommentData?[commentIndex].reactionList.reactionList[index].reactionCount -= 1
+                    
+                    if readCommentData?[commentIndex].reactionList.reactionList[index].reactionCount == 0 {
+                        readCommentData?[commentIndex].reactionList.reactionList.remove(at: index)
+                    }
+                }
+            }
+        }
+        
+        
+//        if let index = readCommentData?.reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
+//            //                if feedListData[postIndex].feedEmojiData?.reactionList[index].isPushed == false {
+//            if readCommentData?.reactionList.reactionList[index].isPushed == false {
+//                readCommentData?.reactionList.reactionList[index].isPushed = true
+//                readCommentData?.reactionList.reactionList[index].reactionCount += 1
+//            } else {
+//                readCommentData?.reactionList.reactionList[index].isPushed = false
+//                readCommentData?.reactionList.reactionList[index].reactionCount -= 1
+//                
+//                if readCommentData?.reactionList.reactionList[index].reactionCount == 0 {
+//                    readCommentData?.reactionList.reactionList.remove(at: index)
+//                }
+//            }
+//        } else {
+//            readCommentData?.reactionList.reactionList.append(ReactionListEntity(reactionName: selectEmoji, reactionCount: 1, isPushed: true))
+//        }
+    }
 }
 
 // MARK: - Comment API Extension
 
 extension CommentViewModel {
-    func createComment(treehouseId: Int, postId: Int) async {
+    func createComment(treehouseId: Int, postId: Int) async -> Bool {
         let result = await createCommentUseCase.execute(treehouseId: treehouseId, postId: postId, context: postContent)
         switch result {
         case .success(let response):
-            break
-//            return true
+            postContent = ""
+            return true
+            
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
-//            return false
+            return false
         }
     }
-//    
-    func readComment(treehouseId: Int, postId: Int) async {
+
+    func readComment(treehouseId: Int, postId: Int) async -> Bool {
         let result = await readCommentUseCase.execute(treehouseId: treehouseId, postId: postId)
-//
+
         switch result {
         case .success(let response):
             readCommentData = response.commentList
-//            return true
+            return true
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
+                print(errorMessage)
             }
-//            return false
+            return false
+        }
+    }
+    
+    func createReplyComment(treehouseId: Int, postId: Int, commentId: Int) async -> Bool {
+        let result = await createReplyCommentUseCase.execute(treehouseId: treehouseId,
+                                                             postId: postId,
+                                                             commentId: commentId, 
+                                                             context: postContent)
+        
+        switch result {
+        case .success(let response):
+            postContent = ""
+            return true
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+                print(errorMessage)
+            }
+            return false
         }
     }
 }

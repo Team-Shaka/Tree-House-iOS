@@ -14,6 +14,19 @@ final class FeedViewModel: BaseViewModel {
     var feedData: FeedModel? = nil
     var groupName: String = "정보없음"
     
+    var errorMessage: String = ""
+    
+    var treehouseName: String = ""
+    
+    var isSelectEmojiView = false
+    
+    var dataLoaded = false
+    
+    var userId = 0
+    
+    /// Feed 의 Post 내용이 바뀌었을때 다시 내용을 로드하기 위한 변수
+    var modifyPostContent: (Int, String) = (0, "")
+    
     @ObservationIgnored
     var currentTreehouseId: Int?
     
@@ -22,4 +35,36 @@ final class FeedViewModel: BaseViewModel {
     
     @ObservationIgnored
     var currentCommentId: Int?
+    
+    // MARK: - UseCase Property
+    
+    @ObservationIgnored
+    private let getReadTreehouseInfoUseCase: GetReadTreehouseInfoUseCaseProtocol
+    
+    // MARK: - init
+    
+    init(getReadTreehouseInfoUseCase: GetReadTreehouseInfoUseCaseProtocol) {
+        self.getReadTreehouseInfoUseCase = getReadTreehouseInfoUseCase
+    }
+    
+    deinit {
+        print("Deinit FeedViewModel")
+    }
+}
+
+extension FeedViewModel {
+    func getReadTreehouseInfo(treehouseId: Int) async {
+        let result = await getReadTreehouseInfoUseCase.execute(treehouseId: treehouseId)
+        
+        switch result {
+        case .success(let response):
+            treehouseName = response.treehouseName
+            currentTreehouseId = treehouseId
+            
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
 }

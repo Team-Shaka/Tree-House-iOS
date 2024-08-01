@@ -14,18 +14,36 @@ final class EmojiViewModel: BaseViewModel {
     // MARK: - UseCase Property
     
     @ObservationIgnored
-    private let createReactionToCommentUseCase: PostCreateReactionToCommentUseCaseProtocol
+    private let createReactionToCommentUseCase: PostCreateReactionToCommentUseCaseProtocol?
+    
+    @ObservationIgnored
+    private let createReactionToPostUseCase: PostCreateReactionToPostUseCaseProtocol?
     
     // MARK: - Property
     
     var emojis = [EmojiDatas]()
-    var selectEmoji: String?
+    var selectEmoji: String? {
+        didSet {
+            self.selectEmoji
+        }
+    }
     var errorMessage: String = ""
+    
+    var feedEmojiData: ReactionListDataEntity? {
+        didSet {
+            print(feedEmojiData?.reactionList)
+        }
+    }
+    var detailEmojiData: [ReactionListEntity]?
+    
+    var isSelectFeedEmojiView = false
+    var isSelectCommentEmojiView = false
     
     // MARK: - init
     
-    init(createReactionToCommentUseCase: PostCreateReactionToCommentUseCaseProtocol) {
+    init(createReactionToCommentUseCase: PostCreateReactionToCommentUseCaseProtocol? = nil, createReactionToPostUseCase: PostCreateReactionToPostUseCaseProtocol? = nil) {
         self.createReactionToCommentUseCase = createReactionToCommentUseCase
+        self.createReactionToPostUseCase = createReactionToPostUseCase
     }
     
     deinit {
@@ -55,10 +73,38 @@ extension EmojiViewModel {
 // MARK: - Comment API Extension
 
 extension EmojiViewModel {
-    func createReactionComment(treehouseId: Int, postId: Int, commentId: Int) async -> Bool {
-        guard let selectEmoji = selectEmoji else { return false }
+    func createReactionPost(treehouseId: Int, postId: Int) async -> Bool {
+        guard let selectEmoji = selectEmoji, let useCase = createReactionToPostUseCase else { return false }
         
-        let result = await createReactionToCommentUseCase.execute(
+        let result = await useCase.execute(
+            treehouseId: treehouseId,
+            postId: postId,
+            requestDTO: PostReactionFeedPostRequestDTO(reactionName: selectEmoji)
+        )
+        
+        switch result {
+        case .success(_):
+            await MainActor.run {
+                self.selectEmoji = nil
+            }
+            
+            return true
+            
+        case .failure(let error):
+            await MainActor.run {
+                self.selectEmoji = nil
+                self.errorMessage = error.localizedDescription
+                print(errorMessage)
+            }
+            
+            return false
+        }
+    }
+    
+    func createReactionComment(treehouseId: Int, postId: Int, commentId: Int) async -> Bool {
+        guard let selectEmoji = selectEmoji, let useCase = createReactionToCommentUseCase else { return false }
+        
+        let result = await useCase.execute(
             treehouseId: treehouseId,
             postId: postId,
             commentId: commentId,
@@ -66,14 +112,17 @@ extension EmojiViewModel {
         )
         
         switch result {
-        case .success(let response):
+        case .success(_):
             await MainActor.run {
                 self.selectEmoji = nil
             }
+            
             return true
+            
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
+                print(errorMessage)
             }
             
             return false
