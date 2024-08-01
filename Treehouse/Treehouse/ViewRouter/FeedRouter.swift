@@ -22,7 +22,10 @@ enum FeedRouter: Router {
                             createCommentUseCase: CreateCommentUseCase(
                                 repository: CommentRepositoryImpl()),
                             readCommentUseCase: ReadCommentUseCase(
-                                repository: CommentRepositoryImpl())
+                                repository: CommentRepositoryImpl()), 
+                            createReplyCommentUseCase: CreateReplyCommentUseCase(
+                                repository: CommentRepositoryImpl()
+                            )
                         )
                     )
                     .environment(viewModel)
