@@ -14,7 +14,7 @@ enum NotificationAPI {
 extension NotificationAPI: BaseRequest {
     var path: String {
         switch self {
-        case .getCheckNotifications: return "users/notifiactions?page="
+        case .getCheckNotifications: return "users/notifiactions"
         }
     }
     
