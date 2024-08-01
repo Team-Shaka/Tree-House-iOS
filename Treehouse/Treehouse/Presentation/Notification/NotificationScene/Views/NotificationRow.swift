@@ -11,15 +11,22 @@ struct NotificationRow: View {
     
     // MARK: - Property
     
-    var notification: NotificationModel
+    let notification: NotificationModel
     var textColor: Color {
-        notification.isChecked ? .gray6 : .treeBlack
+        viewModel.isChecked ? .gray6 : .treeBlack
     }
+    
+    // MARK: - State Property
+    
+   @State var viewModel = NotificationViewModel(checkNotificationUseCase: CheckNotificationUseCase(repository: NotificationsRepositoryImpl()))
     
     // MARK: - View
     
     var body: some View {
         HStack(alignment: .center) {
+            
+            // TODO: - image 연결
+            
             notification.profileImage
                 .resizable()
                 .scaledToFill()
@@ -28,24 +35,24 @@ struct NotificationRow: View {
                 .padding(.top, 3)
                 .padding(.trailing, 8)
             
-            Text(notification.userName)
+            Text(viewModel.userName)
                 .font(.fontGuide(.body4))
                 .foregroundColor(textColor)
             
-            + Text(notification.type.notificationContent)
+            + Text(viewModel.type.notificationContent)
                 .font(.fontGuide(.body3))
                 .foregroundColor(textColor)
             
-            + Text(" \(notification.time)ㆍ")
+            + Text(" \(viewModel.receivedTime)ㆍ")
                 .font(.fontGuide(.body3))
                 .foregroundColor(.gray6)
             
-            + Text(notification.tree)
+            + Text(viewModel.treehouseName)
                 .font(.fontGuide(.body3))
                 .foregroundColor(.gray6)
             
-            if notification.type == .inviteToTree {
-                notification.isChecked ? Image(.icInvitationGray) : Image(.icInvitation)
+            if viewModel.type == .invitation {
+                viewModel.isChecked ? Image(.icInvitationGray) : Image(.icInvitation)
             }
         }
         .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))

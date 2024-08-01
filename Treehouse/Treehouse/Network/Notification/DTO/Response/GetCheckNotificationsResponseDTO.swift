@@ -8,21 +8,9 @@
 import Foundation
 
 struct GetCheckNotificationsResponseDTO: Decodable {
-    let notifications: [GetCheckNotificationsResponseData]
+    let notifications: [CheckNotificationResponseData]
+    
+    func toDomain() -> CheckNotificationResponseEntity {
+        return CheckNotificationResponseEntity(notifications: notifications)
+    }
 }
-
-// MARK: -TODO (notificationsType)
-
-struct GetCheckNotificationsResponseData: Decodable {
-//    let type: notificationsType
-    let profileImageUrl: String
-    let userName: String
-    let recievedTime: String
-    let treehouseName: String
-    let isChecked: Bool
-    let targetId: Int
-}
-
-//enum notificationsType {
-//
-//}
