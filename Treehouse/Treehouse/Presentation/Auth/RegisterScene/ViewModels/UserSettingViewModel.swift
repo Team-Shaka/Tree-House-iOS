@@ -115,19 +115,13 @@ final class UserSettingViewModel: BaseViewModel {
         guard let userId = userId,
               let treehouseId = treehouseId,
               let memberName = memberName,
-              let bio = bio else {
+              let bio = bio,
+              let profileImage = accessUrlImage.first else {
             return nil
         }
         
-        if let profileImageData = profileImage?.first?.pngData() {
-            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [Treehouse(treehouseId: treehouseId, treehouseName: treehouseName)], bio: bio, profileImageData: profileImageData)
-        } else {
-            guard let imageData = UIImage(resource: .imgUser).pngData() else {
-                return nil
-            }
-             
-            return UserInfoData(userId: userId, userName: userName, treeMemberName: memberName, treehouseId: [Treehouse(treehouseId: treehouseId, treehouseName: treehouseName)], bio: bio, profileImageData: imageData)
-        }
+        let userData = UserInfoData(userId: userId, userName: userName, profileImageUrl: profileImage, treehouses: [treehouseId], treehouseInfo: [])
+        return userData
     }
 }
 

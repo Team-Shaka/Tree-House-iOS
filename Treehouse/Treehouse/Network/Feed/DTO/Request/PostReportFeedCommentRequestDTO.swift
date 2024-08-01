@@ -9,5 +9,5 @@ import Foundation
 
 struct PostReportFeedCommentRequestDTO: Codable {
     let reason: String
-    let targetMemberId: String
+    let targetMemberId: Int
 }

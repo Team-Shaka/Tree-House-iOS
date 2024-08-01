@@ -48,11 +48,10 @@ struct GetReadFeedPostsListResponseDTO: Decodable {
     }
 }
 
-struct MemberProfileResponseData: Identifiable, Decodable {
-    var id = UUID()
+struct MemberProfileResponseData: Decodable {
     let memberId: Int
     let memberName: String
-    let memberProfileImageUrl: String
+    let memberProfileImageUrl: String?
     let memberBranch: Int
 }
 
@@ -60,8 +59,7 @@ struct ReactionListData: Decodable {
     let reactionList: [ReactionListResponseData]
 }
 
-struct ReactionListResponseData: Identifiable, Decodable {
-    var id = UUID()
+struct ReactionListResponseData: Decodable {
     let reactionName: String
     let reactionCount: Int
     let isPushed: Bool

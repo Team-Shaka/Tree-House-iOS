@@ -34,14 +34,14 @@ final class FeedService {
     }
     
     /// Feed 의 Detail 게시글을 읽어오는 API
-    func getReadDetailFeedPosts(treehouseId: Int, postId: Int) async throws -> GetReadFeedPostsListResponseDTO {
+    func getReadDetailFeedPosts(treehouseId: Int, postId: Int) async throws -> GetReadDetailFeedPostsResponseDTO {
         let request = NetworkRequest(requestType: FeedAPI.getReadDetailFeedPosts(treehouseId: treehouseId, postId: postId))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadFeedPostsListResponseDTO.self)
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadDetailFeedPostsResponseDTO.self)
     }
     
     /// Feed 의 게시글을 삭제하는 API
@@ -56,8 +56,8 @@ final class FeedService {
 //    }
     
     /// Feed 의 게시글을 수정하는 API
-    func patchUpdateFeedPost(treehouseId: Int, postId: Int) async throws -> PatchUpdateFeedPostResponseDTO {
-        let request = NetworkRequest(requestType: FeedAPI.patchUpdateFeedPost(treehouseId: treehouseId, postId: postId))
+    func patchUpdateFeedPost(treehouseId: Int, postId: Int, context: String) async throws -> PatchUpdateFeedPostResponseDTO {
+        let request = NetworkRequest(requestType: FeedAPI.patchUpdateFeedPost(treehouseId: treehouseId, postId: postId, requestBody: PatchUpdateFeedPostRequestDTO(context: context)))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")

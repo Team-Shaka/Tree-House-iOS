@@ -8,5 +8,9 @@
 import Foundation
 
 struct PatchUpdateFeedPostResponseDTO: Decodable {
-    let context: String
+    let postId: Int
+    
+    func toDomain() -> UpdateFeedPostResponseEntity {
+        return UpdateFeedPostResponseEntity(postId: postId)
+    }
 }

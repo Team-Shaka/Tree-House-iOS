@@ -14,7 +14,7 @@ struct GetReadMemberInfoResponseDTO: Decodable {
     let closestMemberCount: Int
     let treehouseCount: Int
     let fromMe: Int
-    let profileImageUrl: String
+    let profileImageUrl: String?
     let bio: String
     
     func toDomain() -> ReadMemberInfoResponseEntity {
@@ -25,7 +25,7 @@ struct GetReadMemberInfoResponseDTO: Decodable {
             closestMemberCount: closestMemberCount,
             treehouseCount: treehouseCount,
             fromMe: fromMe,
-            profileImageUrl: profileImageUrl,
+            profileImageUrl: profileImageUrl ?? "",
             bio: bio
         )
     }

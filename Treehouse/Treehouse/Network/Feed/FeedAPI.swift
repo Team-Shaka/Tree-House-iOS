@@ -12,7 +12,7 @@ enum FeedAPI {
     case postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO)
     case getReadDetailFeedPosts(treehouseId: Int, postId: Int)
     case deleteFeedPost(treehouseId: Int, postId: Int)
-    case patchUpdateFeedPost(treehouseId: Int, postId: Int)
+    case patchUpdateFeedPost(treehouseId: Int, postId: Int, requestBody: PatchUpdateFeedPostRequestDTO)
     case postReactionFeedPost(treehouseId: Int, postId: Int, requestBody: PostReactionFeedPostRequestDTO)
     case postReportFeedPost(treehouseId: Int, postId: Int, requestBody: PostReportFeedPostRequestDTO)
     case postPresignedURL(treehouseId: Int, requestBody: PostPresignedURLRequestDTO)
@@ -27,7 +27,7 @@ extension FeedAPI: BaseRequest {
             return "treehouses/\(treehouseId)/feeds/posts"
         case .getReadDetailFeedPosts(treehouseId: let treehouseId, postId: let postId),
                 .deleteFeedPost(let treehouseId, let postId),
-                .patchUpdateFeedPost(let treehouseId, let postId):
+                .patchUpdateFeedPost(let treehouseId, let postId, _):
             return "treehouses/\(treehouseId)/feeds/posts/\(postId)"
         case .postReactionFeedPost(treehouseId: let treehouseId, postId: let postId, _):
             return "treehouses/\(treehouseId)/feeds/posts/\(postId)/reactions"
@@ -62,6 +62,8 @@ extension FeedAPI: BaseRequest {
     var requestBodyParameter: (any Codable)? {
         switch self {
         case .postCreateFeedPosts(_ , requestBody: let requestBody): return requestBody
+        case .patchUpdateFeedPost(_, _, requestBody: let requestBody):
+            return requestBody
         case .postReactionFeedPost(_, _, requestBody: let requestBody): return requestBody
         case .postReportFeedPost(_, _, requestBody: let requestBody): return requestBody
         case .postPresignedURL(_, requestBody: let requestBody): return requestBody

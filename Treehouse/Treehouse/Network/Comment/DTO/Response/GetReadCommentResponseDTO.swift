@@ -14,10 +14,10 @@ struct GetReadCommentResponseDTO: Decodable {
         
         commentList?.forEach {
             result.append(CommentListEntity(memberProfile: convertMemberProfile($0.memberProfile),
-                                            reactionList: convertReactionList($0.reactionList),
+                                            reactionList: convertReactionListDataEntity($0.reactionList),
                                             commentId: $0.commentId,
                                             context: $0.context,
-                                            replyList: convertReplyList($0.replyList),
+                                            replyList: convertReplyListEntity($0.replyList),
                                             commentedAt: $0.commentedAt))
         }
         
@@ -31,47 +31,47 @@ struct GetReadCommentResponseDTO: Decodable {
                                    memberBranch: data.memberBranch)
     }
     
-    func convertReactionList(_ data: [ReactionListResponseData]?) -> [ReactionListEntity] {
-        if let data = data {
-            return data.map {
-                return ReactionListEntity(reactionName: $0.reactionName,
-                                          reactionCount: $0.reactionCount,
-                                          isPushed: $0.isPushed)
-            }
-        } else {
-            return []
-        }
+    private func convertReactionListDataEntity(_ data: ReactionListData) -> ReactionListDataEntity {
+        return ReactionListDataEntity(reactionList: convertReactionListEntity(data.reactionList))
     }
     
-    func convertReplyList(_ data: [ReplyList]? ) -> [ReplyListEntity] {
-        if let data = data {
-            return data.map {
-                return ReplyListEntity(memberProfile: convertMemberProfile($0.memberProfile),
-                                       reactionList: convertReactionList($0.reactionList),
-                                       commentId: $0.commentId,
-                                       context: $0.context,
-                                       commentedAt: $0.commentedAt)
-            }
-        } else {
-            return []
+    private func convertReactionListEntity(_ data: [ReactionListResponseData]) -> [ReactionListEntity] {
+        var result = [ReactionListEntity]()
+        
+        data.forEach {
+            result.append(ReactionListEntity(reactionName: $0.reactionName, reactionCount: $0.reactionCount, isPushed: $0.isPushed))
         }
+         
+        return result
+    }
+    
+    private func convertReplyListEntity(_ data: [ReplyList]) -> [ReplyListEntity] {
+        var result = [ReplyListEntity]()
+        
+        data.forEach {
+            result.append(ReplyListEntity(memberProfile: convertMemberProfile($0.memberProfile),
+                                          reactionList: convertReactionListDataEntity($0.reactionList),
+                                          commentId: $0.commentId,
+                                          context: $0.context,
+                                          commentedAt: $0.commentedAt))
+        }
+        
+        return result
     }
 }
 
-struct CommentList: Identifiable, Decodable {
-    var id = UUID()
+struct CommentList: Decodable {
     let memberProfile: MemberProfileResponseData
-    let reactionList: [ReactionListResponseData]?
+    let reactionList: ReactionListData
     let commentId: Int
     let context: String
-    let replyList: [ReplyList]?
+    let replyList: [ReplyList]
     let commentedAt: String
 }
 
-struct ReplyList: Identifiable, Decodable {
-    var id = UUID()
+struct ReplyList: Decodable {
     let memberProfile: MemberProfileResponseData
-    let reactionList: [ReactionListResponseData]
+    let reactionList: ReactionListData
     let commentId: Int
     let context: String
     let commentedAt: String
