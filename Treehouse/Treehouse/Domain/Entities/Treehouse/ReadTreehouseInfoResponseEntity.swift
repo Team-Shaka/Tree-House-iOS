@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct ReadTreehouseInfoResponseEntity: Decodable {
+struct ReadTreehouseInfoResponseEntity: Identifiable, Decodable {
+    var id = UUID()
     let treehouseId: Int
     let treehouseName: String
     let treehouseSize: Int
-    let treehouseImageUrl: String
+    let treehouseImageUrl: String?
+    var currentTreeHouse: Bool = false
 }

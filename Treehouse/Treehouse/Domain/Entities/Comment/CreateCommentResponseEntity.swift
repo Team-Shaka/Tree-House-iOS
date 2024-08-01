@@ -8,5 +8,5 @@
 import Foundation
 
 struct CreateCommentResponseEntity: Decodable {
-    let postId: Int
+    let commentId: Int
 }

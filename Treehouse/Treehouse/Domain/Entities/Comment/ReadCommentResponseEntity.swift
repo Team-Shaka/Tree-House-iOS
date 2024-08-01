@@ -15,17 +15,17 @@ struct ReadCommentResponseEntity: Identifiable, Decodable {
 struct CommentListEntity: Identifiable, Decodable {
     var id = UUID()
     let memberProfile: MemberProfileEntity
-    let reactionList: [ReactionListEntity]?
+    var reactionList: ReactionListDataEntity
     let commentId: Int
     let context: String
-    let replyList: [ReplyListEntity]?
+    let replyList: [ReplyListEntity]
     let commentedAt: String
 }
 
 struct ReplyListEntity: Identifiable, Decodable {
     var id = UUID()
     let memberProfile: MemberProfileEntity
-    let reactionList: [ReactionListEntity]
+    let reactionList: ReactionListDataEntity
     let commentId: Int
     let context: String
     let commentedAt: String
@@ -35,13 +35,13 @@ struct MemberProfileEntity: Identifiable, Decodable {
     var id = UUID()
     let memberId: Int
     let memberName: String
-    let memberProfileImageUrl: String
+    let memberProfileImageUrl: String?
     let memberBranch: Int
 }
 
 struct ReactionListEntity: Identifiable, Decodable {
     var id = UUID()
     let reactionName: String
-    let reactionCount: Int
+    var reactionCount: Int
     var isPushed: Bool
 }

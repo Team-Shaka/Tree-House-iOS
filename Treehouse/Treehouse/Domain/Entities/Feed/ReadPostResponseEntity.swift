@@ -1,5 +1,5 @@
 //
-//  ReadPostResponsEntity.swift
+//  ReadPostResponseEntity.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 7/22/24.
@@ -11,13 +11,14 @@ struct GetReadFeedPostListResponseEntity: Decodable, Identifiable {
     var id = UUID()
     let memberProfile: MemberProfileEntity
     let postId: Int
-    let context: String
+    var context: String
     let pictureUrlList: [String]
     let commentCount: Int
-    let reactionList: ReactionListDataEntity
+    var reactionList: ReactionListDataEntity
     let postedAt: String
 }
 
-struct ReactionListDataEntity: Decodable {
-    let reactionList: [ReactionListEntity]
+struct ReactionListDataEntity: Identifiable, Decodable {
+    var id = UUID()
+    var reactionList: [ReactionListEntity]
 }
