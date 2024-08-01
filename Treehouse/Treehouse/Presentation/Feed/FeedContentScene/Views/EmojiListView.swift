@@ -17,57 +17,62 @@ struct EmojiListView: View {
     // MARK: - ViewModel Property
     
     @Environment (FeedViewModel.self) var feedViewModel
-    @Environment (CommentViewModel.self) var commentViewModel
     @Environment (EmojiViewModel.self) var emojiViewModel
+    @Environment (PostViewModel.self) var postViewModel
     
     // MARK: - Property
     
     var emojiType: EmojiListType
-    var emojiData: ReactionListDataEntity?
-    var emojiArrayData: [ReactionListEntity]?
     var commentId: Int?
     var postId: Int?
+    var feedEmojiData: ReactionListDataEntity?
+    var detailEmojiData: ReactionListDataEntity?
     
-    init(emojiType: EmojiListType, emojiData: ReactionListDataEntity, postId: Int) {
+    // MARK: - init
+    
+    init(emojiType: EmojiListType, postId: Int, feedEmojiData: ReactionListDataEntity) {
         self.emojiType = emojiType
-        self.emojiData = emojiData
         commentId = nil
-        emojiArrayData = nil
         self.postId = postId
+        self.feedEmojiData = feedEmojiData
     }
     
-    init(emojiType: EmojiListType, emojiArrayData: [ReactionListEntity], commentId: Int) {
+    init(emojiType: EmojiListType, commentId: Int, detailEmojiData: ReactionListDataEntity) {
         self.emojiType = emojiType
-        self.emojiArrayData = emojiArrayData
         self.commentId = commentId
         postId = nil
-        emojiData = nil
+        self.detailEmojiData = detailEmojiData
     }
 
     // MARK: - View
     
     var body: some View {
         FlowlayoutStack(verticalSpacing: 8, horizontalSpacing: 10) {
-            ForEach((emojiType == .feedView ? emojiData?.reactionList : emojiArrayData) ?? []) { data in
-                Button(action: {
-                    Task {
-                        await emojiViewModel.createReactionComment(
-                            treehouseId: feedViewModel.currentTreehouseId ?? 0,
-                            postId: feedViewModel.currentPostId ?? 0,
-                            commentId: commentId ?? 0
-                        )
+            if let data = feedEmojiData {
+                ForEach(data.reactionList) { emoji in
+                    Button(action: {
+                        emojiViewModel.selectEmoji = emoji.reactionName
+                        Task {
+                            let result = await emojiViewModel.createReactionPost(
+                                treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                postId: postId ?? 0
+                            )
+                            
+                            if result {
+                                await postViewModel.changeEmojiData(postId: postId ?? 0, selectEmoji: emoji.reactionName)
+                            }
+                        }
+                    }) {
+                        EmojiView(emoji: emoji.reactionName,
+                                  count: emoji.reactionCount,
+                                  isPressed: emoji.isPushed)
                     }
-                }) {
-                    emojiView(
-                        data.reactionName,
-                        data.reactionCount,
-                        data.isPushed
-                    )
                 }
             }
-            
+
             Button(action: {
-                commentViewModel.isSelectEmojiView = true
+                feedViewModel.isSelectEmojiView = true
+                feedViewModel.currentPostId = postId
             }) {
                 Image(systemName: "plus")
                     .foregroundStyle(.gray5)
@@ -75,64 +80,37 @@ struct EmojiListView: View {
                     .frame(width:30, height: 30)
                     .background(.gray1)
                     .clipShape(RoundedRectangle(cornerRadius: 15.0))
-            }
+            }.buttonStyle(PlainButtonStyle())
         }
-//        FlowlayoutStack(verticalSpacing: 8, horizontalSpacing: 10) {
-//            ForEach(emojiData.indices, id: \.self) { emojiIndex in
-//                Button(action: {
-//                    switch commentType {
-//                    case .comment:
-//                        viewModel.emojiButtonTapped(commentIndex: index.0, emojiIndex: emojiIndex)
-//                    case .reply:
-//                        viewModel.emojiButtonTapped(commentIndex: index, emojiIndex: emojiIndex)
-//                    }
-//                }) {
-//                    emojiView(emojiData[emojiIndex].emoji,
-//                              emojiData[emojiIndex].count,
-//                              emojiData[emojiIndex].isPressed)
-//                }
-//            }
-//
-//            Button(action: {
-//                viewModel.isSelectEmojiView = true
-//            }) {
-//                Image(systemName: "plus")
-//                    .foregroundStyle(.gray5)
-//                    .padding(9)
-//                    .frame(width:30, height: 30)
-//                    .background(.gray1)
-//                    .clipShape(RoundedRectangle(cornerRadius: 15.0))
-//            }
-//        }
     }
 }
 
 // MARK: - ViewBuilder
 
 private extension EmojiListView {
-    @ViewBuilder
-    func emojiView(_ emoji: String, _ count: Int, _ isPressed: Bool) -> some View {
-        ZStack {
-            HStack(spacing: 4) {
-                Text(emoji)
-                    .fontWithLineHeight(fontLevel: .body1)
-                
-                Text("\(count)")
-                    .fontWithLineHeight(fontLevel: .body5)
-                    .foregroundStyle(isPressed ? .treeLightgreen : .gray7)
-            }
-            .padding(.vertical, 2)
-            .padding(.horizontal, 10)
-            .background(isPressed ? .treePale : .gray1)
-            .clipShape(RoundedRectangle(cornerRadius: 20.0))
-            .overlay {
-                if isPressed {
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .stroke(.treeLightgreen, lineWidth: 1)
-                }
-            }
-        }
-    }
+//    @ViewBuilder
+//    func emojiView(_ emoji: String, _ count: Int, _ isPressed: Bool) -> some View {
+//        ZStack {
+//            HStack(spacing: 4) {
+//                Text(emoji)
+//                    .fontWithLineHeight(fontLevel: .body1)
+//                
+//                Text("\(count)")
+//                    .fontWithLineHeight(fontLevel: .body5)
+//                    .foregroundStyle(isPressed ? .treeLightgreen : .gray7)
+//            }
+//            .padding(.vertical, 2)
+//            .padding(.horizontal, 10)
+//            .background(isPressed ? .treePale : .gray1)
+//            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+//            .overlay {
+//                if isPressed {
+//                    RoundedRectangle(cornerRadius: 20.0)
+//                        .stroke(.treeLightgreen, lineWidth: 1)
+//                }
+//            }
+//        }
+//    }
 }
 
 // MARK: - Preview

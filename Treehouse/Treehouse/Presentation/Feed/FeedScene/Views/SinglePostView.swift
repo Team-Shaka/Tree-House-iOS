@@ -22,20 +22,41 @@ struct SinglePostView: View {
     // MARK: - State Property
     
     @Environment (ViewRouter.self) var viewRouter
+    @Environment (FeedViewModel.self) var feedViewModel
     
     // MARK: - Property
     
-    let userProfileImageURL: String
+//    let userProfileImageURL: String
+    let postId: Int?
     let sentTime: String
-    let postContent: String
+    var postContent: String
     let postImageURLs: [String]
     let dummyImages = ["img_dummy", "img_dummy_2"]
+    let memberProfile: MemberProfileEntity
     var postType: PostType
     
     // MARK:  - State Property
     
     @State private var selectedImage: SelectedImage? = nil
     @State private var viewModel = SheetActionViewModel()
+    
+    init(postId: Int?, sentTime: String, postContent: String, postImageURLs: [String], memberProfile: MemberProfileEntity, postType: PostType) {
+        self.postId = postId
+        self.sentTime = sentTime
+        self.postContent = postContent
+        self.postImageURLs = postImageURLs
+        self.memberProfile = memberProfile
+        self.postType = postType
+    }
+    
+    init(sentTime: String, postContent: String, postImageURLs: [String], memberProfile: MemberProfileEntity, postType: PostType) {
+        self.postId = nil
+        self.sentTime = sentTime
+        self.postContent = postContent
+        self.postImageURLs = postImageURLs
+        self.memberProfile = memberProfile
+        self.postType = postType
+    }
     
     // MARK: - View
     
@@ -47,28 +68,29 @@ struct SinglePostView: View {
                     .foregroundColor(.gray3)
                 
                 HStack(alignment: .top, spacing: 10) {
-                    Image(.imgDummy2)
-                        .resizable()
+                    CustomAsyncImage(url: memberProfile.memberProfileImageUrl ?? "", 
+                                     type: .postMemberProfileImage,
+                                     width: 36,
+                                     height: 36)
                         .clipShape(Circle())
-                        .frame(width: 36, height: 36)
                         .onTapGesture {
-                            viewRouter.push(ProfileRouter.memberProfileView)
+                            viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                                                            memberId: memberProfile.memberId))
                         }
                     
                     VStack(alignment: .leading) {
                         HStack(alignment: .center, spacing: 9) {
-                            Text("username")
-                                .font(.fontGuide(.body2))
-                                .foregroundStyle(.treeBlack)
+                            Text(memberProfile.memberName)
                                 .fontWithLineHeight(fontLevel: .body2)
+                                .foregroundStyle(.treeBlack)
                                 .onTapGesture {
-                                    viewRouter.push(ProfileRouter.memberProfileView)
+                                    viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                                                                    memberId: memberProfile.memberId))
                                 }
                             
-                            Text("branch 3분 전")
-                                .font(.fontGuide(.caption1))
-                                .foregroundStyle(.gray5)
+                            Text(sentTime)
                                 .fontWithLineHeight(fontLevel: .caption1)
+                                .foregroundStyle(.gray5)
                             
                             Spacer()
                             
@@ -76,16 +98,21 @@ struct SinglePostView: View {
                                 viewModel.isBottomSheetShowing.toggle()
                             }) {
                                 Image(.icMeatball)
+                                    .frame(width: 32, height: 32)
                             }
                         }
                         
-                        Text("contentcontent~")
-                            .font(.fontGuide(.body3))
+                        Text(postContent)
+                            .fontWithLineHeight(fontLevel: .body3)
                             .foregroundStyle(.treeBlack)
                     }
                 }
                 .padding(16)
-                multipleImagesView
+                
+                contentImageView()
+            }
+            .fullScreenCover(item: $selectedImage) { selectedImage in
+                ImageDetailCarouselView(images: postImageURLs, selectedIndex: selectedImage.id)
             }
         }
         // 바텀시트 표출
@@ -103,15 +130,17 @@ struct SinglePostView: View {
         }
         // 게시글 수정 바텀시트 표출
         .popup(isPresented: $viewModel.isEditPostPopupShowing) {
-            EditPostPopupView()
+            EditPostPopupView(postContent: postContent, postId: postId ?? 0, memberProfile: memberProfile, postImageURLs: postImageURLs)
                 .background(.grayscaleWhite)
-                .frame(height: 790)
+                .frame(height: SizeLiterals.Screen.screenHeight * 790 / 852)
                 .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
+                .environment(viewModel)
         } customize: {
             $0
                 .type(.toast)
                 .dragToDismiss(true)
                 .isOpaque(true)
+                .closeOnTap(false)
                 .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
@@ -131,46 +160,53 @@ extension SinglePostView {
     
     @ViewBuilder
     var singleImageView: some View {
-        Image(.imgDummy)
-            .resizable()
-            .frame(width: 315, height: 172)
-            .cornerRadius(6.0)
+        CustomAsyncImage(url: postImageURLs.first ?? "", 
+                         type: .postImage,
+                         width: 314,
+                         height: 200)
+            .onTapGesture {
+                if postType == .DetailView {
+                    selectedImage = SelectedImage(id: 0)
+                } else {
+                    feedViewModel.currentPostId = postId
+                    viewRouter.push(FeedRouter.postDetailView)
+                }
+            }
+            .padding(.leading, 62)
+            .padding(.trailing, 16)
     }
     
     @ViewBuilder
     var multipleImagesView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(0..<dummyImages.count, id: \.self) { index in
-                    Image(dummyImages[index])
-                        .resizable()
-                        .cornerRadius(6.0)
-                        .frame(width: 206, height: 172)
+            HStack(spacing: 8) {
+                ForEach(0..<postImageURLs.count, id: \.self) { index in
+                    CustomAsyncImage(url: postImageURLs[index], type: .postImage,
+                                     width: 206,
+                                     height: 200)
                         .onTapGesture {
                             if postType == .DetailView {
                                 selectedImage = SelectedImage(id: index)
                             } else {
+                                feedViewModel.currentPostId = postId
                                 viewRouter.push(FeedRouter.postDetailView)
                             }
                         }
                 }
             }
             .padding(.leading, 62)
-            .padding(.trailing, 21)
-        }
-        .fullScreenCover(item: $selectedImage) { selectedImage in
-            ImageDetailCarouselView(images: dummyImages, selectedIndex: selectedImage.id)
+            .padding(.trailing, 16)
         }
     }
 }
 
 // MARK: - Preview
 
-#Preview {
-    SinglePostView(userProfileImageURL: "",
-                   sentTime: "5",
-                   postContent: "",
-                   postImageURLs: ["", ""],
-                   postType: .feedView)
-        .environment(ViewRouter())
-}
+//#Preview {
+//    SinglePostView(userProfileImageURL: "",
+//                   sentTime: "5",
+//                   postContent: "",
+//                   postImageURLs: ["", ""],
+//                   postType: .feedView)
+//        .environment(ViewRouter())
+//}

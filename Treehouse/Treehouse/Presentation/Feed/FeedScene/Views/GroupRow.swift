@@ -7,66 +7,61 @@
 
 import SwiftUI
 
-struct GroupRow: View {
+struct TreehouseInfoRow: View {
     
     // MARK: - Property
     
-    var group: GroupStruct
+    var treehouseImageUrl: String
+    var treehouseName: String
+    var treehouseSize: Int
+    var currentTreeHouse: Bool
     
     // MARK: - View
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
-                .stroke(group.currentTreeHouse ? .treeGreen : .gray3, lineWidth: 1)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(group.currentTreeHouse ? .treePale : .grayscaleWhite)
-                )
-                .cornerRadius(12)
-                .frame(width: SizeLiterals.Screen.screenWidth * 360 / 393, height: 73)
+                .stroke(currentTreeHouse ? .treeGreen : .gray3, lineWidth: 1)
+                .fill(currentTreeHouse ? .treePale : .grayscaleWhite)
             
             HStack(spacing: 0) {
-                group.groupImage
-                    .resizable()
-                    .frame(width: 36, height: 36)
-                    .padding(.leading, 12)
+                CustomAsyncImage(url: treehouseImageUrl, type: .treehouseImage,
+                                 width: 46,
+                                 height: 46)
+                //                    .frame(width: SizeLiterals.Screen.screenWidth * 46, height: SizeLiterals.Screen.screenHeight * 46)
+//                .padding(.trailing, 12)
                 
-                Text(group.groupName)
-                    .font(.fontGuide(.heading4))
+                Text(treehouseName)
+                    .fontWithLineHeight(fontLevel: .heading4)
                     .foregroundColor(.grayscaleBlack)
                     .padding(.leading, 19)
                 
                 Spacer()
                 
-                Text("\(group.personnel)")
-                    .font(.fontGuide(.body5))
-                    .foregroundColor(group.currentTreeHouse ? .treeGreen : .gray5)
+                Image(currentTreeHouse ? .icPerson : .icPersonGray)
+                    .frame(width: 18, height: 18)
+                
+                Text("\(treehouseSize)")
+                    .fontWithLineHeight(fontLevel: .body5)
+                    .foregroundColor(currentTreeHouse ? .treeGreen : .gray5)
                     .padding(.trailing, 13)
                 
-                Button(action: {
-                }) {
-                    Image(group.currentTreeHouse ? .icNext : .icNextGray)
-                        .frame(width: 24, height: 24)
-                        .padding(.trailing, 12)
-                }
+                Image(currentTreeHouse ? .icNext : .icNextGray)
+                    .frame(width: 24, height: 24)
+//                    .padding(.trailing, 12)
             }
-            .frame(width: SizeLiterals.Screen.screenWidth * 360 / 393, height: 73)
-            .padding(.vertical, 3)
-            
-            Image(group.currentTreeHouse ? .icPerson : .icPersonGray)
-                .frame(width: 18, height: 18)
-                .offset(x: SizeLiterals.Screen.screenWidth * 100 / 393)
+            .padding(12)
         }
+        .frame(height: 70)
     }
 }
 
 // MARK: - Preview
 
-#Preview {
-    let groups = GroupStruct.groupStructDummyData
-    return Group {
-        GroupRow(group: groups[0])
-        GroupRow(group: groups[1])
-    }
-}
+//#Preview {
+//    let groups = GroupStruct.groupStructDummyData
+//    return Group {
+//        GroupRow(group: groups[0])
+//        GroupRow(group: groups[1])
+//    }
+//}

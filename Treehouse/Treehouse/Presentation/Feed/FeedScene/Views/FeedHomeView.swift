@@ -11,43 +11,45 @@ struct FeedHomeView: View {
     
     // MARK: - State Property
     
-    @Environment (ViewRouter.self) var viewRouter
+    @Environment(ViewRouter.self) var viewRouter
     @Environment(UserInfoViewModel.self) var userInfoViewModel: UserInfoViewModel
-    @State var feedViewModel: FeedViewModel = FeedViewModel()
+    @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     
-    @State var isPresent = false
-    @State private var subject: String = "오늘 점심 뭐 먹지?"
-    @State private var personnel: Int = 30
+    @State var feedViewModel: FeedViewModel = FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
+    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
+    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
+    
+//    @State var isPresent = false
     
     // MARK: - View
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView(groupName: feedViewModel.groupName, isPresent: $isPresent)
+            HeaderView()
                 .frame(height: 56)
                 .frame(maxWidth: .infinity)
                 .background(.grayscaleWhite)
+                .environment(currentTreehouseInfoViewModel)
             
             ScrollView(.vertical) {
-//                TreeHallView(groupName: feedViewModel.groupName, subject: subject, personnel: personnel)
-//                    .padding(.top, 10)
-                
                 FeedView()
                     .frame(width: SizeLiterals.Screen.screenWidth)
                     .environment(feedViewModel)
+                    .environment(postViewModel)
+                    .environment(emojiViewModel)
             }
             .padding(.bottom, 16)
+            .refreshable {
+                let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+            }
         }
         .navigationDestination(for: FeedRouter.self) { router in
             viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
         }
         .onAppear {
-            if feedViewModel.currentTreehouseId == nil {
-                if let treehouseData = userInfoViewModel.safeUserInfo.treehouseId.first {
-                    feedViewModel.currentTreehouseId = treehouseData.treehouseId
-                    feedViewModel.groupName = treehouseData.treehouseName
-                }
-            }
+            feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
+            feedViewModel.userId = currentTreehouseInfoViewModel.userId
+            feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
         }
     }
 }
@@ -57,4 +59,5 @@ struct FeedHomeView: View {
 #Preview {
     FeedHomeView()
         .environment(ViewRouter())
+        .environment(UserInfoViewModel())
 }

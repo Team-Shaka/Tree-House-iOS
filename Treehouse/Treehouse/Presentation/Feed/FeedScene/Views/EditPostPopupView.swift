@@ -11,12 +11,19 @@ struct EditPostPopupView: View {
     
     // MARK: - State Property
     
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (SheetActionViewModel.self) var sheetActionViewModel
+    
+    @State var updateFeedPostViewModel = UpdateFeedPostViewModel(updateFeedPostUseCase: UpdateFeedPostUseCase(repository: FeedRepositoryImpl()))
+    
     @State private var isCancelPopupShowing: Bool = false
-    @State private var postContent: String = "ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅣㅏㅣㅏㅣㅏㅣㅏㅏ"
+    @State var postContent: String
     
     // MARK: - Property
     
-    let singlePostView = SinglePostView(userProfileImageURL: "", sentTime: "1", postContent: "", postImageURLs: [""], postType: .feedView)
+    let postId: Int
+    let memberProfile: MemberProfileEntity
+    let postImageURLs: [String]
     
     // MARK: - View
     
@@ -27,28 +34,44 @@ struct EditPostPopupView: View {
                 
                 ScrollView {
                     HStack(alignment: .top, spacing: 10) {
-                        Image(.imgDummy2)
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 36, height: 36)
                         
-                        VStack(alignment: .leading) {
-                            HStack(alignment: .center, spacing: 9) {
-                                Text("username")
-                                    .fontWithLineHeight(fontLevel: .body2)
-                                    .foregroundStyle(.treeBlack)
-                                
-                                Text("branch 3분 전")
-                                    .fontWithLineHeight(fontLevel: .caption1)
-                                    .foregroundStyle(.gray5)
-                                
-                                Spacer()
-                            }
+                        CustomAsyncImage(url: memberProfile.memberProfileImageUrl ?? "",
+                                         type: .postMemberProfileImage,
+                                         width: 36,
+                                         height: 36)
+                            .clipShape(Circle())
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(memberProfile.memberName)
+                                .fontWithLineHeight(fontLevel: .body2)
+                                .foregroundStyle(.treeBlack)
+                                .padding(.bottom, 2)
                             
                             DynamicHeightTextEditorView(text: $postContent)
+                                .padding(.bottom, 8)
 
-                            singlePostView.contentImageView()
+                            
+                            if postImageURLs.count == 1 {
+                                CustomAsyncImage(url: postImageURLs.first ?? "",
+                                                 type: .postImage,
+                                                 width: 314,
+                                                 height: 200)
                                 .opacity(0.5)
+                            } else {
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 8) {
+                                        ForEach(0..<postImageURLs.count, id: \.self) { index in
+                                            CustomAsyncImage(url: postImageURLs[index], type: .postImage,
+                                                             width: 206,
+                                                             height: 200)
+                                            .opacity(0.5)
+                                        }
+                                    }
+                                    .padding(.leading, 62)
+                                    .padding(.trailing, 16)
+                                }
+                            }
+                            
                         }
                     }
                     .padding(16)
@@ -87,7 +110,15 @@ extension EditPostPopupView {
             Spacer()
             
             Button(action: {
-                // TODO: - 완료 액션 = PATCH 서버 통신
+                Task {
+                    await updateFeedPostViewModel.updateFeedPost(treehouseId: feedViewModel.currentTreehouseId ?? 0, postId: postId, context: postContent)
+                    
+                    if updateFeedPostViewModel.isUpdatePost {
+                        sheetActionViewModel.isEditPostPopupShowing.toggle()
+                        feedViewModel.modifyPostContent = (postId, postContent)
+//                        feedViewModel.isModifyPostContent.toggle()
+                    }
+                }
             }) {
                 Text("완료")
                     .fontWithLineHeight(fontLevel: .body3)
@@ -112,10 +143,11 @@ extension EditPostPopupView {
             PostAlertView(
                 alertContent: "수정한 내용을 삭제하시겠어요?",
                 onCancel: {
-                    self.isCancelPopupShowing = false
+                    isCancelPopupShowing .toggle()
                 },
                 onConfirm: {
-                    self.isCancelPopupShowing = false
+                    isCancelPopupShowing.toggle()
+                    sheetActionViewModel.isEditPostPopupShowing.toggle()
                 }
             )
             .background(
@@ -131,6 +163,6 @@ extension EditPostPopupView {
 
 // MARK: - Preview
 
-#Preview {
-    EditPostPopupView()
-}
+//#Preview {
+//    EditPostPopupView()
+//}

@@ -68,10 +68,9 @@ struct SetPhoneNumberView: View {
                     }
                 }) {
                     Text(StringLiterals.Register.buttonTitle1)
-                        .padding()
+                        .fontWithLineHeight(fontLevel: .body2)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
-                        .font(.fontGuide(.body2))
                         .foregroundColor(isButtonEnabled ? .gray1 : .gray6)
                         .background(isButtonEnabled ? .treeBlack : .gray2)
                         .cornerRadius(12)

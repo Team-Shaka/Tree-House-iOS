@@ -14,22 +14,46 @@ struct EditProfileView: View {
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @Environment(UserInfoViewModel.self) var userInfoViewModel: UserInfoViewModel
     
+    @State var modifyMyProfileViewModel = ModifyMyProfileViewModel(modifyMyProfileUseCase: ModifyMyProfileUseCase(repository: MemberRepositoryImpl()))
+    @State var presingedURLViewModel = PresingedURLViewModel(presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()))
+    @State var loadImageAWSViewModel = LoadImageAWSViewModel(uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()))
+    
     @State private var profileImage: UIImage = UIImage(resource: .imgUser)
-    @State private var memberName: String = ""
-    @State private var bio: String = ""
+    
+    @State var profileUrl: String = ""
+    @State var memberName: String = ""
+    @State var bio: String = ""
     @State private var isEditing: Bool = false
+    
     @ObservedObject private var photoPickerManager = PhotoPickerManager(type: .profileImage)
     @State private var isPhotoPickerPresented: Bool = false
+    
+    var treehouseId: Int
+    var memberId: Int
+    @State var isSelectImage: Bool = false
     
     // MARK: - View
     
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                Image(uiImage: profileImage)
-                    .resizable()
-                    .frame(width: 98, height: 98)
-                    .clipShape(Circle())
+                if !(profileUrl.isEmpty) && isSelectImage == false {
+                    CustomAsyncImage(url: profileUrl,
+                                     type: .postMemberProfileImage,
+                                     width: 98,
+                                     height: 98)
+                        .clipShape(Circle())
+                } else if isSelectImage {
+                    Image(uiImage: profileImage)
+                        .resizable()
+                        .frame(width: 98, height: 98)
+                        .clipShape(Circle())
+                } else {
+                    Image(uiImage: profileImage)
+                        .resizable()
+                        .frame(width: 98, height: 98)
+                        .clipShape(Circle())
+                }
                 
                 Button(action: {
                     isPhotoPickerPresented.toggle()
@@ -47,6 +71,7 @@ struct EditProfileView: View {
                 .onReceive(photoPickerManager.$selectedImages) { selectedImages in
                     if let selectedImage = selectedImages.first {
                         profileImage = selectedImage
+                        self.isSelectImage = true
                     }
                 }
             }
@@ -62,7 +87,7 @@ struct EditProfileView: View {
             .padding(.top, 17)
             .padding(.leading, SizeLiterals.Screen.screenWidth * 16 / 393)
             
-            TextField(memberName, text: $memberName)
+            TextField(modifyMyProfileViewModel.memberName, text: $modifyMyProfileViewModel.memberName)
                 .disabled(!isEditing)
                 .padding()
                 .background(isEditing ? .grayscaleWhite : .gray1)
@@ -77,7 +102,7 @@ struct EditProfileView: View {
             HStack {
                 Spacer()
                 
-                Text("( \(memberName.count) / 20 )")
+                Text("( \(modifyMyProfileViewModel.memberName.count) / 20 )")
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundColor(isEditing ? .gray6 : .grayscaleWhite)
             }
@@ -99,7 +124,7 @@ struct EditProfileView: View {
                     .fill(isEditing ? Color.grayscaleWhite : Color.gray1)
                     .frame(height: 76)
                 
-                TextEditor(text: $bio)
+                TextEditor(text: $modifyMyProfileViewModel.memberBio)
                     .disabled(!isEditing)
                     .frame(height: 60)
                     .padding(.all, 8)
@@ -117,7 +142,7 @@ struct EditProfileView: View {
             HStack {
                 Spacer()
                 
-                Text("( \(bio.count) / 20 )")
+                Text("( \(modifyMyProfileViewModel.memberBio.count) / 20 )")
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundColor(isEditing ? .gray6 : .grayscaleWhite)
             }
@@ -129,9 +154,28 @@ struct EditProfileView: View {
             Button(action: {
                 if isEditing  {
                     //TODO: - 프로필 수정 API 연결
-                    let nameResult = userInfoViewModel.modifyMemberName(memberName: memberName)
-                    let bioResult = userInfoViewModel.modifyBio(bio: bio)
-                    let imageResult = userInfoViewModel.modifyProfileImage(imageData: profileImage)
+                    Task {
+                        
+                        if isSelectImage {
+                            let presingedResult = await presingedURLViewModel.presignedURL(
+                                treehouseId: treehouseId,
+                                memberId: memberId,
+                                selectImage: photoPickerManager.selectedImages
+                            )
+                            
+                            if let result = presingedResult {
+                                let _ = await loadImageAWSViewModel.loadImageAWS(uploadImages: photoPickerManager.selectedImages, ImageUrl: result)
+                                modifyMyProfileViewModel.memberProfileUrl = result.first?.accessUrl ?? ""
+                                await modifyMyProfileViewModel.modifyMyProfile(treehouseId: treehouseId)
+                            }
+                        } else {
+                            await modifyMyProfileViewModel.modifyMyProfile(treehouseId: treehouseId)
+                        }
+                    }
+
+                    let nameResult = userInfoViewModel.modifyMemberName(treehouseId: treehouseId, memberName: memberName)
+                    let bioResult = userInfoViewModel.modifyBio(treehouseId: treehouseId, bio: bio)
+                    let imageResult = userInfoViewModel.modifyProfileImage(treehouseId: treehouseId, imageUrl: profileUrl)
                     
                     if nameResult && bioResult && imageResult {
                         viewRouter.pop()
@@ -167,18 +211,28 @@ struct EditProfileView: View {
             }
         }
         .onAppear {
-            memberName = userInfoViewModel.safeUserInfo.treeMemberName
-            profileImage = UIImage(data: userInfoViewModel.safeUserInfo.profileImageData) ?? UIImage(resource: .imgUser)
-            bio = userInfoViewModel.safeUserInfo.bio
+//            memberName = userInfoViewModel.safeUserInfo.treeMemberName
+//            profileImage = UIImage(data: userInfoViewModel.safeUserInfo.profileImageData) ?? UIImage(resource: .imgUser)
+//            bio = userInfoViewModel.safeUserInfo.bio
+            
+            modifyMyProfileViewModel.memberProfileUrl = profileUrl
+            modifyMyProfileViewModel.memberName = memberName
+            modifyMyProfileViewModel.memberBio = bio
         }
     }
+    
+//    func bindData(memberProfileUrl: String, memberName: String, bio: String) {
+//        modifyMyProfileViewModel.memberProfileUrl = memberProfileUrl
+//        modifyMyProfileViewModel.memberName = memberName
+//        modifyMyProfileViewModel.memberBio = bio
+//    }
 }
 
 // MARK: - Preview
 
 #Preview {
     NavigationStack {
-        EditProfileView()
+        EditProfileView(treehouseId: 0, memberId: 0)
             .environment(ViewRouter())
             .environment(UserInfoViewModel())
     }

@@ -22,7 +22,15 @@ struct FeedView: View {
     
     @Environment (ViewRouter.self) var viewRouter
     @Environment (FeedViewModel.self) var feedViewModel
-    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
+    @Environment (PostViewModel.self) var postViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    
+//    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
+    @State var commentViewModel = CommentViewModel(createCommentUseCase: CreateCommentUseCase( repository: CommentRepositoryImpl()),readCommentUseCase: ReadCommentUseCase(repository: CommentRepositoryImpl()), createReplyCommentUseCase: CreateReplyCommentUseCase(repository: CommentRepositoryImpl()))
+    
+    @State var presingedURLViewModel = PresingedURLViewModel(presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()))
+    @State var loadImageAWSViewModel = LoadImageAWSViewModel(uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()))
+    
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -35,16 +43,49 @@ struct FeedView: View {
     // MARK: - View
     
     var body: some View {
-        LazyVStack(spacing: 0) {
+        @Bindable var feedViewModel = feedViewModel
+        VStack(spacing: 0) {
             postTextField
             
             feedRowView
+        }
+        .popup(isPresented: $feedViewModel.isSelectEmojiView) {
+            if let postId = feedViewModel.currentPostId {
+                EmojiGridView(emojiType: .feedView, postId: postId)
+                    .environment(feedViewModel)
+                    .environment(emojiViewModel)
+            }
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        .onChange(of: feedViewModel.isSelectEmojiView) { _, newValue in
+            if newValue == false {
+                Task {
+                    _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                }
+            }
         }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .post {
                 textFieldState = .enable
             } else {
                 textFieldState = .notFocused
+            }
+        }
+        .onChange(of: photoPickerManager.selectedImages) { _, newValue in
+            postViewModel.selectImage = newValue
+        }
+        .onChange(of: feedViewModel.modifyPostContent.1) { _, newValue in
+            if newValue.isEmpty == false {
+                let result = postViewModel.changePostContent(postId: feedViewModel.modifyPostContent.0, content: newValue)
+                if result {
+                    feedViewModel.modifyPostContent.1 = ""
+                }
             }
         }
         .sheet(isPresented: $isPickerPresented) {
@@ -54,7 +95,9 @@ struct FeedView: View {
             hideKeyboard()
         }
         .task {
-            await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+            if feedViewModel.dataLoaded == false {
+                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+            }
         }
     }
 }
@@ -66,9 +109,9 @@ extension FeedView {
     private var postTextField: some View {
         VStack(spacing: 0) {
             HStack() {
-                TextField("groupname에 글쓰기...", text: $postContent, axis: .vertical)
+                TextField("\(feedViewModel.treehouseName)에 글쓰기...", text: $postContent, axis: .vertical)
                     .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
-                    .font(.fontGuide(.body5))
+                    .fontWithLineHeight(fontLevel: .body5)
                     .tint(.treeGreen)
                     .foregroundColor(textFieldState.fontColor)
                     .focused($focusedField, equals: .post)
@@ -96,8 +139,35 @@ extension FeedView {
                     }
                     .padding(.leading, 16)
                 
-                Image(textFieldState == .enable ? .icReply : .icReplyUnable)
-                    .padding(.trailing, 16)
+                Button(action: {
+                    Task {
+                        let presingedResult = await presingedURLViewModel.presignedURL(
+                            treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                            memberId: feedViewModel.userId,
+                            selectImage: photoPickerManager.selectedImages
+                        )
+                        
+                        if let result = presingedResult {
+                            let loadResult = await loadImageAWSViewModel.loadImageAWS(uploadImages: photoPickerManager.selectedImages, ImageUrl: result)
+                            
+                            let createResult = await postViewModel.createFeedPost(treehouseId: feedViewModel.currentTreehouseId ?? 0, context: postContent, pictureUrlList: result)
+                            
+                            if loadResult && createResult {
+                                photoPickerManager.selectedImages.removeAll()
+                                postContent = ""
+                                hideKeyboard()
+                                
+                                let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+
+                            }
+                        } else {
+                            print("Post 실패")
+                        }
+                    }
+                }) {
+                    Image(textFieldState == .enable ? .icReply : .icReplyUnable)
+                }
+                .padding(.trailing, 16)
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
             
@@ -132,6 +202,7 @@ extension FeedView {
                 }
             }
             .padding(EdgeInsets(top: 11, leading: 16, bottom: 7, trailing: 16))
+            
         }
     }
     
@@ -161,27 +232,42 @@ extension FeedView {
     var feedRowView: some View {
         ForEach(postViewModel.feedListData) { data in
             VStack(spacing: 0) {
-                SinglePostView(userProfileImageURL: data.memberProfile.memberProfileImageUrl,
+                SinglePostView(postId: data.postId,
                                sentTime: data.postedAt,
                                postContent: data.context,
                                postImageURLs: data.pictureUrlList,
+                               memberProfile: data.memberProfile,
                                postType: .feedView)
-                .background(
-                    Color.clear
-                        .contentShape(Rectangle())
+
+                VStack(alignment: .leading, spacing: 0) {
+//                    if !(data.reactionList.reactionList.isEmpty) {
+                        EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)
+                            .padding(.top, 10)
+                            .onAppear {
+                                postViewModel.feedEmojiData = data.reactionList
+                                feedViewModel.currentPostId = data.postId
+                            }
+//                    }
+                    
+                    CommentCountView(commentCount: data.commentCount)
+                        .padding(.top, 10)
+                        .padding(.trailing, 16)
                         .onTapGesture {
                             feedViewModel.currentPostId = data.postId
                             viewRouter.push(FeedRouter.postDetailView)
                         }
-                )
-                
-                EmojiListView(emojiType: .detailView, emojiData: data.reactionList, postId: data.postId)
-                    .padding(.top, 10)
-                
-                CommentCountView(commentCount: data.commentCount)
-                    .padding(.top, 10)
-                    .padding(.leading, 62)
+                }
+                .padding(.leading, 62)
+                .padding(.bottom, 16)
             }
+            .background(
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        feedViewModel.currentPostId = data.postId
+                        viewRouter.push(FeedRouter.postDetailView)
+                    }
+            )
         }
     }
 }
@@ -191,4 +277,6 @@ extension FeedView {
 #Preview {
     FeedView()
         .environment(ViewRouter())
+        .environment(FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl())))
+
 }

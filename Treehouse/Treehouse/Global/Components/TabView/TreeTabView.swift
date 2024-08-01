@@ -13,6 +13,7 @@ struct TreeTabView: View {
     
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @State private var userInfoViewModel = UserInfoViewModel()
+    @State private var currentTreehouseInfoViewModel = CurrentTreehouseInfoViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
     
     // MARK: - View
     
@@ -22,6 +23,7 @@ struct TreeTabView: View {
         NavigationStack(path: $viewRouter.path) {
             TabView {
                 FeedHomeView()
+                    .background(.grayscaleWhite)
                     .tabItem {
                         Label("홈", image: "ic_home")
                     }
@@ -38,6 +40,7 @@ struct TreeTabView: View {
                     }
                     
                 MyProfileView()
+                    .background(.grayscaleWhite)
                     .tabItem {
                         Label("설정", image: "ic_setting")
                     }
@@ -46,15 +49,29 @@ struct TreeTabView: View {
             .fontWithLineHeight(fontLevel: .caption2)
             .tint(.treeGreen)
             .environment(viewRouter)
-//            .navigationDestination(for: FeedRouter.self) { router in
-//                viewRouter.buildScene(inputRouter: router)
-//            }
+            .environment(currentTreehouseInfoViewModel)
             .navigationDestination(for: ProfileRouter.self) { router in
                 switch router {
                 case .editProfileView:
                     viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
                 case .memberProfileView:
                     viewRouter.buildScene(inputRouter: router)
+                }
+            }
+            .onAppear {
+                if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
+                    Task {
+                        await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
+                    }
+                } else {
+                    if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
+                        currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
+                        currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                        
+                        Task {
+                            await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
+                        }
+                    }
                 }
             }
         }

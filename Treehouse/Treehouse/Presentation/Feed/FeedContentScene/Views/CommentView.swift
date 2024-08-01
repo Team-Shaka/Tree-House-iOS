@@ -18,16 +18,18 @@ struct CommentView: View {
 
     @Environment (FeedViewModel.self) var feedViewModel
     @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (PostDetailViewModel.self) var postDetailViewModel
     @Environment (EmojiViewModel.self) var emojiViewModel
+    @State private var viewModel = SheetActionViewModel(deleteCommentUseCase: DeleteCommentUseCase(repository: CommentRepositoryImpl()), reportCommentUseCase: ReportCommentUseCase(repository: CommentRepositoryImpl()))
     
     // MARK: - Property
     
     let commentId: Int
     var replyIndex: Int? = nil
-    let userName: String
+    let userProfile: MemberProfileEntity
     let time: String
     let comment: String
-    var reactionData: [ReactionListEntity]
+    var reactionData: ReactionListDataEntity
     
     // MARK: - View
     
@@ -41,7 +43,7 @@ struct CommentView: View {
             VStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 1) {
                     HStack(alignment: .center) {
-                        Text(userName)
+                        Text(userProfile.memberName)
                             .fontWithLineHeight(fontLevel: .body2)
                             .foregroundStyle(.grayscaleBlack)
                             .padding(.trailing, 6)
@@ -53,7 +55,15 @@ struct CommentView: View {
                         Spacer()
                         
                         Button(action: {
+                            viewModel.memberId = userProfile.memberId
                             
+                            if userProfile.memberId == feedViewModel.userId {
+                                viewModel.sheetCase = .isWriterOnComment
+                            } else {
+                                viewModel.sheetCase = .isReaderOnComment
+                            }
+                            
+                            viewModel.isBottomSheetShowing.toggle()
                         }) {
                             Image(systemName: "ellipsis")
                                 .foregroundStyle(.gray5)
@@ -68,8 +78,31 @@ struct CommentView: View {
                 .background(.gray1)
                 .selectCornerRadius(radius: 12.0, corners: [.bottomLeft, .bottomRight, .topRight])
                 
-                EmojiListView(emojiType: .detailView, emojiArrayData: reactionData, commentId: commentId)
+                DetailEmojiListView(emojiType: .commentView, postId: feedViewModel.currentPostId ?? 0, commentId: commentId, emojiData: reactionData)
+                    .environment(commentViewModel)
+                    
+//                    .onAppear {
+//                        emojiViewModel.detailEmojiData = reactionData.reactionList
+//                    }
             }
+        }
+        .onAppear {
+            viewModel.treehouseId = feedViewModel.currentTreehouseId
+            viewModel.postId = feedViewModel.currentPostId
+            viewModel.commentId = commentId
+        }
+        // 바텀시트 표출
+        .popup(isPresented: $viewModel.isBottomSheetShowing) {
+            FeedBottomSheetRowView(sheetCase: viewModel.sheetCase) { action in
+                viewModel.handleSheetAction(action)
+            }
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
 }

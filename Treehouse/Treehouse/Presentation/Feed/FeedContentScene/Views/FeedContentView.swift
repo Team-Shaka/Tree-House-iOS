@@ -13,30 +13,41 @@ struct FeedContentView: View {
     
     @Environment (FeedViewModel.self) var feedViewModel
     @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    var focusedField: FocusState<FeedField?>.Binding
 
-    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()))
+//    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()))
 
     // MARK: - View
     
     var body: some View {
         @Bindable var commentViewModel = commentViewModel
         
-        LazyVStack(spacing: 0) {
-            ForEach(commentViewModel.unwrappedReadCommentData) {
-                CommentView(commentId: $0.commentId, 
-                            userName: $0.memberProfile.memberName,
-                            time: $0.commentedAt,
-                            comment: $0.context,
-                            reactionData: $0.reactionList ?? [])
+        LazyVStack(alignment: .leading, spacing: 0) {
+            ForEach(commentViewModel.unwrappedReadCommentData) { comment in
+                CommentView(commentId: comment.commentId,
+                            userProfile: comment.memberProfile,
+                            time: comment.commentedAt,
+                            comment: comment.context,
+                            reactionData: comment.reactionList)
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+//                    .environment(emojiViewModel)
                 
-                replyView(reply: $0.replyList)
+                replyView(reply: comment.replyList)
                     .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
+                
+                Button(action: {
+                    feedViewModel.currentCommentId = comment.commentId
+                    focusedField.wrappedValue = .post
+                    commentViewModel.createCommentMemberName = comment.memberProfile.memberName
+                    commentViewModel.commentState = .createReplyComment
+                }) {
+                    Text("답글 달기")
+                        .fontWithLineHeight(fontLevel: .body4)
+                        .foregroundStyle(.treeGreen)
+                }
+                .padding(.leading, 60)
             }
-        }
-        .bottomSheet(isPresented: $commentViewModel.isSelectEmojiView, topPadding: 30) {
-            EmojiGridView()
-                .environment(emojiViewModel)
         }
         .onAppear {
             commentViewModel.injectionViewModel(emojiViewModel)
@@ -52,10 +63,11 @@ private extension FeedContentView {
         if let data = reply {
             ForEach(data) {
                 CommentView(commentId: $0.commentId,
-                            userName: $0.memberProfile.memberName,
+                            userProfile: $0.memberProfile,
                             time: $0.commentedAt,
                             comment: $0.context,
                             reactionData: $0.reactionList)
+                .environment(emojiViewModel)
             }
         }
     }
@@ -63,6 +75,6 @@ private extension FeedContentView {
 
 // MARK: - Preview
 
-#Preview {
-    FeedContentView()
-}
+//#Preview {
+//    FeedContentView()
+//}
