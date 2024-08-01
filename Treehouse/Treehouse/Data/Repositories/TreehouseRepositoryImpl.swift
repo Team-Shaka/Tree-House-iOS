@@ -10,6 +10,17 @@ import Foundation
 final class TreehouseRepositoryImpl: TreehouseRepositoryProtocol {
     private var treehouseService = TreehouseService()
     
+    func getReadMyTreehousesInfo() async -> Result<ReadMyTreehouseInfoResponseEntity, NetworkError> {
+        do {
+            let response = try await treehouseService.getReadMyTreehousesInfo()
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
+    
     func postCreateTreehouse(request: PostCreateTreehouseRequestDTO) async -> Result<CreateTreehouseResponseEntity, NetworkError> {
         do {
             let response = try await treehouseService.postCreateTreehouse(request: request)
