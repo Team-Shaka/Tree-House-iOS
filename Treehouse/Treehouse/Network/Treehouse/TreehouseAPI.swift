@@ -8,6 +8,7 @@
 import Foundation
 
 enum TreehouseAPI {
+    case getReadMyTreehouseInfo
     case postCreateTreehouse(requestBody: PostCreateTreehouseRequestDTO)
     case getReadTreehouseInfo(treehouseId : Int)
 }
@@ -15,6 +16,7 @@ enum TreehouseAPI {
 extension TreehouseAPI: BaseRequest {
     var path: String {
         switch self {
+        case .getReadMyTreehouseInfo: return "treehouses"
         case .postCreateTreehouse: return "treehouses"
         case .getReadTreehouseInfo(let treehouseId): return "treehouses/\(treehouseId)"
         }
@@ -23,7 +25,7 @@ extension TreehouseAPI: BaseRequest {
     var httpMethod: HttpMethod {
         switch self {
         case .postCreateTreehouse: return .post
-        case .getReadTreehouseInfo: return .get
+        case .getReadMyTreehouseInfo, .getReadTreehouseInfo: return .get
         }
     }
     

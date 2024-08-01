@@ -9,28 +9,28 @@ import SwiftUI
 
 struct DynamicHeightTextEditorView: View {
     @Binding var text: String
-    @State private var textViewHeight: CGFloat = 0
+    @State private var textViewHeight: CGFloat = 100
     
     var body: some View {
         ZStack(alignment: .topLeading) {
             // Text 뷰를 이용해 텍스트의 높이 계산
-            Text(text)
-                .font(.fontGuide(.body3))
-                .lineLimit(nil)
-                .padding(EdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4))
-                .background(GeometryReader { geometry in
-                    Color.clear.preference(key: ViewHeightKey.self, value: geometry.size.height)
-                })
+//            Text(text)
+//                .fontWithLineHeight(fontLevel: .body3)
+//                .lineLimit(nil)
+//                .padding(EdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4))
+//                .background(GeometryReader { geometry in
+//                    Color.clear.preference(key: ViewHeightKey.self, value: geometry.size.height)
+//                })
             
             // TextEditor 뷰
             TextEditor(text: $text)
-                .font(.fontGuide(.body3))
+                .fontWithLineHeight(fontLevel: .body3)
                 .frame(height: textViewHeight)
                 .background(Color.clear)
         }
-        .onPreferenceChange(ViewHeightKey.self) { height in
-            textViewHeight = height
-        }
+//        .onPreferenceChange(ViewHeightKey.self) { height in
+//            textViewHeight = height
+//        }
     }
 }
 

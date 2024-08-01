@@ -14,13 +14,13 @@ struct LoginView: View {
     @Environment(UserSettingViewModel.self) private var viewModel
     @Environment(ViewRouter.self) private var viewRouter
     
-    @State private var userLoginViewModel: UserLoginViewModel = UserLoginViewModel(existsUserLoginUseCase: ExistsUserLoginUserCase(repository: RegisterRepositoryImpl()))
+    @State private var userLoginViewModel: UserLoginViewModel = UserLoginViewModel(existsUserLoginUseCase: ExistsUserLoginUserCase(repository: RegisterRepositoryImpl()), readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()))
     @State private var userInfoViewModel: UserInfoViewModel = UserInfoViewModel()
     
     // MARK: - View
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(StringLiterals.Register.registerTitle3)
                     .fontWithLineHeight(fontLevel: .heading1)
@@ -34,12 +34,12 @@ struct LoginView: View {
                     .foregroundStyle(.gray5)
                     .frame(height: 78)
             }
-            .padding(.top, SizeLiterals.Screen.screenHeight * 70 / 852)
+            .padding(.top, SizeLiterals.Screen.screenHeight * 22 / 852)
             
-            Spacer(minLength: SizeLiterals.Screen.screenHeight * 312 / 852)
+            Spacer(minLength: SizeLiterals.Screen.screenHeight * 306 / 852)
             
             Text(StringLiterals.Register.etcTitle1)
-                .font(.fontGuide(.body1))
+                .fontWithLineHeight(fontLevel: .body1)
                 .foregroundStyle(.treeGreen)
                 .frame(maxWidth: .infinity)
                 .frame(height: 70)
@@ -51,18 +51,27 @@ struct LoginView: View {
             Button {
                 // TODO: - 내 정보에 관한 데이터가 부족, Treehouse API (내 프로필 조회) 를 통해 저장 필요
                 Task {
-                    await userLoginViewModel.existsUserLogin(phoneNumber: viewModel.phoneNumber ?? "")
+                    let result = await userLoginViewModel.userLogin(phoneNumber: viewModel.phoneNumber?.formatPhoneNumber ?? "")
+                    
+                    if let userResult = result {
+                        let userSaveResult = await userInfoViewModel.createData(newData: userResult)
+                        
+                        if userLoginViewModel.isLogin && userSaveResult {
+                            viewRouter.navigate(viewType: .enterTreehouse)
+                        }
+                    }
                 }
             } label: {
                 Text("로그인")
                     .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.gray1)
-                    .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
                     .background(.treeBlack)
                     .cornerRadius(12)
             }
-            .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
+        .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
         .navigationBarBackButtonHidden()
         .toolbar {

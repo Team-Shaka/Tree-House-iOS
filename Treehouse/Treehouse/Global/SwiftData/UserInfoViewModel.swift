@@ -16,14 +16,10 @@ final class UserInfoViewModel: BaseViewModel {
     @ObservationIgnored
     private let dataSource: UserInfoDataSource
 
-    private var userInfo: UserInfoData? {
+    var userInfo: UserInfoData? {
         didSet {
             print("새로 바뀐 값: \(userInfo)")
         }
-    }
-    
-    var safeUserInfo: UserInfoData {
-        userInfo ?? UserInfoData(userId: 0, userName: "Unknown", treeMemberName: "Unknown", treehouseId: [:], bio: "Unknown", profileImageData: Data())
     }
 
     init(dataSource: UserInfoDataSource = UserInfoDataSource.shared) {
@@ -32,27 +28,35 @@ final class UserInfoViewModel: BaseViewModel {
     }
     
     /// UserInfoData 를 처음으로 만들기 위한 메서드
-    func createData(newData: UserInfoData) -> Bool {
+    func createData(newData: UserInfoData) async -> Bool {
         print("User Data 저장")
         userInfo = newData
-        return insertData(data: safeUserInfo)
+        return insertData(data: newData)
     }
 
     /// treememberName 을 수정하기 위한 메서드
-    func modifyMemberName(memberName: String) -> Bool {
-        userInfo?.treeMemberName = memberName
+    func modifyMemberName(treehouseId: Int, memberName: String) -> Bool {
+        if let treehouse = userInfo?.findTreehouse(id: treehouseId) {
+            treehouse.treehouseName = memberName
+        }
+
         return updateData()
     }
     
-    func modifyProfileImage(imageData: UIImage) -> Bool {
-        guard let data = imageData.pngData() else { return false }
-        userInfo?.profileImageData = data
+    func modifyProfileImage(treehouseId: Int, imageUrl: String) -> Bool {
+        if let treehouse = userInfo?.findTreehouse(id: treehouseId) {
+            treehouse.profileImageUrl = URL(string: imageUrl)
+        }
+    
         return updateData()
     }
 
     /// bio 를 수정하기 위한 메서드
-    func modifyBio(bio: String) -> Bool {
-        userInfo?.bio = bio
+    func modifyBio(treehouseId: Int, bio: String) -> Bool {
+        if let treehouse = userInfo?.findTreehouse(id: treehouseId) {
+            treehouse.bio = bio
+        }
+        
         return updateData()
     }
 }

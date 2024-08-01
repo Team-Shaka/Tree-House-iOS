@@ -6,6 +6,7 @@
 //
 
 import Foundation
+typealias EmptyResponse = BaseResponse<Empty>
 
 final class NetworkServiceManager: NetworkServiceable {
     private var originalRequest: URLRequest?
@@ -24,9 +25,13 @@ final class NetworkServiceManager: NetworkServiceable {
         let (data, response) = try await URLSession.shared.data(for: request)
         
         do {
-            guard let result = try await requestResultHandeler(data: data, response: response, decodingType: decodingType) else { throw NetworkError.jsonDecodingError }
-            print("4️⃣ \(apiName) API 종료 ========================================")
-            return result
+            if let result = try await requestResultHandeler(data: data, response: response, decodingType: decodingType) {
+                print("4️⃣ \(apiName) API 종료 ========================================")
+                return result
+            } else {
+                print("4️⃣ \(apiName) API 종료 ========================================")
+                return Empty() as! T
+            }
         } catch {
             throw error
         }
@@ -51,12 +56,13 @@ final class NetworkServiceManager: NetworkServiceable {
             switch httpResponse.statusCode {
 
             case 200:
+                print("3️⃣ Response JSON")
                 if let responseData = decodingData.data {
-                    print("3️⃣ Response JSON")
                     print(responseData)
                     return responseData
                 } else {
-                    throw NetworkError.clientError(message: "데이터가 존재하지 않습니다.")
+                    print("데이터 없음")
+                    return nil
                 }
                 
             case 400:

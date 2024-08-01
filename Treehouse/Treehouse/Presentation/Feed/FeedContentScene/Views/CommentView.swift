@@ -14,18 +14,22 @@ enum CommentType {
 
 struct CommentView: View {
     
+    // MARK: - ViewModel Property
+
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (PostDetailViewModel.self) var postDetailViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    @State private var viewModel = SheetActionViewModel(deleteCommentUseCase: DeleteCommentUseCase(repository: CommentRepositoryImpl()), reportCommentUseCase: ReportCommentUseCase(repository: CommentRepositoryImpl()))
+    
     // MARK: - Property
     
-    let commentIndex: Int
+    let commentId: Int
     var replyIndex: Int? = nil
-    let userName: String
+    let userProfile: MemberProfileEntity
     let time: String
     let comment: String
-    let commentyType: CommentType
-    
-    // MARK: - ViewModel Property
-    
-    @Bindable var viewModel: FeedContentViewModel
+    var reactionData: ReactionListDataEntity
     
     // MARK: - View
     
@@ -33,12 +37,13 @@ struct CommentView: View {
         HStack(alignment: .top, spacing: 0) {
             Image(.icNotiMember)
                 .frame(width: 36, height: 36)
-                .padding(.trailing, commentyType == .comment ? 8 : 10)
+                .padding(.trailing, 10)
+//                .padding(.trailing, commentyType == .comment ? 8 : 10)
             
             VStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 1) {
                     HStack(alignment: .center) {
-                        Text(userName)
+                        Text(userProfile.memberName)
                             .fontWithLineHeight(fontLevel: .body2)
                             .foregroundStyle(.grayscaleBlack)
                             .padding(.trailing, 6)
@@ -50,7 +55,15 @@ struct CommentView: View {
                         Spacer()
                         
                         Button(action: {
+                            viewModel.memberId = userProfile.memberId
                             
+                            if userProfile.memberId == feedViewModel.userId {
+                                viewModel.sheetCase = .isWriterOnComment
+                            } else {
+                                viewModel.sheetCase = .isReaderOnComment
+                            }
+                            
+                            viewModel.isBottomSheetShowing.toggle()
                         }) {
                             Image(systemName: "ellipsis")
                                 .foregroundStyle(.gray5)
@@ -65,44 +78,41 @@ struct CommentView: View {
                 .background(.gray1)
                 .selectCornerRadius(radius: 12.0, corners: [.bottomLeft, .bottomRight, .topRight])
                 
-                commentyTypeEmojiListView
+                DetailEmojiListView(emojiType: .commentView, postId: feedViewModel.currentPostId ?? 0, commentId: commentId, emojiData: reactionData)
+                    .environment(commentViewModel)
+                    
+//                    .onAppear {
+//                        emojiViewModel.detailEmojiData = reactionData.reactionList
+//                    }
             }
         }
-    }
-}
-
-// MARK: - ViewBuilder
-
-private extension CommentView {
-    @ViewBuilder
-    var commentyTypeEmojiListView: some View {
-        switch commentyType {
-        case .comment:
-            if let data = viewModel.commentModels[commentIndex].emojiComment {
-                EmojiListView(emojiData: data,
-                              commentType: .comment,
-                              index: (commentIndex, nil),
-                              viewModel: viewModel)
+        .onAppear {
+            viewModel.treehouseId = feedViewModel.currentTreehouseId
+            viewModel.postId = feedViewModel.currentPostId
+            viewModel.commentId = commentId
+        }
+        // 바텀시트 표출
+        .popup(isPresented: $viewModel.isBottomSheetShowing) {
+            FeedBottomSheetRowView(sheetCase: viewModel.sheetCase) { action in
+                viewModel.handleSheetAction(action)
             }
-        case .reply:
-            if let data = viewModel.commentModels[commentIndex].reply?[replyIndex ?? 0].emojiComment {
-                EmojiListView(emojiData: data,
-                              commentType: .reply,
-                              index: (commentIndex, replyIndex ?? 0),
-                              viewModel: viewModel)
-            }
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
         }
     }
 }
 
 // MARK: - Preview
 
-#Preview {
-    CommentView(commentIndex: 0,
-                replyIndex: 0,
-                userName: "영서",
-                time: "3분 전",
-                comment: "댓글을 입력해주세요.",
-                commentyType: .comment,
-                viewModel: FeedContentViewModel())
-}
+//#Preview {
+//    CommentView(replyIndex: 0,
+//                userName: "영서",
+//                time: "3분 전",
+//                comment: "댓글을 입력해주세요.", reactionData: <#[ReactionListEntity]?#>
+//                viewModel: CommentViewModel(createCommentUseCase: CreateCommentUseCase(repository: FeedRepositoryImpl()), readCommentUseCase: ReadCommentUseCase(repository: FeedRepositoryImpl())))
+//}

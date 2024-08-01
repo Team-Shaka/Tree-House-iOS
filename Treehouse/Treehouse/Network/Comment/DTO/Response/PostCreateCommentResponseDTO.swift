@@ -8,5 +8,9 @@
 import Foundation
 
 struct PostCreateCommentResponseDTO: Decodable {
-    let postId: Int
+    let commentId: Int
+    
+    func toDomain() -> CreateCommentResponseEntity {
+        return CreateCommentResponseEntity(commentId: commentId)
+    }
 }

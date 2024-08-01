@@ -40,11 +40,8 @@ final class UserInfoDataSource {
             let data = try modelContext.fetch(FetchDescriptor<UserInfoData>())
             data.forEach {
                 print($0.userName)
-                print($0.treeMemberName)
-                print($0.bio)
             }
             print("유저 정보 불러오기: \(String(describing: data.first?.userName))")
-            print("유저 정보 불러오기: \(String(describing: data.first?.bio))")
 
             return data.first
         } catch {

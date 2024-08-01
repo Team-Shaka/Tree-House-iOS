@@ -10,5 +10,5 @@ import UIKit
 
 protocol AWSImageRepositoryProtocol {
     func putUploadImages(presignedUrls: [String], uploadImages: [UIImage]) async -> Result<[PutUploadImagesResponseEntity],NetworkError>
-//    func putUploadImages() async -> Result<Bool,NetworkError>
+    func putUploadImage(presignedUrls: String, uploadImages: UIImage) async -> Result<Bool, NetworkError>
 }

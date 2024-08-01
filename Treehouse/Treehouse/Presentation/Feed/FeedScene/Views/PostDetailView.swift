@@ -13,19 +13,66 @@ struct PostDetailView: View {
     // MARK: - State Property
     
     @Environment (ViewRouter.self) var viewRouter
-    @ObservedObject var viewModel: PostDetailViewModel
+    @Environment (FeedViewModel.self) var feedViewModel
+    
+    @State var commentViewModel: CommentViewModel
+    
+    @State var postDetailViewModel = PostDetailViewModel(readDetailFeedPostUseCase: ReadDetailFeedPostUseCase(repository: FeedRepositoryImpl()))
+    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()), createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
+    @State private var userInfoViewModel = UserInfoViewModel()
+    @State var viewModel: SheetActionViewModel = SheetActionViewModel()
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
+    
     @FocusState private var focusedField: FeedField?
+    @FocusState private var isKeyboardShowing: Bool
+    
+    @State var isloading = true
     
     // MARK: - View
     
     var body: some View {
+        @Bindable var commentViewModel = commentViewModel
+        
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 ScrollView {
-                    SinglePostView(userProfileImageURL: "", sentTime: 1, postContent: "", postImageURLs: [""], postType: .DetailView)
+                    if let postId = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
+                    
+                        VStack {
+                            SinglePostView(sentTime: postDetailData.postedAt,
+                                           postContent: postDetailData.context,
+                                           postImageURLs: postDetailData.pictureUrlList,
+                                           memberProfile: postDetailData.memberProfile,
+                                           postType: .DetailView)
+                            
+                            DetailEmojiListView(emojiType: .feedView, postId: postDetailData.postId, emojiData: postDetailData.reactionList)
+                                .padding(.top, 10)
+                                .padding(.leading, 62)
+                                .environment(postDetailViewModel)
+                                .environment(emojiViewModel)
+                                .environment(commentViewModel)
+                        }
+                    } else {
+                        SinglePostView(sentTime: "",
+                                       postContent: "정보없음",
+                                       postImageURLs: [""],
+                                       memberProfile: MemberProfileEntity(memberId: 0, memberName: "", memberProfileImageUrl: "", memberBranch: 0),
+                                       postType: .DetailView)
+                    }
+                    
+                    Divider()
+                        .padding(.top, 16)
+                    
+                    if !(commentViewModel.unwrappedReadCommentData.isEmpty) {
+                        FeedContentView(focusedField: $focusedField)
+                            .environment(commentViewModel)
+                            .environment(emojiViewModel)
+                            .environment(postDetailViewModel)
+                    }
+                }.refreshable {
+                    await performAsyncTasks()
                 }
                 
                 feedDetailTextField
@@ -36,13 +83,17 @@ struct PostDetailView: View {
                             textFieldState = .notFocused
                         }
                     }
-            }
-            
-            if viewModel.isDeletePostPopupShowing {
-                deletePostPopupView
+                
+                if viewModel.isDeletePostPopupShowing {
+                    deletePostPopupView
+                } else if viewModel.isDeleteCommentPopupShwing {
+                    
+                }
             }
         }
         .onTapGesture {
+            commentViewModel.commentState = .createComment
+            commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             hideKeyboard()
         }
         .navigationBarBackButtonHidden()
@@ -59,11 +110,64 @@ struct PostDetailView: View {
             
             ToolbarItem(placement: .principal) {
                 Text("게시글")
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.treeBlack)
             }
         }
+        .popup(isPresented: $emojiViewModel.isSelectFeedEmojiView) {
+            if let postId = feedViewModel.currentPostId {
+                EmojiGridView(emojiType: .feedView, postId: postId)
+                    .environment(feedViewModel)
+                    .environment(emojiViewModel)
+            }
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        .popup(isPresented: $emojiViewModel.isSelectCommentEmojiView) {
+            if feedViewModel.currentPostId != nil {
+                EmojiGridView(emojiType: .detailView, commentId: feedViewModel.currentCommentId ?? 0)
+                    .environment(feedViewModel)
+                    .environment(emojiViewModel)
+            }
+        } customize: {
+            $0
+                .type(.toast)
+                .closeOnTapOutside(true)
+                .dragToDismiss(true)
+                .isOpaque(true)
+                .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        .onAppear {
+            Task {
+                await performAsyncTasks()
+                commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
+            }
+        }
+        .redacted(reason: isloading ? .placeholder : [])
+    }
+    
+    func performAsyncTasks() async {
+        async let readDetail = postDetailViewModel.readDetailFeedPost(
+            treehouseId: feedViewModel.currentTreehouseId ?? 0,
+            postId: feedViewModel.currentPostId ?? 0
+        )
         
+        async let readComments = commentViewModel.readComment(
+            treehouseId: feedViewModel.currentTreehouseId ?? 0,
+            postId: feedViewModel.currentPostId ?? 0
+        )
+        
+        // 모든 비동기 작업이 완료될 때까지 기다립니다
+        let (detailResult, commentResult) = await (readDetail, readComments)
+        
+        if detailResult && commentResult {
+            isloading = false
+        }
     }
 }
 
@@ -78,31 +182,59 @@ extension PostDetailView {
                 .foregroundColor(.gray3)
             
             HStack(alignment: .bottom, spacing: 10) {
-                Image(.imgDummy2)
-                    .resizable()
+                CustomAsyncImage(url: userInfoViewModel.userInfo?.profileImageUrl ?? "",
+                                 type: .postMemberProfileImage,
+                                 width: 36,
+                                 height: 36)
                     .clipShape(Circle())
-                    .frame(width: 36, height: 36)
                     .padding(.bottom, 4)
                 
                 ZStack(alignment: .trailing) {
-                    TextField("username에게 댓글쓰기", text: $postContent, axis: .vertical)
+                    TextField("\(commentViewModel.createCommentMemberName)에게 댓글쓰기", text: $commentViewModel.postContent, axis: .vertical)
                         .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
-                        .font(.fontGuide(.body5))
+                        .fontWithLineHeight(fontLevel: .body5)
                         .tint(.treeGreen)
                         .foregroundColor(textFieldState.fontColor)
                         .focused($focusedField, equals: .post)
+                        .focused($isKeyboardShowing)
                         .keyboardType(.default)
                         .textInputAutocapitalization(.never)
                         .lineLimit(3)
                         .overlay(
                             RoundedRectangle(cornerRadius: 22)
-                                .stroke(Color.gray4, lineWidth: 1)
+                                .stroke(.gray4, lineWidth: 1)
                         )
                     
                     if textFieldState == .enable {
                         Button(action: {
-                            // TODO: - 댓글 게시 API 연결
-                            print("댓글 게시 버튼")
+                            Task {
+                                if let treehouseId = feedViewModel.currentTreehouseId, let postId = feedViewModel.currentPostId {
+                                    switch commentViewModel.commentState {
+                                    case .createComment:
+                                        let result = await commentViewModel.createComment(treehouseId: treehouseId, postId: postId)
+                                        
+                                        if result {
+                                            await MainActor.run {
+                                                hideKeyboard()
+                                            }
+                                            await performAsyncTasks()
+                                        }
+                                    case .createReplyComment:
+                                        if let commentId = feedViewModel.currentCommentId {
+                                            let result = await commentViewModel.createReplyComment(treehouseId: treehouseId, 
+                                                                                                   postId: postId,
+                                                                                                   commentId: commentId)
+                                            if result {
+                                                feedViewModel.currentCommentId = nil
+                                                await MainActor.run {
+                                                    hideKeyboard()
+                                                }
+                                                await performAsyncTasks()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }) {
                             Image(.icReply)
                         }
@@ -114,6 +246,7 @@ extension PostDetailView {
             .padding(.top, 8)
             .padding(.trailing, 16)
         }
+        .background(.grayscaleWhite)
     }
     
     @ViewBuilder
@@ -147,6 +280,22 @@ extension PostDetailView {
 // MARK: - Preview
 
 #Preview {
-    PostDetailView(viewModel: PostDetailViewModel())
-        .environment(ViewRouter())
+    NavigationStack {
+        PostDetailView(
+            commentViewModel: CommentViewModel(
+                createCommentUseCase: CreateCommentUseCase(
+                    repository: CommentRepositoryImpl()
+                ),
+                readCommentUseCase: ReadCommentUseCase(
+                    repository: CommentRepositoryImpl()
+                ), 
+                createReplyCommentUseCase: CreateReplyCommentUseCase(
+                    repository: CommentRepositoryImpl()
+                )
+            )
+        )
+        .environment(
+            ViewRouter()
+        )
+    }
 }

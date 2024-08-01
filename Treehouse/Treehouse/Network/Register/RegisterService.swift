@@ -80,7 +80,7 @@ class RegisterService {
     /// 이미 가입한 유저가 다시 로그인하기 위한 API
     func postExistsUserLogin(phoneNumber: String) async throws -> PostExistsUserLoginResponseDTO {
         
-        let request = NetworkRequest(requestType: RegisterAPI.postExistsUserLogin(phoneNumber: phoneNumber))
+        let request = NetworkRequest(requestType: RegisterAPI.postExistsUserLogin(requestBody: PostExistsUserLoginRequestDTO(phoneNumber: phoneNumber)))
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")

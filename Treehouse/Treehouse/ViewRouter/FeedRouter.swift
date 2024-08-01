@@ -13,9 +13,26 @@ enum FeedRouter: Router {
     case postDetailView
     
     func buildView(_ viewModel: BaseViewModel?) -> ContentView {
-        switch self {
-        case .postDetailView:
-            return AnyView(PostDetailView(viewModel: PostDetailViewModel()))
+        if let viewModel = viewModel as? FeedViewModel {
+            switch self {
+            case .postDetailView:
+                return AnyView(
+                    PostDetailView(
+                        commentViewModel: CommentViewModel(
+                            createCommentUseCase: CreateCommentUseCase(
+                                repository: CommentRepositoryImpl()),
+                            readCommentUseCase: ReadCommentUseCase(
+                                repository: CommentRepositoryImpl()), 
+                            createReplyCommentUseCase: CreateReplyCommentUseCase(
+                                repository: CommentRepositoryImpl()
+                            )
+                        )
+                    )
+                    .environment(viewModel)
+                )
+            }
+        } else {
+            return AnyView(EmptyView())
         }
     }
 }

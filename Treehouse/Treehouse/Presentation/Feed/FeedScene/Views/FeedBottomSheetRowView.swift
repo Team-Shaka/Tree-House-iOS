@@ -48,6 +48,9 @@ struct FeedBottomSheetRowView: View {
                 }
                 
             case .isWriterOnComment:
+                BottomSheetButton(imageName: "ic_report", text: "신고하기", textColor: .red) {
+                    onAction("reportPost")
+                }
                 BottomSheetButton(imageName: "ic_delete", text: "댓글 삭제하기") {
                     onAction("deleteComment")
                 }

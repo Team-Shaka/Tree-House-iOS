@@ -28,7 +28,7 @@ enum ViewType {
 @Observable
 final class ViewRouter: RouterAction {
     
-    private(set) var currentView: ViewType = .enterTreehouse
+    private(set) var currentView: ViewType = .userAuthentication
     
     var path = NavigationPath() {
         didSet {

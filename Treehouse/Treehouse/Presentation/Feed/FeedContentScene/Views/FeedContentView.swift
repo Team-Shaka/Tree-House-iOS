@@ -11,34 +11,46 @@ struct FeedContentView: View {
     
     // MARK: - ViewModel Property
     
-    var viewModel = FeedContentViewModel()
-    
+    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment (CommentViewModel.self) var commentViewModel
+    @Environment (EmojiViewModel.self) var emojiViewModel
+    var focusedField: FocusState<FeedField?>.Binding
+
+//    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()))
+
     // MARK: - View
     
     var body: some View {
-        @Bindable var viewModel = viewModel
+        @Bindable var commentViewModel = commentViewModel
         
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ForEach(viewModel.commentModels.indices, id: \.self) { index in
-                    CommentView(commentIndex: index,
-                                userName: viewModel.commentModels[index].userName,
-                                time: viewModel.commentModels[index].time,
-                                comment: viewModel.commentModels[index].comment,
-                                commentyType: .comment,
-                                viewModel: viewModel)
+        LazyVStack(alignment: .leading, spacing: 0) {
+            ForEach(commentViewModel.unwrappedReadCommentData) { comment in
+                CommentView(commentId: comment.commentId,
+                            userProfile: comment.memberProfile,
+                            time: comment.commentedAt,
+                            comment: comment.context,
+                            reactionData: comment.reactionList)
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-                    
-                    replyView(replay: viewModel.commentModels[index].reply, commentIndex: index)
-                        .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
+//                    .environment(emojiViewModel)
+                
+                replyView(reply: comment.replyList)
+                    .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
+                
+                Button(action: {
+                    feedViewModel.currentCommentId = comment.commentId
+                    focusedField.wrappedValue = .post
+                    commentViewModel.createCommentMemberName = comment.memberProfile.memberName
+                    commentViewModel.commentState = .createReplyComment
+                }) {
+                    Text("답글 달기")
+                        .fontWithLineHeight(fontLevel: .body4)
+                        .foregroundStyle(.treeGreen)
                 }
+                .padding(.leading, 60)
             }
         }
-        .bottomSheet(isPresented: $viewModel.isSelectEmojiView, topPadding: 30) {
-            EmojiGridView(viewModel: viewModel)
-                .task {
-                    viewModel.loadEmojis()
-                }
+        .onAppear {
+            commentViewModel.injectionViewModel(emojiViewModel)
         }
     }
 }
@@ -47,16 +59,15 @@ struct FeedContentView: View {
 
 private extension FeedContentView {
     @ViewBuilder
-    func replyView(replay: [ReplyCommentModel]?, commentIndex: Int) -> some View {
-        if let data = replay {
-            ForEach(Array(data.enumerated()), id: \.element.id) { replyIndex, data in
-                CommentView(commentIndex: commentIndex,
-                            replyIndex: replyIndex,
-                            userName: data.userName,
-                            time: data.time,
-                            comment: data.comment,
-                            commentyType: .reply,
-                            viewModel: viewModel)
+    func replyView(reply: [ReplyListEntity]?) -> some View {
+        if let data = reply {
+            ForEach(data) {
+                CommentView(commentId: $0.commentId,
+                            userProfile: $0.memberProfile,
+                            time: $0.commentedAt,
+                            comment: $0.context,
+                            reactionData: $0.reactionList)
+                .environment(emojiViewModel)
             }
         }
     }
@@ -64,6 +75,6 @@ private extension FeedContentView {
 
 // MARK: - Preview
 
-#Preview {
-    FeedContentView()
-}
+//#Preview {
+//    FeedContentView()
+//}

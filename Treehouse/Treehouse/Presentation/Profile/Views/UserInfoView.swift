@@ -19,11 +19,13 @@ struct UserInfoView: View {
     var infoType: userInfoType
     var treememberName: String
     var userName: String
-    var profileImage: Image
+    var profileImageUrl: String
     var bio: String
     var branchCount: Int
     var treeHouseCount: Int
     var root: String
+    
+    var image: UIImage?
     
     // MARK: - Closure Property
     
@@ -36,10 +38,11 @@ struct UserInfoView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top, spacing: 0) {
-                profileImage
-                    .resizable()
+                CustomAsyncImage(url: profileImageUrl,
+                                 type: .postMemberProfileImage,
+                                 width: 80,
+                                 height: 80)
                     .clipShape(Circle())
-                    .frame(width: 80, height: 80)
                     .padding(.leading, SizeLiterals.Screen.screenWidth * 16 / 393)
                 
                 VStack(alignment: .leading, spacing: 5) {
@@ -85,7 +88,7 @@ struct UserInfoView: View {
     }
 }
 
-// MARK: - ViewBuilder
+// MARK: - ViewBuilders
 
 private extension UserInfoView {
     @ViewBuilder
@@ -177,8 +180,8 @@ private extension UserInfoView {
 
 // MARK: - Preview
 
-#Preview {
-    UserInfoView(infoType: .memberProfile, treememberName: "", userName: "", profileImage: Image(.imgDummy), bio: "", branchCount: 0, treeHouseCount: 0, root: "", inviteAction: nil,
-                 branchAction: nil,
-                 profileAction: nil)
-}
+//#Preview {
+//    UserInfoView(infoType: .memberProfile, treememberName: "", userName: "", profileImage: Image(.imgDummy), bio: "", branchCount: 0, treeHouseCount: 0, root: "", inviteAction: nil,
+//                 branchAction: nil,
+//                 profileAction: nil)
+//}

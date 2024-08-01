@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReadMemberFeedResponseEntity: Decodable {
-    let memberProfile: MemberProfileResponseData
+    let memberProfile: MemberProfileEntity
     let postList: [PostListResponseEntity]
 }
 

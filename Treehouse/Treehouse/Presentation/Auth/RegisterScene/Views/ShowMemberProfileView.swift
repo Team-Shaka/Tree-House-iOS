@@ -48,7 +48,7 @@ struct ShowMemberProfileView: View {
                 
                 guard let createResult = viewModel.createUserInfoData() else { return }
                                 
-                let userDataResult = userInfoViewModel.createData(newData: createResult)
+                let userDataResult = await userInfoViewModel.createData(newData: createResult)
                 
                 if result && userDataResult {
                     viewRouter.navigate(viewType: .enterTreehouse)

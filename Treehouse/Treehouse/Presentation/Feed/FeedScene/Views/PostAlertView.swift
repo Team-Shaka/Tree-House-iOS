@@ -11,10 +11,10 @@ import PopupView
 struct PostAlertView: View {
         
     // MARK: - Property
-       
-       var alertContent: String
-       var onCancel: () -> Void
-       var onConfirm: () -> Void
+
+    var alertContent: String
+    var onCancel: () -> Void
+    var onConfirm: () -> Void
     
     // MARK: - View
     

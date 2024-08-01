@@ -11,14 +11,16 @@ struct CommentCountView: View {
     
     // MARK: - Property
     
-    var commentCount: Int = 12
+    var commentCount: Int
     
     // MARK: - View
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             Rectangle()
-                .frame(width: 315, height: 40)
+//                .frame(width: SizeLiterals.Screen.screenWidth * 315 / 393, height: 40)
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
                 .foregroundColor(.gray1)
                 .selectCornerRadius(radius: 10.0, corners: [.bottomLeft, .bottomRight, .topRight])
             
@@ -27,19 +29,20 @@ struct CommentCountView: View {
                 
                 if commentCount < 10 {
                     Text("0\(commentCount) comments")
-                        .font(.fontGuide(.body4))
+                        .fontWithLineHeight(fontLevel: .body4)
                         .foregroundStyle(.gray7)
                 } else {
                     Text("\(commentCount) comments")
-                        .font(.fontGuide(.body4))
+                        .fontWithLineHeight(fontLevel: .body4)
                         .foregroundStyle(.gray7)
                 }
             }
-            .padding(.trailing, 180)
+            .padding(.leading, 12)
+//            .padding(.trailing, 180)
         }
     }
 }
 
 #Preview {
-    CommentCountView()
+    CommentCountView(commentCount: 0)
 }

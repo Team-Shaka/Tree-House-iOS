@@ -76,7 +76,7 @@ struct VerificationView: View {
             Button {
                 Task {
                     // TODO: 전화번호 인증 API 인증
-                    await checkUserPhoneViewModel.checkUserPhone(phoneNumber: viewModel.phoneNumber ?? "")
+                    await checkUserPhoneViewModel.checkUserPhone(phoneNumber: viewModel.phoneNumber?.formatPhoneNumber ?? "")
                     
                     switch checkUserPhoneViewModel.isAuthentication {
                     case .notInvitation:
