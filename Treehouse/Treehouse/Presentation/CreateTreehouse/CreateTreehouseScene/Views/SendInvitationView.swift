@@ -15,6 +15,7 @@ struct SendInvitationView: View {
 //    let phoneNumberList = UserPhoneNumberInfo.phoneNumberStructDummyData
     
     // MARK: - State Property
+    @Environment(ViewRouter.self) var viewRouter
     
     @State var viewModel = InvitationViewModel(acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
@@ -28,8 +29,8 @@ struct SendInvitationView: View {
     // MARK: - View
     
     var body: some View {
-        NavigationStack {
-            ScrollView() {
+        VStack {
+            ScrollView(.vertical) {
                 ProgressView(value: 1.0)
                     .tint(.treeGreen)
                     .padding(.top, 14)
@@ -83,7 +84,7 @@ struct SendInvitationView: View {
                 // TODO: - 다음 뷰로 연결
             }) {
                 Text("다 초대했어요")
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .foregroundStyle(.grayscaleWhite)
@@ -97,7 +98,7 @@ struct SendInvitationView: View {
                 // TODO: - 다음 뷰로 연결
             }) {
                 Text("지금은 건너뛸래요")
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .foregroundStyle(.gray5)
@@ -112,14 +113,15 @@ struct SendInvitationView: View {
             }
             .onAppear {
                 Task {
-                    await viewModel.checkAvailableInvitation()
+//                    await viewModel.checkAvailableInvitation()
                 }
             }
+            .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
-                        // TODO: - 뒤로 가기 액션
+                        viewRouter.pop()
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.treeBlack)
@@ -127,7 +129,7 @@ struct SendInvitationView: View {
                 }
                 ToolbarItem(placement: .principal) {
                     Text("트리하우스 만들기")
-                        .font(.fontGuide(.body2))
+                        .fontWithLineHeight(fontLevel: .body2)
                         .foregroundStyle(.treeBlack)
                 }
             }

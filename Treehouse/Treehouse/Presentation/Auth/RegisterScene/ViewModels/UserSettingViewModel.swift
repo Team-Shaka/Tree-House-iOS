@@ -48,6 +48,7 @@ final class UserSettingViewModel: BaseViewModel {
     var memberProfileImages: [String?] = []
     
     var profileImage: UIImage?
+    var senderProfileImageUrl = ""
     
     // MARK: - State Property
     
@@ -251,6 +252,7 @@ extension UserSettingViewModel {
         switch result {
         case .success(let response):
             response.invitations.forEach {
+                senderProfileImageUrl = $0.senderProfileImageUrl ?? ""
                 invitationId = $0.invitationId
                 treehouseName = $0.treehouseName
                 invitedMember = $0.senderName

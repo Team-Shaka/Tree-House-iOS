@@ -118,6 +118,7 @@ private extension SetMemberProfileNameView {
                 .padding(EdgeInsets(top: 18, leading: 22, bottom: 18, trailing: 10))
                 .frame(height: 62)
                 .background(textFieldState.backgroundColor)
+                .autocapitalization(.none)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(textFieldState.borderColor, lineWidth: 1.5)
