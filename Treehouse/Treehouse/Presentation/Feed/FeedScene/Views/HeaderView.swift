@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     
-//    @Environment (FeedViewModel.self) var feedViewModel
+    @Environment(ViewRouter.self) var viewRouter
     @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     @State var treehouseViewModel = TreehouseViewModel(readMyTreehouseInfoUseCase: ReadMyTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
     
@@ -54,7 +54,8 @@ struct HeaderView: View {
             }
         }
         .popup(isPresented: $isPresent) {
-            TreehouseInfoListView(treehouseInfoData: $treehouseViewModel.treehouseInfo)
+            TreehouseInfoListView(treehouseInfoData: $treehouseViewModel.treehouseInfo,
+                                  isPresent: $isPresent)
         } customize: {
             $0
                 .type(.toast)

@@ -95,6 +95,11 @@ struct SinglePostView: View {
                             Spacer()
                             
                             Button(action: {
+                                print(feedViewModel.userId)
+                                if postId != feedViewModel.userId {
+                                    viewModel.sheetCase = .isReaderOnPost
+                                }
+                                
                                 viewModel.isBottomSheetShowing.toggle()
                             }) {
                                 Image(.icMeatball)

@@ -48,7 +48,7 @@ struct FeedHomeView: View {
         }
         .onAppear {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
-            feedViewModel.userId = currentTreehouseInfoViewModel.userId
+            feedViewModel.userId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
             feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
         }
     }

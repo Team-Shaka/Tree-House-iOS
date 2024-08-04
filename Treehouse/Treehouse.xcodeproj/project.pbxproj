@@ -88,6 +88,7 @@
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
+		3F32DAC22C5B89EF001786BC /* CreateTreehouseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */; };
 		3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */; };
 		3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */; };
 		3F3DAE9D2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */; };
@@ -358,6 +359,7 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseRouter.swift; sourceTree = "<group>"; };
 		3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCommentUseCase.swift; sourceTree = "<group>"; };
 		3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyTreehouseInfoResponseDTO.swift; sourceTree = "<group>"; };
@@ -1158,6 +1160,7 @@
 				3F8846062BF58B6A0021FB79 /* InvitationRouter.swift */,
 				3F44C13D2C25732E00A5CAFE /* FeedRouter.swift */,
 				000844EE2C1C607600FF33FD /* ProfileRouter.swift */,
+				3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */,
 			);
 			path = ViewRouter;
 			sourceTree = "<group>";
@@ -1922,6 +1925,7 @@
 				3F8530F22C56756A003FA07A /* CreateReplyCommentUseCase.swift in Sources */,
 				0087C27B2BDD337D004CED9C /* CheckNameResponseDTO.swift in Sources */,
 				3FF107152BEA0A1C00C52908 /* PostAcceptInvitationTreeMemberRequestDTO.swift in Sources */,
+				3F32DAC22C5B89EF001786BC /* CreateTreehouseRouter.swift in Sources */,
 				94D388D72C259F210058231B /* TreehouseCreatingSuccessView.swift in Sources */,
 				002C73D32C08AB8B0047592F /* HeaderView.swift in Sources */,
 				94D388D32C257BBC0058231B /* CreateTreeHallNameView.swift in Sources */,
