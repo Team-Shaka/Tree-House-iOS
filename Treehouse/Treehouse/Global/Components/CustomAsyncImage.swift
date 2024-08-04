@@ -67,7 +67,8 @@ struct CustomAsyncImage: View {
             @unknown default:
                 ProgressView()
             }
-        }.frame(width: width, height: height)
+        }.frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
+
         .cornerRadius(6.0)
     }
 }
