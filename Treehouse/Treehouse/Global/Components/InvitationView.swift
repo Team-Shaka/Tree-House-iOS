@@ -14,6 +14,8 @@ enum InvitationType {
 
 struct InvitationView: View {
     
+    @Environment(UserSettingViewModel.self) var viewModel
+    
     // MARK: - Property
     
     var iterater: Int {
@@ -115,13 +117,12 @@ extension InvitationView {
     @ViewBuilder
     var invitationView: some View {
         VStack(spacing: 0) {
-            Image(.imgDummy)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: SizeLiterals.Screen.screenWidth * 98.56 / 393, height: SizeLiterals.Screen.screenHeight * 98.56 / 852)
-                .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
+            CustomAsyncImage(url: viewModel.senderProfileImageUrl,
+                             type: .treehouseImage,
+                             width: 98.56, height: 98.56)
+            .clipShape(Circle())
+            .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
             
             Text(treehouseName)
                 .fontWithLineHeight(fontLevel: .heading2)
@@ -165,14 +166,21 @@ extension InvitationView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            Image(.imgDummy)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: 29, height: 29)
-                .overlay {
-                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
-                }
+            CustomAsyncImage(url: viewModel.memberProfileImages[index] ?? "",
+                             type: .postMemberProfileImage,
+                             width: 29, height: 29)
+            .clipShape(Circle())
+            .overlay {
+                Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
+            }
+//            Image(.imgDummy)
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .clipShape(Circle())
+//                .frame(width: 29, height: 29)
+//                .overlay {
+//                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
+//                }
         }
     }
 }

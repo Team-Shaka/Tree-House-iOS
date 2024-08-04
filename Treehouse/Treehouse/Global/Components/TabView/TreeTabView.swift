@@ -58,6 +58,9 @@ struct TreeTabView: View {
                     viewRouter.buildScene(inputRouter: router)
                 }
             }
+            .navigationDestination(for: CreateTreehouseRouter.self) { router in
+                viewRouter.buildScene(inputRouter: router)
+            }
             .onAppear {
                 if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
                     Task {
