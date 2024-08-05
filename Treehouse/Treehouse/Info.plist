@@ -2,14 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSContactsUsageDescription</key>
-	<string>초대를 위해 연락처에 접근합니다.</string>
 	<key>ACCESS_TOKEN_KEY</key>
 	<string>$(ACCESS_TOKEN_KEY)</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Treehouse에서 사진을 선택하기 위해 사진첩에 접근합니다.</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>LOGIN_KEY</key>
+	<string>$(LOGIN_KEY)</string>
 	<key>REFRESH_TOKEN_KEY</key>
 	<string>$(REFRESH_TOKEN_KEY)</string>
 	<key>UIAppFonts</key>
