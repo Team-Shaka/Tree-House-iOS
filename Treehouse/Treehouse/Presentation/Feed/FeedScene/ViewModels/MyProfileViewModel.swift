@@ -18,12 +18,33 @@ final class MyProfileViewModel: BaseViewModel {
     
     var myProfileData: ReadMyProfileInfoResponseEntity?
     var isLoadedMyProfile = false
+    var isAlert: (Bool, AlertType) = (false, .logout)
     var errorMessage: String = ""
     
     // MARK: - init
     
     init(readMyProfileInfoUseCase: GetReadMyProfileInfoUseCaseProtocol) {
         self.readMyProfileInfoUseCase = readMyProfileInfoUseCase
+    }
+    
+    func buttonAction(titleName: String) {
+        switch titleName {
+        case "로그아웃 하기":
+            isAlert.0.toggle()
+            isAlert.1 = .logout
+            
+            KeychainHelper.shared.delete(for: Config.accessTokenKey)
+            KeychainHelper.shared.delete(for: Config.refreshTokenKey)
+            
+        case "회원탈퇴 하기":
+            isAlert.0.toggle()
+            
+            KeychainHelper.shared.delete(for: Config.accessTokenKey)
+            KeychainHelper.shared.delete(for: Config.refreshTokenKey)
+            
+        default:
+            break
+        }
     }
 }
 

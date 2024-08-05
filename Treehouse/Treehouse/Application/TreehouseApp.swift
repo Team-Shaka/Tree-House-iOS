@@ -12,16 +12,18 @@ import SwiftData
 struct TreehouseApp: App {
     
     @State var viewRouter = ViewRouter()
+    @AppStorage(Config.loginKey) private var isLogin = false
     
     var body: some Scene {
         WindowGroup {
-            switch viewRouter.currentView {
-            case .userAuthentication:
-                SetPhoneNumberView()
-                    .environment(viewRouter)
-            case .enterTreehouse:
-                TreeTabView()
-                    .environment(viewRouter)
+            Group {
+                if isLogin {
+                    TreeTabView()
+                        .environment(viewRouter)
+                } else {
+                    SetPhoneNumberView()
+                        .environment(viewRouter)
+                }
             }
         }
     }
