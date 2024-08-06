@@ -61,9 +61,9 @@ struct SinglePostView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1)
-                    .foregroundColor(.gray3)
+//                Rectangle()
+//                    .frame(maxWidth: .infinity, maxHeight: 1)
+//                    .foregroundColor(.gray3)
                 
                 HStack(alignment: .top, spacing: 10) {
                     CustomAsyncImage(url: memberProfile.memberProfileImageUrl ?? "", 
@@ -72,8 +72,12 @@ struct SinglePostView: View {
                                      height: 36)
                         .clipShape(Circle())
                         .onTapGesture {
-                            viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
-                                                                            memberId: memberProfile.memberId))
+                            if feedViewModel.userId == memberProfile.memberId {
+                                viewRouter.selectedTab = .setting
+                            } else {
+                                viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                                                                memberId: memberProfile.memberId))
+                            }
                         }
                     
                     VStack(alignment: .leading) {
@@ -82,8 +86,12 @@ struct SinglePostView: View {
                                 .fontWithLineHeight(fontLevel: .body2)
                                 .foregroundStyle(.treeBlack)
                                 .onTapGesture {
-                                    viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
-                                                                                    memberId: memberProfile.memberId))
+                                    if feedViewModel.userId == memberProfile.memberId {
+                                        viewRouter.selectedTab = .setting
+                                    } else {
+                                        viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
+                                                                                        memberId: memberProfile.memberId))
+                                    }
                                 }
                             
                             Text(sentTime)
@@ -93,6 +101,12 @@ struct SinglePostView: View {
                             Spacer()
                             
                             Button(action: {
+                                if feedViewModel.userId == memberProfile.memberId {
+                                    viewModel.sheetCase = .isWriterOnPost
+                                } else {
+                                    viewModel.sheetCase = .isReaderOnPost
+                                }
+                                
                                 viewModel.isBottomSheetShowing.toggle()
                             }) {
                                 Image(.icMeatball)
