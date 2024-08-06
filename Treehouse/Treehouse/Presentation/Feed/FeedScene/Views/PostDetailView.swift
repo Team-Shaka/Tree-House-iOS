@@ -90,6 +90,7 @@ struct PostDetailView: View {
                     
                 }
             }
+            .redacted(reason: isloading ? .placeholder : [])
         }
         .onTapGesture {
             commentViewModel.commentState = .createComment
@@ -148,7 +149,6 @@ struct PostDetailView: View {
                 commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             }
         }
-        .redacted(reason: isloading ? .placeholder : [])
     }
     
     func performAsyncTasks() async {

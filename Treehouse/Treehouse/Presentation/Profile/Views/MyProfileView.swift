@@ -17,6 +17,7 @@ struct MyProfileView: View {
     @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     @State var myProfileViewModel = MyProfileViewModel(readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()))
 
+    @AppStorage(Config.loginKey) private var isLogin = false
     @State var isPresent = false
     @State var isloading = true
     
@@ -33,36 +34,40 @@ struct MyProfileView: View {
             ScrollView(.vertical) {
                 VStack(spacing: 0) {
                     if let data = myProfileViewModel.myProfileData {
-                        UserInfoView(infoType: .myProfile,
-                                     treememberName: data.memberName,
-                                     userName: data.userName,
-                                     profileImageUrl: data.profileImageUrl,
-                                     bio: data.bio,
-                                     branchCount: data.closestMemberCount,
-                                     treeHouseCount: data.treehouseCount,
-                                     root: "\(data.fromMe)",
-                                     inviteAction: nil,
-                                     branchAction: nil,
-                                     profileAction: {
-                            viewRouter.push(
-                                ProfileRouter.editProfileView(
-                                    treehouseId: currentTreehouseInfoViewModel.currentTreehouseId ?? 0, 
-                                    memberId: data.memberId,
-                                    memberProfileUrl: data.profileImageUrl,
-                                    memberName: data.memberName,
-                                    bio: data.bio
+                        VStack(spacing: 0) {
+                            UserInfoView(infoType: .myProfile,
+                                         treememberName: data.memberName,
+                                         userName: data.userName,
+                                         profileImageUrl: data.profileImageUrl,
+                                         bio: data.bio,
+                                         branchCount: data.closestMemberCount,
+                                         treeHouseCount: data.treehouseCount,
+                                         root: "\(data.fromMe)",
+                                         inviteAction: nil,
+                                         branchAction: nil,
+                                         profileAction: {
+                                viewRouter.push(
+                                    ProfileRouter.editProfileView(
+                                        treehouseId: currentTreehouseInfoViewModel.currentTreehouseId ?? 0,
+                                        memberId: data.memberId,
+                                        memberProfileUrl: data.profileImageUrl,
+                                        memberName: data.memberName,
+                                        bio: data.bio
+                                    )
                                 )
-                            )
-                        })
+                            })
+                        }.redacted(reason: isloading ? .placeholder : [])
                     }
                     
-                    SettingView(state: .accountSetting)
-                    
-                    SettingView(state: .systemSetting)
-                    
-                    SettingView(state: .aboutTreeHouse)
-                    
-                    SettingView(state: .serviceSetting)
+                    VStack(spacing: 0) {
+                        SettingView(state: .accountSetting)
+                        
+                        SettingView(state: .systemSetting)
+                        
+                        SettingView(state: .aboutTreeHouse)
+                        
+                        SettingView(state: .serviceSetting)
+                    }.environment(myProfileViewModel)
                 }
                 .padding(.top, 16)
             }
@@ -71,7 +76,6 @@ struct MyProfileView: View {
                     myProfileViewModel.isLoadedMyProfile = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
                 }
             }
-            .padding(.bottom, 16)
         }
         .task {
             if myProfileViewModel.isLoadedMyProfile == false {
@@ -82,7 +86,21 @@ struct MyProfileView: View {
                 }
             }
         }
-        .redacted(reason: isloading ? .placeholder : [])
+        .customAlert(alertType: myProfileViewModel.isAlert.1,
+                     isPresented: $myProfileViewModel.isAlert.0,
+                     onCancel: { myProfileViewModel.isAlert.0.toggle() },
+                     onConfirm: { switch myProfileViewModel.isAlert.1 {
+                     case .logout:
+                         
+                         self.isLogin.toggle()
+                         userInfoViewModel.deleteMyData()
+                         
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                             viewRouter.navigate(viewType: .userAuthentication)
+                         }
+                     case .deleteAccount:
+                         break
+                     } })
     }
 }
 

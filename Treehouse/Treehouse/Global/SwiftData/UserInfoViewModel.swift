@@ -43,6 +43,7 @@ final class UserInfoViewModel: BaseViewModel {
         return updateData()
     }
     
+    /// profile 을 수정하기 위한 메서드
     func modifyProfileImage(treehouseId: Int, imageUrl: String) -> Bool {
         if let treehouse = userInfo?.findTreehouse(id: treehouseId) {
             treehouse.profileImageUrl = URL(string: imageUrl)
@@ -58,6 +59,11 @@ final class UserInfoViewModel: BaseViewModel {
         }
         
         return updateData()
+    }
+    
+    /// User 정보를 지우기 위한 메서드
+    func deleteMyData() {
+        removeData()
     }
 }
 

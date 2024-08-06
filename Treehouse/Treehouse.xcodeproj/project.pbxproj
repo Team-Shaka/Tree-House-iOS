@@ -110,6 +110,8 @@
 		3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */; };
 		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
 		3F5189E72C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */; };
+		3F6801CD2C5FC065005E694E /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6801CC2C5FC065005E694E /* CustomAlertView.swift */; };
+		3F7BCF912C60FD69000939DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */; };
 		3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */; };
 		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
 		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
@@ -173,6 +175,8 @@
 		3FA175DE2C1AC34B00A57987 /* FeedRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA175DD2C1AC34B00A57987 /* FeedRepositoryProtocol.swift */; };
 		3FA175E02C1AC42100A57987 /* FeedRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA175DF2C1AC42100A57987 /* FeedRepositoryImpl.swift */; };
 		3FA175E32C1AC47A00A57987 /* PresignedURLResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA175E22C1AC47A00A57987 /* PresignedURLResponseEntity.swift */; };
+		3FA541552C60F06200723BAD /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA541542C60F06200723BAD /* LottieView.swift */; };
+		3FA541572C60F12100723BAD /* treehouse_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA541562C60F12100723BAD /* treehouse_loading.json */; };
 		3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */; };
 		3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */; };
 		3FC1FB2E2BD7739800AAE53F /* FeedContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB2D2BD7739800AAE53F /* FeedContentViewModel.swift */; };
@@ -380,6 +384,8 @@
 		3F5150592C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsReponseEntity.swift; sourceTree = "<group>"; };
 		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
 		3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginRequestDTO.swift; sourceTree = "<group>"; };
+		3F6801CC2C5FC065005E694E /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
 		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
 		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
@@ -441,6 +447,8 @@
 		3FA175DD2C1AC34B00A57987 /* FeedRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepositoryProtocol.swift; sourceTree = "<group>"; };
 		3FA175DF2C1AC42100A57987 /* FeedRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepositoryImpl.swift; sourceTree = "<group>"; };
 		3FA175E22C1AC47A00A57987 /* PresignedURLResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresignedURLResponseEntity.swift; sourceTree = "<group>"; };
+		3FA541542C60F06200723BAD /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		3FA541562C60F12100723BAD /* treehouse_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = treehouse_loading.json; sourceTree = "<group>"; };
 		3FBFBA7E2BC3C1A100B6A446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FBFBA7F2BC3DA6C00B6A446 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		3FC1FB2B2BD7738900AAE53F /* FeedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentView.swift; sourceTree = "<group>"; };
@@ -816,6 +824,7 @@
 			isa = PBXGroup;
 			children = (
 				3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */,
+				3FA541562C60F12100723BAD /* treehouse_loading.json */,
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
 				00CF358F2BC2DF5A00D9E332 /* Application */,
 				0087C2782BDD32CB004CED9C /* Data */,
@@ -841,6 +850,7 @@
 			isa = PBXGroup;
 			children = (
 				00CF35812BC291FA00D9E332 /* TreehouseApp.swift */,
+				3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1242,6 +1252,8 @@
 				3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */,
 				3F8B726F2C192CEA00299C24 /* CustomBottomSheet.swift */,
 				3F8530E92C5281E5003FA07A /* CustomAsyncImage.swift */,
+				3F6801CC2C5FC065005E694E /* CustomAlertView.swift */,
+				3FA541542C60F06200723BAD /* LottieView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1789,10 +1801,12 @@
 				00CF35892BC291FC00D9E332 /* Preview Assets.xcassets in Resources */,
 				944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */,
 				00CF35B02BC2F63E00D9E332 /* Pretendard-Regular.otf in Resources */,
+				3F7BCF912C60FD69000939DC /* Launch Screen.storyboard in Resources */,
 				00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */,
 				00F592442BF5F4F700BF6AED /* Config.xcconfig in Resources */,
 				00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */,
 				3F8F2A812C18AB1400D8CB9F /* structuredEmojis.json in Resources */,
+				3FA541572C60F12100723BAD /* treehouse_loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1874,6 +1888,7 @@
 				3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
+				3FA541552C60F06200723BAD /* LottieView.swift in Sources */,
 				3F8AE70A2C5A01C200E999C4 /* LoadImageAWSViewModel.swift in Sources */,
 				3FF490162C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift in Sources */,
 				9445620A2BD185A600078023 /* NotificationView.swift in Sources */,
@@ -1973,6 +1988,7 @@
 				3FF48FFC2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift in Sources */,
 				3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */,
 				3FF4901E2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift in Sources */,
+				3F6801CD2C5FC065005E694E /* CustomAlertView.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
 				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
 				94D388D12C256DBF0058231B /* CreateTreehouseNameView.swift in Sources */,
@@ -2208,6 +2224,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -2243,6 +2260,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;

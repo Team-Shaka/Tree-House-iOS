@@ -32,7 +32,7 @@ final class PresingedURLViewModel: BaseViewModel {
                     case .success(let response):
                         return (index, PresignedURLResponseEntity(presignedUrl: response.presignedUrl, accessUrl: response.accessUrl))
 
-                    case .failure(let error):
+                    case .failure(_):
                         return (index, nil)
                     }
                 }

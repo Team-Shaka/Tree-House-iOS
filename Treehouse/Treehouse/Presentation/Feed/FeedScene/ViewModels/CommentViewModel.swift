@@ -65,10 +65,6 @@ final class CommentViewModel: BaseViewModel {
         self.emojiViewModel = emojiViewModel as? EmojiViewModel
     }
     
-    func changeReactionState() {
-        let emoji = emojiViewModel?.selectEmoji
-    }
-    
     func changeEmojiData(commentId: Int, selectEmoji: String) async {
         if let commentIndex = readCommentData?.firstIndex(where: { $0.commentId == commentId }) {
             if let index = readCommentData?[commentIndex].reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
@@ -85,24 +81,6 @@ final class CommentViewModel: BaseViewModel {
                 }
             }
         }
-        
-        
-//        if let index = readCommentData?.reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
-//            //                if feedListData[postIndex].feedEmojiData?.reactionList[index].isPushed == false {
-//            if readCommentData?.reactionList.reactionList[index].isPushed == false {
-//                readCommentData?.reactionList.reactionList[index].isPushed = true
-//                readCommentData?.reactionList.reactionList[index].reactionCount += 1
-//            } else {
-//                readCommentData?.reactionList.reactionList[index].isPushed = false
-//                readCommentData?.reactionList.reactionList[index].reactionCount -= 1
-//                
-//                if readCommentData?.reactionList.reactionList[index].reactionCount == 0 {
-//                    readCommentData?.reactionList.reactionList.remove(at: index)
-//                }
-//            }
-//        } else {
-//            readCommentData?.reactionList.reactionList.append(ReactionListEntity(reactionName: selectEmoji, reactionCount: 1, isPushed: true))
-//        }
     }
 }
 
@@ -112,8 +90,11 @@ extension CommentViewModel {
     func createComment(treehouseId: Int, postId: Int) async -> Bool {
         let result = await createCommentUseCase.execute(treehouseId: treehouseId, postId: postId, context: postContent)
         switch result {
-        case .success(let response):
-            postContent = ""
+        case .success(_):
+            await MainActor.run {
+                postContent = ""
+            }
+            
             return true
             
         case .failure(let error):
@@ -129,7 +110,9 @@ extension CommentViewModel {
 
         switch result {
         case .success(let response):
-            readCommentData = response.commentList
+            await MainActor.run {
+                readCommentData = response.commentList
+            }
             return true
         case .failure(let error):
             await MainActor.run {
@@ -147,8 +130,10 @@ extension CommentViewModel {
                                                              context: postContent)
         
         switch result {
-        case .success(let response):
-            postContent = ""
+        case .success(_):
+            await MainActor.run {
+                postContent = ""
+            }
             return true
         case .failure(let error):
             await MainActor.run {

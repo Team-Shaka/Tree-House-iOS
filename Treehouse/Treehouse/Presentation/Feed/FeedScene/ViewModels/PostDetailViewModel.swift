@@ -28,11 +28,12 @@ final class PostDetailViewModel: BaseViewModel {
         self.readDetailFeedPostUseCase = readDetailFeedPostUseCase
         print("init PostDetailViewModel")
     }
+    
     deinit {
         print("Deinit PostDetailViewModel")
     }
     
-    func changeEmojiData(postId: Int, selectEmoji: String) async {
+    func changeEmojiData(postId: Int, selectEmoji: String) {
         if let index = detailFeedListData?.reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
             //                if feedListData[postIndex].feedEmojiData?.reactionList[index].isPushed == false {
             if detailFeedListData?.reactionList.reactionList[index].isPushed == false {
@@ -60,7 +61,9 @@ extension PostDetailViewModel {
         
         switch result {
         case .success(let response):
-            detailFeedListData = response
+            await MainActor.run {
+                detailFeedListData = response
+            }
             return true
             
         case .failure(let error):
