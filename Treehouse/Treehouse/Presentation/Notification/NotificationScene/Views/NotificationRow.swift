@@ -1,66 +1,66 @@
+////
+////  NotificationRow.swift
+////  Treehouse
+////
+////  Created by 윤영서 on 4/18/24.
+////
 //
-//  NotificationRow.swift
-//  Treehouse
+//import SwiftUI
 //
-//  Created by 윤영서 on 4/18/24.
+//struct NotificationRow: View {
+//    
+//    // MARK: - Property
+//    
+//    let notification: NotificationModel
+//    var textColor: Color {
+//        viewModel.isChecked ? .gray6 : .treeBlack
+//    }
+//    
+//    // MARK: - State Property
+//    
+//   @State var viewModel = NotificationViewModel(checkNotificationUseCase: CheckNotificationUseCase(repository: NotificationsRepositoryImpl()))
+//    
+//    // MARK: - View
+//    
+//    var body: some View {
+//        HStack(alignment: .center) {
+//            
+//            // TODO: - image 연결
+//            
+//            notification.profileImage
+//                .resizable()
+//                .scaledToFill()
+//                .frame(width: 36, height: 36)
+//                .clipShape(Circle())
+//                .padding(.top, 3)
+//                .padding(.trailing, 8)
+//            
+//            Text(viewModel.userName)
+//                .font(.fontGuide(.body4))
+//                .foregroundColor(textColor)
+//            
+//            + Text(viewModel.type.notificationContent)
+//                .font(.fontGuide(.body3))
+//                .foregroundColor(textColor)
+//            
+//            + Text(" \(viewModel.receivedTime)ㆍ")
+//                .font(.fontGuide(.body3))
+//                .foregroundColor(.gray6)
+//            
+//            + Text(viewModel.treehouseName)
+//                .font(.fontGuide(.body3))
+//                .foregroundColor(.gray6)
+//            
+//            if viewModel.type == .invitation {
+//                viewModel.isChecked ? Image(.icInvitationGray) : Image(.icInvitation)
+//            }
+//        }
+//        .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))
+//    }
+//}
 //
-
-import SwiftUI
-
-struct NotificationRow: View {
-    
-    // MARK: - Property
-    
-    let notification: NotificationModel
-    var textColor: Color {
-        viewModel.isChecked ? .gray6 : .treeBlack
-    }
-    
-    // MARK: - State Property
-    
-   @State var viewModel = NotificationViewModel(checkNotificationUseCase: CheckNotificationUseCase(repository: NotificationsRepositoryImpl()))
-    
-    // MARK: - View
-    
-    var body: some View {
-        HStack(alignment: .center) {
-            
-            // TODO: - image 연결
-            
-            notification.profileImage
-                .resizable()
-                .scaledToFill()
-                .frame(width: 36, height: 36)
-                .clipShape(Circle())
-                .padding(.top, 3)
-                .padding(.trailing, 8)
-            
-            Text(viewModel.userName)
-                .font(.fontGuide(.body4))
-                .foregroundColor(textColor)
-            
-            + Text(viewModel.type.notificationContent)
-                .font(.fontGuide(.body3))
-                .foregroundColor(textColor)
-            
-            + Text(" \(viewModel.receivedTime)ㆍ")
-                .font(.fontGuide(.body3))
-                .foregroundColor(.gray6)
-            
-            + Text(viewModel.treehouseName)
-                .font(.fontGuide(.body3))
-                .foregroundColor(.gray6)
-            
-            if viewModel.type == .invitation {
-                viewModel.isChecked ? Image(.icInvitationGray) : Image(.icInvitation)
-            }
-        }
-        .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))
-    }
-}
-
-// MARK: - Preview
-
-#Preview {
-    NotificationRow(notification: NotificationModel.notificationDummyData[4])
-}
+//// MARK: - Preview
+//
+//#Preview {
+//    NotificationRow(notification: NotificationModel.notificationDummyData[4])
+//}
