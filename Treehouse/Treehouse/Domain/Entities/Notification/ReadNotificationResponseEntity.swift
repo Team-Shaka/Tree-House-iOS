@@ -7,17 +7,22 @@
 
 import Foundation
 
-struct CheckNotificationResponseEntity: Decodable {
-    let notifications: [CheckNotificationResponseData]
+struct ReadNotificationResponseEntity: Decodable, Identifiable {
+    var id = UUID()
+    let notifications: [NotificationResponseEntity]
 }
 
-struct CheckNotificationResponseData: Decodable {
+struct NotificationResponseEntity: Decodable, Identifiable {
+    var id = UUID()
     let type: NotificationTypeEnum
+    let title: String
+    let body: String
     let profileImageUrl: String?
     let userName: String
     let receivedTime: String
+    let treehouseId: Int
     let treehouseName: String
-    let isChecked: Bool
+    var isChecked: Bool
     let targetId: Int
 }
 

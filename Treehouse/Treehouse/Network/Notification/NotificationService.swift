@@ -9,36 +9,27 @@ import Foundation
 
 final class NotificationService {
     
+    private let networkServiceManager = NetworkServiceManager()
+    
     /// 알림 조회 요청 서비스
-    func getNotifications() async throws -> GetCheckNotificationsResponseDTO {
-        print("1️⃣ 🔑 GetCheckNotifications API 호출 ========================================")
-        let request = NetworkRequest(requestType: NotificationAPI.getCheckNotifications)
+    func getReadNotifications() async throws -> GetReadNotificationsResponseDTO {
+        let request = NetworkRequest(requestType: NotificationAPI.getReadNotifications)
         
         guard let urlRequest = request.request() else {
             throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadNotificationsResponseDTO.self)
+    }
+    
+    /// 알림을 읽음 상태로 변경하는 API
+    func postCheckNotifications(notificationId: Int) async throws -> PostCheckNotificationsResponseDTO {
+        let request = NetworkRequest(requestType: NotificationAPI.postCheckNotifications(notificationId: notificationId))
         
-        // 응답 데이터와 상태 코드 출력
-        if let httpResponse = response as? HTTPURLResponse {
-            print("2️⃣ Status Code: \(httpResponse.statusCode)")
-            print("\(httpResponse.statusCode)")
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
         }
         
-        if let jsonString = String(data: data, encoding: .utf8) {
-            print("3️⃣ Response JSON")
-        }
-        
-        // JSON 디코딩
-        do {
-            let model = try JSONDecoder().decode(BaseResponse<GetCheckNotificationsResponseDTO>.self, from: data)
-            print(model.data.notifications)
-            print("4️⃣ GetCheckNotification API 종료 ========================================")
-            return model.data
-        } catch {
-            print("4️⃣ GetCheckNotifiication API Error: \(String(describing: NetworkError.jsonDecodingError.errorDescription))========================================")
-            throw NetworkError.jsonDecodingError
-        }
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostCheckNotificationsResponseDTO.self)
     }
 }
