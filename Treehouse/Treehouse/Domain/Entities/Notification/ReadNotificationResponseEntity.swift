@@ -14,6 +14,7 @@ struct ReadNotificationResponseEntity: Decodable, Identifiable {
 
 struct NotificationResponseEntity: Decodable, Identifiable {
     var id = UUID()
+    let notificationId: Int
     let type: NotificationTypeEnum
     let title: String
     let body: String
