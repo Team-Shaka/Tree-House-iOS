@@ -42,5 +42,16 @@ final class TreehouseRepositoryImpl: TreehouseRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    func postCheckTreehouseName(treehouseName: String) async -> Result<CheckTreehouseNameResponseEntity, NetworkError> {
+        do {
+            let response = try await treehouseService.postCheckTreehouseName(treehouseName: treehouseName)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }
 

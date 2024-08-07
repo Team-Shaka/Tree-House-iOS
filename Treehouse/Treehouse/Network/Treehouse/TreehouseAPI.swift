@@ -11,6 +11,7 @@ enum TreehouseAPI {
     case getReadMyTreehouseInfo
     case postCreateTreehouse(requestBody: PostCreateTreehouseRequestDTO)
     case getReadTreehouseInfo(treehouseId : Int)
+    case postCheckTreehouseName(requestBody: PostCheckTreehouseNameRequestDTO)
 }
 
 extension TreehouseAPI: BaseRequest {
@@ -19,12 +20,13 @@ extension TreehouseAPI: BaseRequest {
         case .getReadMyTreehouseInfo: return "treehouses"
         case .postCreateTreehouse: return "treehouses"
         case .getReadTreehouseInfo(let treehouseId): return "treehouses/\(treehouseId)"
+        case .postCheckTreehouseName: return "treehouses/checkName"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .postCreateTreehouse: return .post
+        case .postCreateTreehouse, .postCheckTreehouseName: return .post
         case .getReadMyTreehouseInfo, .getReadTreehouseInfo: return .get
         }
     }
@@ -40,6 +42,7 @@ extension TreehouseAPI: BaseRequest {
     var requestBodyParameter: (any Codable)? {
         switch self {
         case .postCreateTreehouse(requestBody: let requestBody): return requestBody
+        case .postCheckTreehouseName(requestBody: let requestBody): return requestBody
         default: return .none
         }
     }
