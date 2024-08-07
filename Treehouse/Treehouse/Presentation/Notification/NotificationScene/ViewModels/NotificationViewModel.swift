@@ -21,40 +21,27 @@ final class NotificationViewModel: BaseViewModel {
     var isChecked: Bool = false
     var targetId: Int = 0
     
+    var notificationData = [NotificationResponseEntity]()
     var errorMessage: String? = nil
+    var isLoading = true
     
     // MARK: - UseCase Property
     
     @ObservationIgnored
-    private let checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
-    
-    // MARK: - init
-    
-//    init(
-//        type: NotificationTypeEnum, profileImageUrl: String? = nil, 
-//        userName: String,
-//        receivedTime: String,
-//        treehouseName: String, 
-//        isChecked: Bool,
-//        targetId: Int,
-//        errorMessage: String? = nil,
-//        checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
-//    ) {
-//        self.type = type
-//        self.profileImageUrl = profileImageUrl
-//        self.userName = userName
-//        self.receivedTime = receivedTime
-//        self.treehouseName = treehouseName
-//        self.isChecked = isChecked
-//        self.targetId = targetId
-//        self.errorMessage = errorMessage
-//        self.checkNotificationUseCase = checkNotificationUseCase
-//    }
+    private let checkNotificationUseCase: GetReadNotificationUseCaseProtocol
     
     init(
-        checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
+        checkNotificationUseCase: GetReadNotificationUseCaseProtocol
     ) {
         self.checkNotificationUseCase = checkNotificationUseCase
+    }
+    
+    func notificationTapped(notificationId: Int) {
+        if let notificationIndex = notificationData.firstIndex(where: { $0.targetId == notificationId}) {
+            if notificationData[notificationIndex].isChecked == false {
+                notificationData[notificationIndex].isChecked = true
+            }
+        }
     }
 }
 
@@ -66,13 +53,13 @@ extension NotificationViewModel {
         
         switch result {
         case .success(let response):
-            response.notifications.forEach {
-                profileImageUrl = $0.profileImageUrl
-                userName = $0.userName
-                receivedTime = $0.receivedTime
-                treehouseName = $0.treehouseName
-                isChecked = $0.isChecked
-                targetId = $0.targetId
+            
+            await MainActor.run {
+                notificationData = response.notifications
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isLoading = false
+                }
             }
             
         case .failure(let error):
@@ -82,3 +69,4 @@ extension NotificationViewModel {
         }
     }
 }
+
