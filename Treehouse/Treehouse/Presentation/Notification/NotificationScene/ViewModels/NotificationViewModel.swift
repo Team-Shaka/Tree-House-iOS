@@ -28,11 +28,16 @@ final class NotificationViewModel: BaseViewModel {
     // MARK: - UseCase Property
     
     @ObservationIgnored
-    private let checkNotificationUseCase: GetReadNotificationUseCaseProtocol
+    private let readNotificationUseCase: GetReadNotificationUseCaseProtocol
+    
+    @ObservationIgnored
+    private let checkNotificationUseCase: PostCheckNotificationUseCaseProtocol
     
     init(
-        checkNotificationUseCase: GetReadNotificationUseCaseProtocol
+        readNotificationUseCase: GetReadNotificationUseCaseProtocol,
+        checkNotificationUseCase: PostCheckNotificationUseCaseProtocol
     ) {
+        self.readNotificationUseCase = readNotificationUseCase
         self.checkNotificationUseCase = checkNotificationUseCase
     }
     
@@ -48,8 +53,8 @@ final class NotificationViewModel: BaseViewModel {
 // MARK: - Notification API Extension
 
 extension NotificationViewModel {
-    func checkNotifications() async {
-        let result = await checkNotificationUseCase.execute()
+    func readNotifications() async {
+        let result = await readNotificationUseCase.execute()
         
         switch result {
         case .success(let response):
@@ -62,6 +67,22 @@ extension NotificationViewModel {
                 }
             }
             
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func checkNotifications(notificationId: Int) async {
+        let result = await checkNotificationUseCase.execute(notificationId: notificationId)
+        switch result {
+        case .success(let response):
+            if let index = notificationData.firstIndex(where: { $0.notificationId == response.notificationId }) {
+                await MainActor.run {
+                    notificationData[index].isChecked = true
+                }
+            }
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
