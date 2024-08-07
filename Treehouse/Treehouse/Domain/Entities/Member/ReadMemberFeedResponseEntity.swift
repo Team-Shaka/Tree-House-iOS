@@ -7,16 +7,18 @@
 
 import Foundation
 
-struct ReadMemberFeedResponseEntity: Decodable {
+struct ReadMemberFeedResponseEntity: Decodable, Identifiable {
+    var id = UUID()
     let memberProfile: MemberProfileEntity
     let postList: [PostListResponseEntity]
 }
 
-struct PostListResponseEntity: Decodable {
+struct PostListResponseEntity: Decodable, Identifiable {
+    var id = UUID()
     let postId: Int
     let context: String
     let pictureUrlList: [String]
     let commentCount: Int
-    let reactionList: [ReactionListEntity]
+    let reactionList: ReactionListDataEntity
     let postedAt: String
 }

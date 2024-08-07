@@ -21,7 +21,7 @@ struct NotificationView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
                         ForEach(notifications) { notification in
-                            NotificationRow(notification: notification)
+//                            NotificationRow(notification: notification)
                         }
                     }
                 }

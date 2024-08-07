@@ -18,20 +18,37 @@ enum ProfileRouter: Router {
         if let viewModel = viewModel as? UserInfoViewModel {
             switch self {
             case .editProfileView(let treehouseId, let memberId, let memberProfileUrl, let memberName, let bio):
-                return AnyView(EditProfileView(profileUrl: memberProfileUrl, memberName: memberName, bio: bio, treehouseId: treehouseId, memberId: memberId)
+                return AnyView(
+                    EditProfileView(
+                        profileUrl: memberProfileUrl,
+                        memberName: memberName,
+                        bio: bio,
+                        treehouseId: treehouseId,
+                        memberId: memberId
+                    )
                     .environment(viewModel)
-                               
+                )
+            default:
+                return AnyView(EmptyView())
+            }
+        } else if let viewModel = viewModel as? FeedViewModel {
+            switch self {
+            case .memberProfileView(let treehouseId, let memberId):
+                return AnyView(
+                    MemberProfileView(
+                        memberProfileViewModel: MemberProfileViewModel(
+                            readMemberInfoUseCase: ReadMemberInfoUseCase(repository: MemberRepositoryImpl()),
+                            readMemberFeedUseCase: ReadMemberFeedUseCase(repository: MemberRepositoryImpl()),
+                            treehouseId: treehouseId,
+                            memberId: memberId
+                        )
+                    ).environment(viewModel)
                 )
             default:
                 return AnyView(EmptyView())
             }
         } else {
-            switch self {
-            case .memberProfileView(let treehouseId, let memberId):
-                return AnyView(MemberProfileView(treehouseId: treehouseId, memberId: memberId))
-            default:
-                return AnyView(EmptyView())
-            }
+            return AnyView(EmptyView())
         }
     }
 }
