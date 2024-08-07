@@ -11,45 +11,32 @@ struct ImageDetailCarouselView: View {
     
     // MARK: - State Property
     
-    @State private var selectedIndex: Int
-    
-    // MARK: - Property
-    
-    let images: [String]
     @Environment(\.presentationMode) var presentationMode
-    
-    // MARK: - Initialize
-    
-    init(images: [String], selectedIndex: Int) {
-        self.images = images
-        self._selectedIndex = State(initialValue: selectedIndex)
-    }
+    @State var selectedIndex: Int
+    @Binding var images: [(Int,Image)]
     
     // MARK: - View
     
     var body: some View {
         NavigationStack {
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 0) {
-                    ForEach(images, id: \.self) { image in
-                        Image(image)
-                            .resizable()
-                            .frame(width: 393, height: 393)
-                    }
+            TabView(selection: $selectedIndex) {
+                ForEach(0..<images.count, id: \.self) { imageIndex in
+                    images[imageIndex].1
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.horizontal, 5)
+                        .frame(maxWidth:.infinity)
+                        .padding(.bottom, 30)
+                        .tag(imageIndex)
                 }
             }
             .background(.grayscaleBlack)
-            .scrollTargetBehavior(.paging)
-            .scrollIndicators(.hidden)
-            .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        if value.translation.height > 100 {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    }
-            )
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                images = images.sorted(by: {$0.0 < $1.0} )
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
@@ -59,19 +46,27 @@ struct ImageDetailCarouselView: View {
                             .foregroundColor(.grayscaleWhite)
                     }
                 }
-                
+
                 ToolbarItem(placement: .principal) {
-                    Text("\(selectedIndex + 1)/\(images.count)")
-                        .font(.fontGuide(.body2))
+                    Text("\(selectedIndex + 1) / \(images.count)")
+                        .fontWithLineHeight(fontLevel: .body2)
                         .foregroundStyle(.grayscaleWhite)
                 }
             }
         }
+        .gesture(
+            DragGesture()
+              .onEnded { value in
+                  if value.translation.height > 100 {
+                      presentationMode.wrappedValue.dismiss()
+                  }
+              }
+        )
     }
 }
 
 // MARK: - Preview
 
-#Preview {
-    ImageDetailCarouselView(images: [], selectedIndex: 1)
-}
+//#Preview {
+//    ImageDetailCarouselView(images: [], selectedIndex: 1)
+//}

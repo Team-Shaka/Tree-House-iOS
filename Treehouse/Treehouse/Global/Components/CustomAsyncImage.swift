@@ -22,6 +22,21 @@ struct CustomAsyncImage: View {
     var type: ImageType
     var width: CGFloat
     var height: CGFloat
+    var onImageLoaded: ((Image) -> Void)?
+    
+    init(url: String, type: ImageType, width: CGFloat, height: CGFloat) {
+        self.url = url
+        self.type = type
+        self.width = width
+        self.height = height
+    }
+    
+    init(url: String, type: ImageType, width: CGFloat, height: CGFloat, onImageLoaded: @escaping (Image) -> Void) {
+        self.init(url: url, type: type, width: width, height: height)
+        if type == .postImage {
+            self.onImageLoaded = onImageLoaded
+        }
+    }
     
     var body: some View {
         AsyncImage(url: URL(string: url)) { phase in
@@ -30,6 +45,12 @@ struct CustomAsyncImage: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .onAppear {
+                        print("Image 로드 됨")
+                        if type == .postImage {
+                            onImageLoaded?(image)
+                        }
+                    }
                    
             case .failure(_):
                 Image(systemName: "exclamationmark.icloud.fill")
@@ -70,6 +91,6 @@ struct CustomAsyncImage: View {
     }
 }
 
-#Preview {
-    CustomAsyncImage(url: "", type: .treehouseImage, width: 36, height: 36)
-}
+//#Preview {
+//    CustomAsyncImage(url: "", type: .treehouseImage, width: 36, height: 36)
+//}

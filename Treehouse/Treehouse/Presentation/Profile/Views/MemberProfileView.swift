@@ -9,66 +9,101 @@ import SwiftUI
 
 struct MemberProfileView: View {
     
-    // MARK: - Property
-    
-    var treehouseId: Int
-    var memberId: Int
-    
     // MARK: - State Property
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
-    @State var memberProfileViewModel = MemberProfileViewModel(readMemberInfoUseCase: ReadMemberInfoUseCase(repository: MemberRepositoryImpl()))
+    @Environment (FeedViewModel.self) var feedViewModel
+    
+    @State var memberProfileViewModel: MemberProfileViewModel
+    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
+    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
     
     @State var isPresent = false
-    @State private var userName: String = "username"
-    @State private var userId: String = "userid"
-    @State private var bio: String = "바이오입니다."
-    @State private var branchCount: Int = 0
-    @State private var treeHouseCount: Int = 0
-    @State private var root: String = "Root"
-    @State private var selectedGroupId: UUID?
+    @State var isLoading = true
     
     // MARK: - View
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 0) {
-                if let data = memberProfileViewModel.memberProfileData {
-                    UserInfoView(infoType: .memberProfile,
-                                 treememberName: data.memberName,
-                                 userName: data.userName,
-                                 profileImageUrl: data.profileImageUrl,
-                                 bio: data.bio,
-                                 branchCount: data.closestMemberCount,
-                                 treeHouseCount: data.treehouseCount,
-                                 root: "\(data.fromMe)",
-                                 inviteAction: nil,
-                                 branchAction: nil,
-                                 profileAction: nil)
-                    .padding(.top, 15)
+        ZStack {
+            ScrollView(.vertical) {
+                VStack(spacing: 0) {
+                    if let data = memberProfileViewModel.memberProfileData {
+                        UserInfoView(infoType: .memberProfile,
+                                     treememberName: data.memberName,
+                                     userName: data.userName,
+                                     profileImageUrl: data.profileImageUrl,
+                                     bio: data.bio,
+                                     branchCount: data.closestMemberCount,
+                                     treeHouseCount: data.treehouseCount,
+                                     root: "\(data.fromMe)",
+                                     inviteAction: nil,
+                                     branchAction: nil,
+                                     profileAction: nil)
+                        .padding(.top, 15)
+                    }
+                    
+                    if let data = memberProfileViewModel.memberFeedData {
+                        ForEach(data.postList) { feed in
+                            VStack(spacing: 0) {
+                                SinglePostView(postId: feed.postId,
+                                               sentTime: feed.postedAt,
+                                               postContent: feed.context,
+                                               postImageURLs: feed.pictureUrlList,
+                                               memberProfile: data.memberProfile,
+                                               postType: .feedView)
+                                
+                                VStack(alignment: .leading, spacing: 0) {
+                                    EmojiListView(emojiType: .feedView, postId: feed.postId, feedEmojiData: feed.reactionList)
+                                        .environment(emojiViewModel)
+                                        .environment(postViewModel)
+                                        .padding(.top, 10)
+                                        .onAppear {
+                                            feedViewModel.currentPostId = feed.postId
+                                        }
+                                    
+                                    CommentCountView(commentCount: feed.commentCount)
+                                        .padding(.top, 10)
+                                        .padding(.trailing, 16)
+                                        .onTapGesture {
+                                            feedViewModel.currentPostId = feed.postId
+                                            viewRouter.push(FeedRouter.postDetailView)
+                                        }
+                                }
+                                .padding(.leading, 62)
+                                .padding(.bottom, 16)
+                            }
+                            .background(
+                                Color.clear
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        feedViewModel.currentPostId = feed.postId
+                                        viewRouter.push(FeedRouter.postDetailView)
+                                    }
+                            )
+                        }
+                    }
                 }
             }
-        }
-        .navigationBarBackButtonHidden()
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    viewRouter.pop()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.treeBlack)
-                }
-                .padding(.top, 5)
+            .refreshable {
+                await memberProfileViewModel.performAsyncTasks()
             }
             
-            ToolbarItem(placement: .principal) {
-                Text(memberProfileViewModel.memberProfileData?.memberName ?? "")
-                    .fontWithLineHeight(fontLevel: .body2)
-                    .foregroundStyle(.treeBlack)
+            if memberProfileViewModel.isLoading == true {
+                VStack {
+                    Spacer()
+                    
+                    LottieView(lottieFile: "treehouse_loading", speed: 1)
+                        .frame(width: 100, height: 100)
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.grayscaleWhite)
             }
         }
+        .navigationTitle(memberProfileViewModel.title)
+        .navigationBarTitleDisplayMode(.inline)
         .task {
-            _ = await memberProfileViewModel.readMemberInfo(treehouseId: treehouseId, memberId: memberId)
+            await memberProfileViewModel.performAsyncTasks()
         }
     }
 }
@@ -77,8 +112,15 @@ struct MemberProfileView: View {
 
 #Preview {
     NavigationStack {
-        MemberProfileView(treehouseId: 0, memberId: 0)
-            .environment(ViewRouter())
+        MemberProfileView(
+            memberProfileViewModel: MemberProfileViewModel(
+                readMemberInfoUseCase: ReadMemberInfoUseCase(repository: MemberRepositoryImpl()),
+                readMemberFeedUseCase: ReadMemberFeedUseCase(repository: MemberRepositoryImpl()),
+                treehouseId: 0,
+                memberId: 0
+            )
+        )
+        .environment(ViewRouter())
     }
 }
 

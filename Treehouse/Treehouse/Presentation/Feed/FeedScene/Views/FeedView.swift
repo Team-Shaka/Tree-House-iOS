@@ -219,7 +219,7 @@ extension FeedView {
             Image(.imgFeedempty)
             
             Text("아직 올라온 게시글이 없어요")
-                .font(.fontGuide(.heading4))
+                .fontWithLineHeight(fontLevel: .heading4)
                 .foregroundStyle(.gray5)
         }
         .frame(height: 482)
@@ -228,7 +228,7 @@ extension FeedView {
     @ViewBuilder
     var feedRowView: some View {
         ForEach(postViewModel.feedListData) { data in
-            VStack(spacing: 0) {
+            LazyVStack(spacing: 0) {
                 SinglePostView(postId: data.postId,
                                sentTime: data.postedAt,
                                postContent: data.context,
@@ -237,14 +237,12 @@ extension FeedView {
                                postType: .feedView)
 
                 VStack(alignment: .leading, spacing: 0) {
-//                    if !(data.reactionList.reactionList.isEmpty) {
-                        EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)
-                            .padding(.top, 10)
-                            .onAppear {
-                                postViewModel.feedEmojiData = data.reactionList
-                                feedViewModel.currentPostId = data.postId
-                            }
-//                    }
+                    EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)
+                        .padding(.top, 10)
+                        .onAppear {
+                            postViewModel.feedEmojiData = data.reactionList
+                            feedViewModel.currentPostId = data.postId
+                        }
                     
                     CommentCountView(commentCount: data.commentCount)
                         .padding(.top, 10)
@@ -256,6 +254,10 @@ extension FeedView {
                 }
                 .padding(.leading, 62)
                 .padding(.bottom, 16)
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+                    .foregroundColor(.gray3)
             }
             .background(
                 Color.clear

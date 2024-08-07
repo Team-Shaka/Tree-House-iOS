@@ -60,6 +60,14 @@ struct FeedHomeView: View {
         .navigationDestination(for: FeedRouter.self) { router in
             viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
         }
+        .navigationDestination(for: ProfileRouter.self) { router in
+            switch router {
+            case .editProfileView:
+                viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
+            case .memberProfileView:
+                viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
+            }
+        }
         .onAppear {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
             feedViewModel.userId = currentTreehouseInfoViewModel.userId

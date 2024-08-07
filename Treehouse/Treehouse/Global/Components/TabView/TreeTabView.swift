@@ -21,7 +21,7 @@ struct TreeTabView: View {
         @Bindable var viewRouter = viewRouter
         
         NavigationStack(path: $viewRouter.path) {
-            TabView {
+            TabView(selection: $viewRouter.selectedTab) {
                 FeedHomeView()
                     .background(.grayscaleWhite)
                     .tabItem {
@@ -29,18 +29,21 @@ struct TreeTabView: View {
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
+                    .tag(TabType.home)
                 
                 TreeTab()
                     .tabItem {
                         Label("트리", image: "ic_tree")
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
+                    .tag(TabType.tree)
                 
                 NotificationView()
                     .tabItem {
                         Label("알림", image: "ic_noti")
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
+                    .tag(TabType.notice)
                 
                 MyProfileView()
                     .background(.grayscaleWhite)
@@ -49,18 +52,11 @@ struct TreeTabView: View {
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
+                    .tag(TabType.setting)
             }
             .tint(.treeGreen)
             .environment(viewRouter)
             .environment(currentTreehouseInfoViewModel)
-            .navigationDestination(for: ProfileRouter.self) { router in
-                switch router {
-                case .editProfileView:
-                    viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
-                case .memberProfileView:
-                    viewRouter.buildScene(inputRouter: router)
-                }
-            }
             .onAppear {
                 if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
                     Task {
@@ -96,4 +92,11 @@ struct TreeTabView: View {
 #Preview {
     TreeTabView()
         .environment(ViewRouter())
+}
+
+enum TabType {
+    case home
+    case tree
+    case notice
+    case setting
 }
