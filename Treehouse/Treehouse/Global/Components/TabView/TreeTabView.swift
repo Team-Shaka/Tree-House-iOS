@@ -26,27 +26,30 @@ struct TreeTabView: View {
                     .background(.grayscaleWhite)
                     .tabItem {
                         Label("홈", image: "ic_home")
+                            .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
                 
                 TreeTab()
                     .tabItem {
                         Label("트리", image: "ic_tree")
+                            .fontWithLineHeight(fontLevel: .caption2)
                     }
                 
                 NotificationView()
                     .tabItem {
                         Label("알림", image: "ic_noti")
+                            .fontWithLineHeight(fontLevel: .caption2)
                     }
-                    
+                
                 MyProfileView()
                     .background(.grayscaleWhite)
                     .tabItem {
                         Label("설정", image: "ic_setting")
+                            .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
             }
-            .fontWithLineHeight(fontLevel: .caption2)
             .tint(.treeGreen)
             .environment(viewRouter)
             .environment(currentTreehouseInfoViewModel)
@@ -76,6 +79,16 @@ struct TreeTabView: View {
                         }
                     }
                 }
+            }
+            .onAppear {
+                let appearance = UITabBarAppearance()
+                appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+                appearance.backgroundColor = .grayscaleWhite
+                
+                // 스크롤 할때의 TabBar Layout
+                UITabBar.appearance().standardAppearance = appearance
+                // 완전히 스크롤 됐을 때 의 TabBar Layout
+                UITabBar.appearance().scrollEdgeAppearance = appearance
             }
         }
     }

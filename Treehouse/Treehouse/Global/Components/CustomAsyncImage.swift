@@ -59,16 +59,12 @@ struct CustomAsyncImage: View {
                             .resizable()
                             .scaledToFit()
                     }
-                } else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
                 }
-            
             @unknown default:
                 ProgressView()
             }
-        }.frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
-
+        }
+        .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
         .cornerRadius(6.0)
     }
 }

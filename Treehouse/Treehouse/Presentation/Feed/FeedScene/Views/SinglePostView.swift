@@ -26,12 +26,10 @@ struct SinglePostView: View {
     
     // MARK: - Property
     
-//    let userProfileImageURL: String
     let postId: Int?
     let sentTime: String
     var postContent: String
     let postImageURLs: [String]
-    let dummyImages = ["img_dummy", "img_dummy_2"]
     let memberProfile: MemberProfileEntity
     var postType: PostType
     
@@ -113,6 +111,7 @@ struct SinglePostView: View {
                     }
                 }
                 .padding(16)
+                .zIndex(1)
                 
                 contentImageView()
             }

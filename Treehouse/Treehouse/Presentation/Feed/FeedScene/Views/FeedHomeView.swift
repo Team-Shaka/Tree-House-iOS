@@ -19,8 +19,6 @@ struct FeedHomeView: View {
     @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
     @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
     
-//    @State var isPresent = false
-    
     // MARK: - View
     
     var body: some View {
@@ -31,16 +29,32 @@ struct FeedHomeView: View {
                 .background(.grayscaleWhite)
                 .environment(currentTreehouseInfoViewModel)
             
-            ScrollView(.vertical) {
-                FeedView()
-                    .frame(width: SizeLiterals.Screen.screenWidth)
-                    .environment(feedViewModel)
-                    .environment(postViewModel)
-                    .environment(emojiViewModel)
-            }
-            .padding(.bottom, 16)
-            .refreshable {
-                let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+            ZStack {
+                VStack {
+                    ScrollView(.vertical) {
+                        FeedView()
+                            .frame(width: SizeLiterals.Screen.screenWidth)
+                            .environment(feedViewModel)
+                            .environment(postViewModel)
+                            .environment(emojiViewModel)
+                    }
+                    .refreshable {
+                        let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                    }
+                }
+                
+                if postViewModel.isLoading == false {
+                    VStack {
+                        Spacer()
+                        
+                        LottieView(lottieFile: "treehouse_loading", speed: 1)
+                            .frame(width: 100, height: 100)
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.grayscaleWhite)
+                }
             }
         }
         .navigationDestination(for: FeedRouter.self) { router in
@@ -50,6 +64,12 @@ struct FeedHomeView: View {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
             feedViewModel.userId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
             feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
+            
+            Task {
+                if feedViewModel.dataLoaded == false {
+                    feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                }
+            }
         }
     }
 }

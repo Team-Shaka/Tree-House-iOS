@@ -25,12 +25,10 @@ struct FeedView: View {
     @Environment (PostViewModel.self) var postViewModel
     @Environment (EmojiViewModel.self) var emojiViewModel
     
-//    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
     @State var commentViewModel = CommentViewModel(createCommentUseCase: CreateCommentUseCase( repository: CommentRepositoryImpl()),readCommentUseCase: ReadCommentUseCase(repository: CommentRepositoryImpl()), createReplyCommentUseCase: CreateReplyCommentUseCase(repository: CommentRepositoryImpl()))
     
     @State var presingedURLViewModel = PresingedURLViewModel(presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()))
     @State var loadImageAWSViewModel = LoadImageAWSViewModel(uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()))
-    
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -93,11 +91,6 @@ struct FeedView: View {
         }
         .onTapGesture {
             hideKeyboard()
-        }
-        .task {
-            if feedViewModel.dataLoaded == false {
-                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
-            }
         }
     }
 }

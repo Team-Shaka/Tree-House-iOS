@@ -76,20 +76,9 @@ struct SetPhoneNumberView: View {
                         .cornerRadius(12)
                 }
             }
-            .padding(EdgeInsets(top: 22, leading: 24, bottom: 30, trailing: 24))
+            .padding(EdgeInsets(top: 22+44, leading: 24, bottom: 30, trailing: 24))
             .navigationDestination(for: RegisterRouter.self) { router in
                 viewRouter.buildScene(inputRouter: router, viewModel: viewModel)
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        viewRouter.pop()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.treeBlack)
-                    }
-                    .padding(.top, 5)
-                }
             }
         }
         .onAppear {

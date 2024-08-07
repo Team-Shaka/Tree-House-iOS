@@ -10,6 +10,7 @@ typealias EmptyResponse = BaseResponse<Empty>
 
 final class NetworkServiceManager: NetworkServiceable {
     private var originalRequest: URLRequest?
+//    private var isReissueToken: Bool = false
 
     /// 통신을 위한 Request 를 전달받고 호출하는 메서드
     /// - Parameters:
@@ -163,14 +164,17 @@ extension NetworkServiceManager {
                 KeychainHelper.shared.save(newToken.refreshToken, for: Config.refreshTokenKey)
                 print("4️⃣ PostReissueToken API 종료 ========================================")
             case 401:
+                UserDefaults.standard.set(false, forKey: Config.loginKey)
+                
                 /// RefreshToken 도 만료되었을 때 다시
                 throw NetworkError.clientError(message: "로그인이 만료되었습니다. 다시 로그인해주세요.")
             default:
+                UserDefaults.standard.set(false, forKey: Config.loginKey)
                 throw NetworkError.serverError
             }
-        } catch {
-            print("4️⃣ PostReissueToken API Error: \(String(describing: NetworkError.jsonDecodingError.errorDescription))========================================")
-            throw NetworkError.jsonDecodingError
+        } catch (let error){
+            print("4️⃣ PostReissueToken API Error: \(String(describing: error))========================================")
+            throw NetworkError.reIssueJWT
         }
     }
 }

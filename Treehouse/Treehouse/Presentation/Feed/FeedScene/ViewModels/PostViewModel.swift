@@ -30,6 +30,8 @@ final class PostViewModel: BaseViewModel {
     var selectImage: [UIImage] = []
     var errorMessage: String = ""
     
+    var isLoading = false
+    
     // MARK: - init
     
     init(readFeedPostUseCase: GetReadFeedPostUseCaseProtocol,
@@ -110,6 +112,10 @@ extension PostViewModel {
         switch result {
         case .success(let response):
             feedListData = response
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading = true
+            }
             
             return true
             
