@@ -18,31 +18,17 @@ struct NotificationRow: View {
     var receviedTime: String
     var treehouseName: String
     
-    private var characterWidth: CGFloat {
-        let font = Font.uiFontGuide(.body5) //UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    /// UserName 과 usbTitle 을 더한 글자 width
+    private var characterWidth: Int {
+        let font = Font.uiFontGuide(.body5)
         let textAttributes = [NSAttributedString.Key.font: font]
-        let size = "\(userName + filteredSubTitle)".size(withAttributes: textAttributes)
-        return size.width
-    }
-    
-    private var characterWidthA: CGFloat {
-        // 글자 스타일 정의
-        let font = Font.fontGuide(.body5)
-        let textAttributes = [NSAttributedString.Key.font: font]
-        
-        // 글자의 크기 계산
-        let size = "A".size(withAttributes: textAttributes)
-        return size.width
-    }
-    
-    private var filteredSubTitle: String {
-        // subTitle 문자열에서 userName 부분을 제거
-        return subTitle.replacingOccurrences(of: userName, with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let size = "\(userName + subTitle)".size(withAttributes: textAttributes)
+        return Int(size.width)
     }
     
     // MARK: - State Property
     
+    @Binding var isChecked: Bool
     @State var tempStr = " "
     
     // MARK: - View
@@ -53,9 +39,9 @@ struct NotificationRow: View {
                              type: .notiProfileImage,
                              width: 36,
                              height: 36)
-                .clipShape(Circle())
-                .padding(.vertical, 3)
-                .padding(.trailing, 8)
+            .clipShape(Circle())
+            .padding(.vertical, 3)
+            .padding(.trailing, 8)
             
             notificationText
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -65,18 +51,20 @@ struct NotificationRow: View {
         .padding(EdgeInsets(top: 14, leading: 16, bottom: 16, trailing: 14))
         .background(.grayscaleWhite)
         .onAppear {
-            let title = (userName+filteredSubTitle).replacingOccurrences(of: " ", with: "")
-//            print("characterWidth:", characterWidth)
-            print(title)
-            print(subTitle)
-            print(filteredSubTitle)
-//            print("title 대략 길이:",(userName+filteredSubTitle).count * 9)
-//            print("가능한 길이:",SizeLiterals.Screen.screenWidth-28-36-8)
-            
-            if Int((title).count * 9) <= Int(SizeLiterals.Screen.screenWidth-28-36-8) {
-                tempStr = "\n"
-            } else {
-                tempStr = " "
+            /// 한줄에 얼만큼 표기를 할 것인지 시간과 treehouseName 의 위치를 설정하는 switch
+            switch type {
+            case .invitation:
+                if characterWidth <= Int(SizeLiterals.Screen.screenWidth-28-36-8-42) {
+                    tempStr = "\n"
+                } else {
+                    tempStr = " "
+                }
+            default:
+                if characterWidth <= Int(SizeLiterals.Screen.screenWidth-28-36-8) {
+                    tempStr = "\n"
+                } else {
+                    tempStr = " "
+                }
             }
         }
     }
@@ -88,7 +76,7 @@ extension NotificationRow {
     @ViewBuilder
     var invitationImage: some View {
         if type == .invitation {
-            Image(.icInvitation)
+            Image(isChecked ? .icInvitationGray : .icInvitation)
                 .frame(width: 42, height: 42)
         }
     }
@@ -97,11 +85,11 @@ extension NotificationRow {
     var notificationText: some View {
         Text(userName.splitCharacter())
             .font(.fontGuide(.body4))
-            .foregroundColor(.grayscaleBlack)
+            .foregroundColor(isChecked ? .gray6 : .grayscaleBlack)
         
-        + Text(filteredSubTitle.splitCharacter())
+        + Text(subTitle.splitCharacter())
             .font(.fontGuide(.body5))
-            .foregroundColor(.grayscaleBlack)
+            .foregroundColor(isChecked ? .gray6 : .grayscaleBlack)
         
         + Text(tempStr + "\(receviedTime.splitCharacter())ㆍ")
             .font(.fontGuide(.body5))
@@ -122,6 +110,13 @@ struct ViewWidthKey: PreferenceKey {
 
 // MARK: - Preview
 
-//#Preview {
-//    NotificationRow(notification: NotificationModel.notificationDummyData[4])
-//}
+#Preview {
+    NotificationRow(type: .comment,
+                    subTitle: "님이 게시글에 😀을(를) 눌렀습니다.",
+                    profileImageUrl: "",
+                    userName: "테스트 중",
+                    receviedTime: "1분 전",
+                    treehouseName: "atree",
+                    isChecked: .constant(false),
+                    tempStr: " ")
+}

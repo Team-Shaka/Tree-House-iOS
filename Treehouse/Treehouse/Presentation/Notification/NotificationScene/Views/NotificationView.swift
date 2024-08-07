@@ -11,7 +11,7 @@ struct NotificationView: View {
     
     // MARK: - Property
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
-    @State private var notificationViewModel = NotificationViewModel(checkNotificationUseCase: ReadNotificationUseCase(repository: NotificationsRepositoryImpl()))
+    @State private var notificationViewModel = NotificationViewModel(readNotificationUseCase: ReadNotificationUseCase(repository: NotificationsRepositoryImpl()), checkNotificationUseCase: CheckNotificationUseCase(repository: NotificationsRepositoryImpl()))
     
     // MARK: - View
     
@@ -23,19 +23,29 @@ struct NotificationView: View {
             
             ZStack {
                 if notificationViewModel.notificationData.isEmpty == false {
-                    List(notificationViewModel.notificationData) { notification in
+                    List(notificationViewModel.notificationData.indices, id: \.self) { index in
+                        let notification = notificationViewModel.notificationData[index]
                         NotificationRow(type: notification.type,
                                         subTitle: notification.body,
                                         profileImageUrl: notification.profileImageUrl ?? "",
                                         userName: notification.userName,
                                         receviedTime: notification.receivedTime,
-                                        treehouseName: notification.treehouseName)
+                                        treehouseName: notification.treehouseName,
+                                        isChecked: $notificationViewModel.notificationData[index].isChecked)
                         .redacted(reason: notificationViewModel.isLoading ? .placeholder : [])
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowSeparator(.hidden)
+                        .onTapGesture {
+                            Task {
+                                await notificationViewModel.checkNotifications(notificationId: notification.notificationId)
+                            }
+                        }
                     }
                     .background(.grayscaleWhite)
                     .listStyle(PlainListStyle())
+                    .refreshable {
+                        await notificationViewModel.readNotifications()
+                    }
                 } else {
                     emptyNotificationView
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -58,7 +68,7 @@ struct NotificationView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            await notificationViewModel.checkNotifications()
+            await notificationViewModel.readNotifications()
         }
     }
 }
