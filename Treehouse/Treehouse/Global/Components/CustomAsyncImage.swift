@@ -13,6 +13,7 @@ enum ImageType {
     case postMemberProfileImage
     case memberProfileImage
     case postImage
+    case notiProfileImage
 }
 
 struct CustomAsyncImage: View {
@@ -42,7 +43,7 @@ struct CustomAsyncImage: View {
                         Image(.imgUser)
                             .resizable()
                             .scaledToFit()
-                    case .postMemberProfileImage:
+                    case .postMemberProfileImage, .notiProfileImage:
                         Image(.imgProfile)
                             .resizable()
                             .scaledToFit()
