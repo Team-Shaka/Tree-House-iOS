@@ -45,10 +45,10 @@ struct FeedView: View {
         VStack(spacing: 0) {
             postTextField
             
-            if postViewModel.feedListData.isEmpty {
-                emptyFeedView
-            } else {
+            if postViewModel.feedListData.isEmpty == false {
                 feedRowView
+            } else {
+                emptyFeedView
             }
         }
         .popup(isPresented: $feedViewModel.isSelectEmojiView) {

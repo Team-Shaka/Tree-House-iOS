@@ -21,58 +21,50 @@ final class NotificationViewModel: BaseViewModel {
     var isChecked: Bool = false
     var targetId: Int = 0
     
+    var notificationData = [NotificationResponseEntity]()
     var errorMessage: String? = nil
+    var isLoading = true
     
     // MARK: - UseCase Property
     
     @ObservationIgnored
-    private let checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
+    private let readNotificationUseCase: GetReadNotificationUseCaseProtocol
     
-    // MARK: - init
-    
-//    init(
-//        type: NotificationTypeEnum, profileImageUrl: String? = nil, 
-//        userName: String,
-//        receivedTime: String,
-//        treehouseName: String, 
-//        isChecked: Bool,
-//        targetId: Int,
-//        errorMessage: String? = nil,
-//        checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
-//    ) {
-//        self.type = type
-//        self.profileImageUrl = profileImageUrl
-//        self.userName = userName
-//        self.receivedTime = receivedTime
-//        self.treehouseName = treehouseName
-//        self.isChecked = isChecked
-//        self.targetId = targetId
-//        self.errorMessage = errorMessage
-//        self.checkNotificationUseCase = checkNotificationUseCase
-//    }
+    @ObservationIgnored
+    private let checkNotificationUseCase: PostCheckNotificationUseCaseProtocol
     
     init(
-        checkNotificationUseCase: GetCheckNotificationUseCaseProtocol
+        readNotificationUseCase: GetReadNotificationUseCaseProtocol,
+        checkNotificationUseCase: PostCheckNotificationUseCaseProtocol
     ) {
+        self.readNotificationUseCase = readNotificationUseCase
         self.checkNotificationUseCase = checkNotificationUseCase
+    }
+    
+    func notificationTapped(notificationId: Int) {
+        if let notificationIndex = notificationData.firstIndex(where: { $0.targetId == notificationId}) {
+            if notificationData[notificationIndex].isChecked == false {
+                notificationData[notificationIndex].isChecked = true
+            }
+        }
     }
 }
 
 // MARK: - Notification API Extension
 
 extension NotificationViewModel {
-    func checkNotifications() async {
-        let result = await checkNotificationUseCase.execute()
+    func readNotifications() async {
+        let result = await readNotificationUseCase.execute()
         
         switch result {
         case .success(let response):
-            response.notifications.forEach {
-                profileImageUrl = $0.profileImageUrl
-                userName = $0.userName
-                receivedTime = $0.receivedTime
-                treehouseName = $0.treehouseName
-                isChecked = $0.isChecked
-                targetId = $0.targetId
+            
+            await MainActor.run {
+                notificationData = response.notifications
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isLoading = false
+                }
             }
             
         case .failure(let error):
@@ -81,4 +73,21 @@ extension NotificationViewModel {
             }
         }
     }
+    
+    func checkNotifications(notificationId: Int) async {
+        let result = await checkNotificationUseCase.execute(notificationId: notificationId)
+        switch result {
+        case .success(let response):
+            if let index = notificationData.firstIndex(where: { $0.notificationId == response.notificationId }) {
+                await MainActor.run {
+                    notificationData[index].isChecked = true
+                }
+            }
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
 }
+

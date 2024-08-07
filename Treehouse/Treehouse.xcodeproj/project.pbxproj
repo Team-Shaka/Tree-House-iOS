@@ -78,6 +78,9 @@
 		3F0AC2FF2C2D53B6009F8F46 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */; };
 		3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */; };
 		3F0AC3032C2D53EB009F8F46 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */; };
+		3F1936142C6287B600584939 /* PostCheckNotificationsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1936132C6287B600584939 /* PostCheckNotificationsResponseDTO.swift */; };
+		3F1936162C62883B00584939 /* CheckNotificationsResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1936152C62883B00584939 /* CheckNotificationsResponseEntity.swift */; };
+		3F1936182C6288B600584939 /* CheckNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1936172C6288B600584939 /* CheckNotificationUseCase.swift */; };
 		3F1BE12C2C1FDF6700D3AF1D /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */; };
 		3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */; };
 		3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */; };
@@ -257,15 +260,15 @@
 		944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */; };
 		944AA7142BC80E15008020C2 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */; };
 		944AA7162BCBB145008020C2 /* ShowMemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */; };
-		944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48902BF10B6600205B18 /* GetCheckNotificationsResponseDTO.swift */; };
+		944D48912BF10B6700205B18 /* GetReadNotificationsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48902BF10B6600205B18 /* GetReadNotificationsResponseDTO.swift */; };
 		944D48932BF10C6900205B18 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48922BF10C6900205B18 /* NotificationModel.swift */; };
 		944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944D48942BF10CA000205B18 /* SinglePostView.swift */; };
 		94561F6D2BD11C4800B005CE /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94561F6C2BD11C4800B005CE /* NotificationRow.swift */; };
-		946424A82C3E4ACE00BB177F /* CheckNotificationResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424A72C3E4ACE00BB177F /* CheckNotificationResponseEntity.swift */; };
+		946424A82C3E4ACE00BB177F /* ReadNotificationResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424A72C3E4ACE00BB177F /* ReadNotificationResponseEntity.swift */; };
 		946424AA2C3E4F4300BB177F /* NotificationsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424A92C3E4F4300BB177F /* NotificationsRepositoryImpl.swift */; };
 		946424AC2C3E4F8100BB177F /* NotificationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424AB2C3E4F8100BB177F /* NotificationRepositoryProtocol.swift */; };
 		946424AF2C3E5C5C00BB177F /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424AE2C3E5C5C00BB177F /* NotificationViewModel.swift */; };
-		946424B42C3E5D5D00BB177F /* CheckNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424B32C3E5D5D00BB177F /* CheckNotificationUseCase.swift */; };
+		946424B42C3E5D5D00BB177F /* ReadNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946424B32C3E5D5D00BB177F /* ReadNotificationUseCase.swift */; };
 		947326192C1C8D640030A182 /* EditPostPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947326182C1C8D640030A182 /* EditPostPopupView.swift */; };
 		9473261B2C1D90850030A182 /* ImageDetailCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */; };
 		9473261D2C2156400030A182 /* FullScreenModalModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473261C2C2156400030A182 /* FullScreenModalModifier.swift */; };
@@ -352,6 +355,9 @@
 		3F0AC2FE2C2D53B6009F8F46 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		3F0AC3002C2D53C8009F8F46 /* UserInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataSource.swift; sourceTree = "<group>"; };
 		3F0AC3022C2D53EB009F8F46 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		3F1936132C6287B600584939 /* PostCheckNotificationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckNotificationsResponseDTO.swift; sourceTree = "<group>"; };
+		3F1936152C62883B00584939 /* CheckNotificationsResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNotificationsResponseEntity.swift; sourceTree = "<group>"; };
+		3F1936172C6288B600584939 /* CheckNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNotificationUseCase.swift; sourceTree = "<group>"; };
 		3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		3F1BE12F2C2118F600D3AF1D /* UploadImageToAWSUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageToAWSUseCase.swift; sourceTree = "<group>"; };
 		3F1BE1312C211D0200D3AF1D /* AWSImageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSImageRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -531,15 +537,15 @@
 		944AA7112BC6E400008020C2 /* SetPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhoneNumberView.swift; sourceTree = "<group>"; };
 		944AA7132BC80E15008020C2 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		944AA7152BCBB145008020C2 /* ShowMemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMemberProfileView.swift; sourceTree = "<group>"; };
-		944D48902BF10B6600205B18 /* GetCheckNotificationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCheckNotificationsResponseDTO.swift; sourceTree = "<group>"; };
+		944D48902BF10B6600205B18 /* GetReadNotificationsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadNotificationsResponseDTO.swift; sourceTree = "<group>"; };
 		944D48922BF10C6900205B18 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		944D48942BF10CA000205B18 /* SinglePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostView.swift; sourceTree = "<group>"; };
 		94561F6C2BD11C4800B005CE /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
-		946424A72C3E4ACE00BB177F /* CheckNotificationResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNotificationResponseEntity.swift; sourceTree = "<group>"; };
+		946424A72C3E4ACE00BB177F /* ReadNotificationResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNotificationResponseEntity.swift; sourceTree = "<group>"; };
 		946424A92C3E4F4300BB177F /* NotificationsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRepositoryImpl.swift; sourceTree = "<group>"; };
 		946424AB2C3E4F8100BB177F /* NotificationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		946424AE2C3E5C5C00BB177F /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
-		946424B32C3E5D5D00BB177F /* CheckNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNotificationUseCase.swift; sourceTree = "<group>"; };
+		946424B32C3E5D5D00BB177F /* ReadNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadNotificationUseCase.swift; sourceTree = "<group>"; };
 		947326182C1C8D640030A182 /* EditPostPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostPopupView.swift; sourceTree = "<group>"; };
 		9473261A2C1D90850030A182 /* ImageDetailCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailCarouselView.swift; sourceTree = "<group>"; };
 		9473261C2C2156400030A182 /* FullScreenModalModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenModalModifier.swift; sourceTree = "<group>"; };
@@ -1599,7 +1605,8 @@
 		944D488F2BF10B5D00205B18 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				944D48902BF10B6600205B18 /* GetCheckNotificationsResponseDTO.swift */,
+				944D48902BF10B6600205B18 /* GetReadNotificationsResponseDTO.swift */,
+				3F1936132C6287B600584939 /* PostCheckNotificationsResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1643,7 +1650,8 @@
 		946424A42C3E4A8000BB177F /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				946424A72C3E4ACE00BB177F /* CheckNotificationResponseEntity.swift */,
+				946424A72C3E4ACE00BB177F /* ReadNotificationResponseEntity.swift */,
+				3F1936152C62883B00584939 /* CheckNotificationsResponseEntity.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1659,7 +1667,8 @@
 		946424B02C3E5CF500BB177F /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				946424B32C3E5D5D00BB177F /* CheckNotificationUseCase.swift */,
+				946424B32C3E5D5D00BB177F /* ReadNotificationUseCase.swift */,
+				3F1936172C6288B600584939 /* CheckNotificationUseCase.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1831,6 +1840,7 @@
 				94C7B4432C2407AD00CA378E /* FeedBottomSheetRowView.swift in Sources */,
 				3F8530EA2C5281E5003FA07A /* CustomAsyncImage.swift in Sources */,
 				3F06C3072BFDEB40002B771B /* PostReactionCommentRequestDTO.swift in Sources */,
+				3F1936142C6287B600584939 /* PostCheckNotificationsResponseDTO.swift in Sources */,
 				3FA175E32C1AC47A00A57987 /* PresignedURLResponseEntity.swift in Sources */,
 				3F06C2FA2BFDC2E8002B771B /* FeedAPI.swift in Sources */,
 				3F88357B2BC8E1010021C8AB /* ReceivedFirstInvitaionView.swift in Sources */,
@@ -1871,6 +1881,7 @@
 				3FF48FD62C4E3C3A00A6DD8A /* ReadFeedPostUseCase.swift in Sources */,
 				3F44C1402C27E8DD00A5CAFE /* UserInfoView.swift in Sources */,
 				3F8B726E2C192BAE00299C24 /* EmojiGridView.swift in Sources */,
+				3F1936162C62883B00584939 /* CheckNotificationsResponseEntity.swift in Sources */,
 				3F8AE7182C5B1D6F00E999C4 /* CurrentTreehouseInfoViewModel.swift in Sources */,
 				3FF490222C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift in Sources */,
 				3F8AE71C2C5B415800E999C4 /* ModifyMyProfileViewModel.swift in Sources */,
@@ -2006,17 +2017,17 @@
 				3FF4900E2C50FF5B00A6DD8A /* TreehouseRepositoryImpl.swift in Sources */,
 				3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */,
 				3F3DAE9D2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift in Sources */,
-				946424B42C3E5D5D00BB177F /* CheckNotificationUseCase.swift in Sources */,
+				946424B42C3E5D5D00BB177F /* ReadNotificationUseCase.swift in Sources */,
 				946424AA2C3E4F4300BB177F /* NotificationsRepositoryImpl.swift in Sources */,
 				003E6EF42BD5105A001C7613 /* AvailableInvitationStruct.swift in Sources */,
 				3F81716E2C44006F00CEE21E /* ReadCommentResponseEntity.swift in Sources */,
 				947326232C23F8350030A182 /* DynamicHeightTextEditorView.swift in Sources */,
-				944D48912BF10B6700205B18 /* GetCheckNotificationsResponseDTO.swift in Sources */,
+				944D48912BF10B6700205B18 /* GetReadNotificationsResponseDTO.swift in Sources */,
 				3F06C3142BFDF34C002B771B /* GetReadCommentResponseDTO.swift in Sources */,
 				3FF107272BEA0ACC00C52908 /* PostReissueTokenResponseDTO.swift in Sources */,
 				0083B4BC2C01D02500F0D252 /* BottomSheet.swift in Sources */,
 				3F44C13C2C24394600A5CAFE /* FeedHomeView.swift in Sources */,
-				946424A82C3E4ACE00BB177F /* CheckNotificationResponseEntity.swift in Sources */,
+				946424A82C3E4ACE00BB177F /* ReadNotificationResponseEntity.swift in Sources */,
 				3FF107252BEA0AB600C52908 /* PostRegisterUserResponseDTO.swift in Sources */,
 				3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */,
 				3F8AE7022C59E0E100E999C4 /* CreateFeedPostsResponseResponseEntity.swift in Sources */,
@@ -2030,6 +2041,7 @@
 				00CF35CB2BC3083100D9E332 /* String+.swift in Sources */,
 				3F06C2FD2BFDD5FD002B771B /* PostCreateFeedPostsRequestDTO.swift in Sources */,
 				3FA175E02C1AC42100A57987 /* FeedRepositoryImpl.swift in Sources */,
+				3F1936182C6288B600584939 /* CheckNotificationUseCase.swift in Sources */,
 				3FF1071F2BEA0A7D00C52908 /* PostAcceptInvitationTreeMemberResponseDTO.swift in Sources */,
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */,
