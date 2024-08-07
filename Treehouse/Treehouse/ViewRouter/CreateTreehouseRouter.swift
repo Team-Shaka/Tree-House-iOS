@@ -14,7 +14,7 @@ enum CreateTreehouseRouter: Router {
     case createTreehouseNameView
     case createTreeHallNameView
     case previewCreatedTreehouseView
-    case sendInvitationView
+    case sendInvitationView(treehouseName: String)
     
     func buildView(_ viewModel: BaseViewModel?) -> AnyView {
         switch self {
@@ -24,8 +24,8 @@ enum CreateTreehouseRouter: Router {
             return AnyView(CreateTreeHallNameView())
         case .previewCreatedTreehouseView:
             return AnyView(PreviewCreatedTreehouseView())
-        case .sendInvitationView:
-            return AnyView(SendInvitationView())
+        case .sendInvitationView(let treehouseName):
+            return AnyView(SendInvitationView(createTreehouseViewModel: CreateTreehouseViewModel(createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()), treehouseName: treehouseName)))
         }
     }
 }

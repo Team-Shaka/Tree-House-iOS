@@ -54,7 +54,7 @@ extension TreehouseViewModel {
         let result = await useCase.execute()
         
         switch result {
-        case .success(var response):
+        case .success(let response):
             treehouseInfo = response.treeohouses
             
             if let index = treehouseInfo?.firstIndex(where: { $0.treehouseId == currentTreehouseId }) {

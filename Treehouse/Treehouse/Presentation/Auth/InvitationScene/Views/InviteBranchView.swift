@@ -58,7 +58,7 @@ struct InviteBranchView: View {
                                 
                             }) {
                                 Text(StringLiterals.Invitation.buttonTitle1)
-                                    .font(.fontGuide(.body3))
+                                    .fontWithLineHeight(fontLevel: .body3)
                                     .frame(width: 82, height: 32)
                                     .foregroundStyle(.treeBlack)
                                     .overlay(
@@ -165,6 +165,23 @@ struct InviteBranchView: View {
             .onChange(of: phoneNumberViewModel.searchText) { _, _ in
                 Task {
                     await phoneNumberViewModel.searchData()
+                }
+            }
+            .navigationBarBackButtonHidden()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        viewRouter.pop()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.treeBlack)
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("받은 초대장")
+                        .fontWithLineHeight(fontLevel: .heading4)
+                        .foregroundStyle(.treeBlack)
                 }
             }
         }

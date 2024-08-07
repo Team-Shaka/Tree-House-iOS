@@ -185,6 +185,12 @@
 		3FC1FB342BD8922B00AAE53F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB332BD8922B00AAE53F /* CommentModel.swift */; };
 		3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB352BD8C76200AAE53F /* CommentView.swift */; };
 		3FC1FB382BD9126400AAE53F /* FlowlayoutStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */; };
+		3FDCDA282C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA272C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift */; };
+		3FDCDA2A2C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA292C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift */; };
+		3FDCDA2C2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA2B2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift */; };
+		3FDCDA2F2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */; };
+		3FDCDA312C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */; };
+		3FDCDA332C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA322C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift */; };
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
 		3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */; };
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
@@ -459,6 +465,12 @@
 		3FC1FB332BD8922B00AAE53F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		3FC1FB352BD8C76200AAE53F /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		3FC1FB372BD9126400AAE53F /* FlowlayoutStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowlayoutStack.swift; sourceTree = "<group>"; };
+		3FDCDA272C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckTreehouseNameResponseDTO.swift; sourceTree = "<group>"; };
+		3FDCDA292C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameResponseEntity.swift; sourceTree = "<group>"; };
+		3FDCDA2B2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameUseCase.swift; sourceTree = "<group>"; };
+		3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameViewModel.swift; sourceTree = "<group>"; };
+		3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseViewModel.swift; sourceTree = "<group>"; };
+		3FDCDA322C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckTreehouseNameRequestDTO.swift; sourceTree = "<group>"; };
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
 		3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStateType.swift; sourceTree = "<group>"; };
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
@@ -1248,6 +1260,15 @@
 			path = FeedContentScene;
 			sourceTree = "<group>";
 		};
+		3FDCDA2D2C6399E800C7F7B6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */,
+				3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3FE9440C2BD115EE00C3A869 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1424,7 @@
 				3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */,
 				3FF48FED2C50E9A900A6DD8A /* PostCreateTreehouseResponseDTO.swift */,
 				3FF48FEF2C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift */,
+				3FDCDA272C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1420,6 +1442,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF48FEB2C50E98600A6DD8A /* PostCreateTreehouseRequestDTO.swift */,
+				3FDCDA322C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1468,6 +1491,7 @@
 				3F3DAE9E2C588EFA00C1424C /* ReadMyTreehouseInfoResponseEntity.swift */,
 				3FF490062C50FDB500A6DD8A /* CreateTreehouseResponseEntity.swift */,
 				3FF490082C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift */,
+				3FDCDA292C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift */,
 			);
 			path = Treehouse;
 			sourceTree = "<group>";
@@ -1478,6 +1502,7 @@
 				3F3DAEA02C58904200C1424C /* ReadMyTreehouseInfoUseCase.swift */,
 				3FF4900B2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift */,
 				3FF4900F2C51001200A6DD8A /* ReadTreehouseInfoUseCase.swift */,
+				3FDCDA2B2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift */,
 			);
 			path = Treehouse;
 			sourceTree = "<group>";
@@ -1708,6 +1733,7 @@
 		94D388CE2C256C630058231B /* CreateTreehouseScene */ = {
 			isa = PBXGroup;
 			children = (
+				3FDCDA2D2C6399E800C7F7B6 /* ViewModel */,
 				94D388CF2C256C710058231B /* Views */,
 			);
 			path = CreateTreehouseScene;
@@ -1822,6 +1848,7 @@
 			files = (
 				3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */,
 				3FF48FD42C4DF69E00A6DD8A /* PostViewModel.swift in Sources */,
+				3FDCDA332C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift in Sources */,
 				3F8AE70E2C5A2AEF00E999C4 /* PatchUpdateFeedPostRequestDTO.swift in Sources */,
 				3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */,
 				3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */,
@@ -1877,6 +1904,7 @@
 				3F8AE7182C5B1D6F00E999C4 /* CurrentTreehouseInfoViewModel.swift in Sources */,
 				3FF490222C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift in Sources */,
 				3F8AE71C2C5B415800E999C4 /* ModifyMyProfileViewModel.swift in Sources */,
+				3FDCDA2F2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift in Sources */,
 				3F8AE7082C59FD6B00E999C4 /* PresingedURLViewModel.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
@@ -1891,6 +1919,7 @@
 				3F5150582C0EC5E800AD05C3 /* InvitationService.swift in Sources */,
 				00CF35962BC2E21700D9E332 /* FontLiterals.swift in Sources */,
 				0054D7362BDAD1630009B9CC /* CheckNameResponseEntity.swift in Sources */,
+				3FDCDA312C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift in Sources */,
 				3FA541552C60F06200723BAD /* LottieView.swift in Sources */,
 				3F8AE70A2C5A01C200E999C4 /* LoadImageAWSViewModel.swift in Sources */,
 				3FF490162C5101D100A6DD8A /* ReadMemberInfoResponseEntity.swift in Sources */,
@@ -1926,6 +1955,7 @@
 				3FF490092C50FE2C00A6DD8A /* ReadTreehouseInfoResponseEntity.swift in Sources */,
 				00CF35842BC291FA00D9E332 /* ContentView.swift in Sources */,
 				3F8AE7122C5A2C1100E999C4 /* UpdateFeedPostUseCase.swift in Sources */,
+				3FDCDA282C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift in Sources */,
 				3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */,
 				3FF4901A2C5101F100A6DD8A /* ReadMyProfileInfoResponseEntity.swift in Sources */,
 				3FF107192BEA0A3900C52908 /* PostRegisterTreeMemberRequestDTO.swift in Sources */,
@@ -1987,6 +2017,7 @@
 				3F8530F42C567705003FA07A /* PostCreateReplyCommentResponseDTO.swift in Sources */,
 				00F8BB432BC932F000B23AE4 /* UnableRegisterView.swift in Sources */,
 				3F44C13E2C25732E00A5CAFE /* FeedRouter.swift in Sources */,
+				3FDCDA2A2C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift in Sources */,
 				3F8530F62C567C13003FA07A /* DeleteCommentUseCase.swift in Sources */,
 				3FF48FDB2C4E900F00A6DD8A /* CommentRepositoryPorotocol.swift in Sources */,
 				3FF48FFC2C50EDD100A6DD8A /* GetReadMemberFeedResponseDTO.swift in Sources */,
@@ -2025,6 +2056,7 @@
 				3FF10CA12C3F5E12000CE3B1 /* PhoneNumberViewModel.swift in Sources */,
 				3F8AE7022C59E0E100E999C4 /* CreateFeedPostsResponseResponseEntity.swift in Sources */,
 				0087C29A2BE161C9004CED9C /* CheckNameUseCase.swift in Sources */,
+				3FDCDA2C2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift in Sources */,
 				3F8530F02C5639E3003FA07A /* CreateReactionToPostUseCase.swift in Sources */,
 				3FF107082BEA086900C52908 /* GetCheckInvitationsReponseDTO.swift in Sources */,
 				9473261D2C2156400030A182 /* FullScreenModalModifier.swift in Sources */,
