@@ -12,39 +12,54 @@ struct CreateTreehouseNameView: View {
     // MARK: - State Property
     
     @Environment(ViewRouter.self) var viewRouter
+    @State var createTreehouseViewModel = CheckTreehouseNameViewModel(checkTreehouseNameUseCase: CheckTreehouseNameUseCase(repository: TreehouseRepositoryImpl()))
     
     @State var treehouseName: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
     @FocusState private var focusedField: Bool
+    @State var isLengthValid = false
     @State var isButtonEnabled = false
     @State var errorMessage = ""
     
     // MARK: - View
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 22) {
+        VStack(alignment: .leading, spacing: 0) {
             ProgressView(value: 0.5)
                 .tint(.treeGreen)
-                .padding(.bottom, 14)
                 .padding(.top, 14)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 36 / 852)
             
-            Text("새로운 트리하우스의 이름을 만들어주세요!")
+            Text("새로운 트리하우스의\n이름을 만들어주세요!")
                 .fontWithLineHeight(fontLevel: .heading1)
                 .foregroundStyle(.treeBlack)
                 .padding(.leading, 8)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 22 / 852)
             
             Text("트리하우스의 이름은 중복될 수 없어요.")
                 .fontWithLineHeight(fontLevel: .body3)
                 .foregroundStyle(.gray5)
                 .padding(.leading, 8)
+                .padding(.bottom, SizeLiterals.Screen.screenHeight * 54 / 852)
             
             treehouseNameTextField
-                .padding(.top, 32)
+                .padding(.horizontal, 8)
             
             Spacer()
             
             Button(action: {
-                viewRouter.push(CreateTreehouseRouter.sendInvitationView)
+                createTreehouseViewModel.treehouseName = treehouseName
+                
+                Task {
+                    await createTreehouseViewModel.postCheckTreehouseName()
+                    
+                    if createTreehouseViewModel.isAvailable == true {
+                        viewRouter.push(CreateTreehouseRouter.sendInvitationView(treehouseName: treehouseName))
+                    } else {
+                        textFieldState = .duplicated
+                        errorMessage = StringLiterals.Register.indicatorTitle6
+                    }
+                }
             }) {
                 Text("트리하우스 이름 정하기")
                     .fontWithLineHeight(fontLevel: .body2)
@@ -56,9 +71,9 @@ struct CreateTreehouseNameView: View {
                     .cornerRadius(10)
                     .padding(.trailing, 1)
             }
-            .padding(.bottom, 30)
-            .padding(.leading, 8)
-            .padding(.trailing, 9)
+            .disabled(!(isButtonEnabled))
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
+            .padding(.horizontal, 8)
         }
         .padding(.leading, 16)
         .padding(.trailing, 16)
@@ -86,16 +101,44 @@ struct CreateTreehouseNameView: View {
         .onChange(of: focusedField) { _, newValue in
             if newValue == true {
                 textFieldState = .enable
+            } else if isLengthValid == false {
+                textFieldState = .unable
             } else {
                 textFieldState = .notFocused
             }
         }
         .onChange(of: treehouseName) { _, newValue in
-            if newValue.isEmpty {
-                isButtonEnabled = false
-            } else {
+            if treehouseName.count >= 2 && treehouseName.count <= 20  {
+                isLengthValid = true
+                textFieldState = .enable
+                errorMessage = ""
                 isButtonEnabled = true
+            } else if newValue.isEmpty {
+                isButtonEnabled = false
+                errorMessage = ""
+                textFieldState = .enable
+            } else {
+                isLengthValid = false
+                textFieldState = .unable
+                errorMessage = StringLiterals.Register.indicatorTitle7
+                isButtonEnabled = false
             }
+            
+//            if self.isLengthValidTreehouseName(newValue) {
+//                isLengthValid = true
+//                errorMessage = ""
+//                isButtonEnabled = true
+//            } else if newValue.isEmpty { // 글자가 아에 없을 때
+//                isLengthValid = false
+//                textFieldState = .enable
+//                errorMessage = ""
+//                isButtonEnabled = false
+//            } else {
+//                isLengthValid = false
+//                errorMessage = StringLiterals.Register.indicatorTitle7
+//                textFieldState = .unable
+//                isButtonEnabled = false
+//            }
         }
     }
 }
@@ -119,9 +162,19 @@ private extension CreateTreehouseNameView {
                 .cornerRadius(12)
                 .autocapitalization(.none)
             
-            Text(errorMessage)
-                .fontWithLineHeight(fontLevel: .caption1)
-                .foregroundStyle(.error)
+            HStack(spacing: 0) {
+                if textFieldState == .unable || textFieldState == .duplicated {
+                    Text(errorMessage)
+                        .fontWithLineHeight(fontLevel: .caption1)
+                        .foregroundStyle(.error)
+                }
+                
+                Spacer()
+                
+                Text("( \(treehouseName.count) / 20 )")
+                    .fontWithLineHeight(fontLevel: .caption1)
+                    .foregroundStyle(.gray6)
+            }
         }
     }
 }
@@ -130,4 +183,5 @@ private extension CreateTreehouseNameView {
 
 #Preview {
     CreateTreehouseNameView()
+        .environment(ViewRouter())
 }
