@@ -91,6 +91,7 @@
 		3F32C0472C635DDB00705708 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C0462C635DDB00705708 /* FirebaseAnalytics */; };
 		3F32C0492C635DDB00705708 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C0482C635DDB00705708 /* FirebaseAuth */; };
 		3F32C04B2C635DDB00705708 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C04A2C635DDB00705708 /* FirebaseMessaging */; };
+		3F32C04D2C6362FA00705708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F32C04C2C6362FA00705708 /* GoogleService-Info.plist */; };
 		3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */; };
 		3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */; };
 		3F3DAE9D2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */; };
@@ -365,6 +366,7 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		3F32C04C2C6362FA00705708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCommentUseCase.swift; sourceTree = "<group>"; };
 		3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyTreehouseInfoResponseDTO.swift; sourceTree = "<group>"; };
@@ -884,6 +886,7 @@
 				00CF35852BC291FC00D9E332 /* Assets.xcassets */,
 				3FF1072A2BEA0BE700C52908 /* Config.swift */,
 				00F592432BF5F4F700BF6AED /* Config.xcconfig */,
+				3F32C04C2C6362FA00705708 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1815,6 +1818,7 @@
 				00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */,
 				00F592442BF5F4F700BF6AED /* Config.xcconfig in Resources */,
 				00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */,
+				3F32C04D2C6362FA00705708 /* GoogleService-Info.plist in Resources */,
 				3F8F2A812C18AB1400D8CB9F /* structuredEmojis.json in Resources */,
 				3FA541572C60F12100723BAD /* treehouse_loading.json in Resources */,
 			);
