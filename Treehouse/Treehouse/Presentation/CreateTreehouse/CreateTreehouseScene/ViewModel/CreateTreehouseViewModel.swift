@@ -29,10 +29,12 @@ final class CreateTreehouseViewModel: BaseViewModel {
 
 extension CreateTreehouseViewModel {
     func createTreehouse() async -> Int? {
-        let result = await createTreehouseUseCase.execute(request: PostCreateTreehouseRequestDTO(treehouseName: treehouseName, treeholeName: ""))
+        print(treehouseName)
+        let result = await createTreehouseUseCase.execute(request: PostCreateTreehouseRequestDTO(treehouseName: treehouseName, treeholeName: "아요"))
         
         switch result {
         case .success(let response):
+            print("API 성공: ", response.treehouseId)
             return response.treehouseId
         case .failure(let error):
             await MainActor.run {

@@ -26,6 +26,7 @@ final class TreehouseViewModel: BaseViewModel {
     
     var treehouseInfo: [ReadTreehouseInfoResponseEntity]?
     var treehouseData: ReadTreehouseInfoResponseEntity?
+    var isloading: Bool = true
     var errorMessage: String = ""
     
     // MARK: - init
@@ -59,6 +60,7 @@ extension TreehouseViewModel {
             
             if let index = treehouseInfo?.firstIndex(where: { $0.treehouseId == currentTreehouseId }) {
                 treehouseInfo?[index].currentTreeHouse = true
+                isloading = false
             }
             
         case .failure(let error):

@@ -14,6 +14,7 @@ struct TreeTabView: View {
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @State private var userInfoViewModel = UserInfoViewModel()
     @State private var currentTreehouseInfoViewModel = CurrentTreehouseInfoViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
     
@@ -65,6 +66,10 @@ struct TreeTabView: View {
                 viewRouter.buildScene(inputRouter: router)
             }
             .onAppear {
+                if selectedTreehouseId != -1 {
+                    currentTreehouseInfoViewModel.currentTreehouseId = selectedTreehouseId
+                }
+                
                 if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
                     Task {
                         await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
@@ -73,6 +78,8 @@ struct TreeTabView: View {
                     if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
                         currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
                         currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                        
+                        selectedTreehouseId = treehouseId
                         
                         Task {
                             await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
@@ -89,6 +96,11 @@ struct TreeTabView: View {
                 UITabBar.appearance().standardAppearance = appearance
                 // 완전히 스크롤 됐을 때 의 TabBar Layout
                 UITabBar.appearance().scrollEdgeAppearance = appearance
+            }
+            .onChange(of: selectedTreehouseId) { _, newValue in
+                print("변경전: ", currentTreehouseInfoViewModel.currentTreehouseId)
+                currentTreehouseInfoViewModel.currentTreehouseId = newValue
+                print("변경됨: ", currentTreehouseInfoViewModel.currentTreehouseId)
             }
         }
     }

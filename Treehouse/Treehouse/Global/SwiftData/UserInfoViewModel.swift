@@ -18,8 +18,8 @@ final class UserInfoViewModel: BaseViewModel {
 
     var userInfo: UserInfoData? {
         didSet {
-            print("유저 name: \(userInfo?.userName!)")
-            print("유저 Treehouse: \(userInfo?.treehouses!)")
+            print("유저 name: \(userInfo?.userName)")
+            print("유저 Treehouse: \(userInfo?.treehouses)")
         }
     }
 

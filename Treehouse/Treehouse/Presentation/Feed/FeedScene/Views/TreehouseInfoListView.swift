@@ -10,6 +10,7 @@ import SwiftUI
 struct TreehouseInfoListView: View {
     
     @Environment(ViewRouter.self) var viewRouter
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     @Binding var treehouseInfoData: [ReadTreehouseInfoResponseEntity]?
     @Binding var isPresent: Bool
     
@@ -24,7 +25,8 @@ struct TreehouseInfoListView: View {
             if let data = treehouseInfoData {
                 ForEach(data) { data in
                     Button(action: {
-//                        data.currentTreeHouse = true
+                        selectedTreehouseId = data.treehouseId
+                        isPresent.toggle()
                     }) {
                         TreehouseInfoRow(treehouseImageUrl: data.treehouseImageUrl ?? "",
                                          treehouseName: data.treehouseName,

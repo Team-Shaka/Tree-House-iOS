@@ -125,6 +125,10 @@ extension PostViewModel {
                 print(errorMessage)
             }
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading = true
+            }
+            
             return false
         }
     }
