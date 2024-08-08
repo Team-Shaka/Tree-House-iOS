@@ -10,6 +10,8 @@
 	<string>Treehouse에서 사진을 선택하기 위해 사진첩에 접근합니다.</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>WEB_FRONT_URL</key>
+	<string>$(WEB_FRONT_URL)</string>
 	<key>REFRESH_TOKEN_KEY</key>
 	<string>$(REFRESH_TOKEN_KEY)</string>
 	<key>UIAppFonts</key>
