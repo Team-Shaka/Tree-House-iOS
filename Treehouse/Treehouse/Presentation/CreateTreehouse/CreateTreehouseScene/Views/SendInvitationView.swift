@@ -25,6 +25,7 @@ struct SendInvitationView: View {
     @State private var userInfoViewModel = UserInfoViewModel()
     @State var phoneNumberViewModel = PhoneNumberViewModel()
     
+    @AppStorage("treehouseId") private var selectedTreehouseId = -1
     @State private var inviteCount: Int = 0
     @State private var searchText: String = ""
     @State private var showPopover: Bool = false
@@ -86,8 +87,11 @@ struct SendInvitationView: View {
             Button(action: {
                 // TODO: - 다음 뷰로 연결
                 Task {
-                    let treehouseId = await createTreehouseViewModel.createTreehouse()
-//                    userInfoViewModel.
+                    let result = await performAsyncTasks()
+                    
+                    if result {
+                        viewRouter.popToRoot()
+                    }
                 }
             }) {
                 Text("다 초대했어요")
@@ -104,7 +108,11 @@ struct SendInvitationView: View {
             Button(action: {
                 // TODO: - 다음 뷰로 연결
                 Task {
-                    await performAsyncTasks()
+                    let result = await performAsyncTasks()
+                    
+                    if result {
+                        viewRouter.popToRoot()
+                    }
                 }
             }) {
                 Text("지금은 건너뛸래요")
@@ -123,7 +131,7 @@ struct SendInvitationView: View {
             }
             .onAppear {
                 Task {
-                    await performAsyncTasks()
+                    await viewModel.checkAvailableInvitation()
                 }
             }
             .onChange(of: phoneNumberViewModel.searchText) { _, _ in
@@ -152,14 +160,20 @@ struct SendInvitationView: View {
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
     }
     
-    func performAsyncTasks() async {
+    func performAsyncTasks() async -> Bool {
         let treehouseId = await createTreehouseViewModel.createTreehouse()
         
         if let id = treehouseId {
             let result = userInfoViewModel.modifyTreehouse(treehouseId: id)
+            print("정보 저장 결과:", result)
             
-            
+            if result {
+                selectedTreehouseId = id
+                return true
+            }
         }
+        
+        return false
     }
 }
 
@@ -218,5 +232,5 @@ extension SendInvitationView {
 // MARK: - Preview
 
 #Preview {
-    SendInvitationView()
+    SendInvitationView(createTreehouseViewModel: CreateTreehouseViewModel(createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()), treehouseName: "treehouseName"))
 }

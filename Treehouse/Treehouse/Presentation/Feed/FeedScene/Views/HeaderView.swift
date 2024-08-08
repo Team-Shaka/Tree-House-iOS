@@ -53,6 +53,7 @@ struct HeaderView: View {
                     .padding(.trailing, 16)
             }
         }
+        .redacted(reason: currentTreehouseInfoViewModel.isloading ? .placeholder : [])
         .popup(isPresented: $isPresent) {
             TreehouseInfoListView(treehouseInfoData: $treehouseViewModel.treehouseInfo,
                                   isPresent: $isPresent)
