@@ -6,6 +6,8 @@
 	<string>$(ACCESS_TOKEN_KEY)</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>WEB_FRONT_URL</key>
+	<string>$(WEB_FRONT_URL)</string>
 	<key>LOGIN_KEY</key>
 	<string>$(LOGIN_KEY)</string>
 	<key>REFRESH_TOKEN_KEY</key>

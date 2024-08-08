@@ -292,6 +292,8 @@
 		94D388D52C2599B10058231B /* PreviewCreatedTreehouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D388D42C2599B10058231B /* PreviewCreatedTreehouseView.swift */; };
 		94D388D72C259F210058231B /* TreehouseCreatingSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D388D62C259F210058231B /* TreehouseCreatingSuccessView.swift */; };
 		94D388D92C287DC00058231B /* SendInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D388D82C287DC00058231B /* SendInvitationView.swift */; };
+		94D5FA8A2C5BD16A000A9357 /* TreeBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D5FA892C5BD16A000A9357 /* TreeBranchView.swift */; };
+		94D5FA8D2C5BD2BB000A9357 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D5FA8C2C5BD2BB000A9357 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -570,6 +572,8 @@
 		94D388D42C2599B10058231B /* PreviewCreatedTreehouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCreatedTreehouseView.swift; sourceTree = "<group>"; };
 		94D388D62C259F210058231B /* TreehouseCreatingSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseCreatingSuccessView.swift; sourceTree = "<group>"; };
 		94D388D82C287DC00058231B /* SendInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInvitationView.swift; sourceTree = "<group>"; };
+		94D5FA892C5BD16A000A9357 /* TreeBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBranchView.swift; sourceTree = "<group>"; };
+		94D5FA8C2C5BD2BB000A9357 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -872,6 +876,7 @@
 		00CF35902BC2DF9200D9E332 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				94D5FA8B2C5BD29C000A9357 /* WebView */,
 				3F3DAE992C588CD600C1424C /* ViewModel */,
 				3F0AC2FD2C2D539B009F8F46 /* SwiftData */,
 				94D1001B2C0CC5FE00025D43 /* PhotoPicker */,
@@ -910,6 +915,7 @@
 		00CF35992BC2E2E200D9E332 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				94D5FA842C5BD0E7000A9357 /* TreeBranch */,
 				94D388CD2C256C5D0058231B /* CreateTreehouse */,
 				00C2F55E2C11C0910009C6A1 /* Profile */,
 				9449C6CD2BDBA7CF00FC938B /* Feed */,
@@ -1740,6 +1746,38 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		94D5FA842C5BD0E7000A9357 /* TreeBranch */ = {
+			isa = PBXGroup;
+			children = (
+				94D5FA852C5BD118000A9357 /* TreeBranchScene */,
+			);
+			path = TreeBranch;
+			sourceTree = "<group>";
+		};
+		94D5FA852C5BD118000A9357 /* TreeBranchScene */ = {
+			isa = PBXGroup;
+			children = (
+				94D5FA862C5BD124000A9357 /* Views */,
+			);
+			path = TreeBranchScene;
+			sourceTree = "<group>";
+		};
+		94D5FA862C5BD124000A9357 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				94D5FA892C5BD16A000A9357 /* TreeBranchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		94D5FA8B2C5BD29C000A9357 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				94D5FA8C2C5BD2BB000A9357 /* WebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1870,6 +1908,7 @@
 				9412FF2F2BF6663A006A8A15 /* KeychainHelper.swift in Sources */,
 				944AA7122BC6E400008020C2 /* SetPhoneNumberView.swift in Sources */,
 				3FF4900C2C50FEAF00A6DD8A /* CreateTreehouseUseCase.swift in Sources */,
+				94D5FA8A2C5BD16A000A9357 /* TreeBranchView.swift in Sources */,
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
 				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
@@ -2015,6 +2054,7 @@
 				3FF4901E2C510FDE00A6DD8A /* ReadMemberInfoUseCase.swift in Sources */,
 				3F6801CD2C5FC065005E694E /* CustomAlertView.swift in Sources */,
 				3F5150462C0DD47600AD05C3 /* RegisterUserUseCase.swift in Sources */,
+				94D5FA8D2C5BD2BB000A9357 /* WebView.swift in Sources */,
 				00B591972C2355D800F7C38C /* CheckAvailableInvitationReponseEntity.swift in Sources */,
 				94D388D12C256DBF0058231B /* CreateTreehouseNameView.swift in Sources */,
 				9499D9572BF280B8007CC6CF /* NetworkServiceable.swift in Sources */,
