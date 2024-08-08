@@ -29,7 +29,7 @@ struct TreeTabView: View {
                     }
                     .environment(userInfoViewModel)
                 
-                TreeTab()
+                TreeBranchView()
                     .tabItem {
                         Label("트리", image: "ic_tree")
                     }
@@ -60,6 +60,7 @@ struct TreeTabView: View {
             }
             .onAppear {
                 if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
+                    viewRouter.selectedTreehouseId = currentTreehouseId
                     Task {
                         await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
                     }
@@ -67,6 +68,7 @@ struct TreeTabView: View {
                     if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
                         currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
                         currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                        viewRouter.selectedTreehouseId = treehouseId
                         
                         Task {
                             await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
