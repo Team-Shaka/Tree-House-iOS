@@ -36,6 +36,13 @@ final class ViewRouter: RouterAction {
         }
     }
     
+    // 추가: 선택된 트리하우스 ID
+    var selectedTreehouseId: Int? {
+        didSet {
+            print("Selected Treehouse ID: \(String(describing: selectedTreehouseId))")
+        }
+    }
+    
     func push(_ router: any Router) {
         print("router: \(router)")
         path.append(router)

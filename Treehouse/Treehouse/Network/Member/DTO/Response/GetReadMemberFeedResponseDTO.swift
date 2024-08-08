@@ -51,7 +51,6 @@ struct GetReadMemberFeedResponseDTO: Decodable {
          
         return result
     }
-    
 }
 
 struct PostListResponseDTO: Decodable {
