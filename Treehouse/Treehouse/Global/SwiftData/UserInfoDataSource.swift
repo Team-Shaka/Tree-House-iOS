@@ -54,6 +54,7 @@ final class UserInfoDataSource {
         
         do {
             try modelContext.save()
+            print("유저 정보 삭제 성공")
         } catch {
             fatalError(error.localizedDescription)
         }

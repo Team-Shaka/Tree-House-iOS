@@ -30,6 +30,8 @@ final class ViewRouter: RouterAction {
     
     private(set) var currentView: ViewType = .userAuthentication
     
+    var selectedTab: TabType = .home
+    
     var path = NavigationPath() {
         didSet {
             print(self.path.count)

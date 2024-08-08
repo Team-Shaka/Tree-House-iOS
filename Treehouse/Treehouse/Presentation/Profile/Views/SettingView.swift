@@ -16,6 +16,9 @@ enum SettingTitleState: String {
 
 struct SettingView: View {
     
+    @Environment(MyProfileViewModel.self) var myProfileViewModel
+    @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
+    
     // MARK: - Property
     
     public var settingTitle: String
@@ -50,31 +53,33 @@ struct SettingView: View {
                 .padding(.leading, 16)
             
             ForEach(settingList, id: \.self) { settingOption in
-                SettingRow(settingOption: settingOption)
+                Button(action: {
+                    buttonAction(titleName: settingOption)
+                }) {
+                    Text(settingOption)
+                        .fontWithLineHeight(fontLevel: .body2)
+                        .foregroundColor(.grayscaleBlack)
+                        .padding(.top, 16)
+                        .padding(.leading, 16)
+                }
             }
         }
         .padding(.bottom, 17)
     }
-}
-
-struct SettingRow: View {
     
-    // MARK: - Property
-    
-    public var settingOption: String
-    
-    public init(settingOption: String) {
-        self.settingOption = settingOption
-    }
-    
-    // MARK: - View
-    
-    var body: some View {
-        Text(settingOption)
-            .fontWithLineHeight(fontLevel: .body2)
-            .foregroundColor(.grayscaleBlack)
-            .padding(.top, 16)
-            .padding(.leading, 16)
+    private func buttonAction(titleName: String) {
+        switch titleName {
+        case "로그아웃 하기":
+            myProfileViewModel.isAlert.0.toggle()
+            myProfileViewModel.isAlert.1 = .logout
+            
+        case "회원탈퇴 하기":
+            myProfileViewModel.isAlert.0.toggle()
+            myProfileViewModel.isAlert.1 = .deleteAccount
+            
+        default:
+            myProfileViewModel.isAlert.0.toggle()
+        }
     }
 }
 

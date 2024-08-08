@@ -37,4 +37,9 @@ extension String {
         
         return "\(firstPart)-\(secondPart)-\(thirdPart)"
     }
+    
+    /// 한줄에 가능한 텍스트를 출력하기 위한 메서드
+    func splitCharacter() -> String {
+        return self.split(separator: "").joined(separator: "\u{200B}")
+    }
 }

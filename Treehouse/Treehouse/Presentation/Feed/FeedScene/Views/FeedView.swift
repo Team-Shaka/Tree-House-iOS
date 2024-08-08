@@ -25,12 +25,10 @@ struct FeedView: View {
     @Environment (PostViewModel.self) var postViewModel
     @Environment (EmojiViewModel.self) var emojiViewModel
     
-//    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()))
     @State var commentViewModel = CommentViewModel(createCommentUseCase: CreateCommentUseCase( repository: CommentRepositoryImpl()),readCommentUseCase: ReadCommentUseCase(repository: CommentRepositoryImpl()), createReplyCommentUseCase: CreateReplyCommentUseCase(repository: CommentRepositoryImpl()))
     
     @State var presingedURLViewModel = PresingedURLViewModel(presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()))
     @State var loadImageAWSViewModel = LoadImageAWSViewModel(uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()))
-    
     
     @State private var postContent: String = ""
     @State private var textFieldState: TextFieldStateType = .notFocused
@@ -47,7 +45,11 @@ struct FeedView: View {
         VStack(spacing: 0) {
             postTextField
             
-            feedRowView
+            if postViewModel.feedListData.isEmpty == false {
+                feedRowView
+            } else {
+                emptyFeedView
+            }
         }
         .popup(isPresented: $feedViewModel.isSelectEmojiView) {
             if let postId = feedViewModel.currentPostId {
@@ -93,11 +95,6 @@ struct FeedView: View {
         }
         .onTapGesture {
             hideKeyboard()
-        }
-        .task {
-            if feedViewModel.dataLoaded == false {
-                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
-            }
         }
     }
 }
@@ -222,7 +219,7 @@ extension FeedView {
             Image(.imgFeedempty)
             
             Text("아직 올라온 게시글이 없어요")
-                .font(.fontGuide(.heading4))
+                .fontWithLineHeight(fontLevel: .heading4)
                 .foregroundStyle(.gray5)
         }
         .frame(height: 482)
@@ -231,7 +228,7 @@ extension FeedView {
     @ViewBuilder
     var feedRowView: some View {
         ForEach(postViewModel.feedListData) { data in
-            VStack(spacing: 0) {
+            LazyVStack(spacing: 0) {
                 SinglePostView(postId: data.postId,
                                sentTime: data.postedAt,
                                postContent: data.context,
@@ -240,14 +237,12 @@ extension FeedView {
                                postType: .feedView)
 
                 VStack(alignment: .leading, spacing: 0) {
-//                    if !(data.reactionList.reactionList.isEmpty) {
-                        EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)
-                            .padding(.top, 10)
-                            .onAppear {
-                                postViewModel.feedEmojiData = data.reactionList
-                                feedViewModel.currentPostId = data.postId
-                            }
-//                    }
+                    EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)
+                        .padding(.top, 10)
+                        .onAppear {
+                            postViewModel.feedEmojiData = data.reactionList
+                            feedViewModel.currentPostId = data.postId
+                        }
                     
                     CommentCountView(commentCount: data.commentCount)
                         .padding(.top, 10)
@@ -259,6 +254,10 @@ extension FeedView {
                 }
                 .padding(.leading, 62)
                 .padding(.bottom, 16)
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+                    .foregroundColor(.gray3)
             }
             .background(
                 Color.clear

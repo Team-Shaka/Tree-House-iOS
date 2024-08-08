@@ -27,26 +27,30 @@ struct GetReadMemberFeedResponseDTO: Decodable {
         var result = [PostListResponseEntity]()
         
         data.forEach {
-            result.append(PostListResponseEntity(postId: $0.postId,
-                                   context: $0.context,
-                                   pictureUrlList: $0.pictureUrlList,
-                                   commentCount: $0.commentCount,
-                                   reactionList: convertReactionListEntity($0.reactionList),
-                                   postedAt: $0.postedAt)
+            result.append(
+                PostListResponseEntity(
+                    postId: $0.postId,
+                    context: $0.context,
+                    pictureUrlList: $0.pictureUrlList,
+                    commentCount: $0.commentCount,
+                    reactionList: convertReactionListDataEntity($0.reactionList),
+                    postedAt: $0.postedAt
+                )
             )
         }
         
         return result
     }
     
+    private func convertReactionListDataEntity(_ data: ReactionListData) -> ReactionListDataEntity {
+        return ReactionListDataEntity(reactionList: convertReactionListEntity(data.reactionList))
+    }
+    
     private func convertReactionListEntity(_ data: [ReactionListResponseData]) -> [ReactionListEntity] {
         var result = [ReactionListEntity]()
         
         data.forEach {
-            result.append(ReactionListEntity(reactionName: $0.reactionName, 
-                                             reactionCount: $0.reactionCount,
-                                             isPushed: $0.isPushed)
-            )
+            result.append(ReactionListEntity(reactionName: $0.reactionName, reactionCount: $0.reactionCount, isPushed: $0.isPushed))
         }
          
         return result
@@ -58,6 +62,6 @@ struct PostListResponseDTO: Decodable {
     let context: String
     let pictureUrlList: [String]
     let commentCount: Int
-    let reactionList: [ReactionListResponseData]
+    let reactionList: ReactionListData//[ReactionListResponseData]
     let postedAt: String
 }

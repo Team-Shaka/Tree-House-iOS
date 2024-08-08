@@ -13,6 +13,7 @@ enum ImageType {
     case postMemberProfileImage
     case memberProfileImage
     case postImage
+    case notiProfileImage
 }
 
 struct CustomAsyncImage: View {
@@ -21,6 +22,21 @@ struct CustomAsyncImage: View {
     var type: ImageType
     var width: CGFloat
     var height: CGFloat
+    var onImageLoaded: ((Image) -> Void)?
+    
+    init(url: String, type: ImageType, width: CGFloat, height: CGFloat) {
+        self.url = url
+        self.type = type
+        self.width = width
+        self.height = height
+    }
+    
+    init(url: String, type: ImageType, width: CGFloat, height: CGFloat, onImageLoaded: @escaping (Image) -> Void) {
+        self.init(url: url, type: type, width: width, height: height)
+        if type == .postImage {
+            self.onImageLoaded = onImageLoaded
+        }
+    }
     
     var body: some View {
         AsyncImage(url: URL(string: url)) { phase in
@@ -29,6 +45,12 @@ struct CustomAsyncImage: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .onAppear {
+                        print("Image 로드 됨")
+                        if type == .postImage {
+                            onImageLoaded?(image)
+                        }
+                    }
                    
             case .failure(_):
                 Image(systemName: "exclamationmark.icloud.fill")
@@ -42,7 +64,7 @@ struct CustomAsyncImage: View {
                         Image(.imgUser)
                             .resizable()
                             .scaledToFit()
-                    case .postMemberProfileImage:
+                    case .postMemberProfileImage, .notiProfileImage:
                         Image(.imgProfile)
                             .resizable()
                             .scaledToFit()
@@ -59,19 +81,16 @@ struct CustomAsyncImage: View {
                             .resizable()
                             .scaledToFit()
                     }
-                } else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
                 }
-            
             @unknown default:
                 ProgressView()
             }
-        }.frame(width: width, height: height)
+        }
+        .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
         .cornerRadius(6.0)
     }
 }
 
-#Preview {
-    CustomAsyncImage(url: "", type: .treehouseImage, width: 36, height: 36)
-}
+//#Preview {
+//    CustomAsyncImage(url: "", type: .treehouseImage, width: 36, height: 36)
+//}

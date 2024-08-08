@@ -29,6 +29,7 @@ struct PostDetailView: View {
     @FocusState private var isKeyboardShowing: Bool
     
     @State var isloading = true
+//    @GestureState private var dragOffset = CGSize.zero
     
     // MARK: - View
     
@@ -90,30 +91,16 @@ struct PostDetailView: View {
                     
                 }
             }
+            .background(.grayscaleWhite)
+            .redacted(reason: isloading ? .placeholder : [])
         }
         .onTapGesture {
             commentViewModel.commentState = .createComment
             commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             hideKeyboard()
         }
-        .navigationBarBackButtonHidden()
+        .navigationTitle("게시글")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    viewRouter.pop()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.treeBlack)
-                }
-            }
-            
-            ToolbarItem(placement: .principal) {
-                Text("게시글")
-                    .fontWithLineHeight(fontLevel: .body2)
-                    .foregroundStyle(.treeBlack)
-            }
-        }
         .popup(isPresented: $emojiViewModel.isSelectFeedEmojiView) {
             if let postId = feedViewModel.currentPostId {
                 EmojiGridView(emojiType: .feedView, postId: postId)
@@ -148,7 +135,6 @@ struct PostDetailView: View {
                 commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             }
         }
-        .redacted(reason: isloading ? .placeholder : [])
     }
     
     func performAsyncTasks() async {

@@ -23,6 +23,8 @@ final class CurrentTreehouseInfoViewModel: BaseViewModel {
     
     var errorMessage: String = ""
     
+    var isAlert: (Bool, AlertType) = (false, .logout)
+    
     // MARK: - init
     
     init(getReadTreehouseInfoUseCase: GetReadTreehouseInfoUseCaseProtocol) {

@@ -18,9 +18,9 @@ struct ShowMemberProfileView: View {
     @Environment(ViewRouter.self) private var viewRouter
     
     @State private var userInfoViewModel = UserInfoViewModel()
-    @State var userId: String = "younkyum"
-    @State var bio: String = "안녕하세요, 진윤겸입니다!"
     @State var isRetryButtonDisabled = false
+    
+    @AppStorage(Config.loginKey) private var isLogin = false
     
     // MARK: - View
     
@@ -51,6 +51,7 @@ struct ShowMemberProfileView: View {
                 let userDataResult = await userInfoViewModel.createData(newData: createResult)
                 
                 if result && userDataResult {
+                    isLogin = true
                     viewRouter.navigate(viewType: .enterTreehouse)
                 }
             }

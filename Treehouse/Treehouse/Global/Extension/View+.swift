@@ -20,16 +20,24 @@ struct FontWithLineHeight: ViewModifier {
 }
 
 struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
+    var radius: CGFloat
+    var corners: UIRectCorner
     
     public init(radius: CGFloat, corners: UIRectCorner) {
-        self.radius = radius
+        self.radius = max(radius, 0) // 음수 값 방지
         self.corners = corners
     }
     
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        guard !rect.isEmpty else {
+            return Path()
+        }
+        
+        // Ensure radius is valid and non-zero
+        let validRadius = radius.isNaN ? 0 : radius
+        
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: validRadius, height: validRadius))
         return Path(path.cgPath)
     }
 }
@@ -86,5 +94,34 @@ extension View {
             self
             CustomBottomSheet(content: content, isPresented: isPresented, topPadding: topPadding)
         }
+    }
+}
+
+extension View {
+    func customAlert(alertType: AlertType,
+                              isPresented: Binding<Bool>,
+                              onCancel: @escaping () -> Void,
+                              onConfirm: @escaping () -> Void) -> some View {
+        self
+            .fullScreenCover(isPresented: isPresented) {
+                CustomAlertView(
+                    alertType: alertType,
+                    onCancel: {
+                        onCancel()
+                        isPresented.wrappedValue = false
+                    },
+                    onConfirm: {
+                        onConfirm()
+                        isPresented.wrappedValue = false
+                    }
+                )
+                .presentationBackground {
+                    Color.alertBackground
+                        .background(.ultraThinMaterial)
+                }
+            }
+            .transaction { transaction in
+                transaction.disablesAnimations = true
+            }
     }
 }
