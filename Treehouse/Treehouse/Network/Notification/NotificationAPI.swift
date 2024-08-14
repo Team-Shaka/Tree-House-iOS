@@ -8,25 +8,28 @@
 import Foundation
 
 enum NotificationAPI {
-    case getCheckNotifications
+    case getReadNotifications
+    case postCheckNotifications(notificationId: Int)
 }
 
 extension NotificationAPI: BaseRequest {
     var path: String {
         switch self {
-        case .getCheckNotifications: return "users/notifiactions"
+        case .getReadNotifications: return "users/notifications"
+        case .postCheckNotifications(let notificationId): return "users/notifications/\(notificationId)"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .getCheckNotifications: return .get
+        case .getReadNotifications: return .get
+        case .postCheckNotifications: return .post
         }
     }
     
     var headerType: HeaderType {
         switch self {
-        case .getCheckNotifications:
+        case .getReadNotifications, .postCheckNotifications:
             return .accessTokenHeader
         }
     }

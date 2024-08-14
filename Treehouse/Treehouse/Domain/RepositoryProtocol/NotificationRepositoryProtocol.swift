@@ -8,6 +8,6 @@
 import Foundation
 
 protocol NotificationRepositoryProtocol {
-    func getCheckNotification() async ->
-    Result<CheckNotificationResponseEntity, NetworkError>
+    func getReadNotification() async -> Result<ReadNotificationResponseEntity, NetworkError>
+    func postCheckNotification(notificationId: Int) async -> Result<CheckNotificationsResponseEntity, NetworkError>
 }

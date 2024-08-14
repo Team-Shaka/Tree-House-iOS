@@ -2,24 +2,23 @@
 //  CheckNotificationUseCase.swift
 //  Treehouse
 //
-//  Created by 윤영서 on 7/10/24.
+//  Created by ParkJunHyuk on 8/7/24.
 //
 
 import Foundation
 
-protocol GetCheckNotificationUseCaseProtocol {
-    func execute() async ->
-    Result<CheckNotificationResponseEntity, NetworkError>
+protocol PostCheckNotificationUseCaseProtocol {
+    func execute(notificationId: Int) async -> Result<CheckNotificationsResponseEntity, NetworkError>
 }
 
-final class CheckNotificationUseCase: GetCheckNotificationUseCaseProtocol {
+final class CheckNotificationUseCase: PostCheckNotificationUseCaseProtocol {
     private let repository: NotificationRepositoryProtocol
     
     init(repository: NotificationRepositoryProtocol) {
         self.repository = repository
     }
     
-    func execute() async -> Result<CheckNotificationResponseEntity, NetworkError> {
-        return await repository.getCheckNotification()
+    func execute(notificationId: Int) async -> Result<CheckNotificationsResponseEntity, NetworkError> {
+        return await repository.postCheckNotification(notificationId: notificationId)
     }
 }

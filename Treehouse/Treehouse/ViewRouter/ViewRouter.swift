@@ -30,9 +30,18 @@ final class ViewRouter: RouterAction {
     
     private(set) var currentView: ViewType = .userAuthentication
     
+    var selectedTab: TabType = .home
+    
     var path = NavigationPath() {
         didSet {
             print(self.path.count)
+        }
+    }
+    
+    // 추가: 선택된 트리하우스 ID
+    var selectedTreehouseId: Int? {
+        didSet {
+            print("Selected Treehouse ID: \(String(describing: selectedTreehouseId))")
         }
     }
     

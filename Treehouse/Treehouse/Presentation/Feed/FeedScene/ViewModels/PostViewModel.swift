@@ -48,11 +48,8 @@ final class PostViewModel: BaseViewModel {
     
     func changeEmojiData(postId: Int, selectEmoji: String) async {
         if let postIndex = feedListData.firstIndex(where: { $0.postId == postId }) {
-//            if let index = feedEmojiData?.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
             if let index = feedListData[postIndex].reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
-//                if feedListData[postIndex].feedEmojiData?.reactionList[index].isPushed == false {
                 if feedListData[postIndex].reactionList.reactionList[index].isPushed == false {
-                    print("여기로 가야돼")
                     feedListData[postIndex].reactionList.reactionList[index].isPushed = true
                     feedListData[postIndex].reactionList.reactionList[index].reactionCount += 1
                 } else {
@@ -67,30 +64,6 @@ final class PostViewModel: BaseViewModel {
                 feedListData[postIndex].reactionList.reactionList.append(ReactionListEntity(reactionName: selectEmoji, reactionCount: 1, isPushed: true))
             }
         }
-        
-//        if let index = feedEmojiData?.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
-//            if feedEmojiData?.reactionList[index].isPushed == false {
-//                print("증가")
-//                feedEmojiData?.reactionList[index].isPushed = true
-//                feedEmojiData?.reactionList[index].reactionCount += 1
-//                
-//                if let index = feedListData.firstIndex(where: {$0.postId == postId}) {
-//                    feedListData[index].reactionList = feedEmojiData ?? ""
-//                }
-//            } else {
-//                print("감소")
-//                feedEmojiData?.reactionList[index].isPushed = false
-//                feedEmojiData?.reactionList[index].reactionCount -= 1
-//                
-//                if feedEmojiData?.reactionList[index].reactionCount == 0 {
-//                    await MainActor.run {
-//                        feedEmojiData?.reactionList.remove(at: index)
-//                    }
-//                }
-//            }
-//        } else {
-//            feedEmojiData?.reactionList.append(ReactionListEntity(reactionName: selectEmoji, reactionCount: 1, isPushed: true))
-//        }
     }
     
     func changePostContent(postId: Int, content: String) -> Bool {

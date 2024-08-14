@@ -22,7 +22,7 @@ struct TreeTabView: View {
         @Bindable var viewRouter = viewRouter
         
         NavigationStack(path: $viewRouter.path) {
-            TabView {
+            TabView(selection: $viewRouter.selectedTab) {
                 FeedHomeView()
                     .background(.grayscaleWhite)
                     .tabItem {
@@ -30,18 +30,21 @@ struct TreeTabView: View {
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
+                    .tag(TabType.home)
                 
-                TreeTab()
+                TreeBranchView()
                     .tabItem {
                         Label("트리", image: "ic_tree")
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
+                    .tag(TabType.tree)
                 
                 NotificationView()
                     .tabItem {
                         Label("알림", image: "ic_noti")
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
+                    .tag(TabType.notice)
                 
                 MyProfileView()
                     .background(.grayscaleWhite)
@@ -50,6 +53,7 @@ struct TreeTabView: View {
                             .fontWithLineHeight(fontLevel: .caption2)
                     }
                     .environment(userInfoViewModel)
+                    .tag(TabType.setting)
             }
             .tint(.treeGreen)
             .environment(viewRouter)
@@ -71,6 +75,7 @@ struct TreeTabView: View {
                 }
                 
                 if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
+                    viewRouter.selectedTreehouseId = currentTreehouseId
                     Task {
                         await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
                     }
@@ -78,6 +83,7 @@ struct TreeTabView: View {
                     if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
                         currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
                         currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                        viewRouter.selectedTreehouseId = treehouseId
                         
                         selectedTreehouseId = treehouseId
                         
@@ -111,4 +117,11 @@ struct TreeTabView: View {
 #Preview {
     TreeTabView()
         .environment(ViewRouter())
+}
+
+enum TabType {
+    case home
+    case tree
+    case notice
+    case setting
 }
