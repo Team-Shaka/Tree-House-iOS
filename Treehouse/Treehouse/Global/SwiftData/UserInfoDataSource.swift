@@ -38,11 +38,6 @@ final class UserInfoDataSource {
     func fetchItem() -> UserInfoData? {
         do {
             let data = try modelContext.fetch(FetchDescriptor<UserInfoData>())
-            data.forEach {
-                print($0.userName)
-            }
-            print("유저 정보 불러오기: \(String(describing: data.first?.userName))")
-
             return data.first
         } catch {
             fatalError(error.localizedDescription)
