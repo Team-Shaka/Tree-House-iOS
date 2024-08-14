@@ -35,8 +35,11 @@ struct CommentView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            Image(.icNotiMember)
-                .frame(width: 36, height: 36)
+            CustomAsyncImage(url: userProfile.memberProfileImageUrl ?? "",
+                              type: .postMemberProfileImage,
+                              width: 36,
+                              height: 36)
+                .clipShape(Circle())
                 .padding(.trailing, 10)
 //                .padding(.trailing, commentyType == .comment ? 8 : 10)
             

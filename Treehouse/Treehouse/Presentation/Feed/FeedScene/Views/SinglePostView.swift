@@ -27,7 +27,7 @@ struct SinglePostView: View {
     @State private var selectedImage: Int? = nil
     @State private var viewModel = SheetActionViewModel()
     
-    @State private var loadedImage = [(Int,Image)]()
+    @State private var loadedImage = [(Int,UIImage)]()
     @State private var isDetailImage = false
     
     // MARK: - Property
@@ -64,12 +64,8 @@ struct SinglePostView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-//                Rectangle()
-//                    .frame(maxWidth: .infinity, maxHeight: 1)
-//                    .foregroundColor(.gray3)
-                
                 HStack(alignment: .top, spacing: 10) {
-                    CustomAsyncImage(url: memberProfile.memberProfileImageUrl ?? "", 
+                    CustomAsyncImage(url: memberProfile.memberProfileImageUrl ?? "",
                                      type: .postMemberProfileImage,
                                      width: 36,
                                      height: 36)
@@ -176,12 +172,12 @@ extension SinglePostView {
     
     @ViewBuilder
     var singleImageView: some View {
-        CustomAsyncImage(url: postImageURLs.first ?? "", 
+        CustomAsyncImage(url: postImageURLs.first ?? "",
                          type: .postImage,
                          width: 314,
                          height: 200) { image in
                             self.loadedImage.append((0, image))
-                         }
+                        }
             .onTapGesture {
                 if postType == .DetailView {
                     isDetailImage.toggle()
@@ -203,7 +199,7 @@ extension SinglePostView {
                                      width: 206,
                                      height: 200) { image in
                                         self.loadedImage.append((index, image))
-                                     }
+                                    }
                         .onTapGesture {
                             if postType == .DetailView {
                                 isDetailImage.toggle()

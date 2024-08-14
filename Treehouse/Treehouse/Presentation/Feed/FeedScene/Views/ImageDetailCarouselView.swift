@@ -13,7 +13,7 @@ struct ImageDetailCarouselView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State var selectedIndex: Int
-    @Binding var images: [(Int,Image)]
+    @Binding var images: [(Int,UIImage)]
     
     // MARK: - View
     
@@ -21,7 +21,7 @@ struct ImageDetailCarouselView: View {
         NavigationStack {
             TabView(selection: $selectedIndex) {
                 ForEach(0..<images.count, id: \.self) { imageIndex in
-                    images[imageIndex].1
+                    Image(uiImage: images[imageIndex].1)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding(.horizontal, 5)

@@ -38,15 +38,23 @@ struct FeedView: View {
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
     
+    @State var scrolledID: Int?
+    
     // MARK: - View
     
     var body: some View {
         @Bindable var feedViewModel = feedViewModel
-        VStack(spacing: 0) {
+        LazyVStack(spacing: 0) {
             postTextField
             
             if postViewModel.feedListData.isEmpty == false {
                 feedRowView
+                
+                if postViewModel.isPageLoading {
+                    LottieView(lottieFile: "treehouse_loading", speed: 1)
+                        .frame(width: 40, height: 40)
+                        .padding(.vertical, 10)
+                }
             } else {
                 emptyFeedView
             }
@@ -228,13 +236,21 @@ extension FeedView {
     @ViewBuilder
     var feedRowView: some View {
         ForEach(postViewModel.feedListData) { data in
-            LazyVStack(spacing: 0) {
+            VStack(spacing: 0) {
                 SinglePostView(postId: data.postId,
                                sentTime: data.postedAt,
                                postContent: data.context,
                                postImageURLs: data.pictureUrlList,
                                memberProfile: data.memberProfile,
                                postType: .feedView)
+                .onAppear {
+                    print("\(data.context)")
+                    if data.id == postViewModel.feedListData.last?.id {
+                        Task {
+                            await postViewModel.pageReadFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                        }
+                    }
+                }
 
                 VStack(alignment: .leading, spacing: 0) {
                     EmojiListView(emojiType: .feedView, postId: data.postId, feedEmojiData: data.reactionList)

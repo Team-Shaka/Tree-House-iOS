@@ -15,7 +15,7 @@ struct MemberProfileView: View {
     
     @State var memberProfileViewModel: MemberProfileViewModel
     @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
-    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
+    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()), readPageFeedPostUseCase: ReadPageFeedPostUseCase(repository: FeedRepositoryImpl()))
     
     @State var isPresent = false
     @State var isLoading = true

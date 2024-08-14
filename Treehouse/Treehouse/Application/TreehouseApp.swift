@@ -16,6 +16,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     return true
   }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        // 앱이 종료될 때 캐시 제거
+        URLCache.shared.removeAllCachedResponses()
+        print("모든 캐시가 제거되었습니다.")
+    }
 }
 
 @main
@@ -27,6 +33,7 @@ struct TreehouseApp: App {
     
     init() {
         configureNavigationBar()
+        configureURLCache()
     }
     
     var body: some Scene {
@@ -39,6 +46,9 @@ struct TreehouseApp: App {
                     SetPhoneNumberView()
                         .environment(viewRouter)
                 }
+            }
+            .onAppear {
+                print("\(URLCache.shared.memoryCapacity / 1024 / 1024) MB")
             }
         }
     }
@@ -66,5 +76,19 @@ struct TreehouseApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
+    private func configureURLCache() {
+        
+        let totalMemory = ProcessInfo.processInfo.physicalMemory
+        let deviceAdjustedLimit = Int(Double(totalMemory) * 0.03)
+        
+        let memoryCapacity = 150 * 1024 * 1024 // 150 MB
+        let diskCapacity = 100 * 1024 * 1024 // 100 MB
+        
+        let cacheLimit = min(memoryCapacity, deviceAdjustedLimit)
+        
+        let cache = URLCache(memoryCapacity: cacheLimit, diskCapacity: diskCapacity, diskPath: "myImages")
+        URLCache.shared = cache
     }
 }
