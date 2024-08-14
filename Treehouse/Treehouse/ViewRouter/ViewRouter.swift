@@ -30,7 +30,13 @@ final class ViewRouter: RouterAction {
     
     private(set) var currentView: ViewType = .userAuthentication
     
-    var selectedTab: TabType = .home
+    var selectedTab: TabType = .home {
+        didSet {
+            isSameTap = oldValue == selectedTab ? true : false
+        }
+    }
+    
+    var isSameTap: Bool = false
     
     var path = NavigationPath() {
         didSet {
