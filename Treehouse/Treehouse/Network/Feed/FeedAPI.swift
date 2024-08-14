@@ -9,6 +9,7 @@ import Foundation
 
 enum FeedAPI {
     case getReadFeedPostsList(treehouseId: Int)
+    case getPageReadFeedPostsList(treehouseId: Int, page: Int)
     case postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO)
     case getReadDetailFeedPosts(treehouseId: Int, postId: Int)
     case deleteFeedPost(treehouseId: Int, postId: Int)
@@ -21,7 +22,7 @@ enum FeedAPI {
 extension FeedAPI: BaseRequest {
     var path: String {
         switch self {
-        case .getReadFeedPostsList(treehouseId: let treehouseId):
+        case .getReadFeedPostsList(treehouseId: let treehouseId), .getPageReadFeedPostsList(treehouseId: let treehouseId, _):
             return "treehouses/\(treehouseId)/feeds"
         case .postCreateFeedPosts(treehouseId: let treehouseId, _):
             return "treehouses/\(treehouseId)/feeds/posts"
@@ -40,7 +41,7 @@ extension FeedAPI: BaseRequest {
     
     var httpMethod: HttpMethod {
         switch self {
-        case .getReadFeedPostsList, .getReadDetailFeedPosts:
+        case .getReadFeedPostsList, .getPageReadFeedPostsList, .getReadDetailFeedPosts:
             return .get
         case .postCreateFeedPosts, .postReactionFeedPost, .postReportFeedPost, .postPresignedURL:
             return .post
@@ -57,7 +58,13 @@ extension FeedAPI: BaseRequest {
     
     var body: Data? { return .none }
 
-    var queryParameter: [String : Any]? { return .none }
+    var queryParameter: [String : Any]? {
+        switch self {
+        case .getPageReadFeedPostsList(_, let page):
+            return ["page": page]
+        default: return .none
+        }
+    }
     
     var requestBodyParameter: (any Codable)? {
         switch self {

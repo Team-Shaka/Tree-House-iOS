@@ -20,6 +20,9 @@ final class PostViewModel: BaseViewModel {
     @ObservationIgnored
     private var createFeedPostsUseCase: PostCreateFeedPostsUseCaseProtocol
     
+    @ObservationIgnored
+    private var readPageFeedPostUseCase: GetPageReadFeedPostUseCaseProtocol
+    
     // MARK: - Property
     
     var feedListData =  [GetReadFeedPostListResponseEntity]()
@@ -32,13 +35,19 @@ final class PostViewModel: BaseViewModel {
     
     var isLoading = false
     
+    var feedPageNum = 0
+    var isPageLoading = false
+    var lastPage = false
+    
     // MARK: - init
     
     init(readFeedPostUseCase: GetReadFeedPostUseCaseProtocol,
-         createFeedPostsUseCase: PostCreateFeedPostsUseCaseProtocol
+         createFeedPostsUseCase: PostCreateFeedPostsUseCaseProtocol,
+         readPageFeedPostUseCase: GetPageReadFeedPostUseCaseProtocol
     ) {
         self.readFeedPostUseCase = readFeedPostUseCase
         self.createFeedPostsUseCase = createFeedPostsUseCase
+        self.readPageFeedPostUseCase = readPageFeedPostUseCase
         print("PostViewModel init")
     }
     
@@ -80,6 +89,8 @@ final class PostViewModel: BaseViewModel {
 
 extension PostViewModel {
     func readFeedPostsList(treehouseId: Int) async -> Bool {
+        feedPageNum = 0
+        lastPage = false
         let result = await readFeedPostUseCase.execute(treehouseId: treehouseId)
         
         switch result {
@@ -90,6 +101,42 @@ extension PostViewModel {
                 self.isLoading = true
             }
             
+            return true
+            
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+                print(errorMessage)
+            }
+            
+            return false
+        }
+    }
+    
+    func pageReadFeedPostsList(treehouseId: Int) async -> Bool {
+        
+        if self.lastPage {
+            return false
+        } else {
+            isPageLoading = true
+            feedPageNum += 1
+        }
+        
+        let result = await readPageFeedPostUseCase.execute(treehouseId: treehouseId, page: feedPageNum)
+        
+        switch result {
+        case .success(let response):
+            if response.isEmpty {
+                lastPage = true
+                self.isPageLoading = false
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.feedListData += response
+                    self.isPageLoading = false
+                }
+            }
+            
+//            self.isPageLoading = false
             return true
             
         case .failure(let error):

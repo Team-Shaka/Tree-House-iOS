@@ -22,6 +22,17 @@ final class FeedService {
         return try await networkServiceManager.performRequest(with: urlRequest, decodingType: [GetReadFeedPostsListResponseDTO].self)
     }
     
+    /// Feed 의 게시글을 페이지네이션으로 읽어오는 API
+    func getPageReadFeedPost(treehouseId: Int, page: Int) async throws -> [GetReadFeedPostsListResponseDTO] {
+        let request = NetworkRequest(requestType: FeedAPI.getPageReadFeedPostsList(treehouseId: treehouseId, page: page))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: [GetReadFeedPostsListResponseDTO].self)
+    }
+    
     /// Feed 의 게시글을 작성하는 API
     func postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO) async throws -> PostCreateFeedPostsResponseDTO {
         let request = NetworkRequest(requestType: FeedAPI.postCreateFeedPosts(treehouseId: treehouseId, requestBody: requestBody))
