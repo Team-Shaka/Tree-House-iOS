@@ -58,40 +58,12 @@ struct TreeTabView: View {
             .tint(.treeGreen)
             .environment(viewRouter)
             .environment(currentTreehouseInfoViewModel)
-            .navigationDestination(for: ProfileRouter.self) { router in
-                switch router {
-                case .editProfileView:
-                    viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
-                case .memberProfileView:
-                    viewRouter.buildScene(inputRouter: router)
-                }
-            }
-            .navigationDestination(for: CreateTreehouseRouter.self) { router in
-                viewRouter.buildScene(inputRouter: router)
-            }
             .onAppear {
                 if selectedTreehouseId != -1 {
                     currentTreehouseInfoViewModel.currentTreehouseId = selectedTreehouseId
                 }
                 
-                if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    viewRouter.selectedTreehouseId = currentTreehouseId
-                    Task {
-                        await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
-                    }
-                } else {
-                    if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
-                        currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
-                        currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
-                        viewRouter.selectedTreehouseId = treehouseId
-                        
-                        selectedTreehouseId = treehouseId
-                        
-                        Task {
-                            await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
-                        }
-                    }
-                }
+                currentTreehousePerformRequest()
             }
             .onAppear {
                 let appearance = UITabBarAppearance()
@@ -107,6 +79,29 @@ struct TreeTabView: View {
                 print("변경전: ", currentTreehouseInfoViewModel.currentTreehouseId)
                 currentTreehouseInfoViewModel.currentTreehouseId = newValue
                 print("변경됨: ", currentTreehouseInfoViewModel.currentTreehouseId)
+                
+                currentTreehousePerformRequest()
+            }
+        }
+    }
+    
+    private func currentTreehousePerformRequest() {
+        if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
+            viewRouter.selectedTreehouseId = currentTreehouseId
+            Task {
+                await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
+            }
+        } else {
+            if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
+                currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
+                currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                viewRouter.selectedTreehouseId = treehouseId
+                
+                selectedTreehouseId = treehouseId
+                
+                Task {
+                    await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
+                }
             }
         }
     }

@@ -99,8 +99,23 @@ struct PostDetailView: View {
             commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             hideKeyboard()
         }
-        .navigationTitle("게시글")
+        .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    viewRouter.pop()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.treeBlack)
+                }
+            }
+            ToolbarItem(placement: .principal) {
+                Text("게시글")
+                    .fontWithLineHeight(fontLevel: .body2)
+                    .foregroundStyle(.treeBlack)
+            }
+        }
         .popup(isPresented: $emojiViewModel.isSelectFeedEmojiView) {
             if let postId = feedViewModel.currentPostId {
                 EmojiGridView(emojiType: .feedView, postId: postId)
@@ -168,7 +183,7 @@ extension PostDetailView {
                 .foregroundColor(.gray3)
             
             HStack(alignment: .bottom, spacing: 10) {
-                CustomAsyncImage(url: userInfoViewModel.userInfo?.profileImageUrl ?? "",
+                CustomAsyncImage(url: userInfoViewModel.userInfo?.treehouseInfo[feedViewModel.currentTreehouseId ?? 0].profileImageUrl?.absoluteString ?? "",
                                  type: .postMemberProfileImage,
                                  width: 36,
                                  height: 36)

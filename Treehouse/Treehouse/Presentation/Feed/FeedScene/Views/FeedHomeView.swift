@@ -48,7 +48,7 @@ struct FeedHomeView: View {
                     TreehouseCreatingSuccessView()
                 }
                 
-                if postViewModel.isLoading == false {
+                if postViewModel.isLoading {
                     VStack {
                         Spacer()
                         
@@ -85,11 +85,13 @@ struct FeedHomeView: View {
                 }
             }
         }
-        .onChange(of: selectedTreehouseId) { _, newValue in
+        .onChange(of: viewRouter.selectedTreehouseId) { _, newValue in
+            postViewModel.isLoading = true
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
             Task {
-                if feedViewModel.dataLoaded == false {
-                    feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                await MainActor.run {
+                    self.postViewModel.isLoading = true
                 }
             }
         }

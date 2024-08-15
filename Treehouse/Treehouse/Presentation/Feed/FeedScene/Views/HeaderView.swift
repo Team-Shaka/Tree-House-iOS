@@ -12,6 +12,10 @@ struct HeaderView: View {
     @Environment(ViewRouter.self) var viewRouter
     @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     @State var treehouseViewModel = TreehouseViewModel(readMyTreehouseInfoUseCase: ReadMyTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
+    @State var createTreehouseViewModel = CreateTreehouseViewModel(
+        checkTreehouseNameUseCase: CheckTreehouseNameUseCase(repository: TreehouseRepositoryImpl()),
+        createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl())
+    )
     
     // MARK: - Property
     
@@ -25,9 +29,7 @@ struct HeaderView: View {
     
     // MARK: - View
     
-    var body: some View {
-//        @Bindable var treehouseViewModel = treehouseViewModel
-        
+    var body: some View {        
         HStack {
             CustomAsyncImage(url: currentTreehouseInfoViewModel.treehouseImageUrl,
                              type: .postMemberProfileImage,
@@ -64,6 +66,9 @@ struct HeaderView: View {
                 .dragToDismiss(true)
                 .isOpaque(true)
                 .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        .navigationDestination(for: CreateTreehouseRouter.self) { router in
+            viewRouter.buildScene(inputRouter: router, viewModel: createTreehouseViewModel)
         }
 //        .onChange(of: treehouseId) { _, newValue in
 //            Task {

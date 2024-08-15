@@ -18,8 +18,10 @@ final class UserInfoViewModel: BaseViewModel {
 
     var userInfo: UserInfoData? {
         didSet {
-            print("유저 name: \(userInfo?.userName)")
-            print("유저 Treehouse: \(userInfo?.treehouses)")
+//            print("유저 userId: \(userInfo?.userId)")
+//            print("유저 name: \(userInfo?.userName)")
+//            print("유저 Treehouse: \(userInfo?.treehouses)")
+//            print("유저 TreehouseInfo: \(userInfo?.treehouseInfo.count)")
         }
     }
 
@@ -66,6 +68,15 @@ final class UserInfoViewModel: BaseViewModel {
     func modifyTreehouse(treehouseId: Int) -> Bool {
         if let data = userInfo {
             data.treehouses.append(treehouseId)
+        }
+        
+        return updateData()
+    }
+    
+    /// TreehouseInfo 추가하기 위한 메서드
+    func addTreehouseInfo(treehouseInfo: TreehouseInfo) -> Bool {
+        if let data = userInfo {
+            data.treehouseInfo.append(treehouseInfo)
         }
         
         return updateData()

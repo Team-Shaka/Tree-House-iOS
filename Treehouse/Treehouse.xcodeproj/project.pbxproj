@@ -91,11 +91,11 @@
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
-		3F32DAC22C5B89EF001786BC /* CreateTreehouseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */; };
 		3F32C0472C635DDB00705708 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C0462C635DDB00705708 /* FirebaseAnalytics */; };
 		3F32C0492C635DDB00705708 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C0482C635DDB00705708 /* FirebaseAuth */; };
 		3F32C04B2C635DDB00705708 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3F32C04A2C635DDB00705708 /* FirebaseMessaging */; };
 		3F32C04D2C6362FA00705708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F32C04C2C6362FA00705708 /* GoogleService-Info.plist */; };
+		3F32DAC22C5B89EF001786BC /* CreateTreehouseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */; };
 		3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */; };
 		3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */; };
 		3F3DAE9D2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */; };
@@ -195,7 +195,6 @@
 		3FDCDA282C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA272C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift */; };
 		3FDCDA2A2C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA292C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift */; };
 		3FDCDA2C2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA2B2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift */; };
-		3FDCDA2F2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */; };
 		3FDCDA312C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */; };
 		3FDCDA332C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCDA322C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift */; };
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
@@ -204,6 +203,7 @@
 		3FE944122BD3ADFF00C3A869 /* ReceivedInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */; };
 		3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */; };
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
+		3FEEF7652C6DF7B0002CBA53 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */; };
 		3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106F92BEA077E00C52908 /* BaseRequest.swift */; };
 		3FF106FC2BEA078D00C52908 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106FB2BEA078C00C52908 /* BaseResponse.swift */; };
 		3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF106FD2BEA079500C52908 /* HttpMethod.swift */; };
@@ -381,8 +381,8 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
-		3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseRouter.swift; sourceTree = "<group>"; };
 		3F32C04C2C6362FA00705708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseRouter.swift; sourceTree = "<group>"; };
 		3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCommentUseCase.swift; sourceTree = "<group>"; };
 		3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyTreehouseInfoResponseDTO.swift; sourceTree = "<group>"; };
@@ -481,7 +481,6 @@
 		3FDCDA272C6398DE00C7F7B6 /* PostCheckTreehouseNameResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckTreehouseNameResponseDTO.swift; sourceTree = "<group>"; };
 		3FDCDA292C63996300C7F7B6 /* CheckTreehouseNameResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameResponseEntity.swift; sourceTree = "<group>"; };
 		3FDCDA2B2C63999600C7F7B6 /* CheckTreehouseNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameUseCase.swift; sourceTree = "<group>"; };
-		3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTreehouseNameViewModel.swift; sourceTree = "<group>"; };
 		3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseViewModel.swift; sourceTree = "<group>"; };
 		3FDCDA322C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCheckTreehouseNameRequestDTO.swift; sourceTree = "<group>"; };
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
@@ -490,6 +489,7 @@
 		3FE944112BD3ADFF00C3A869 /* ReceivedInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationModel.swift; sourceTree = "<group>"; };
 		3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationViewModel.swift; sourceTree = "<group>"; };
 		3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationRowView.swift; sourceTree = "<group>"; };
+		3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		3FF106F92BEA077E00C52908 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		3FF106FB2BEA078C00C52908 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		3FF106FD2BEA079500C52908 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
@@ -1000,6 +1000,7 @@
 				3F1BE12B2C1FDF6700D3AF1D /* UIApplication+.swift */,
 				3FFA73132C3178F800C3AF4F /* Image+.swift */,
 				3FFA73152C318CC000C3AF4F /* Data+.swift */,
+				3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1284,7 +1285,6 @@
 		3FDCDA2D2C6399E800C7F7B6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3FDCDA2E2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift */,
 				3FDCDA302C63B6F900C7F7B6 /* CreateTreehouseViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1942,6 +1942,7 @@
 				3FF1071B2BEA0A4600C52908 /* PostRegisterUserRequestDTO.swift in Sources */,
 				3F5150442C0D96BE00AD05C3 /* NetworkRequest.swift in Sources */,
 				3F06C30A2BFDEF3F002B771B /* PostCreateFeedPostsResponseDTO.swift in Sources */,
+				3FEEF7652C6DF7B0002CBA53 /* UINavigationController+.swift in Sources */,
 				3F5150482C0DD4BB00AD05C3 /* RegisterUserResponseEntity.swift in Sources */,
 				3FF490182C5101DB00A6DD8A /* ReadMemberFeedResponseEntity.swift in Sources */,
 				3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */,
@@ -1968,7 +1969,6 @@
 				3F8AE7182C5B1D6F00E999C4 /* CurrentTreehouseInfoViewModel.swift in Sources */,
 				3FF490222C5115FF00A6DD8A /* ReadMemberFeedUseCase.swift in Sources */,
 				3F8AE71C2C5B415800E999C4 /* ModifyMyProfileViewModel.swift in Sources */,
-				3FDCDA2F2C6399FC00C7F7B6 /* CheckTreehouseNameViewModel.swift in Sources */,
 				3F8AE7082C59FD6B00E999C4 /* PresingedURLViewModel.swift in Sources */,
 				3FC1FB362BD8C76200AAE53F /* CommentView.swift in Sources */,
 				3F51504C2C0E069900AD05C3 /* RegisterTreeMemberResponseEntity.swift in Sources */,
