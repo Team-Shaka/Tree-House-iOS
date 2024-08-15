@@ -44,15 +44,29 @@ struct ShowMemberProfileView: View {
             isRetryButtonDisabled = true
             
             Task {
-                let result = await viewModel.registerTreeMember()
-                
-                guard let createResult = viewModel.createUserInfoData() else { return }
-                                
-                let userDataResult = await userInfoViewModel.createData(newData: createResult)
-                
-                if result && userDataResult {
-                    isLogin = true
-                    viewRouter.navigate(viewType: .enterTreehouse)
+                switch viewModel.registerType {
+                case .registerUser:
+                    let result = await viewModel.registerTreeMember()
+                    
+                    guard let createResult = viewModel.createUserInfoData() else { return }
+                                    
+                    let userDataResult = await userInfoViewModel.createData(newData: createResult)
+                    
+                    if result && userDataResult {
+                        isLogin = true
+                        viewRouter.navigate(viewType: .enterTreehouse)
+                    }
+                case .registerTreehouse:
+                    let result = await viewModel.registerTreeMember()
+                    
+                    guard let createResult = viewModel.createMemberInfoData() else { return }
+                    
+                    let userDataResult = userInfoViewModel.addTreehouseInfo(treehouseInfo: createResult)
+                    
+                    if result && userDataResult {
+                        isLogin = true
+                        viewRouter.navigate(viewType: .enterTreehouse)
+                    }
                 }
             }
         }) {
@@ -161,7 +175,7 @@ extension ShowMemberProfileView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()), registerType: .registerUser
                                              ))
     }
 }

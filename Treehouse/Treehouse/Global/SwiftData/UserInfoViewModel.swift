@@ -16,11 +16,7 @@ final class UserInfoViewModel: BaseViewModel {
     @ObservationIgnored
     private let dataSource: UserInfoDataSource
 
-    var userInfo: UserInfoData? {
-        didSet {
-            print("새로 바뀐 값: \(userInfo)")
-        }
-    }
+    var userInfo: UserInfoData?
 
     init(dataSource: UserInfoDataSource = UserInfoDataSource.shared) {
         self.dataSource = dataSource
@@ -61,6 +57,24 @@ final class UserInfoViewModel: BaseViewModel {
         return updateData()
     }
     
+    /// treehouse 를 추가하기 위한 메서드
+    func modifyTreehouse(treehouseId: Int) -> Bool {
+        if let data = userInfo {
+            data.treehouses.append(treehouseId)
+        }
+        
+        return updateData()
+    }
+    
+    /// TreehouseInfo 추가하기 위한 메서드
+    func addTreehouseInfo(treehouseInfo: TreehouseInfo) -> Bool {
+        if let data = userInfo {
+            data.treehouseInfo.append(treehouseInfo)
+        }
+        
+        return updateData()
+    }
+    
     /// User 정보를 지우기 위한 메서드
     func deleteMyData() {
         removeData()
@@ -72,7 +86,6 @@ final class UserInfoViewModel: BaseViewModel {
 private extension UserInfoViewModel {
     /// 새로운 데이터를 저장하기 위한 메서드
     func insertData(data: UserInfoData) -> Bool {
-//        guard let data = userInfo else { return false }
         let result = dataSource.insertUserInfo(data: data)
         return result
     }

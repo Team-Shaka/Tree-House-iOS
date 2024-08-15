@@ -18,6 +18,7 @@ struct FeedHomeView: View {
     @State var feedViewModel: FeedViewModel = FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
     @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
     @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
     
@@ -30,20 +31,24 @@ struct FeedHomeView: View {
                 .environment(currentTreehouseInfoViewModel)
             
             ZStack {
-                VStack {
-                    ScrollView(.vertical) {
-                        FeedView()
-                            .frame(width: SizeLiterals.Screen.screenWidth)
-                            .environment(feedViewModel)
-                            .environment(postViewModel)
-                            .environment(emojiViewModel)
+                if currentTreehouseInfoViewModel.treehouseSize >= 2 {
+                    VStack {
+                        ScrollView(.vertical) {
+                            FeedView()
+                                .frame(width: SizeLiterals.Screen.screenWidth)
+                                .environment(feedViewModel)
+                                .environment(postViewModel)
+                                .environment(emojiViewModel)
+                        }
+                        .refreshable {
+                            let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                        }
                     }
-                    .refreshable {
-                        let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
-                    }
+                } else {
+                    TreehouseCreatingSuccessView()
                 }
                 
-                if postViewModel.isLoading == false {
+                if postViewModel.isLoading {
                     VStack {
                         Spacer()
                         
@@ -57,6 +62,7 @@ struct FeedHomeView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
         .navigationDestination(for: FeedRouter.self) { router in
             viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
         }
@@ -70,12 +76,22 @@ struct FeedHomeView: View {
         }
         .onAppear {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
-            feedViewModel.userId = currentTreehouseInfoViewModel.userId
+            feedViewModel.userId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
             feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
             
             Task {
                 if feedViewModel.dataLoaded == false {
                     feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                }
+            }
+        }
+        .onChange(of: viewRouter.selectedTreehouseId) { _, newValue in
+            postViewModel.isLoading = true
+            feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
+            Task {
+                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                await MainActor.run {
+                    self.postViewModel.isLoading = true
                 }
             }
         }

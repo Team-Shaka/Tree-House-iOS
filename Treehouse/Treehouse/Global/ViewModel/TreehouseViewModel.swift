@@ -26,6 +26,7 @@ final class TreehouseViewModel: BaseViewModel {
     
     var treehouseInfo: [ReadTreehouseInfoResponseEntity]?
     var treehouseData: ReadTreehouseInfoResponseEntity?
+    var isloading: Bool = true
     var errorMessage: String = ""
     
     // MARK: - init
@@ -54,11 +55,12 @@ extension TreehouseViewModel {
         let result = await useCase.execute()
         
         switch result {
-        case .success(var response):
+        case .success(let response):
             treehouseInfo = response.treeohouses
             
             if let index = treehouseInfo?.firstIndex(where: { $0.treehouseId == currentTreehouseId }) {
                 treehouseInfo?[index].currentTreeHouse = true
+                isloading = false
             }
             
         case .failure(let error):

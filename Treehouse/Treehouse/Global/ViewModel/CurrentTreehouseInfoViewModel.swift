@@ -19,10 +19,11 @@ final class CurrentTreehouseInfoViewModel: BaseViewModel {
     var currentTreehouseId: Int?
     var treehouseName: String = ""
     var treehouseImageUrl: String = ""
+    var treehouseSize: Int = 0
     var userId: Int = 0
     
     var errorMessage: String = ""
-    
+    var isloading: Bool = true
     var isAlert: (Bool, AlertType) = (false, .logout)
     
     // MARK: - init
@@ -43,10 +44,13 @@ extension CurrentTreehouseInfoViewModel {
         
         switch result {
         case .success(let response):
-            treehouseName = response.treehouseName
-            currentTreehouseId = treehouseId
-            treehouseImageUrl = response.treehouseImageUrl ?? ""
-            
+            await MainActor.run {
+                treehouseName = response.treehouseName
+                currentTreehouseId = treehouseId
+                treehouseImageUrl = response.treehouseImageUrl ?? ""
+                treehouseSize = response.treehouseSize
+                isloading = false
+            }
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription

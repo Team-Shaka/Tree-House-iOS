@@ -55,8 +55,10 @@ extension InvitationViewModel {
         switch result {
         case .success(let response):
             // TODO: - invitationid 연결
-            response.treehouseId
-            break
+            await MainActor.run {
+                response.treehouseId
+            }
+            
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
@@ -92,8 +94,10 @@ extension InvitationViewModel {
         
         switch result {
         case .success(let response):
-            availableInvitation = response.availableInvitation
-            activeRate = response.activeRate
+            await MainActor.run {
+                availableInvitation = response.availableInvitation
+                activeRate = response.activeRate
+            }
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription

@@ -16,6 +16,11 @@ enum UserAuthentication {
     case error
 }
 
+enum RegisterType {
+    case registerUser
+    case registerTreehouse
+}
+
 protocol BaseViewModel: AnyObject {}
 
 @Observable
@@ -27,6 +32,7 @@ final class UserSettingViewModel: BaseViewModel {
     
     var userName: String = ""
     var userId: Int?
+    var memberId: Int?
     var memberName: String?
     var bio: String?
     var profileImageURL: String?
@@ -48,6 +54,7 @@ final class UserSettingViewModel: BaseViewModel {
     var memberProfileImages: [String?] = []
     
     var profileImage: UIImage?
+    var senderProfileImageUrl = ""
     
     // MARK: - State Property
     
@@ -88,6 +95,8 @@ final class UserSettingViewModel: BaseViewModel {
     @ObservationIgnored
     private let uploadImageToAWSUseCase: PutUploadImageToAWSUseCaseProtocol
     
+    var registerType: RegisterType
+    
     // MARK: - init
     
     init(checkNameUseCase: PostCheckNameUseCaseProtocol,
@@ -96,7 +105,8 @@ final class UserSettingViewModel: BaseViewModel {
          acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol,
          checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol,
          presignedURLUseCase: PostPresignedURLUseCaseProtocol,
-         uploadImageToAWSUseCase: PutUploadImageToAWSUseCaseProtocol
+         uploadImageToAWSUseCase: PutUploadImageToAWSUseCaseProtocol,
+         registerType: RegisterType
     ) {
         self.checkUserNameUseCase = checkNameUseCase
         self.registerUserUseCase = registerUserUseCase
@@ -105,6 +115,7 @@ final class UserSettingViewModel: BaseViewModel {
         self.checkInvitationsUseCase = checkInvitationsUseCase
         self.presignedURLUseCase = presignedURLUseCase
         self.uploadImageToAWSUseCase = uploadImageToAWSUseCase
+        self.registerType = registerType
     }
     
     deinit {
@@ -121,6 +132,21 @@ final class UserSettingViewModel: BaseViewModel {
         }
         
         let userData = UserInfoData(userId: userId, userName: userName, profileImageUrl: profileImage, treehouses: [treehouseId], treehouseInfo: [])
+        return userData
+    }
+    
+    func createMemberInfoData() -> TreehouseInfo? {
+        guard let treehouseId = treehouseId,
+              let memberId = memberId,
+              let memberName = memberName,
+              let bio = bio,
+              let profileImage = accessUrlImage.first else {
+            return nil
+        }
+        
+        let url = URL(string: profileImage)
+        
+        let userData = TreehouseInfo(treehouseId: treehouseId, treehouseMemberId: memberId, treehouseName: memberName, bio: bio, profileImageUrl: url)
         return userData
     }
 }
@@ -211,6 +237,7 @@ extension UserSettingViewModel {
         switch result {
         case .success(let response):
             self.userId = response.userId
+            self.memberId = response.memberId
             self.treehouseId = response.treehouseId
             
             return true
@@ -251,6 +278,7 @@ extension UserSettingViewModel {
         switch result {
         case .success(let response):
             response.invitations.forEach {
+                senderProfileImageUrl = $0.senderProfileImageUrl ?? ""
                 invitationId = $0.invitationId
                 treehouseName = $0.treehouseName
                 invitedMember = $0.senderName
