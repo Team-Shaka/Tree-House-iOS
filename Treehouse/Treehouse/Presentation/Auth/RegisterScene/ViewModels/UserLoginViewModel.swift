@@ -51,7 +51,7 @@ extension UserLoginViewModel {
             KeychainHelper.shared.save(response.refreshToken, for: Config.refreshTokenKey)
             
             return UserInfoData(userId: response.userId,
-                                userName: "",
+                                userName: response.userName,
                                 profileImageUrl: response.profileImageUrl ?? "",
                                 treehouses: response.treehouseIdList, treehouseInfo: [])
             
@@ -76,7 +76,7 @@ extension UserLoginViewModel {
                     
                     switch result {
                     case .success(let response):
-                        let url = URL(string: response.profileImageUrl ?? "")
+                        let url = URL(string: response.profileImageUrl)
                         return TreehouseInfo(treehouseId: id, treehouseMemberId: response.memberId,
                                       treehouseName: response.memberName,
                                       bio: response.bio,
