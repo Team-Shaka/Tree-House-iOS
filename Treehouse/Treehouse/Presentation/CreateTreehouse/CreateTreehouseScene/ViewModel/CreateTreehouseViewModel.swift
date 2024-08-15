@@ -6,31 +6,64 @@
 //
 
 import Foundation
+import Observation
 
+@Observable
 final class CreateTreehouseViewModel: BaseViewModel {
     
     // MARK: - UseCase Property
+    
+    @ObservationIgnored
+    private let checkTreehouseNameUseCase: PostCheckTreehouseNameUseCaseProtocol
     
     @ObservationIgnored
     private let createTreehouseUseCase: PostCreateTreehouseUseCaseProtocol
     
     // MARK: - Property
     
-    var treehouseName: String
+    var treehouseName: String = ""
+    var treehouseHallName: String = ""
+    var isAvailable: Bool = false
     var errorMessage: String = ""
     
     // MARK: - init
     
-    init(createTreehouseUseCase: PostCreateTreehouseUseCaseProtocol, treehouseName: String) {
+    init(checkTreehouseNameUseCase: PostCheckTreehouseNameUseCaseProtocol,
+        createTreehouseUseCase: PostCreateTreehouseUseCaseProtocol) {
+        self.checkTreehouseNameUseCase = checkTreehouseNameUseCase
         self.createTreehouseUseCase = createTreehouseUseCase
-        self.treehouseName = treehouseName
+        
+        print("init CreateTreehouseViewModel")
+    }
+    
+    deinit {
+        print("Deinit CreateTreehouseViewModel")
     }
 }
 
 extension CreateTreehouseViewModel {
+    
+    /// 트리하우스 이름의 중복성을 확인하는 API
+    func postCheckTreehouseName() async {
+        print(treehouseName)
+        let result = await checkTreehouseNameUseCase.execute(treehouseName: treehouseName)
+        
+        switch result {
+        case .success(let response):
+            await MainActor.run {
+                isAvailable = response.isAvailable
+            }
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+                print(errorMessage)
+            }
+        }
+    }
+    
     func createTreehouse() async -> Int? {
         print(treehouseName)
-        let result = await createTreehouseUseCase.execute(request: PostCreateTreehouseRequestDTO(treehouseName: treehouseName, treeholeName: "아요"))
+        let result = await createTreehouseUseCase.execute(request: PostCreateTreehouseRequestDTO(treehouseName: treehouseName, treeholeName: treehouseHallName))
         
         switch result {
         case .success(let response):

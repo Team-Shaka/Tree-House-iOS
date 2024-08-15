@@ -14,18 +14,26 @@ enum CreateTreehouseRouter: Router {
     case createTreehouseNameView
     case createTreeHallNameView
     case previewCreatedTreehouseView
-    case sendInvitationView(treehouseName: String)
-    
+    case sendInvitationView
+
     func buildView(_ viewModel: BaseViewModel?) -> AnyView {
-        switch self {
-        case .createTreehouseNameView:
-            return AnyView(CreateTreehouseNameView())
-        case .createTreeHallNameView:
-            return AnyView(CreateTreeHallNameView())
-        case .previewCreatedTreehouseView:
-            return AnyView(PreviewCreatedTreehouseView())
-        case .sendInvitationView(let treehouseName):
-            return AnyView(SendInvitationView(createTreehouseViewModel: CreateTreehouseViewModel(createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()), treehouseName: treehouseName)))
+        if let viewModel = viewModel as? CreateTreehouseViewModel {
+            switch self {
+            case .createTreehouseNameView:
+                return AnyView(CreateTreehouseNameView()
+                    .environment(viewModel))
+            case .createTreeHallNameView:
+                return AnyView(CreateTreeHallNameView()
+                    .environment(viewModel))
+            case .previewCreatedTreehouseView:
+                return AnyView(PreviewCreatedTreehouseView()
+                    .environment(viewModel))
+            case .sendInvitationView:
+                return AnyView(SendInvitationView()
+                    .environment(viewModel))
+            }
+        } else {
+            return AnyView(EmptyView())
         }
     }
 }

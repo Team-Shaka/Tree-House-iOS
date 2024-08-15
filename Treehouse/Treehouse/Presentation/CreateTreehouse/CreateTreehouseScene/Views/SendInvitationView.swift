@@ -9,14 +9,10 @@ import SwiftUI
 
 struct SendInvitationView: View {
     
-    // MARK: - Property
-    
-    let availableInvitaion = AvailableInvitationStruct.availableInvitationDummyData
-//    let phoneNumberList = UserPhoneNumberInfo.phoneNumberStructDummyData
-    
     // MARK: - State Property
+    
     @Environment(ViewRouter.self) var viewRouter
-    @State var createTreehouseViewModel: CreateTreehouseViewModel
+    @Environment(CreateTreehouseViewModel.self) var createTreehouseViewModel
     
     @State var viewModel = InvitationViewModel(acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
@@ -24,6 +20,13 @@ struct SendInvitationView: View {
     
     @State private var userInfoViewModel = UserInfoViewModel()
     @State var phoneNumberViewModel = PhoneNumberViewModel()
+    
+    @State var userSettingViewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                                       registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                                       registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                                       acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                                       checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                                           presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()), registerType: .registerTreehouse)
     
     @AppStorage("treehouseId") private var selectedTreehouseId = -1
     @State private var inviteCount: Int = 0
@@ -34,42 +37,54 @@ struct SendInvitationView: View {
     
     var body: some View {
         VStack {
-            ScrollView(.vertical) {
-                ProgressView(value: 1.0)
-                    .tint(.treeGreen)
-                    .padding(.top, 14)
-                
-                VStack(spacing: 0) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        HStack(spacing: 9) {
-                            Text(StringLiterals.Invitation.sectionTitle2)
-                                .fontWithLineHeight(fontLevel: .heading4)
-                                .foregroundStyle(.grayscaleBlack)
-                            
-                            Text("가진 초대장 : \(viewModel.availableInvitation)장")
-                                .fontWithLineHeight(fontLevel: .body2)
-                                .foregroundStyle(.treeGreen)
-                        }
+            ProgressView(value: 1.0)
+                .tint(.treeGreen)
+                .padding(.top, 14)
+            
+            VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(spacing: 9) {
+                        Text(StringLiterals.Invitation.sectionTitle2)
+                            .fontWithLineHeight(fontLevel: .heading4)
+                            .foregroundStyle(.grayscaleBlack)
+                        
+                        Text("가진 초대장 : \(viewModel.availableInvitation)장")
+                            .fontWithLineHeight(fontLevel: .body2)
+                            .foregroundStyle(.treeGreen)
                     }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 21)
+                
+                Text(StringLiterals.Invitation.guidanceTitle1)
+                    .fontWithLineHeight(fontLevel: .body3)
+                    .foregroundStyle(.gray6)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 21)
-                    
-                    Text(StringLiterals.Invitation.guidanceTitle1)
-                        .fontWithLineHeight(fontLevel: .body3)
-                        .foregroundStyle(.gray6)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top, 5)
-                    
-                    getInvitationProgressView
-                    
-                    getInvitationToolTipView
-                    
-                    PhoneNumberSearchBar(text: $searchText)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, 14)
-                        .padding(.bottom, 12)
-                    
-                    if searchText.isEmpty {
+                    .padding(.top, 5)
+                
+                getInvitationProgressView
+                
+                getInvitationToolTipView
+                
+                PhoneNumberSearchBar(text: $searchText)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 14)
+                    .padding(.bottom, 12)
+                
+                ScrollView(.vertical) {
+                    if phoneNumberViewModel.isLoading {
+                        VStack {
+                            Spacer()
+                            
+                            LottieView(lottieFile: "treehouse_loading", speed: 1)
+                                .frame(width: 100, height: 100)
+                            
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.grayscaleWhite)
+                        
+                    } else if searchText.isEmpty {
                         ForEach(phoneNumberViewModel.phoneNumberList) { userData in
                             PhoneNumberRow(userInfo: userData)
                         }
@@ -90,7 +105,7 @@ struct SendInvitationView: View {
                     let result = await performAsyncTasks()
                     
                     if result {
-                        viewRouter.popToRoot()
+                        viewRouter.push(RegisterRouter.setMemberProfileNameView)
                     }
                 }
             }) {
@@ -111,7 +126,7 @@ struct SendInvitationView: View {
                     let result = await performAsyncTasks()
                     
                     if result {
-                        viewRouter.popToRoot()
+                        viewRouter.push(RegisterRouter.setMemberProfileNameView)
                     }
                 }
             }) {
@@ -156,6 +171,9 @@ struct SendInvitationView: View {
                         .foregroundStyle(.treeBlack)
                 }
             }
+            .navigationDestination(for: RegisterRouter.self) { router in
+                viewRouter.buildScene(inputRouter: router, viewModel: userSettingViewModel)
+            }
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
     }
@@ -168,7 +186,8 @@ struct SendInvitationView: View {
             print("정보 저장 결과:", result)
             
             if result {
-                selectedTreehouseId = id
+                userSettingViewModel.treehouseId = id
+                userSettingViewModel.userName = userInfoViewModel.userInfo?.userName ?? ""
                 return true
             }
         }
@@ -231,6 +250,6 @@ extension SendInvitationView {
 
 // MARK: - Preview
 
-#Preview {
-    SendInvitationView(createTreehouseViewModel: CreateTreehouseViewModel(createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()), treehouseName: "treehouseName"))
-}
+//#Preview {
+//    SendInvitationView(createTreehouseViewModel: CreateTreehouseViewModel(createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()), treehouseName: "treehouseName"))
+//}

@@ -12,7 +12,8 @@ struct CreateTreehouseNameView: View {
     // MARK: - State Property
     
     @Environment(ViewRouter.self) var viewRouter
-    @State var createTreehouseViewModel = CheckTreehouseNameViewModel(checkTreehouseNameUseCase: CheckTreehouseNameUseCase(repository: TreehouseRepositoryImpl()))
+    @Environment(CreateTreehouseViewModel.self) var createTreehouseViewModel
+//    @State var createTreehouseViewModel: CreateTreehouseViewModel
     
     @State var treehouseName: String = ""
     @State var textFieldState: TextFieldStateType = .notFocused
@@ -24,8 +25,10 @@ struct CreateTreehouseNameView: View {
     // MARK: - View
     
     var body: some View {
+        @Bindable var createTreehouseViewModel = createTreehouseViewModel
+        
         VStack(alignment: .leading, spacing: 0) {
-            ProgressView(value: 0.5)
+            ProgressView(value: 0.33)
                 .tint(.treeGreen)
                 .padding(.top, 14)
                 .padding(.bottom, SizeLiterals.Screen.screenHeight * 36 / 852)
@@ -54,7 +57,7 @@ struct CreateTreehouseNameView: View {
                     await createTreehouseViewModel.postCheckTreehouseName()
                     
                     if createTreehouseViewModel.isAvailable == true {
-                        viewRouter.push(CreateTreehouseRouter.sendInvitationView(treehouseName: treehouseName))
+                        viewRouter.push(CreateTreehouseRouter.createTreeHallNameView)
                     } else {
                         textFieldState = .duplicated
                         errorMessage = StringLiterals.Register.indicatorTitle6
@@ -123,22 +126,6 @@ struct CreateTreehouseNameView: View {
                 errorMessage = StringLiterals.Register.indicatorTitle7
                 isButtonEnabled = false
             }
-            
-//            if self.isLengthValidTreehouseName(newValue) {
-//                isLengthValid = true
-//                errorMessage = ""
-//                isButtonEnabled = true
-//            } else if newValue.isEmpty { // 글자가 아에 없을 때
-//                isLengthValid = false
-//                textFieldState = .enable
-//                errorMessage = ""
-//                isButtonEnabled = false
-//            } else {
-//                isLengthValid = false
-//                errorMessage = StringLiterals.Register.indicatorTitle7
-//                textFieldState = .unable
-//                isButtonEnabled = false
-//            }
         }
     }
 }
