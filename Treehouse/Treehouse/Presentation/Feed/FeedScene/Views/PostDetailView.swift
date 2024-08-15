@@ -188,11 +188,10 @@ extension PostDetailView {
                                  width: 36,
                                  height: 36)
                     .clipShape(Circle())
-                    .padding(.bottom, 4)
                 
                 ZStack(alignment: .trailing) {
                     TextField("\(commentViewModel.createCommentMemberName)에게 댓글쓰기", text: $commentViewModel.postContent, axis: .vertical)
-                        .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
+                        .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 50.0))
                         .fontWithLineHeight(fontLevel: .body5)
                         .tint(.treeGreen)
                         .foregroundColor(textFieldState.fontColor)
@@ -244,7 +243,7 @@ extension PostDetailView {
                 }
             }
             .padding(.leading, 16)
-            .padding(.top, 8)
+            .padding(.bottom, 8)
             .padding(.trailing, 16)
         }
         .background(.grayscaleWhite)

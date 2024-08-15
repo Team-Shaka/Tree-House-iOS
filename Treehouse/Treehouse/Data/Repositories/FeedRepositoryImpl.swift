@@ -34,6 +34,18 @@ final class FeedRepositoryImpl: FeedRepositoryProtocol {
         }
     }
     
+    /// Feed 의 게시글을 페이지네이션으로  불러오기 위한 API
+    func getPageReadFeedPost(treehouseId: Int, page: Int) async -> Result<[GetReadFeedPostListResponseEntity], NetworkError>{
+        do {
+            let response = try await feedService.getPageReadFeedPost(treehouseId: treehouseId, page: page)
+            return .success(response.map { $0.toDomain() })
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
+    
     /// Feed 에 게시글을 작성하기 위한 API
     func postCreateFeedPosts(treehouseId: Int, requestBody: PostCreateFeedPostsRequestDTO) async -> Result<CreateFeedPostsResponseResponseEntity, NetworkError>{
         do {

@@ -227,12 +227,11 @@ extension UserSettingViewModel {
     func registerTreeMember() async -> Bool {
         guard let treehouseId = treehouseId,
               let memberName = memberName,
-              let bio = bio,
-              let accessUrlImage = accessUrlImage.first else {
+              let bio = bio else {
             return false
         }
         
-        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage))
+        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage.first ?? "" ))
         
         switch result {
         case .success(let response):

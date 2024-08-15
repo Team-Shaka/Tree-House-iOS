@@ -26,6 +26,7 @@ final class UserInfoViewModel: BaseViewModel {
     /// UserInfoData 를 처음으로 만들기 위한 메서드
     func createData(newData: UserInfoData) async -> Bool {
         print("User Data 저장")
+        removeData()
         userInfo = newData
         return insertData(data: newData)
     }
@@ -105,6 +106,7 @@ private extension UserInfoViewModel {
 
     func removeData() {
         guard let data = userInfo else { return }
+        print("데이터 삭제")
         dataSource.removeUserInfo(data: data)
         userInfo = nil
     }

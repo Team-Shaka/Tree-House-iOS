@@ -17,7 +17,9 @@ struct FeedHomeView: View {
     
     @State var feedViewModel: FeedViewModel = FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
     @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToPostUseCase: CreateReactionToPostUseCase(repository: FeedRepositoryImpl()))
-    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()))
+    @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()), readPageFeedPostUseCase: ReadPageFeedPostUseCase(repository: FeedRepositoryImpl()))
+    
+    @State private var scrollViewProxy: ScrollViewProxy?
     @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
@@ -33,7 +35,11 @@ struct FeedHomeView: View {
             ZStack {
                 if currentTreehouseInfoViewModel.treehouseSize >= 2 {
                     VStack {
+                      ScrollViewReader { proxy in
                         ScrollView(.vertical) {
+                          Color.clear.frame(height: 0)
+                                .id("top")
+
                             FeedView()
                                 .frame(width: SizeLiterals.Screen.screenWidth)
                                 .environment(feedViewModel)
@@ -41,7 +47,18 @@ struct FeedHomeView: View {
                                 .environment(emojiViewModel)
                         }
                         .refreshable {
+                            URLCache.shared.removeAllCachedResponses()
+                            postViewModel.feedPageNum = 0
                             let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                        }
+                        .onChange(of: viewRouter.isSameTap) { _ , newValue in
+                            if newValue && viewRouter.selectedTab == .home {
+                                withAnimation {
+                                    proxy.scrollTo("top", anchor: .top)
+                                }
+                                
+                                viewRouter.isSameTap.toggle()
+                            }
                         }
                     }
                 } else {
