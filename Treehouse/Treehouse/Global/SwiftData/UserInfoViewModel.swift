@@ -16,14 +16,7 @@ final class UserInfoViewModel: BaseViewModel {
     @ObservationIgnored
     private let dataSource: UserInfoDataSource
 
-    var userInfo: UserInfoData? {
-        didSet {
-//            print("유저 userId: \(userInfo?.userId)")
-//            print("유저 name: \(userInfo?.userName)")
-//            print("유저 Treehouse: \(userInfo?.treehouses)")
-//            print("유저 TreehouseInfo: \(userInfo?.treehouseInfo.count)")
-        }
-    }
+    var userInfo: UserInfoData?
 
     init(dataSource: UserInfoDataSource = UserInfoDataSource.shared) {
         self.dataSource = dataSource

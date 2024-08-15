@@ -173,14 +173,6 @@ extension InvitationView {
             .overlay {
                 Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
             }
-//            Image(.imgDummy)
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .clipShape(Circle())
-//                .frame(width: 29, height: 29)
-//                .overlay {
-//                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
-//                }
         }
     }
 }
