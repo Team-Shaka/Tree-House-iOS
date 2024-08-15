@@ -88,9 +88,11 @@ final class PostViewModel: BaseViewModel {
 // MARK: - Feed API Extension
 
 extension PostViewModel {
+    @MainActor
     func readFeedPostsList(treehouseId: Int) async -> Bool {
         feedPageNum = 0
         lastPage = false
+   
         let result = await readFeedPostUseCase.execute(treehouseId: treehouseId)
         
         switch result {
@@ -98,7 +100,7 @@ extension PostViewModel {
             feedListData = response
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLoading = true
+                self.isLoading = false
             }
             
             return true
@@ -107,6 +109,10 @@ extension PostViewModel {
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
                 print(errorMessage)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading = true
             }
             
             return false

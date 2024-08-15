@@ -55,6 +55,8 @@ struct ReceivedFirstInvitaionView: View {
                         }
                     }
                 })
+                .environment(viewModel)
+                
                 DrawingView()
             }
         }
@@ -97,71 +99,6 @@ private extension ReceivedFirstInvitaionView {
     }
     
     @ViewBuilder
-    var invitationView: some View {
-        VStack(spacing: 0) {
-            Image(.imgDummy)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: SizeLiterals.Screen.screenWidth * 98.56 / 393, height: SizeLiterals.Screen.screenHeight * 98.56 / 852)
-                .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
-                .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
-            
-            Text(viewModel.treehouseName)
-                .fontWithLineHeight(fontLevel: .heading2)
-                .foregroundStyle(.treeBlack)
-                .padding(.bottom, 6)
-            
-            HStack(spacing: 0) {
-                Text("\(viewModel.invitedMember)님")
-                    .fontWithLineHeight(fontLevel: .body2)
-                
-                Text("이 당신을 초대했습니다.")
-                    .fontWithLineHeight(fontLevel: .body3)
-            }
-            .foregroundStyle(.gray8)
-            .padding(.bottom, 18)
-            
-            HStack(spacing: 0) {
-                HStack(spacing: -3) {
-                    ForEach(0..<iterater) { index in
-                        memberProfileImage(index, viewModel.memberNum-2)
-                    }
-                }
-                .padding(.trailing, 8)
-                
-                Text("\(viewModel.memberNum)명의 멤버들이 함께하고 있어요.")
-                    .fontWithLineHeight(fontLevel: .body5)
-            }
-        }
-    }
-
-    @ViewBuilder
-    func memberProfileImage(_ index: Int, _ count: Int) -> some View {
-        if index == 2 {
-            ZStack(alignment: .center) {
-                Circle()
-                    .fill(.treeGreen)
-                    .stroke(.grayscaleWhite, lineWidth: 1.5)
-                    .frame(width: 29, height: 29)
-                
-                Text("+\(viewModel.memberNum-2)")
-                    .fontWithLineHeight(fontLevel: .caption2)
-                    .foregroundStyle(.grayscaleWhite)
-            }
-        } else {
-            Image(.imgDummy)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-                .frame(width: 29, height: 29)
-                .overlay {
-                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
-                }
-        }
-    }
-    
-    @ViewBuilder
     var topHeaderView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(StringLiterals.Register.registerTitle5)
@@ -186,7 +123,7 @@ private extension ReceivedFirstInvitaionView {
                                               registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
                                               registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
                                               acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
-                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl())
+                                              checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()), presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()), registerType: .registerUser
                                              ))
     }
 }

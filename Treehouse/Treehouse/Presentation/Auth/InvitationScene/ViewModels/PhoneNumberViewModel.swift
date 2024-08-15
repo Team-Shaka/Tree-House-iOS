@@ -36,6 +36,7 @@ final class PhoneNumberViewModel {
     var errorMessage: String?
     var searchText: String = ""
     var searchPhoneNumberList = [UserPhoneNumberInfo]()
+    var isLoading: Bool = false
     
     // MARK: - init
     
@@ -59,6 +60,7 @@ final class PhoneNumberViewModel {
     }
     
     /// 이름 또는 전화번호로 초대할 유저를 검색하는 메서드
+    @MainActor
     func searchData() async {
         if searchText.isEmpty {
             searchPhoneNumberList = phoneNumberList
@@ -89,6 +91,7 @@ extension PhoneNumberViewModel {
     
     /// CNContactStore 에 접근이 가능할때 연락처에 있는 유저 정보를 불러오는 메서드
     func loadUserInfoData(from store: CNContactStore) async throws {
+        isLoading.toggle()
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
         var contacts: [UserPhoneNumberInfo] = []
@@ -113,6 +116,8 @@ extension PhoneNumberViewModel {
         await MainActor.run {
             self.phoneNumberList = result
             self.searchPhoneNumberList = result
+            
+            isLoading.toggle()
         }
     }
 }

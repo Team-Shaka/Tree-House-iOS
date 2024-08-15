@@ -9,7 +9,10 @@ import SwiftUI
 
 struct TreehouseInfoListView: View {
     
+    @Environment(ViewRouter.self) var viewRouter
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     @Binding var treehouseInfoData: [ReadTreehouseInfoResponseEntity]?
+    @Binding var isPresent: Bool
     
     var body: some View {
         LazyVStack(spacing: 14) {
@@ -22,7 +25,8 @@ struct TreehouseInfoListView: View {
             if let data = treehouseInfoData {
                 ForEach(data) { data in
                     Button(action: {
-//                        data.currentTreeHouse = true
+                        selectedTreehouseId = data.treehouseId
+                        isPresent.toggle()
                     }) {
                         TreehouseInfoRow(treehouseImageUrl: data.treehouseImageUrl ?? "",
                                          treehouseName: data.treehouseName,
@@ -31,13 +35,16 @@ struct TreehouseInfoListView: View {
                         )
                     }
                 }
-                
             } else {
                 // TODO: - 빈 화면 넣어야 합니다.
             }
             
             Button(action: {
+                isPresent.toggle()
                 
+                if isPresent == false {
+                    viewRouter.push(CreateTreehouseRouter.createTreehouseNameView)
+                }
             }) {
                 Text("+ 새로운 트리 만들기")
                     .fontWithLineHeight(fontLevel: .body2)

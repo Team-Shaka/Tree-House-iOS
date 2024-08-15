@@ -76,7 +76,7 @@ extension UserLoginViewModel {
                     
                     switch result {
                     case .success(let response):
-                        let url = URL(string: response.profileImageUrl ?? "")
+                        let url = URL(string: response.profileImageUrl)
                         return TreehouseInfo(treehouseId: id, treehouseMemberId: response.memberId,
                                       treehouseName: response.memberName,
                                       bio: response.bio,

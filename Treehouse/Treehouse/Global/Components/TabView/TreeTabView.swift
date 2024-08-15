@@ -14,6 +14,7 @@ struct TreeTabView: View {
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
     @State private var userInfoViewModel = UserInfoViewModel()
     @State private var currentTreehouseInfoViewModel = CurrentTreehouseInfoViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
     
@@ -58,22 +59,11 @@ struct TreeTabView: View {
             .environment(viewRouter)
             .environment(currentTreehouseInfoViewModel)
             .onAppear {
-                if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    viewRouter.selectedTreehouseId = currentTreehouseId
-                    Task {
-                        await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
-                    }
-                } else {
-                    if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
-                        currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
-                        currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
-                        viewRouter.selectedTreehouseId = treehouseId
-                        
-                        Task {
-                            await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
-                        }
-                    }
+                if selectedTreehouseId != -1 {
+                    currentTreehouseInfoViewModel.currentTreehouseId = selectedTreehouseId
                 }
+                
+                currentTreehousePerformRequest()
             }
             .onAppear {
                 let appearance = UITabBarAppearance()
@@ -84,6 +74,34 @@ struct TreeTabView: View {
                 UITabBar.appearance().standardAppearance = appearance
                 // 완전히 스크롤 됐을 때 의 TabBar Layout
                 UITabBar.appearance().scrollEdgeAppearance = appearance
+            }
+            .onChange(of: selectedTreehouseId) { _, newValue in
+                print("변경전: ", currentTreehouseInfoViewModel.currentTreehouseId)
+                currentTreehouseInfoViewModel.currentTreehouseId = newValue
+                print("변경됨: ", currentTreehouseInfoViewModel.currentTreehouseId)
+                
+                currentTreehousePerformRequest()
+            }
+        }
+    }
+    
+    private func currentTreehousePerformRequest() {
+        if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
+            viewRouter.selectedTreehouseId = currentTreehouseId
+            Task {
+                await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
+            }
+        } else {
+            if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
+                currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
+                currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                viewRouter.selectedTreehouseId = treehouseId
+                
+                selectedTreehouseId = treehouseId
+                
+                Task {
+                    await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: treehouseId)
+                }
             }
         }
     }

@@ -45,6 +45,8 @@ final class FeedViewModel: BaseViewModel {
     
     init(getReadTreehouseInfoUseCase: GetReadTreehouseInfoUseCaseProtocol) {
         self.getReadTreehouseInfoUseCase = getReadTreehouseInfoUseCase
+        
+        print("init FeedViewModel")
     }
     
     deinit {

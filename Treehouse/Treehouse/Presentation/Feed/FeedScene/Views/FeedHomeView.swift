@@ -20,6 +20,7 @@ struct FeedHomeView: View {
     @State var postViewModel = PostViewModel(readFeedPostUseCase: ReadFeedPostUseCase(repository: FeedRepositoryImpl()), createFeedPostsUseCase: CreateFeedPostsUseCase(repository: FeedRepositoryImpl()), readPageFeedPostUseCase: ReadPageFeedPostUseCase(repository: FeedRepositoryImpl()))
     
     @State private var scrollViewProxy: ScrollViewProxy?
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
     
@@ -32,12 +33,13 @@ struct FeedHomeView: View {
                 .environment(currentTreehouseInfoViewModel)
             
             ZStack {
-                VStack {
-                    ScrollViewReader { proxy in
+                if currentTreehouseInfoViewModel.treehouseSize >= 2 {
+                    VStack {
+                      ScrollViewReader { proxy in
                         ScrollView(.vertical) {
-                            Color.clear.frame(height: 0)
+                          Color.clear.frame(height: 0)
                                 .id("top")
-                            
+
                             FeedView()
                                 .frame(width: SizeLiterals.Screen.screenWidth)
                                 .environment(feedViewModel)
@@ -59,9 +61,11 @@ struct FeedHomeView: View {
                             }
                         }
                     }
+                } else {
+                    TreehouseCreatingSuccessView()
                 }
                 
-                if postViewModel.isLoading == false {
+                if postViewModel.isLoading {
                     VStack {
                         Spacer()
                         
@@ -75,6 +79,7 @@ struct FeedHomeView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
         .navigationDestination(for: FeedRouter.self) { router in
             viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
         }
@@ -88,12 +93,22 @@ struct FeedHomeView: View {
         }
         .onAppear {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
-            feedViewModel.userId = currentTreehouseInfoViewModel.userId
+            feedViewModel.userId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
             feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
             
             Task {
                 if feedViewModel.dataLoaded == false {
                     feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                }
+            }
+        }
+        .onChange(of: viewRouter.selectedTreehouseId) { _, newValue in
+            postViewModel.isLoading = true
+            feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
+            Task {
+                feedViewModel.dataLoaded = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                await MainActor.run {
+                    self.postViewModel.isLoading = true
                 }
             }
         }
