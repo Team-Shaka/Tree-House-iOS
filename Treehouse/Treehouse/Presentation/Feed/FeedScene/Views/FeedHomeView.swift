@@ -33,36 +33,37 @@ struct FeedHomeView: View {
                 .environment(currentTreehouseInfoViewModel)
             
             ZStack {
-                if currentTreehouseInfoViewModel.treehouseSize >= 2 {
-                    VStack {
-                      ScrollViewReader { proxy in
-                        ScrollView(.vertical) {
-                          Color.clear.frame(height: 0)
-                                .id("top")
-
-                            FeedView()
-                                .frame(width: SizeLiterals.Screen.screenWidth)
-                                .environment(feedViewModel)
-                                .environment(postViewModel)
-                                .environment(emojiViewModel)
-                        }
-                        .refreshable {
-                            URLCache.shared.removeAllCachedResponses()
-                            postViewModel.feedPageNum = 0
-                            let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
-                        }
-                        .onChange(of: viewRouter.isSameTap) { _ , newValue in
-                            if newValue && viewRouter.selectedTab == .home {
-                                withAnimation {
-                                    proxy.scrollTo("top", anchor: .top)
-                                }
+                VStack {
+                    if currentTreehouseInfoViewModel.treehouseSize >= 2 {
+                        ScrollViewReader { proxy in
+                            ScrollView(.vertical) {
+                                Color.clear.frame(height: 0)
+                                    .id("top")
                                 
-                                viewRouter.isSameTap.toggle()
+                                FeedView()
+                                    .frame(width: SizeLiterals.Screen.screenWidth)
+                                    .environment(feedViewModel)
+                                    .environment(postViewModel)
+                                    .environment(emojiViewModel)
+                            }
+                            .refreshable {
+                                URLCache.shared.removeAllCachedResponses()
+                                postViewModel.feedPageNum = 0
+                                let _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
+                            }
+                            .onChange(of: viewRouter.isSameTap) { _ , newValue in
+                                if newValue && viewRouter.selectedTab == .home {
+                                    withAnimation {
+                                        proxy.scrollTo("top", anchor: .top)
+                                    }
+                                    
+                                    viewRouter.isSameTap.toggle()
+                                }
                             }
                         }
+                    } else {
+                        TreehouseCreatingSuccessView()
                     }
-                } else {
-                    TreehouseCreatingSuccessView()
                 }
                 
                 if postViewModel.isLoading {
