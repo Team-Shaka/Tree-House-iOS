@@ -78,7 +78,7 @@ extension TreehouseViewModel {
         let result = await useCase.execute(request: PostCreateTreehouseRequestDTO(treehouseName: treehouseName, treeholeName: treeholeName))
         
         switch result {
-        case .success(let response):
+        case .success(_):
             break
             
         case .failure(let error):
