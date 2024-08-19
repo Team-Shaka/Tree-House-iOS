@@ -24,12 +24,16 @@ struct CommentView: View {
     
     // MARK: - Property
     
+    let commentType: CommentType
     let commentId: Int
     var replyIndex: Int? = nil
     let userProfile: MemberProfileEntity
     let time: String
     let comment: String
     var reactionData: ReactionListDataEntity
+    var focusedField: FocusState<FeedField?>.Binding
+    var isReplayList: Bool
+    var lastData: Bool?
     
     // MARK: - View
     
@@ -43,7 +47,7 @@ struct CommentView: View {
                 .padding(.trailing, 10)
 //                .padding(.trailing, commentyType == .comment ? 8 : 10)
             
-            VStack(spacing: 10) {
+            VStack(alignment: .leading, spacing: 10) {
                 VStack(alignment: .leading, spacing: 1) {
                     HStack(alignment: .center) {
                         Text(userProfile.memberName)
@@ -84,9 +88,29 @@ struct CommentView: View {
                 DetailEmojiListView(emojiType: .commentView, postId: feedViewModel.currentPostId ?? 0, commentId: commentId, emojiData: reactionData)
                     .environment(commentViewModel)
                     
-//                    .onAppear {
-//                        emojiViewModel.detailEmojiData = reactionData.reactionList
-//                    }
+                if isReplayList == false && commentType == .comment {
+                    Button(action: {
+                        feedViewModel.currentCommentId = commentId
+                        focusedField.wrappedValue = .post
+                        commentViewModel.createCommentMemberName = userProfile.memberName
+                        commentViewModel.commentState = .createReplyComment
+                    }) {
+                        Text("답글 달기")
+                            .fontWithLineHeight(fontLevel: .body4)
+                            .foregroundStyle(.treeGreen)
+                    }
+                } else if isReplayList == true && commentType == .reply && lastData == true {
+                    Button(action: {
+                        feedViewModel.currentCommentId = commentId
+                        focusedField.wrappedValue = .post
+                        commentViewModel.createCommentMemberName = userProfile.memberName
+                        commentViewModel.commentState = .createReplyComment
+                    }) {
+                        Text("답글 달기")
+                            .fontWithLineHeight(fontLevel: .body4)
+                            .foregroundStyle(.treeGreen)
+                    }
+                }
             }
         }
         .onAppear {
