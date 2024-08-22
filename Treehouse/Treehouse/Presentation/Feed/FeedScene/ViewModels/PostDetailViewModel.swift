@@ -33,9 +33,8 @@ final class PostDetailViewModel: BaseViewModel {
         print("Deinit PostDetailViewModel")
     }
     
-    func changeEmojiData(postId: Int, selectEmoji: String) {
+    func changeEmojiData(postId: Int, selectEmoji: String) async {
         if let index = detailFeedListData?.reactionList.reactionList.firstIndex(where: { $0.reactionName == selectEmoji }) {
-            //                if feedListData[postIndex].feedEmojiData?.reactionList[index].isPushed == false {
             if detailFeedListData?.reactionList.reactionList[index].isPushed == false {
                 detailFeedListData?.reactionList.reactionList[index].isPushed = true
                 detailFeedListData?.reactionList.reactionList[index].reactionCount += 1

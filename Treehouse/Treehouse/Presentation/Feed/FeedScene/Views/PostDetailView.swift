@@ -150,6 +150,20 @@ struct PostDetailView: View {
                 commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             }
         }
+        .onChange(of: emojiViewModel.isSelectFeedEmojiView) { _, newValue in
+            if newValue == false {
+                Task {
+                    await performAsyncTasks()
+                }
+            }
+        }
+        .onChange(of: emojiViewModel.isSelectCommentEmojiView) { _, newValue in
+            if newValue == false {
+                Task {
+                    await performAsyncTasks()
+                }
+            }
+        }
     }
     
     func performAsyncTasks() async {

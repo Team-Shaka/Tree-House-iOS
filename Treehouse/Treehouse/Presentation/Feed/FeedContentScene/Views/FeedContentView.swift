@@ -16,8 +16,6 @@ struct FeedContentView: View {
     @Environment (EmojiViewModel.self) var emojiViewModel
     var focusedField: FocusState<FeedField?>.Binding
 
-//    @State var emojiViewModel: EmojiViewModel = EmojiViewModel(createReactionToCommentUseCase: CreateReactionToCommentUseCase(repository: CommentRepositoryImpl()))
-
     // MARK: - View
     
     var body: some View {
@@ -25,28 +23,18 @@ struct FeedContentView: View {
         
         LazyVStack(alignment: .leading, spacing: 0) {
             ForEach(commentViewModel.unwrappedReadCommentData) { comment in
-                CommentView(commentId: comment.commentId,
+                CommentView(commentType: .comment,
+                            commentId: comment.commentId,
                             userProfile: comment.memberProfile,
                             time: comment.commentedAt,
                             comment: comment.context,
-                            reactionData: comment.reactionList)
+                            reactionData: comment.reactionList,
+                            focusedField: focusedField,
+                            isReplayList: !comment.replyList.isEmpty)
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-//                    .environment(emojiViewModel)
                 
                 replyView(reply: comment.replyList)
                     .padding(EdgeInsets(top: 10, leading: 60, bottom: 10, trailing: 16))
-                
-                Button(action: {
-                    feedViewModel.currentCommentId = comment.commentId
-                    focusedField.wrappedValue = .post
-                    commentViewModel.createCommentMemberName = comment.memberProfile.memberName
-                    commentViewModel.commentState = .createReplyComment
-                }) {
-                    Text("답글 달기")
-                        .fontWithLineHeight(fontLevel: .body4)
-                        .foregroundStyle(.treeGreen)
-                }
-                .padding(.leading, 60)
             }
         }
         .onAppear {
@@ -62,11 +50,15 @@ private extension FeedContentView {
     func replyView(reply: [ReplyListEntity]?) -> some View {
         if let data = reply {
             ForEach(data) {
-                CommentView(commentId: $0.commentId,
+                CommentView(commentType: .reply,
+                            commentId: $0.commentId,
                             userProfile: $0.memberProfile,
                             time: $0.commentedAt,
                             comment: $0.context,
-                            reactionData: $0.reactionList)
+                            reactionData: $0.reactionList, 
+                            focusedField: focusedField,
+                            isReplayList: true,
+                            lastData: $0.commentId == data.last?.commentId)
                 .environment(emojiViewModel)
             }
         }

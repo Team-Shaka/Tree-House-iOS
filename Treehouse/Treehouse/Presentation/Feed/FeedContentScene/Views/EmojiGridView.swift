@@ -50,6 +50,8 @@ struct EmojiGridView: View {
     // MARK: - View
 
     var body: some View {
+        @Bindable var emojiViewModel = emojiViewModel
+        
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 RoundedRectangle(cornerRadius: 2.5)
@@ -89,8 +91,10 @@ struct EmojiGridView: View {
                                         self.selectedId = data.id
                                         emojiViewModel.selectEmoji = data.unicodeEmoji
                                         
-                                        Task {
-                                            await emojiTappedAction()
+                                        if data.color.isEmpty {
+                                            Task {
+                                                await emojiTappedAction()
+                                            }
                                         }
                                     }
                                 }) {
@@ -99,9 +103,15 @@ struct EmojiGridView: View {
                                 }
                                 .disabled(selectedId != nil && selectedId != data.id)
                                 .popover(isPresented: self.makeIsPresented(item: data), attachmentAnchor: .point(.center)) {
-                                    ColorEmojiPopover(selectEmoji: data)
-                                        .font(.system(size: 30))
-                                        .presentationCompactAdaptation(.popover)
+                                    if emojiType == .feedView {
+                                        ColorEmojiPopover(selectEmoji: data, emojiType: emojiType, postId: postId ?? 0, isPresented: self.makeIsPresented(item: data))
+                                            .font(.system(size: 30))
+                                            .presentationCompactAdaptation(.popover)
+                                    } else {
+                                        ColorEmojiPopover(selectEmoji: data, emojiType: emojiType, commentId: commentId ?? 0, isPresented: self.makeIsPresented(item: data))
+                                            .font(.system(size: 30))
+                                            .presentationCompactAdaptation(.popover)
+                                    }
                                 }
                             }
                         }
@@ -153,13 +163,13 @@ extension EmojiGridView {
         Task {
             switch emojiType {
             case .feedView:
-                let result = await emojiViewModel.createReactionPost(
+                _ = await emojiViewModel.createReactionPost(
                     treehouseId: feedViewModel.currentTreehouseId ?? 0,
                     postId: postId ?? 0
                 )
                 
             case .detailView:
-                let result = await emojiViewModel.createReactionComment(
+                _ = await emojiViewModel.createReactionComment(
                     treehouseId: feedViewModel.currentTreehouseId ?? 0,
                     postId: feedViewModel.currentPostId ?? 0,
                     commentId: feedViewModel.currentCommentId ?? 0
