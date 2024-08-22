@@ -408,6 +408,7 @@
 		3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInvitationsUseCase.swift; sourceTree = "<group>"; };
 		3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginRequestDTO.swift; sourceTree = "<group>"; };
 		3F6801CC2C5FC065005E694E /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		3F6D5AC32C735D5F00FED907 /* Treehouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Treehouse.entitlements; sourceTree = "<group>"; };
 		3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
 		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
@@ -859,6 +860,7 @@
 		00CF35802BC291FA00D9E332 /* Treehouse */ = {
 			isa = PBXGroup;
 			children = (
+				3F6D5AC32C735D5F00FED907 /* Treehouse.entitlements */,
 				3F8F2A802C18AB1400D8CB9F /* structuredEmojis.json */,
 				3FA541562C60F12100723BAD /* treehouse_loading.json */,
 				3FBFBA7E2BC3C1A100B6A446 /* Info.plist */,
@@ -2321,10 +2323,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Treehouse/Treehouse.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = N3H27N59VG;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XB6KV776A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -2345,6 +2350,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamShaka.Treehouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Treehouse_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2357,10 +2364,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Treehouse/Treehouse.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Treehouse/Preview Content\"";
-				DEVELOPMENT_TEAM = N3H27N59VG;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XB6KV776A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Treehouse/Info.plist;
@@ -2381,6 +2391,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamShaka.Treehouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Treehouse_\bDistribution";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

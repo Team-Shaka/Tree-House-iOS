@@ -19,7 +19,7 @@ extension UIImage {
 
         let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
         print("원본 사이즈:", imageData)
-        var count: CGFloat = 5
+        var count: CGFloat = 7
         var low: CGFloat = maxDimensionInPixels * count
         let high: CGFloat = maxDimensionInPixels * 10
         var resultImage: UIImage?
