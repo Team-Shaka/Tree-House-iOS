@@ -56,7 +56,7 @@ struct MyProfileView: View {
                                     )
                                 )
                             })
-                        }.redacted(reason: isloading ? .placeholder : [])
+                        }
                     }
                     
                     VStack(spacing: 0) {
@@ -73,16 +73,14 @@ struct MyProfileView: View {
             }
             .refreshable {
                 if let treehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    myProfileViewModel.isLoadedMyProfile = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
+                    isloading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
                 }
             }
         }
         .task {
             if myProfileViewModel.isLoadedMyProfile == false {
                 if let treehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    myProfileViewModel.isLoadedMyProfile = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
-                    
-                    isloading = false
+                    isloading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
                 }
             }
         }
@@ -110,5 +108,7 @@ struct MyProfileView: View {
     NavigationStack {
         MyProfileView()
             .environment(ViewRouter())
+            .environment(UserInfoViewModel())
+            .environment(CurrentTreehouseInfoViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl())))
     }
 }
