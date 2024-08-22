@@ -182,7 +182,7 @@ extension PostDetailView {
                 .frame(maxWidth: .infinity, maxHeight: 1)
                 .foregroundColor(.gray3)
             
-            HStack(alignment: .bottom, spacing: 10) {
+            HStack(alignment: .center, spacing: 10) {
                 CustomAsyncImage(url: userInfoViewModel.userInfo?.treehouseInfo[feedViewModel.currentTreehouseId ?? 0].profileImageUrl?.absoluteString ?? "",
                                  type: .postMemberProfileImage,
                                  width: 36,

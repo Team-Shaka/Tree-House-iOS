@@ -25,8 +25,6 @@ struct UserInfoView: View {
     var treeHouseCount: Int
     var root: String
     
-    var image: UIImage?
-    
     // MARK: - Closure Property
     
     let inviteAction: (() -> Void)?

@@ -55,13 +55,15 @@ extension MyProfileViewModel {
         switch result {
         case .success(let response):
             myProfileData = response
-            return true
+            isLoadedMyProfile.toggle()
+
+            return false
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
                 print(errorMessage)
             }
-            return false
+            return true
         }
     }
 }

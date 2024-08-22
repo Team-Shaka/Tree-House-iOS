@@ -16,6 +16,10 @@
 		<string>Pretendard-Regular.otf</string>
 		<string>Pretendard-SemiBold.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>WEB_FRONT_URL</key>
 	<string>$(WEB_FRONT_URL)</string>
 </dict>
