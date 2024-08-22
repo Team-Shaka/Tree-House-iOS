@@ -59,6 +59,15 @@ struct VerificationView: View {
                     isKeyboardShowing.toggle()
                 }
                 .padding(.bottom, 8)
+                .onChange(of: verificationCode) { _, newValue in
+                    if newValue.count == 6 {
+                        viewModel.verificationCode = verificationCode
+                        
+                        Task {
+                            await viewModel.checkVerificationCode()
+                        }
+                    }
+                }
                 
                 Text(isValid == false ? "" : StringLiterals.Register.indicatorTitle2)
                     .fontWithLineHeight(fontLevel: .caption1)
@@ -105,6 +114,9 @@ struct VerificationView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             isKeyboardShowing = true
+        }
+        .task {
+            await viewModel.certificationPhoneNumber()
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

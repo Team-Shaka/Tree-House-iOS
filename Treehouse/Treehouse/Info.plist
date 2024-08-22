@@ -6,6 +6,17 @@
 	<string>$(ACCESS_TOKEN_KEY)</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-569285689763-ios-550e4798e676293af59a16</string>
+			</array>
+		</dict>
+	</array>
 	<key>LOGIN_KEY</key>
 	<string>$(LOGIN_KEY)</string>
 	<key>REFRESH_TOKEN_KEY</key>

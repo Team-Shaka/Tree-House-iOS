@@ -8,6 +8,7 @@
 import Foundation
 import Observation
 import SwiftUI
+import FirebaseAuth
 
 enum UserAuthentication {
     case notInvitation
@@ -71,6 +72,17 @@ final class UserSettingViewModel: BaseViewModel {
     
     var presignedUrlImage = [String]()
     var accessUrlImage = [String]()
+    
+    // MARK: - Firebase Authentication
+    
+    @ObservationIgnored
+    var verificationID: String?
+    
+    @ObservationIgnored
+    var verificationCode: String?
+    
+    var isVerificationID = false
+    var isCheckVerification = false
     
     // MARK: - UseCase Property
     
@@ -339,6 +351,50 @@ extension UserSettingViewModel {
                 self.errorMessage = error.localizedDescription
             }
             isloadImageAWS = false
+        }
+    }
+}
+
+// MARK: - Firebase Authentication UserPhoneNum Extension
+
+
+extension UserSettingViewModel {
+    func certificationPhoneNumber() async {
+        print("전화번호", phoneNumber)
+        guard let phoneNumber = phoneNumber else { return }
+        
+        do {
+            self.verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
+
+            await MainActor.run {
+                self.isVerificationID = true
+            }
+        } catch {
+            errorMessage = "인증 실패: \(error.localizedDescription)"
+        }
+    }
+    
+    func checkVerificationCode() async {
+        guard let verificationID = verificationID, let verificationCode = verificationCode else { return }
+        
+        let credential = PhoneAuthProvider.provider().credential(
+            withVerificationID: verificationID,
+            verificationCode: verificationCode
+        )
+        
+        do {
+            Auth.auth().languageCode = "kr"
+            let authResult = try await Auth.auth().signIn(with: credential)
+            print("인증 성공!")
+            
+            await MainActor.run {
+                self.isCheckVerification = true
+            }
+            
+        } catch {
+            await MainActor.run {
+                errorMessage = "인증 실패: \(error.localizedDescription)"
+            }
         }
     }
 }
