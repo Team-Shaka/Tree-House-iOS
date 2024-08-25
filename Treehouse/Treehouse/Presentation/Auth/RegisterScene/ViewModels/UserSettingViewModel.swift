@@ -83,6 +83,7 @@ final class UserSettingViewModel: BaseViewModel {
     
     var isVerificationID = false
     var isCheckVerification = false
+    var isCallCehckVerification = false
     
     // MARK: - UseCase Property
     
@@ -360,22 +361,36 @@ extension UserSettingViewModel {
 
 extension UserSettingViewModel {
     func certificationPhoneNumber() async {
-        print("전화번호", phoneNumber)
         guard let phoneNumber = phoneNumber else { return }
         
-        do {
-            self.verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
+        let fixPhoneNumber = "+82" + phoneNumber.dropFirst(1)
 
+        do {
+            self.verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(fixPhoneNumber, uiDelegate: nil)
+            
+            
+            // 서버 통신 성공, verificationID를 저장
+            if let verificationID = verificationID {
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+            }
+            
             await MainActor.run {
                 self.isVerificationID = true
             }
-        } catch {
-            errorMessage = "인증 실패: \(error.localizedDescription)"
+        } catch let error as NSError {
+            await MainActor.run {
+                errorMessage = "인증 실패: \(error.localizedDescription)"
+            }
         }
     }
     
     func checkVerificationCode() async {
-        guard let verificationID = verificationID, let verificationCode = verificationCode else { return }
+        guard let verificationCode = verificationCode else { return }
+        
+        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else {
+                print("No verification ID found.")
+                return
+            }
         
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationID,
@@ -383,16 +398,18 @@ extension UserSettingViewModel {
         )
         
         do {
-            Auth.auth().languageCode = "kr"
             let authResult = try await Auth.auth().signIn(with: credential)
             print("인증 성공!")
             
             await MainActor.run {
+                self.isCallCehckVerification = true
                 self.isCheckVerification = true
             }
             
         } catch {
             await MainActor.run {
+                self.isCheckVerification = false
+                self.isCallCehckVerification = true
                 errorMessage = "인증 실패: \(error.localizedDescription)"
             }
         }

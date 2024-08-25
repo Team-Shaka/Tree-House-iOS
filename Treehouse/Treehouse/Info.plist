@@ -13,10 +13,12 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>app-1-569285689763-ios-550e4798e676293af59a16</string>
+				<string>com.googleusercontent.apps.569285689763-5cpfmk9ouq64nhqcjjk5rkjapp1qtiik</string>
 			</array>
 		</dict>
 	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LOGIN_KEY</key>
 	<string>$(LOGIN_KEY)</string>
 	<key>REFRESH_TOKEN_KEY</key>
