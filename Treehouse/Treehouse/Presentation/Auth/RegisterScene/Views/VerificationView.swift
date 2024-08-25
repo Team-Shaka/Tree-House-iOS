@@ -66,10 +66,12 @@ struct VerificationView: View {
                         Task {
                             await viewModel.checkVerificationCode()
                         }
+                    } else {
+                        viewModel.isCallCehckVerification = false
                     }
                 }
                 
-                Text(isValid == false ? "" : StringLiterals.Register.indicatorTitle2)
+                Text(viewModel.isCallCehckVerification && viewModel.isCheckVerification == false ? StringLiterals.Register.indicatorTitle2 : "")
                     .fontWithLineHeight(fontLevel: .caption1)
                     .foregroundStyle(.error)
                 
@@ -100,10 +102,17 @@ struct VerificationView: View {
                 }
             } label: {
                 Text(StringLiterals.Register.buttonTitle2)
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .frame(width: SizeLiterals.Screen.screenWidth * 344 / 393, height: 56)
-                    .disableWithOpacity(verificationCode.count < 6)
+                    .foregroundStyle(viewModel.isCheckVerification ? .gray1 : .gray6)
+                    .background(viewModel.isCheckVerification ? .treeBlack : .gray2)
                     .cornerRadius(12)
+            }
+            .disabled(!viewModel.isCheckVerification)
+            .onChange(of: viewModel.isCheckVerification) { _ , newValue in
+                if newValue {
+                    isKeyboardShowing = false
+                }
             }
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
