@@ -185,7 +185,7 @@ struct EditProfileView: View {
                 isEditing = true
             }) {
                 Text(isEditing ? "저장하기" : "수정하기")
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.gray1)
                     .frame(width: SizeLiterals.Screen.screenWidth * 360 / 393, height: 56)
                     .background(isEditing ? .treeGreen : .treeBlack)

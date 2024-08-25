@@ -47,8 +47,8 @@ struct SetPhoneNumberView: View {
                         
                         if errorMessage == errorMessage {
                             Text(errorMessage ?? "")
+                                .fontWithLineHeight(fontLevel: .caption1)
                                 .foregroundColor(.error)
-                                .font(.fontGuide(.caption1))
                         }
                     }
                     

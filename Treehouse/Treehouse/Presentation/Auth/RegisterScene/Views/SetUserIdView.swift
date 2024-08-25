@@ -60,7 +60,7 @@ struct SetUserIdView: View {
                 }
             }) {
                 Text(StringLiterals.Register.buttonTitle5)
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
