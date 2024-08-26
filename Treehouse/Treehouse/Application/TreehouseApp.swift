@@ -38,7 +38,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Messaging.messaging().apnsToken = deviceToken
         
         // Firebase Auth를 위한 설정
-        Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
+        #if DEBUG
+            Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
+        #else
+            Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.prod)
+        #endif
     }
 
     // 원격 알림 처리
