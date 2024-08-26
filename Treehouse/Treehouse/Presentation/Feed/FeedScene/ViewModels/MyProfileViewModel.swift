@@ -16,19 +16,34 @@ final class MyProfileViewModel: BaseViewModel {
     @ObservationIgnored
     private let readMyProfileInfoUseCase:  GetReadMyProfileInfoUseCaseProtocol
     
+    @ObservationIgnored
+    private let deleteUserUseCase: DeleteUserUseCaseProtocol
+    
     var myProfileData: ReadMyProfileInfoResponseEntity?
     var isLoadedMyProfile = false
+    var isDeleteUser = false
     var isAlert: (Bool, AlertType) = (false, .logout)
+    var isWebViewPresented = false
+    var webViewUrl = ""
     var errorMessage: String = ""
     
     // MARK: - init
     
-    init(readMyProfileInfoUseCase: GetReadMyProfileInfoUseCaseProtocol) {
+    init(readMyProfileInfoUseCase: GetReadMyProfileInfoUseCaseProtocol,
+         deleteUserUseCase: DeleteUserUseCaseProtocol
+    ) {
         self.readMyProfileInfoUseCase = readMyProfileInfoUseCase
+        self.deleteUserUseCase = deleteUserUseCase
     }
     
     func buttonAction(titleName: String) {
         switch titleName {
+        case "운영정책":
+            isWebViewPresented.toggle()
+            webViewUrl = "https://sites.google.com/view/treehouse-manage/%ED%99%88"
+        case "개인정보정책":
+            isWebViewPresented.toggle()
+            webViewUrl = "https://sites.google.com/view/treehouse-privacy/%ED%99%88"
         case "로그아웃 하기":
             isAlert.0.toggle()
             isAlert.1 = .logout
@@ -64,6 +79,20 @@ extension MyProfileViewModel {
                 print(errorMessage)
             }
             return true
+        }
+    }
+    
+    func deleteUser() async {
+        let result = await deleteUserUseCase.execute()
+        
+        switch result {
+        case .success(let response):
+            isDeleteUser = true
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+                print(errorMessage)
+            }
         }
     }
 }

@@ -12,9 +12,9 @@ struct TreeBranchView: View {
         
     var body: some View {
         if let treehouseId = viewRouter.selectedTreehouseId {
-            WebView(path: "branchView/tree/\(treehouseId)")
-                .edgesIgnoringSafeArea(.all)
-            
+//            WebView(path: "branchView/tree/\(treehouseId)")
+//                .edgesIgnoringSafeArea(.all)
+            Text("WebView")
         } else {
             Text("트리하우스 ID를 선택해주세요.")
         }

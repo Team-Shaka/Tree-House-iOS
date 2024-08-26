@@ -8,31 +8,42 @@
 import SwiftUI
 import WebKit
 
-struct WebView: UIViewRepresentable {
-    let path: String
+class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {
+    var isLoading: Binding<Bool>
     
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+    init(isLoading: Binding<Bool>) {
+        self.isLoading = isLoading
     }
     
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        // Keychain에서 토큰 가져오기
-        guard let accessToken = KeychainHelper.shared.load(for: Config.accessTokenKey) else {
-            print("Access token not found")
-            return
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("Web Request 요청 완료")
+        isLoading.wrappedValue = false
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("Web Request 요청 시작")
+        isLoading.wrappedValue = true
+    }
+}
+
+struct WebView: UIViewRepresentable {
+    let url: String
+    @Binding var isLoading: Bool
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+
+        if let url = URL(string: url) {
+            webView.load(URLRequest(url: url))
         }
         
-        // URL 생성
-        guard let url = URL(string: Config.webFrontURL + path) else {
-            print("Invalid URL")
-            return
-        }
-        
-        // URLRequest 생성 및 Authorization 헤더 설정
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        // WebView에 요청 로드
-        uiView.load(request)
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) { }
+    
+    func makeCoordinator() -> WebViewNavigationDelegate {
+        WebViewNavigationDelegate(isLoading: $isLoading)
     }
 }

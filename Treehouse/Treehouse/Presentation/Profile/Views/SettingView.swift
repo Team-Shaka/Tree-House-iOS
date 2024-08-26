@@ -54,7 +54,7 @@ struct SettingView: View {
             
             ForEach(settingList, id: \.self) { settingOption in
                 Button(action: {
-                    buttonAction(titleName: settingOption)
+                    myProfileViewModel.buttonAction(titleName: settingOption)
                 }) {
                     Text(settingOption)
                         .fontWithLineHeight(fontLevel: .body2)
@@ -65,21 +65,6 @@ struct SettingView: View {
             }
         }
         .padding(.bottom, 17)
-    }
-    
-    private func buttonAction(titleName: String) {
-        switch titleName {
-        case "로그아웃 하기":
-            myProfileViewModel.isAlert.0.toggle()
-            myProfileViewModel.isAlert.1 = .logout
-            
-        case "회원탈퇴 하기":
-            myProfileViewModel.isAlert.0.toggle()
-            myProfileViewModel.isAlert.1 = .deleteAccount
-            
-        default:
-            myProfileViewModel.isAlert.0.toggle()
-        }
     }
 }
 

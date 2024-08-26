@@ -16,7 +16,7 @@ struct MyProfileView: View {
     @Environment(ViewRouter.self) var viewRouter
     @Environment(UserInfoViewModel.self) var userInfoViewModel
     @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
-    @State var myProfileViewModel = MyProfileViewModel(readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()))
+    @State var myProfileViewModel = MyProfileViewModel(readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()), deleteUserUseCase: DeleteUserUseCase(repository: RegisterRepositoryImpl()))
 
     @AppStorage(Config.loginKey) private var isLogin = false
     @State var isPresent = false
@@ -61,10 +61,6 @@ struct MyProfileView: View {
                     }
                     
                     VStack(spacing: 0) {
-                        SettingView(state: .accountSetting)
-                        
-                        SettingView(state: .systemSetting)
-                        
                         SettingView(state: .aboutTreeHouse)
                         
                         SettingView(state: .serviceSetting)
@@ -90,6 +86,7 @@ struct MyProfileView: View {
                      onCancel: { myProfileViewModel.isAlert.0.toggle() },
                      onConfirm: { switch myProfileViewModel.isAlert.1 {
                      case .logout:
+                         self.isLogin.toggle()
                          userInfoViewModel.deleteMyData()
                          
                          do {
@@ -106,8 +103,22 @@ struct MyProfileView: View {
                              self.isLogin.toggle()
                          }
                      case .deleteAccount:
-                         break
+                         self.isLogin.toggle()
+                         
+                         Task {
+                             await myProfileViewModel.deleteUser()
+                         }
+                         
+                         if myProfileViewModel.isDeleteUser == true {
+                             userInfoViewModel.deleteMyData()
+                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                 viewRouter.navigate(viewType: .userAuthentication)
+                             }
+                         }
                      } })
+        .fullScreenCover(isPresented: $myProfileViewModel.isWebViewPresented) {
+            WebViewContainer(url: myProfileViewModel.webViewUrl)
+        }
     }
 }
 
