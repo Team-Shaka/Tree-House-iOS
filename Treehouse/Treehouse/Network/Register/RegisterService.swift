@@ -88,4 +88,15 @@ class RegisterService {
         
         return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostExistsUserLoginResponseDTO.self)
     }
+    
+    /// 회원탈퇴를 위한 API
+    func deleteUser() async throws -> DeleteUserResponseDTO {
+        let request = NetworkRequest(requestType: RegisterAPI.deleteUser)
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: DeleteUserResponseDTO.self)
+    }
 }
