@@ -62,4 +62,15 @@ final class RegisterRepositoryImpl: RegisterRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    func deleteUser() async -> Result<DeleteUserResponseEntity, NetworkError> {
+        do {
+            let response = try await registerService.deleteUser()
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }

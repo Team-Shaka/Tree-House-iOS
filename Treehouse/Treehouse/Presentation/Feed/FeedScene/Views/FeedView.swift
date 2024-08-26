@@ -100,6 +100,7 @@ struct FeedView: View {
         }
         .sheet(isPresented: $isPickerPresented) {
             photoPickerManager.presentPhotoPicker()
+                .ignoresSafeArea(edges: .bottom)
         }
         .onTapGesture {
             hideKeyboard()
