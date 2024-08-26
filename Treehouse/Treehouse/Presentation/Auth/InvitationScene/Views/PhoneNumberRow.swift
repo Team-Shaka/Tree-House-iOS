@@ -23,11 +23,11 @@ struct PhoneNumberRow: View {
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(userInfo.name)
-                    .font(.fontGuide(.body2))
+                    .fontWithLineHeight(fontLevel: .body2)
                     .foregroundColor(.grayscaleBlack)
                 
                 Text(userInfo.phoneNumber)
-                    .font(.fontGuide(.body5))
+                    .fontWithLineHeight(fontLevel: .body5)
                     .foregroundColor(.gray5)
             }
             .padding(.leading, 10)

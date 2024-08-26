@@ -24,6 +24,7 @@ struct FeedView: View {
     @Environment (FeedViewModel.self) var feedViewModel
     @Environment (PostViewModel.self) var postViewModel
     @Environment (EmojiViewModel.self) var emojiViewModel
+    @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     
     @State var commentViewModel = CommentViewModel(createCommentUseCase: CreateCommentUseCase( repository: CommentRepositoryImpl()),readCommentUseCase: ReadCommentUseCase(repository: CommentRepositoryImpl()), createReplyCommentUseCase: CreateReplyCommentUseCase(repository: CommentRepositoryImpl()))
     
@@ -115,7 +116,7 @@ extension FeedView {
     private var postTextField: some View {
         VStack(spacing: 0) {
             HStack() {
-                TextField("\(feedViewModel.treehouseName)에 글쓰기...", text: $postContent, axis: .vertical)
+                TextField("\(currentTreehouseInfoViewModel.treehouseName)에 글쓰기...", text: $postContent, axis: .vertical)
                     .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
                     .fontWithLineHeight(fontLevel: .body5)
                     .tint(.treeGreen)

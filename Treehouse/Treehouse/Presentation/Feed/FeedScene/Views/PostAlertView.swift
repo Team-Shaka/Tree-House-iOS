@@ -27,14 +27,14 @@ struct PostAlertView: View {
             
             VStack(spacing: 41) {
                 Text(alertContent)
-                    .font(.fontGuide(.heading4))
+                    .fontWithLineHeight(fontLevel: .heading4)
                 
                 HStack(spacing: 12) {
                     Button(action: {
                         onCancel()
                     }) {
                         Text("취소")
-                            .font(.fontGuide(.body3))
+                            .fontWithLineHeight(fontLevel: .body3)
                             .foregroundStyle(.treeBlack)
                             .padding(EdgeInsets(top: 11.0, leading: 64.0, bottom: 11.0, trailing: 64.0))
                             .background(.grayscaleWhite)
@@ -49,7 +49,7 @@ struct PostAlertView: View {
                         onConfirm()
                     }) {
                         Text("확인")
-                            .font(.fontGuide(.body3))
+                            .fontWithLineHeight(fontLevel: .body3)
                             .foregroundStyle(.grayscaleWhite)
                             .padding(EdgeInsets(top: 11.0, leading: 64.0, bottom: 11.0, trailing: 64.0))
                             .background(.grayscaleBlack)

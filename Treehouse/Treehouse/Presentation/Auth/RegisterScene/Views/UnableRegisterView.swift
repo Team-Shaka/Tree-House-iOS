@@ -51,7 +51,7 @@ struct UnableRegisterView: View {
             Spacer(minLength: SizeLiterals.Screen.screenHeight * 26 / 852)
             
             Button {
-                print("돌아가기 버튼 탭했음")
+                viewRouter.popToRoot()
             } label: {
                 Text(StringLiterals.Register.buttonTitle3)
                     .fontWithLineHeight(fontLevel: .body2)

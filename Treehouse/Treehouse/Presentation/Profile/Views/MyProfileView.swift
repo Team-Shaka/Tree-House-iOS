@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PopupView
+import FirebaseAuth
 
 struct MyProfileView: View {
     
@@ -88,8 +89,18 @@ struct MyProfileView: View {
                          self.isLogin.toggle()
                          userInfoViewModel.deleteMyData()
                          
-                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                         do {
+                             try Auth.auth().signOut()
+                             print("User signed out successfully")
+                             // 필요한 경우, 앱 내에서 상태 초기화나 화면 전환 등을 처리
+                         } catch let signOutError as NSError {
+                             print("Error signing out: %@", signOutError)
+                         }
+                         
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                              viewRouter.navigate(viewType: .userAuthentication)
+                             viewRouter.selectedTab = .home
+                             self.isLogin.toggle()
                          }
                      case .deleteAccount:
                          self.isLogin.toggle()
