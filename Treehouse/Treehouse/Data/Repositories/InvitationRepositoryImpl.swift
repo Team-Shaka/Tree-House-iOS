@@ -22,6 +22,18 @@ final class InvitationRepositoryImpl: InvitationRepositoryProtocol {
         }
     }
     
+    /// 트리 하우스 초대
+    func postInvitation(senderId: Int, phoneNumber: String, treehouseId: Int) async -> Result<InvitationResponseEntity, NetworkError> {
+        do {
+            let response = try await invitationService.postInvitation(senderId: senderId, phoneNumber: phoneNumber, treehouseId: treehouseId)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
+    
     /// 초대장 조회
     func getCheckInvitation() async -> Result<CheckInvitationsReponseEntity, NetworkError> {
         do {

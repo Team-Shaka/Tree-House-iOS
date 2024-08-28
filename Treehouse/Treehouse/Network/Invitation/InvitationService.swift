@@ -11,6 +11,17 @@ final class InvitationService {
     
     private let networkServiceManager = NetworkServiceManager()
     
+    /// 트리하우스 초대 API
+    func postInvitation(senderId: Int, phoneNumber: String, treehouseId: Int) async throws -> PostInvitationResponseDTO {
+        let request = NetworkRequest(requestType: InvitationAPI.postInvitation(requestBody: PostInvitationRequestDTO(senderId: senderId, phoneNumber: phoneNumber, treehouseId: treehouseId)))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostInvitationResponseDTO.self)
+    }
+    
     /// 트리 멤버 초대 수락 / 거부 API
     func postAcceptInvitationTreeMember(invitationId: Int, acceptDecision: Bool) async throws -> PostAcceptInvitationTreeMemberResponseDTO {
         
