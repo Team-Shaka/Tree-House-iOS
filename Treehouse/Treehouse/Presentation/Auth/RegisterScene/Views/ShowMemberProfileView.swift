@@ -21,6 +21,7 @@ struct ShowMemberProfileView: View {
     @State var isRetryButtonDisabled = false
     
     @AppStorage(Config.loginKey) private var isLogin = false
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
     // MARK: - View
     
@@ -65,6 +66,8 @@ struct ShowMemberProfileView: View {
                     
                     if result && userDataResult {
                         isLogin = true
+                        selectedTreehouseId = viewModel.treehouseId ?? 0
+                        viewRouter.selectedTab = .home
                         viewRouter.navigate(viewType: .enterTreehouse)
                     }
                 }
@@ -89,6 +92,11 @@ struct ShowMemberProfileView: View {
                 .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
         }
         .disabled(isRetryButtonDisabled)
+        .onAppear {
+            if viewModel.registerType == .registerTreehouse {
+                viewModel.userName = userInfoViewModel.userInfo?.userName ?? ""
+            }
+        }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
