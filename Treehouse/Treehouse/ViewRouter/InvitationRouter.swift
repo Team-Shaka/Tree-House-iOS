@@ -15,6 +15,13 @@ enum InvitationRouter: Router {
     
     func buildView(_ viewModel: BaseViewModel?) -> AnyView {
         
-        return AnyView(EmptyView())
+        switch self {
+        case .inviteBranchView:
+            return AnyView(InviteBranchView())
+        case .receivedInvitationView:
+            return AnyView(ReceivedInvitationView())
+        default:
+            return AnyView(EmptyView())
+        }
     }
 }
