@@ -35,12 +35,12 @@ final class ImageLoader {
    }
     
     static func getCurrentCacheUsage() -> CacheUsage {
-           let cache = URLCache.shared
-           return CacheUsage(
-               memoryUsage: cache.currentMemoryUsage,
-               diskUsage: cache.currentDiskUsage
-           )
-       }
+       let cache = URLCache.shared
+       return CacheUsage(
+           memoryUsage: cache.currentMemoryUsage,
+           diskUsage: cache.currentDiskUsage
+       )
+   }
     
     init(url: String?) {
         self.url = url
