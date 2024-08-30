@@ -19,8 +19,10 @@ struct MyProfileView: View {
     @State var myProfileViewModel = MyProfileViewModel(readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()), deleteUserUseCase: DeleteUserUseCase(repository: RegisterRepositoryImpl()))
 
     @AppStorage(Config.loginKey) private var isLogin = false
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
+    
     @State var isPresent = false
-    @State var isloading = true
+    @State var isLoading = true
     
     // MARK: - View
     
@@ -34,8 +36,8 @@ struct MyProfileView: View {
             
             ScrollView(.vertical) {
                 VStack(spacing: 0) {
-                    if let data = myProfileViewModel.myProfileData {
-                        VStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        if let data = myProfileViewModel.myProfileData {
                             UserInfoView(infoType: .myProfile,
                                          treememberName: data.memberName,
                                          userName: data.userName,
@@ -58,7 +60,7 @@ struct MyProfileView: View {
                                 )
                             })
                         }
-                    }
+                    }.redacted(reason: isLoading ? .placeholder : [])
                     
                     VStack(spacing: 0) {
                         SettingView(state: .aboutTreeHouse)
@@ -70,15 +72,21 @@ struct MyProfileView: View {
             }
             .refreshable {
                 if let treehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    isloading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
+                    isLoading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
                 }
             }
         }
         .task {
             if myProfileViewModel.isLoadedMyProfile == false {
                 if let treehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
-                    isloading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
+                    isLoading = await myProfileViewModel.readMyProfileInfo(treehouseId: treehouseId)
                 }
+            }
+        }
+        .onChange(of: selectedTreehouseId) { _, newValue in
+            myProfileViewModel.myProfileData = nil
+            Task {
+                await myProfileViewModel.readMyProfileInfo(treehouseId: selectedTreehouseId)
             }
         }
         .customAlert(alertType: myProfileViewModel.isAlert.1,

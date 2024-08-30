@@ -62,10 +62,9 @@ struct CustomAsyncImage: View {
         }
         .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
         .cornerRadius(6.0)
-        .onAppear {
-            Task {
-                await imageLoader.fetch()
-            }
+        .contentShape(Rectangle())
+        .task {
+            await imageLoader.fetch()
         }
     }
     
@@ -93,5 +92,8 @@ struct CustomAsyncImage: View {
 }
 
 #Preview {
-    CustomAsyncImage(url: "", type: .treehouseImage, width: 36, height: 36)
+    CustomAsyncImage(url: "",
+                     type: .treehouseImage,
+                     width: 36,
+                     height: 36)
 }
