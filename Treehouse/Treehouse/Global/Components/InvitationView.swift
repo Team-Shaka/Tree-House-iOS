@@ -25,6 +25,7 @@ struct InvitationView: View {
     var treehouseName: String
     var invitedMember: String
     var memberNum: Int
+    var memberProfileUrls: [String?]
     
     var invitationType: InvitationType
     var leftButtonAction: (() -> ())?
@@ -166,7 +167,7 @@ extension InvitationView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            CustomAsyncImage(url: viewModel.memberProfileImages[index] ?? "",
+            CustomAsyncImage(url: memberProfileUrls[index] ?? "",
                              type: .postMemberProfileImage,
                              width: 29, height: 29)
             .clipShape(Circle())
@@ -183,5 +184,6 @@ extension InvitationView {
     InvitationView(treehouseName: "점심팟",
                    invitedMember: "Chriiii0o0",
                    memberNum: 6,
+                   memberProfileUrls: [""],
                    invitationType: .first)
 }

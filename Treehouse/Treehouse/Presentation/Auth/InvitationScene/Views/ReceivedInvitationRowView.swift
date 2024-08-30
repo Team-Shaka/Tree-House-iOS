@@ -19,7 +19,8 @@ struct ReceivedInvitationRowView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(image)
+            CustomAsyncImage(url: image, type: .treehouseImage, width: 46, height: 46)
+                .clipShape(Circle())
             
             Text(title)
                 .fontWithLineHeight(fontLevel: .heading4)

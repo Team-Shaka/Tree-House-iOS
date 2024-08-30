@@ -23,6 +23,7 @@ final class CreateTreehouseViewModel: BaseViewModel {
     
     var treehouseName: String = ""
     var treehouseHallName: String = ""
+    var treehouseId = 0
     var isAvailable: Bool = false
     var errorMessage: String = ""
     
@@ -67,7 +68,7 @@ extension CreateTreehouseViewModel {
         
         switch result {
         case .success(let response):
-            print("API 성공: ", response.treehouseId)
+            treehouseId = response.treehouseId
             return response.treehouseId
         case .failure(let error):
             await MainActor.run {

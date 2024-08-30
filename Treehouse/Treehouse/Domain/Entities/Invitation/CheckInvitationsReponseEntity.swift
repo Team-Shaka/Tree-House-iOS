@@ -8,11 +8,13 @@
 import Foundation
 
 struct CheckInvitationsReponseEntity: Decodable {
-    let invitations: [CheckInvitationsReponseData]
+    let invitations: [CheckInvitationsDataReponseEntity]
 }
 
-struct CheckInvitationsReponseData: Decodable {
+struct CheckInvitationsDataReponseEntity: Decodable, Identifiable {
+    var id = UUID()
     let invitationId: Int
+    let treehouseId: Int
     let treehouseName: String
     let senderName: String
     let senderProfileImageUrl: String?

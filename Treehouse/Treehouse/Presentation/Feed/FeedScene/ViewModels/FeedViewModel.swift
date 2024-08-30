@@ -12,7 +12,7 @@ import Observation
 final class FeedViewModel: BaseViewModel {
     var viewState : FeedViewStateType = .notEmpty
     var feedData: FeedModel? = nil
-    var groupName: String = "정보없음"
+    var groupName: String = ""
     
     var errorMessage: String = ""
     
@@ -22,7 +22,7 @@ final class FeedViewModel: BaseViewModel {
     
     var dataLoaded = false
     
-    var userId = 0
+    var selectTreehouseMemberId = 0
     
     /// Feed 의 Post 내용이 바뀌었을때 다시 내용을 로드하기 위한 변수
     var modifyPostContent: (Int, String) = (0, "")

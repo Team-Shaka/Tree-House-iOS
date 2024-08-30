@@ -13,7 +13,8 @@ struct PreviewCreatedTreehouseView: View {
     
     @Environment(ViewRouter.self) var viewRouter
     @Environment(CreateTreehouseViewModel.self) var createTreehouseViewModel
-
+    @State private var userInfoViewModel = UserInfoViewModel()
+    
     @State var treehallParticipantsCount: Int = 0
     
     // MARK: - View
@@ -57,7 +58,13 @@ struct PreviewCreatedTreehouseView: View {
             
             VStack(spacing: 12) {
                 Button(action: {
-                    viewRouter.push(CreateTreehouseRouter.sendInvitationView)
+                    Task {
+                        let result = await performAsyncTasks()
+                        
+                        if result {
+                            viewRouter.push(CreateTreehouseRouter.sendInvitationView)
+                        }
+                    }
                 }) {
                     Text("좋아요!")
                         .fontWithLineHeight(fontLevel: .body2)
@@ -105,6 +112,18 @@ struct PreviewCreatedTreehouseView: View {
                     .foregroundStyle(.treeBlack)
             }
         }
+    }
+    
+    func performAsyncTasks() async -> Bool {
+        let treehouseId = await createTreehouseViewModel.createTreehouse()
+        
+        if let id = treehouseId {
+            let result = userInfoViewModel.modifyTreehouse(treehouseId: id)
+            print("정보 저장 결과:", result)
+            return result
+        }
+        
+        return false
     }
 }
 

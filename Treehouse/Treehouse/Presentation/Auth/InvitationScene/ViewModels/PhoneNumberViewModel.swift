@@ -70,6 +70,12 @@ final class PhoneNumberViewModel {
             }
         }
     }
+    
+    func invitationButtonTapped(index: Int, tap: Bool) {
+        phoneNumberList[index].isInvitation = true
+        searchPhoneNumberList[index].isInvitation = true
+        print("변경: ", phoneNumberList[index].isInvitation)
+    }
 }
 
 // MARK: - Contacts Extension

@@ -16,6 +16,7 @@ struct InvitationAlertView: View {
     var treehouseName: String
     var invitedMember: String
     var memberNum: Int
+    var memberProfileUrls: [String?]
     
     var leftButtonAction: (() -> ())?
     var rightButtonAction: (() -> ())?
@@ -25,6 +26,13 @@ struct InvitationAlertView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var userSettingViewModel = UserSettingViewModel(checkNameUseCase: CheckNameUseCase(repository: RegisterRepositoryImpl()),
+                                                       registerUserUseCase: RegisterUserUseCase(repository: RegisterRepositoryImpl()),
+                                                       registerTreeMemberUseCase: RegisterTreeMemberUseCase(repository: RegisterRepositoryImpl()),
+                                                       acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
+                                                       checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
+                                                           presignedURLUseCase: PresignedURLUseCase(repository: FeedRepositoryImpl()), uploadImageToAWSUseCase: UploadImageToAWSUseCase(repository: AWSImageRepositoryImpl()), registerType: .registerTreehouse)
+    
     // MARK: - View
     
     var body: some View {
@@ -32,6 +40,7 @@ struct InvitationAlertView: View {
             InvitationView(treehouseName: treehouseName, 
                            invitedMember: invitedMember,
                            memberNum: memberNum,
+                           memberProfileUrls: memberProfileUrls,
                            invitationType: invitationType,
                            leftButtonAction: {
                                 leftButtonAction?()
@@ -44,6 +53,7 @@ struct InvitationAlertView: View {
                                 cancelButtonAction?()
                            })
                             .frame(height: SizeLiterals.Screen.screenHeight * 420 / 852)
+                            .environment(userSettingViewModel)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
@@ -57,5 +67,6 @@ struct InvitationAlertView: View {
     InvitationAlertView(invitationType: .received,
                         treehouseName: "점심팟",
                         invitedMember: "Chriiii0o0",
-                        memberNum: 6)
+                        memberNum: 6,
+                        memberProfileUrls: [""])
 }

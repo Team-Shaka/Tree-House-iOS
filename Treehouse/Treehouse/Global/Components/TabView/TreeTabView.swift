@@ -94,7 +94,7 @@ struct TreeTabView: View {
         } else {
             if let userInfo = userInfoViewModel.userInfo, let treehouseId = userInfo.treehouses.first {
                 currentTreehouseInfoViewModel.currentTreehouseId = treehouseId
-                currentTreehouseInfoViewModel.userId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
+                currentTreehouseInfoViewModel.memberId = userInfo.findTreehouse(id: treehouseId)?.treehouseMemberId ?? 0
                 viewRouter.selectedTreehouseId = treehouseId
                 
                 selectedTreehouseId = treehouseId

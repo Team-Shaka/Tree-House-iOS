@@ -150,7 +150,7 @@ extension FeedView {
                     Task {
                         let presingedResult = await presingedURLViewModel.presignedURL(
                             treehouseId: feedViewModel.currentTreehouseId ?? 0,
-                            memberId: feedViewModel.userId,
+                            memberId: feedViewModel.selectTreehouseMemberId,
                             selectImage: photoPickerManager.selectedImages
                         )
                         

@@ -11,12 +11,32 @@ struct TreeBranchView: View {
     @Environment(ViewRouter.self) var viewRouter: ViewRouter
         
     var body: some View {
-        if let treehouseId = viewRouter.selectedTreehouseId {
-//            WebView(path: "branchView/tree/\(treehouseId)")
-//                .edgesIgnoringSafeArea(.all)
-            Text("WebView")
-        } else {
-            Text("트리하우스 ID를 선택해주세요.")
+        VStack {
+            Spacer()
+            
+            Button(action: {
+                viewRouter.push(InvitationRouter.inviteBranchView)
+            }) {
+                HStack(spacing: 0) {
+                    Image(.icInvitation)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .padding(.trailing, 4)
+                    
+                    Text("초대장 확인하기")
+                        .fontWithLineHeight(fontLevel: .body4)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
+            .foregroundStyle(.gray1)
+            .background(.treeBlack)
+            .cornerRadius(10)
+            .padding(.horizontal, 16)
+        }
+        .padding(.bottom, 16)
+        .navigationDestination(for: InvitationRouter.self) { router in
+            viewRouter.buildScene(inputRouter: router)
         }
     }
 }

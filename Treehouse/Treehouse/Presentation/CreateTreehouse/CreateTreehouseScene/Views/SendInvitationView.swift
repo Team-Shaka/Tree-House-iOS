@@ -16,7 +16,7 @@ struct SendInvitationView: View {
     
     @State var viewModel = InvitationViewModel(acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
                                                checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                               checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()))
+                                               checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()), invitationUseCase: InvitationUseCase(repository: InvitationRepositoryImpl()))
     
     @State private var userInfoViewModel = UserInfoViewModel()
     @State var phoneNumberViewModel = PhoneNumberViewModel()
@@ -86,13 +86,33 @@ struct SendInvitationView: View {
                         
                     } else if searchText.isEmpty {
                         ForEach(phoneNumberViewModel.phoneNumberList) { userData in
-                            PhoneNumberRow(userInfo: userData)
+                            let treehouseInfo = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)
+                            
+                            PhoneNumberRow(profileImage: userData.profileImage,
+                                           userName: userData.name,
+                                           phoneNumber: userData.phoneNumber,
+                                           isInvitation: userData.isInvitation,
+                                           invitationButtonTappeed: {
+                                Task {
+                                    await viewModel.invitationTreehouse(senderId: treehouseInfo?.treehouseMemberId ?? 0, phoneNumber: userData.phoneNumber, treehouseId: createTreehouseViewModel.treehouseId)
+                                }
+                            })
                         }
                     } else {
                         ForEach(phoneNumberViewModel.phoneNumberList.filter {
                             $0.name.contains(searchText) || $0.phoneNumber.contains(searchText)
                         }) { userData in
-                            PhoneNumberRow(userInfo: userData)
+                            let treehouseInfo = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)
+                            
+                            PhoneNumberRow(profileImage: userData.profileImage,
+                                           userName: userData.name,
+                                           phoneNumber: userData.phoneNumber,
+                                           isInvitation: userData.isInvitation,
+                                           invitationButtonTappeed: {
+                                Task {
+                                    await viewModel.invitationTreehouse(senderId: treehouseInfo?.treehouseMemberId ?? 0, phoneNumber: userData.phoneNumber, treehouseId: createTreehouseViewModel.treehouseId)
+                                }
+                            })
                         }
                     }
                 }
@@ -100,14 +120,7 @@ struct SendInvitationView: View {
             .scrollIndicators(.hidden)
             
             Button(action: {
-                // TODO: - 다음 뷰로 연결
-                Task {
-                    let result = await performAsyncTasks()
-                    
-                    if result {
-                        viewRouter.push(RegisterRouter.setMemberProfileNameView)
-                    }
-                }
+                viewRouter.push(RegisterRouter.setMemberProfileNameView)
             }) {
                 Text("다 초대했어요")
                     .fontWithLineHeight(fontLevel: .body2)
@@ -121,14 +134,7 @@ struct SendInvitationView: View {
             .padding(.trailing, 9)
             
             Button(action: {
-                // TODO: - 다음 뷰로 연결
-                Task {
-                    let result = await performAsyncTasks()
-                    
-                    if result {
-                        viewRouter.push(RegisterRouter.setMemberProfileNameView)
-                    }
-                }
+                viewRouter.push(RegisterRouter.setMemberProfileNameView)
             }) {
                 Text("지금은 건너뛸래요")
                     .fontWithLineHeight(fontLevel: .body2)
@@ -148,6 +154,9 @@ struct SendInvitationView: View {
                 Task {
                     await viewModel.checkAvailableInvitation()
                 }
+                
+                userSettingViewModel.treehouseId = createTreehouseViewModel.treehouseId
+                userSettingViewModel.userName = userInfoViewModel.userInfo?.userName ?? ""
             }
             .onChange(of: phoneNumberViewModel.searchText) { _, _ in
                 Task {
@@ -176,23 +185,6 @@ struct SendInvitationView: View {
             }
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
-    }
-    
-    func performAsyncTasks() async -> Bool {
-        let treehouseId = await createTreehouseViewModel.createTreehouse()
-        
-        if let id = treehouseId {
-            let result = userInfoViewModel.modifyTreehouse(treehouseId: id)
-            print("정보 저장 결과:", result)
-            
-            if result {
-                userSettingViewModel.treehouseId = id
-                userSettingViewModel.userName = userInfoViewModel.userInfo?.userName ?? ""
-                return true
-            }
-        }
-        
-        return false
     }
 }
 

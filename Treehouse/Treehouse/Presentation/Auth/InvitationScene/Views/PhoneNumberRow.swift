@@ -10,23 +10,28 @@ import SwiftUI
 struct PhoneNumberRow: View {
     
     // MARK: - Property
+
+    let profileImage: Data?
+    let userName: String
+    let phoneNumber: String
+    var isInvitation: Bool
     
-    var userInfo: UserPhoneNumberInfo
+    var invitationButtonTappeed: () -> Void
     
     // MARK: - View
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(data: userInfo.profileImage, defaultImage: .icNotiMember)
+            Image(data: profileImage, defaultImage: .icNotiMember)
                 .resizable()
                 .frame(width: 36, height: 36)
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(userInfo.name)
+                Text(userName)
                     .fontWithLineHeight(fontLevel: .body2)
                     .foregroundColor(.grayscaleBlack)
                 
-                Text(userInfo.phoneNumber)
+                Text(phoneNumber)
                     .fontWithLineHeight(fontLevel: .body5)
                     .foregroundColor(.gray5)
             }
@@ -35,15 +40,16 @@ struct PhoneNumberRow: View {
             Spacer()
             
             Button(action: {
-                
+                invitationButtonTappeed()
             }) {
                 Text(StringLiterals.Invitation.buttonTitle2)
                     .fontWithLineHeight(fontLevel: .body5)
                     .frame(width: 72, height: 32)
-                    .foregroundStyle(.grayscaleWhite)
-                    .background(.treeBlack)
+                    .foregroundStyle(isInvitation == false ? .grayscaleWhite : .grayscaleBlack)
+                    .background(isInvitation == false ? .treeBlack : .gray1 )
                     .cornerRadius(16)
             }
+            .disabled(isInvitation)
         }
         .padding(.vertical, 13)
     }
@@ -51,10 +57,10 @@ struct PhoneNumberRow: View {
 
 // MARK: - Preview
 
-#Preview {
-    let phoneNumbers = UserPhoneNumberInfo.phoneNumberStructDummyData
-    return Group {
-        PhoneNumberRow(userInfo: phoneNumbers[0])
-        PhoneNumberRow(userInfo: phoneNumbers[1])
-    }
-}
+//#Preview {
+//    let phoneNumbers = UserPhoneNumberInfo.phoneNumberStructDummyData
+//    return Group {
+//        PhoneNumberRow(userInfo: phoneNumbers[0])
+//        PhoneNumberRow(userInfo: phoneNumbers[1])
+//    }
+//}
