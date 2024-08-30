@@ -94,7 +94,7 @@ struct FeedHomeView: View {
         }
         .onAppear {
             feedViewModel.currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId
-            feedViewModel.userId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
+            feedViewModel.selectTreehouseMemberId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseInfoViewModel.currentTreehouseId ?? 0)?.treehouseMemberId ?? 0
             feedViewModel.treehouseName = currentTreehouseInfoViewModel.treehouseName
             
             Task {

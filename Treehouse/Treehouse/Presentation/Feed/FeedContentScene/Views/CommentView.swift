@@ -45,7 +45,6 @@ struct CommentView: View {
                               height: 36)
                 .clipShape(Circle())
                 .padding(.trailing, 10)
-//                .padding(.trailing, commentyType == .comment ? 8 : 10)
             
             VStack(alignment: .leading, spacing: 10) {
                 VStack(alignment: .leading, spacing: 1) {
@@ -64,7 +63,7 @@ struct CommentView: View {
                         Button(action: {
                             viewModel.memberId = userProfile.memberId
                             
-                            if userProfile.memberId == feedViewModel.userId {
+                            if userProfile.memberId == feedViewModel.selectTreehouseMemberId {
                                 viewModel.sheetCase = .isWriterOnComment
                             } else {
                                 viewModel.sheetCase = .isReaderOnComment

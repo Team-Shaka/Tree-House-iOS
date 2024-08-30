@@ -71,7 +71,7 @@ struct SinglePostView: View {
                                      height: 36)
                         .clipShape(Circle())
                         .onTapGesture {
-                            if feedViewModel.userId == memberProfile.memberId {
+                            if feedViewModel.selectTreehouseMemberId == memberProfile.memberId {
                                 viewRouter.selectedTab = .setting
                             } else {
                                 viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
@@ -85,7 +85,7 @@ struct SinglePostView: View {
                                 .fontWithLineHeight(fontLevel: .body2)
                                 .foregroundStyle(.treeBlack)
                                 .onTapGesture {
-                                    if feedViewModel.userId == memberProfile.memberId {
+                                    if feedViewModel.selectTreehouseMemberId == memberProfile.memberId {
                                         viewRouter.selectedTab = .setting
                                     } else {
                                         viewRouter.push(ProfileRouter.memberProfileView(treehouseId: feedViewModel.currentTreehouseId ?? 0,
@@ -100,7 +100,7 @@ struct SinglePostView: View {
                             Spacer()
                             
                             Button(action: {
-                                if feedViewModel.userId == memberProfile.memberId {
+                                if feedViewModel.selectTreehouseMemberId == memberProfile.memberId {
                                     viewModel.sheetCase = .isWriterOnPost
                                 } else {
                                     viewModel.sheetCase = .isReaderOnPost
