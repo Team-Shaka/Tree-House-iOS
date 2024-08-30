@@ -40,6 +40,7 @@ struct ReceivedFirstInvitaionView: View {
                 InvitationView(treehouseName: viewModel.treehouseName,
                                invitedMember: viewModel.invitedMember,
                                memberNum: viewModel.memberNum,
+                               memberProfileUrls: viewModel.memberProfileImages,
                                invitationType: .first,
                                leftButtonAction: {
                     Task {

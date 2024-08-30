@@ -15,12 +15,11 @@ final class CurrentTreehouseInfoViewModel: BaseViewModel {
     @ObservationIgnored
     private let getReadTreehouseInfoUseCase: GetReadTreehouseInfoUseCaseProtocol
     
-//    var treehouseData =
     var currentTreehouseId: Int?
     var treehouseName: String = ""
     var treehouseImageUrl: String = ""
     var treehouseSize: Int = 0
-    var userId: Int = 0
+    var memberId: Int = 0
     
     var errorMessage: String = ""
     var isloading: Bool = true

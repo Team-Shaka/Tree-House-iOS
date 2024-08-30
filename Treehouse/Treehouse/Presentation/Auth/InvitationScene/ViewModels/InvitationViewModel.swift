@@ -19,6 +19,7 @@ final class InvitationViewModel: BaseViewModel {
     var memberProfileImages: [URL] = []
     var availableInvitation: Int = 0
     var activeRate: Int = 0
+    var invitationCount = 0
     
     var errorMessage: String? = nil
     
@@ -33,32 +34,50 @@ final class InvitationViewModel: BaseViewModel {
     @ObservationIgnored
     private let checkAvailableInvitationUseCase: GetCheckAvailableInvitationUseCaseProtocol
     
+    @ObservationIgnored
+    private let invitationUseCase: PostInvitationUseCaseProtocol
+    
     // MARK: - init
     
-    init(
-        acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol,
+    init(acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol,
          checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol,
-         checkAvailableInvitationUseCase: GetCheckAvailableInvitationUseCaseProtocol
+         checkAvailableInvitationUseCase: GetCheckAvailableInvitationUseCaseProtocol,
+         invitationUseCase: PostInvitationUseCaseProtocol
     ) {
         self.acceptInvitationTreeMemberUseCase = acceptInvitationTreeMemberUseCase
         self.checkInvitationsUseCase = checkInvitationsUseCase
         self.checkAvailableInvitationUseCase = checkAvailableInvitationUseCase
+        self.invitationUseCase = invitationUseCase
     }
 }
 
 // MARK: - Invitation API Extension
 
 extension InvitationViewModel {
+    func invitationTreehouse(senderId: Int, phoneNumber: String, treehouseId: Int) async -> Bool {
+        print(senderId)
+        print(phoneNumber)
+        print(treehouseId)
+        let result = await invitationUseCase.execute(senderId: senderId, phoneNumber: phoneNumber, treehouseId: treehouseId)
+        
+        switch result {
+        case .success(_):
+            return true
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+            
+            return false
+        }
+    }
+    
     func acceptInvitationTreeMember(invitationId: Int, isAccepted: Bool) async {
         let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: invitationId, acceptDecision: isAccepted)
         
         switch result {
-        case .success(let response):
-            // TODO: - invitationid 연결
-            await MainActor.run {
-                response.treehouseId
-            }
-            
+        case .success(_):
+            break
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
@@ -71,17 +90,9 @@ extension InvitationViewModel {
         
         switch result {
         case .success(let response):
-//            response.invitations.forEach {
-//                treehouseName = $0.treehouseName
-//                invitedMember = $0.senderName
-//                memberNum = $0.treehouseSize
-//                memberProfileImages = $0.treehouseMemberProfileImages
-//            }
-            
-            treehouseName = "점심팟"
-            invitedMember = "Chriiii0o0"
-            memberNum = 20
-//            memberProfileImages = $0.treehouseMemberProfileImages
+            await MainActor.run {
+                invitationCount = response.invitations.count
+            }
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription

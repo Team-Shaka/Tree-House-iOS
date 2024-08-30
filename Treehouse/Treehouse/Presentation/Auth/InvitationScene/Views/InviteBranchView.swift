@@ -18,14 +18,18 @@ struct InviteBranchView: View {
     
     @State var viewModel = InvitationViewModel(acceptInvitationTreeMemberUseCase: AcceptInvitationTreeMemberUseCase(repository: InvitationRepositoryImpl()),
                                                 checkInvitationsUseCase: CheckInvitationsUseCase(repository: InvitationRepositoryImpl()),
-                                                checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl())
+                                               checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()), invitationUseCase: InvitationUseCase(repository: InvitationRepositoryImpl())
     )
     
+    @State private var userInfoViewModel = UserInfoViewModel()
     @State var phoneNumberViewModel = PhoneNumberViewModel()
     @Environment(ViewRouter.self) private var viewRouter
     
     @State private var inviteCount: Int = 0
     @State private var showPopover: Bool = false
+    @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
+    
+    @State var memberId: Int = 0
     
     // MARK: - View
     
@@ -51,11 +55,11 @@ struct InviteBranchView: View {
                         GreenLetterView()
                         
                         VStack(spacing: 13) {
-                            Text("\(inviteCount)건")
+                            Text("\(viewModel.invitationCount)건")
                                 .fontWithLineHeight(fontLevel: .heading1)
                             
                             Button(action: {
-                                
+                                viewRouter.push(InvitationRouter.receivedInvitationView)
                             }) {
                                 Text(StringLiterals.Invitation.buttonTitle1)
                                     .fontWithLineHeight(fontLevel: .body3)
@@ -148,8 +152,29 @@ struct InviteBranchView: View {
                     .padding(.bottom, 12)
                 
                 LazyVStack(spacing: 0) {
-                    ForEach(phoneNumberViewModel.searchPhoneNumberList) { userData in
-                        PhoneNumberRow(userInfo: userData)
+                    ForEach(Array(phoneNumberViewModel.searchPhoneNumberList.enumerated()), id: \.element.id) { index, userData in
+                        
+                        PhoneNumberRow(profileImage: userData.profileImage,
+                                       userName: userData.name,
+                                       phoneNumber: userData.phoneNumber,
+                                       isInvitation: userData.isInvitation,
+                                       invitationButtonTappeed: {
+                            Task {
+                                let result = await viewModel.invitationTreehouse(senderId: memberId, phoneNumber: userData.phoneNumber, treehouseId: selectedTreehouseId)
+                                
+                                phoneNumberViewModel.invitationButtonTapped(index: index, tap: true)
+                            }
+                        })
+                        
+                        
+                        
+//                        PhoneNumberRow(userInfo: userData, invitationButtonTappeed: {
+//                            Task {
+//                                let result = await viewModel.invitationTreehouse(senderId: memberId, phoneNumber: userData.phoneNumber, treehouseId: selectedTreehouseId)
+//                                
+//                                phoneNumberViewModel.invitationButtonTapped(index: index, tap: true)
+//                            }
+//                        })
                     }
                 }
             }
@@ -158,8 +183,11 @@ struct InviteBranchView: View {
                 hideKeyboard()
             }
             .onAppear {
+                memberId = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)?.treehouseMemberId ?? 0
+                
                 Task {
                     await viewModel.checkAvailableInvitation()
+                    await viewModel.checkInvitations()
                 }
             }
             .onChange(of: phoneNumberViewModel.searchText) { _, _ in

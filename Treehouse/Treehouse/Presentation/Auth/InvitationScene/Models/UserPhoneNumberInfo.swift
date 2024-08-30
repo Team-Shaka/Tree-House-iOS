@@ -12,7 +12,7 @@ struct UserPhoneNumberInfo: Hashable, Identifiable {
     let name: String
     let phoneNumber: String
     let profileImage: Data?
-    let isInvitation: Bool
+    var isInvitation: Bool
 }
 
 extension UserPhoneNumberInfo {

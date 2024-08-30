@@ -11,15 +11,57 @@ import Observation
 final class ReceivedInvitationViewModel: BaseViewModel {
     var viewState: ReceivedInvitationViewStateType = .invitation
     var presentAlert: Bool = false
-    var tapInvitationData: ReceivedInvitationModel? = nil
+    var tapInvitationData: CheckInvitationsDataReponseEntity? = nil
+    var errorMessage: String? = nil
     
-    var receivedInvitations: [ReceivedInvitationModel] = [ReceivedInvitationModel(treehouseName: "점심팟", senderProfileImageUrl: "img_group", treehouseCount: 20),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 9),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 12),
-                                                     ReceivedInvitationModel(treehouseName: "점심팟", senderProfileImageUrl: "img_group", treehouseCount: 20),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 9),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 12),
-                                                     ReceivedInvitationModel(treehouseName: "점심팟", senderProfileImageUrl: "img_group", treehouseCount: 20),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 9),
-                                                     ReceivedInvitationModel(treehouseName: "그룹이름", senderProfileImageUrl: "img_group", treehouseCount: 12)]
+    var receivedInvitations: [CheckInvitationsDataReponseEntity] = []
+    
+    // MARK: - UseCase Property
+    
+    @ObservationIgnored
+    private let checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol
+    
+    @ObservationIgnored
+    private let acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol
+    
+    // MARK: - init
+    
+    init(checkInvitationsUseCase: GetCheckInvitationsUseCaseProtocol,
+         acceptInvitationTreeMemberUseCase: PostAcceptInvitationTreeMemberUseCaseProtocol) {
+        self.checkInvitationsUseCase = checkInvitationsUseCase
+        self.acceptInvitationTreeMemberUseCase = acceptInvitationTreeMemberUseCase
+    }
+}
+
+extension ReceivedInvitationViewModel {
+    func checkInvitations() async {
+        let result = await checkInvitationsUseCase.execute()
+        
+        switch result {
+        case .success(let response):
+            await MainActor.run {
+                receivedInvitations = response.invitations
+            }
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func acceptInvitationTreeMember(acceptDecision: Bool) async -> Bool {
+        guard let selectInvitationData = tapInvitationData else { return false }
+
+        let result = await acceptInvitationTreeMemberUseCase.execute(invitationId: selectInvitationData.invitationId, acceptDecision: acceptDecision)
+        
+        switch result {
+        case .success(_):
+            return true
+        case .failure(let error):
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+            return false
+        }
+    }
 }
