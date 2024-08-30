@@ -10,9 +10,7 @@ import SwiftUI
 struct PhoneNumberRow: View {
     
     // MARK: - Property
-    
-//    var userInfo: UserPhoneNumberInfo
-    
+
     let profileImage: Data?
     let userName: String
     let phoneNumber: String
@@ -51,6 +49,7 @@ struct PhoneNumberRow: View {
                     .background(isInvitation == false ? .treeBlack : .gray1 )
                     .cornerRadius(16)
             }
+            .disabled(isInvitation)
         }
         .padding(.vertical, 13)
     }

@@ -153,7 +153,6 @@ struct InviteBranchView: View {
                 
                 LazyVStack(spacing: 0) {
                     ForEach(Array(phoneNumberViewModel.searchPhoneNumberList.enumerated()), id: \.element.id) { index, userData in
-                        
                         PhoneNumberRow(profileImage: userData.profileImage,
                                        userName: userData.name,
                                        phoneNumber: userData.phoneNumber,
@@ -165,16 +164,6 @@ struct InviteBranchView: View {
                                 phoneNumberViewModel.invitationButtonTapped(index: index, tap: true)
                             }
                         })
-                        
-                        
-                        
-//                        PhoneNumberRow(userInfo: userData, invitationButtonTappeed: {
-//                            Task {
-//                                let result = await viewModel.invitationTreehouse(senderId: memberId, phoneNumber: userData.phoneNumber, treehouseId: selectedTreehouseId)
-//                                
-//                                phoneNumberViewModel.invitationButtonTapped(index: index, tap: true)
-//                            }
-//                        })
                     }
                 }
             }
@@ -212,6 +201,11 @@ struct InviteBranchView: View {
                         .foregroundStyle(.treeBlack)
                 }
             }
+        }
+        .background(.grayscaleWhite)
+        .refreshable {
+            await viewModel.checkAvailableInvitation()
+            await viewModel.checkInvitations()
         }
     }
 }
