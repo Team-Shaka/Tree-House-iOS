@@ -129,6 +129,7 @@ extension NetworkServiceManager {
         
         // RefreshToken 이 저장되어있는지 확인
         guard let loadRefreshToken = KeychainHelper.shared.load(for: Config.refreshTokenKey) else {
+            UserDefaults.standard.set(false, forKey: Config.loginKey)
             throw NetworkError.clientError(message: "저장된 토큰이 없습니다.")
         }
         
