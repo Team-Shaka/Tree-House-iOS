@@ -39,8 +39,6 @@ struct FeedView: View {
     @FocusState private var focusedField: FeedField?
     @FocusState private var isKeyboardShowing: Bool
     
-    @State var scrolledID: Int?
-    
     // MARK: - View
     
     var body: some View {
@@ -262,13 +260,15 @@ extension FeedView {
                             feedViewModel.currentPostId = data.postId
                         }
                     
-                    CommentCountView(commentCount: data.commentCount)
-                        .padding(.top, 10)
-                        .padding(.trailing, 16)
-                        .onTapGesture {
-                            feedViewModel.currentPostId = data.postId
-                            viewRouter.push(FeedRouter.postDetailView)
-                        }
+                    if data.commentCount > 0 {
+                        CommentCountView(commentCount: data.commentCount)
+                            .padding(.top, 10)
+                            .padding(.trailing, 16)
+                            .onTapGesture {
+                                feedViewModel.currentPostId = data.postId
+                                viewRouter.push(FeedRouter.postDetailView)
+                            }
+                    }
                 }
                 .padding(.leading, 62)
                 .padding(.bottom, 16)
