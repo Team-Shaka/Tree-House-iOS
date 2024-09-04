@@ -120,6 +120,7 @@
 		3F6E13C42C7B7E4900F94595 /* DeleteUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E13C32C7B7E4900F94595 /* DeleteUserResponseEntity.swift */; };
 		3F6E13C62C7C7F0400F94595 /* WebViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E13C52C7C7F0400F94595 /* WebViewContainer.swift */; };
 		3F7BCF912C60FD69000939DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */; };
+		3F7F25EA2C8808F400863E3D /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F25E92C8808F400863E3D /* DIContainer.swift */; };
 		3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */; };
 		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
 		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
@@ -421,6 +422,7 @@
 		3F6E13C32C7B7E4900F94595 /* DeleteUserResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserResponseEntity.swift; sourceTree = "<group>"; };
 		3F6E13C52C7C7F0400F94595 /* WebViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewContainer.swift; sourceTree = "<group>"; };
 		3F7BCF902C60FD69000939DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		3F7F25E92C8808F400863E3D /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExistsUserLoginResponseDTO.swift; sourceTree = "<group>"; };
 		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
 		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
@@ -925,6 +927,7 @@
 				00CF35912BC2DFA800D9E332 /* Resources */,
 				00CF35B22BC3060E00D9E332 /* Extension */,
 				3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */,
+				3F7F25E92C8808F400863E3D /* DIContainer.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -2203,6 +2206,7 @@
 				3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */,
 				3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
+				3F7F25EA2C8808F400863E3D /* DIContainer.swift in Sources */,
 				3FF490042C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift in Sources */,
 				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,
 				3FF107022BEA07FB00C52908 /* InvitationAPI.swift in Sources */,

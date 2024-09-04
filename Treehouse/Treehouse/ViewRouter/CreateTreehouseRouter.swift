@@ -17,23 +17,25 @@ enum CreateTreehouseRouter: Router {
     case sendInvitationView
 
     func buildView(_ viewModel: BaseViewModel?) -> AnyView {
-        if let viewModel = viewModel as? CreateTreehouseViewModel {
-            switch self {
-            case .createTreehouseNameView:
-                return AnyView(CreateTreehouseNameView()
-                    .environment(viewModel))
-            case .createTreeHallNameView:
-                return AnyView(CreateTreeHallNameView()
-                    .environment(viewModel))
-            case .previewCreatedTreehouseView:
-                return AnyView(PreviewCreatedTreehouseView()
-                    .environment(viewModel))
-            case .sendInvitationView:
-                return AnyView(SendInvitationView()
-                    .environment(viewModel))
-            }
-        } else {
-            return AnyView(EmptyView())
+        let viewModel = DIContainer.shared.getViewModel(for: "CreateTreehouseRouter") {
+            CreateTreehouseViewModel(
+                checkTreehouseNameUseCase: CheckTreehouseNameUseCase(repository: TreehouseRepositoryImpl()),
+                createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl()))
+                }
+        
+        switch self {
+        case .createTreehouseNameView:
+            return AnyView(CreateTreehouseNameView()
+                .environment(viewModel))
+        case .createTreeHallNameView:
+            return AnyView(CreateTreeHallNameView()
+                .environment(viewModel))
+        case .previewCreatedTreehouseView:
+            return AnyView(PreviewCreatedTreehouseView()
+                .environment(viewModel))
+        case .sendInvitationView:
+            return AnyView(SendInvitationView()
+                .environment(viewModel))
         }
     }
 }
