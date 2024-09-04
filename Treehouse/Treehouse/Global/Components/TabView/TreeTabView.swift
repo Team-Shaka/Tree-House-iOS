@@ -82,6 +82,9 @@ struct TreeTabView: View {
                 
                 currentTreehousePerformRequest()
             }
+            .navigationDestination(for: CreateTreehouseRouter.self) { router in
+                viewRouter.buildScene(inputRouter: router)
+            }
         }
     }
     
