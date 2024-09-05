@@ -37,6 +37,8 @@ final class TreehouseViewModel: BaseViewModel {
         self.readMyTreehouseInfoUseCase = readMyTreehouseInfoUseCase
         self.readTreehouseInfoUseCase = readTreehouseInfoUseCase
         self.createTreehouseUseCase = createTreehouseUseCase
+        
+        print("init TreehouseViewModel")
     }
     
     deinit {
