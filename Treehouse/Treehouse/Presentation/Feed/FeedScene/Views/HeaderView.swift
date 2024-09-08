@@ -9,19 +9,11 @@ import SwiftUI
 
 struct HeaderView: View {
     
+    // MARK: - State Property
+    
     @Environment(ViewRouter.self) var viewRouter
     @Environment(CurrentTreehouseInfoViewModel.self) var currentTreehouseInfoViewModel
     @State var treehouseViewModel = TreehouseViewModel(readMyTreehouseInfoUseCase: ReadMyTreehouseInfoUseCase(repository: TreehouseRepositoryImpl()))
-    @State var createTreehouseViewModel = CreateTreehouseViewModel(
-        checkTreehouseNameUseCase: CheckTreehouseNameUseCase(repository: TreehouseRepositoryImpl()),
-        createTreehouseUseCase: CreateTreehouseUseCase(repository: TreehouseRepositoryImpl())
-    )
-    
-    // MARK: - Property
-    
-//    var treehouseId: Int
-//    var treehouseName: String
-//    var treehouseImageUrl: String
     
     // MARK: - Binding Property
     
@@ -67,18 +59,5 @@ struct HeaderView: View {
                 .isOpaque(true)
                 .backgroundColor(.treeBlack.opacity(0.5))
         }
-        .navigationDestination(for: CreateTreehouseRouter.self) { router in
-            viewRouter.buildScene(inputRouter: router, viewModel: createTreehouseViewModel)
-        }
-//        .onChange(of: treehouseId) { _, newValue in
-//            Task {
-//                await treehouseViewModel.readTreehouseInfo(treehouseId: newValue)
-//            }
-//        }
-//        .onAppear {
-//            Task {
-//                await treehouseViewModel.readTreehouseInfo(treehouseId: treehouseId)
-//            }
-//        }
     }
 }

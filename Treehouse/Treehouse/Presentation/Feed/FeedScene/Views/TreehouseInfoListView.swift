@@ -15,15 +15,15 @@ struct TreehouseInfoListView: View {
     @Binding var isPresent: Bool
     
     var body: some View {
-        LazyVStack(spacing: 14) {
+        VStack(spacing: 14) {
             RoundedRectangle(cornerRadius: 2.5)
                 .frame(width: 50, height: 4)
                 .foregroundStyle(.gray2)
                 .padding(.top, 10)
-                .padding(.bottom, 36)
+                .padding(.bottom, 25)
             
             if let data = treehouseInfoData {
-                ForEach(data) { data in
+                List(data) { data in
                     Button(action: {
                         selectedTreehouseId = data.treehouseId
                         isPresent.toggle()
@@ -34,9 +34,12 @@ struct TreehouseInfoListView: View {
                                          currentTreeHouse: data.currentTreeHouse
                         )
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    .listRowInsets(EdgeInsets(top: 7, leading: 16, bottom: 7, trailing: 16))
+                    .listRowSeparator(.hidden)
                 }
-            } else {
-                // TODO: - 빈 화면 넣어야 합니다.
+                .listStyle(PlainListStyle())
+                .frame(height: calculateHeight(for: data.count))
             }
             
             Button(action: {
@@ -54,10 +57,18 @@ struct TreehouseInfoListView: View {
                     .background(.treeBlack)
                     .cornerRadius(12)
             }
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 34+29)
+        .padding(.bottom, SizeLiterals.Screen.screenHeight * (34+29) / 852)
         .background(.grayscaleWhite)
         .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
+    }
+    
+    private func calculateHeight(for itemCount: Int) -> CGFloat {
+        if itemCount == 1 {
+            return 100
+        } else {
+            return 170
+        }
     }
 }
