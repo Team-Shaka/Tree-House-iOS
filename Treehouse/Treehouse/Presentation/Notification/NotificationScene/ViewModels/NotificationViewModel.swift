@@ -60,7 +60,7 @@ extension NotificationViewModel {
         case .success(let response):
             
             await MainActor.run {
-                notificationData = response.notifications
+                notificationData = response.notifications.reversed()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.isLoading = false
