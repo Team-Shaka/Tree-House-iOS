@@ -18,7 +18,6 @@ struct CommentCountView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
-//                .frame(width: SizeLiterals.Screen.screenWidth * 315 / 393, height: 40)
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
                 .foregroundColor(.gray1)
@@ -27,18 +26,11 @@ struct CommentCountView: View {
             HStack(spacing: 5) {
                 Image(.icGreenReply)
                 
-                if commentCount < 10 {
-                    Text("0\(commentCount) comments")
-                        .fontWithLineHeight(fontLevel: .body4)
-                        .foregroundStyle(.gray7)
-                } else {
-                    Text("\(commentCount) comments")
-                        .fontWithLineHeight(fontLevel: .body4)
-                        .foregroundStyle(.gray7)
-                }
+                Text("\(commentCount) comments")
+                    .fontWithLineHeight(fontLevel: .body4)
+                    .foregroundStyle(.gray7)
             }
             .padding(.leading, 12)
-//            .padding(.trailing, 180)
         }
     }
 }
