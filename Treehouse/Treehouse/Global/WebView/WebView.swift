@@ -27,21 +27,20 @@ class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {
 }
 
 struct WebView: UIViewRepresentable {
-    let url: String
+    @Binding var url: String
     @Binding var isLoading: Bool
     
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
         webView.navigationDelegate = context.coordinator
-
-        if let url = URL(string: url) {
-            webView.load(URLRequest(url: url))
-        }
-        
         return webView
     }
     
-    func updateUIView(_ uiView: WKWebView, context: Context) { }
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if let url = URL(string: url), url != uiView.url {
+            uiView.load(URLRequest(url: url))
+        }
+    }
     
     func makeCoordinator() -> WebViewNavigationDelegate {
         WebViewNavigationDelegate(isLoading: $isLoading)
