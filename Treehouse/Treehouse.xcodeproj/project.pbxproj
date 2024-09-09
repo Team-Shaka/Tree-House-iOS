@@ -393,6 +393,7 @@
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
 		3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseRouter.swift; sourceTree = "<group>"; };
+		3F3D59D42C8EBFFF004141C4 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCommentUseCase.swift; sourceTree = "<group>"; };
 		3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F3DAE9C2C588E9B00C1424C /* GetReadMyTreehouseInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadMyTreehouseInfoResponseDTO.swift; sourceTree = "<group>"; };
@@ -864,6 +865,7 @@
 		00CF35752BC291FA00D9E332 = {
 			isa = PBXGroup;
 			children = (
+				3F3D59D32C8EBF96004141C4 /* ci_scripts */,
 				00CF35802BC291FA00D9E332 /* Treehouse */,
 				00CF357F2BC291FA00D9E332 /* Products */,
 			);
@@ -1135,6 +1137,14 @@
 				3F1BE1402C21741000D3AF1D /* PutUploadImagesResponseEntity.swift */,
 			);
 			path = AWSImage;
+			sourceTree = "<group>";
+		};
+		3F3D59D32C8EBF96004141C4 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				3F3D59D42C8EBFFF004141C4 /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 		3F3DAE992C588CD600C1424C /* ViewModel */ = {
