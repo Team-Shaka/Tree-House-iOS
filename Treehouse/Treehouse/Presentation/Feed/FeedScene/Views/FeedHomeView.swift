@@ -90,6 +90,8 @@ struct FeedHomeView: View {
                 viewRouter.buildScene(inputRouter: router, viewModel: userInfoViewModel)
             case .memberProfileView:
                 viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
+            case .memberBranchView:
+                viewRouter.buildScene(inputRouter: router, viewModel: currentTreehouseInfoViewModel)
             }
         }
         .onAppear {

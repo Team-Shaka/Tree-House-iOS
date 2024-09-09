@@ -36,7 +36,8 @@ struct MemberProfileView: View {
                                      treeHouseCount: data.treehouseCount,
                                      root: "\(data.fromMe)",
                                      inviteAction: nil,
-                                     branchAction: nil,
+                                     branchAction: { viewRouter.push(ProfileRouter.memberBranchView(treehouseId: feedViewModel.currentTreehouseId ?? 0, memberId: data.memberId))
+                                    },
                                      profileAction: nil)
                         .padding(.top, 15)
                     }
@@ -85,19 +86,6 @@ struct MemberProfileView: View {
             }
             .refreshable {
                 await memberProfileViewModel.performAsyncTasks()
-            }
-            
-            if memberProfileViewModel.isLoading == true {
-                VStack {
-                    Spacer()
-                    
-                    LottieView(lottieFile: "treehouse_loading", speed: 1)
-                        .frame(width: 100, height: 100)
-                    
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.grayscaleWhite)
             }
         }
         .navigationTitle(memberProfileViewModel.title)
