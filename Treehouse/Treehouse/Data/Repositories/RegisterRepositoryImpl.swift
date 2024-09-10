@@ -63,6 +63,28 @@ final class RegisterRepositoryImpl: RegisterRepositoryProtocol {
         }
     }
     
+    func postRegisterFCMToken(token: String) async -> Result<RegisterFCMTokenResponseEntity, NetworkError>  {
+        do {
+            let response = try await registerService.postRegisterFCMToken(token: token)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
+    
+    func postRegisterPushAgree(pushAgree: Bool) async -> Result<RegisterPushAgreeResponseEntity, NetworkError> {
+        do {
+            let response = try await registerService.postRegisterPushAgree(pushAgree: pushAgree)
+            return .success(response.toDomain())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
+    
     func deleteUser() async -> Result<DeleteUserResponseEntity, NetworkError> {
         do {
             let response = try await registerService.deleteUser()

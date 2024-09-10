@@ -89,6 +89,29 @@ class RegisterService {
         return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostExistsUserLoginResponseDTO.self)
     }
     
+    /// FCM 토큰을 유저 id 와 저장하는 API
+    func postRegisterFCMToken(token: String) async throws -> PostRegisterFCMTokenResponseDTO {
+        
+        let request = NetworkRequest(requestType: RegisterAPI.postRegisterFCMToken(requestBody: PostRegisterFCMTokenRequestDTO(fcmToken: token)))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostRegisterFCMTokenResponseDTO.self)
+    }
+    
+    /// 푸시 알림 동의 API
+    func postRegisterPushAgree(pushAgree: Bool) async throws -> PostRegisterPushAgreeResponseDTO {
+        let request = NetworkRequest(requestType: RegisterAPI.postRegisterPushAgree(requestBody: PostRegisterPushAgreeRequestDTO(pushAgree: pushAgree)))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostRegisterPushAgreeResponseDTO.self)
+    }
+    
     /// 회원탈퇴를 위한 API
     func deleteUser() async throws -> DeleteUserResponseDTO {
         let request = NetworkRequest(requestType: RegisterAPI.deleteUser)

@@ -40,11 +40,7 @@ final class UserSettingViewModel: BaseViewModel {
     var phoneNumber: String?
     var treehouseId: Int?
 
-    var errorMessage: String? = nil {
-        didSet {
-            print(errorMessage)
-        }
-    }
+    var errorMessage: String?
     
     // MARK: - Invitation Property
     
@@ -310,7 +306,7 @@ extension UserSettingViewModel {
 extension UserSettingViewModel {
     func presignedURL() async -> Bool {
         
-        guard let treehouseId = treehouseId, 
+        guard let treehouseId = treehouseId,
                 let imageDataSize = profileImage?.getImageBitSize() else {
             print("treehouseId")
             return false

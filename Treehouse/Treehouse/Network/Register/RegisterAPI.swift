@@ -14,6 +14,8 @@ enum RegisterAPI {
     case postReissueToken(requestBody: PostReissueTokenRequestDTO)
     case postCheckUserPhone(requestBody: PostCheckUserPhoneRequestDTO)
     case postExistsUserLogin(requestBody: PostExistsUserLoginRequestDTO)
+    case postRegisterFCMToken(requestBody: PostRegisterFCMTokenRequestDTO)
+    case postRegisterPushAgree(requestBody: PostRegisterPushAgreeRequestDTO)
     case deleteUser
 }
 
@@ -26,6 +28,8 @@ extension RegisterAPI: BaseRequest {
         case .postReissueToken: return "users/reissue"
         case .postCheckUserPhone: return "users/phone"
         case .postExistsUserLogin: return "users/login"
+        case .postRegisterFCMToken: return "users/fcm-token"
+        case .postRegisterPushAgree: return "users/push-agree"
         case .deleteUser: return "users/withdraw"
         }
     }
@@ -38,6 +42,8 @@ extension RegisterAPI: BaseRequest {
         case .postReissueToken: return .post
         case .postCheckUserPhone: return .post
         case .postExistsUserLogin: return .post
+        case .postRegisterFCMToken: return .post
+        case .postRegisterPushAgree: return .post
         case .deleteUser: return .delete
         }
     }
@@ -46,7 +52,7 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName, .postRegisterUser, .postCheckUserPhone:
             return .noHeader
-        case .postRegisterTreeMember, .deleteUser:
+        case .postRegisterTreeMember, .postRegisterFCMToken, .postRegisterPushAgree, .deleteUser:
             return .accessTokenHeader
         case .postReissueToken:
             return .refreshTokenHeader
@@ -67,6 +73,8 @@ extension RegisterAPI: BaseRequest {
         case .postReissueToken(requestBody: let requestBody): return requestBody
         case .postCheckUserPhone(requestBody: let requestBody): return requestBody
         case .postExistsUserLogin(requestBody: let requestBody): return requestBody
+        case .postRegisterFCMToken(requestBody: let requestBody): return requestBody
+        case .postRegisterPushAgree(requestBody: let requestBody): return requestBody
         default: return .none
         }
     }

@@ -29,7 +29,23 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // 메세징 델리겟
         Messaging.messaging().delegate = self
         
+        requestNotificationPermission()
+        
         return true
+    }
+    
+    func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("Error requesting notification permission: \(error)")
+                return
+            }
+            if granted {
+                print("Notification permission granted.")
+            } else {
+                print("Notification permission denied.")
+            }
+        }
     }
     
     // APNS 토큰을 Firebase에 등록
@@ -71,7 +87,9 @@ struct TreehouseApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var viewRouter = ViewRouter()
+    @State var registerPushNotiViewModel = RegisterPushNotiViewModel(registerPushAgreeUseCase: RegisterPushAgreeUseCase(repository: RegisterRepositoryImpl()))
     @AppStorage(Config.loginKey) private var isLogin = false
+    @AppStorage("PushAgree") private var isPush = false
     
     init() {
         configureNavigationBar()
@@ -91,6 +109,13 @@ struct TreehouseApp: App {
             }
             .onAppear {
                 print("\(URLCache.shared.memoryCapacity / 1024 / 1024) MB")
+            }
+            .onChange(of: isPush) { _, newValue in
+                if isLogin == true {
+                    Task {
+                        await registerPushNotiViewModel.registerPushAgree()
+                    }
+                }
             }
         }
     }
@@ -132,6 +157,33 @@ struct TreehouseApp: App {
         
         let cache = URLCache(memoryCapacity: cacheLimit, diskCapacity: diskCapacity, diskPath: "myImages")
         URLCache.shared = cache
+    }
+    
+    private func checkNotificationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                switch settings.authorizationStatus {
+                case .authorized:
+                    print("알림 허용됨")
+                    self.isPush = true
+                case .denied:
+                    print("알림 거부됨")
+                    self.isPush = false
+                case .notDetermined:
+                    print("알림 상태 미결정")
+                    self.isPush = false
+                case .provisional:
+                    print("임시 알림 허용")
+                    self.isPush = false
+                case .ephemeral:
+                    print("임시 세션 알림")
+                    self.isPush = false
+                @unknown default:
+                    print("알 수 없는 상태")
+                    self.isPush = false
+                }
+            }
+        }
     }
 }
 
