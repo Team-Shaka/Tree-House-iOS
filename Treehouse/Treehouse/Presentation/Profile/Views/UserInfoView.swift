@@ -140,8 +140,8 @@ private extension UserInfoView {
                     branchAction?()
                 }) {
                     Text(StringLiterals.Profile.buttonLabel2)
-                        .font(.fontGuide(.body4))
-                        .foregroundStyle(.gray1)
+                        .fontWithLineHeight(fontLevel: .body4)
+                        .foregroundStyle(.grayscaleWhite)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
                         .background(.treeGreen)
@@ -152,8 +152,8 @@ private extension UserInfoView {
                     inviteAction?()
                 }) {
                     Text(StringLiterals.Profile.buttonLabel3)
-                        .font(.fontGuide(.body4))
-                        .foregroundStyle(.gray1)
+                        .fontWithLineHeight(fontLevel: .body4)
+                        .foregroundStyle(.grayscaleWhite)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
                         .background(.treeBlack)
@@ -165,8 +165,8 @@ private extension UserInfoView {
                 profileAction?()
             }) {
                 Text(StringLiterals.Profile.buttonLabel1)
-                    .font(.fontGuide(.body4))
-                    .foregroundStyle(.gray1)
+                    .fontWithLineHeight(fontLevel: .body4)
+                    .foregroundStyle(.grayscaleWhite)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
                     .background(.treeBlack)

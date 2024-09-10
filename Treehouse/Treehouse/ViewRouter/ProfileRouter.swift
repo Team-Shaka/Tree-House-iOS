@@ -13,6 +13,7 @@ enum ProfileRouter: Router {
     
     case editProfileView(treehouseId: Int, memberId: Int, memberProfileUrl: String, memberName: String, bio: String)
     case memberProfileView(treehouseId: Int, memberId: Int)
+    case memberBranchView(treehouseId: Int, memberId: Int)
     
     func buildView(_ viewModel: BaseViewModel?) -> ContentView {
         if let viewModel = viewModel as? UserInfoViewModel {
@@ -47,7 +48,15 @@ enum ProfileRouter: Router {
             default:
                 return AnyView(EmptyView())
             }
-        } else {
+        } else if let viewModel = viewModel as? CurrentTreehouseInfoViewModel {
+            switch self {
+            case .memberBranchView(let treehouseId, let memberId):
+                return AnyView(MemberBranchView(memberId: memberId).environment(viewModel))
+            default:
+                return AnyView(EmptyView())
+            }
+        }
+        else {
             return AnyView(EmptyView())
         }
     }

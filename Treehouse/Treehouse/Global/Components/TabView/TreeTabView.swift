@@ -91,6 +91,9 @@ struct TreeTabView: View {
     private func currentTreehousePerformRequest() {
         if let currentTreehouseId = currentTreehouseInfoViewModel.currentTreehouseId {
             viewRouter.selectedTreehouseId = currentTreehouseId
+            
+            currentTreehouseInfoViewModel.memberId = userInfoViewModel.userInfo?.findTreehouse(id: currentTreehouseId)?.treehouseMemberId ?? 0
+            
             Task {
                 await currentTreehouseInfoViewModel.getReadTreehouseInfo(treehouseId: currentTreehouseId)
             }
