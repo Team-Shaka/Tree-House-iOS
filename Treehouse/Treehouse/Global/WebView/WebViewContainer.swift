@@ -11,12 +11,12 @@ struct WebViewContainer: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State var isLoading = true
-    let url: String
+    @State var url: String
     
     var body: some View {
         NavigationStack {
             ZStack {
-                WebView(url: url, isLoading: $isLoading)
+                WebView(url: $url, isLoading: $isLoading)
                 
                 if isLoading {
                     LottieView(lottieFile: "treehouse_loading", speed: 1)
