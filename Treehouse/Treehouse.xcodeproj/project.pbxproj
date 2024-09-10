@@ -212,6 +212,16 @@
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
 		3FEC57562C8F0BDD0080DF96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */; };
 		3FEC575D2C8F0C2B0080DF96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */; };
+		3FEC57652C8F484F0080DF96 /* PostRegisterFCMTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */; };
+		3FEC57672C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */; };
+		3FEC57692C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */; };
+		3FEC576B2C8F48880080DF96 /* PostRegisterPushAgreeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC576A2C8F48880080DF96 /* PostRegisterPushAgreeRequestDTO.swift */; };
+		3FEC576D2C8F493B0080DF96 /* RegisterFCMTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC576C2C8F493B0080DF96 /* RegisterFCMTokenUseCase.swift */; };
+		3FEC576F2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC576E2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift */; };
+		3FEC57712C8F49890080DF96 /* RegisterFCMTokenResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57702C8F49890080DF96 /* RegisterFCMTokenResponseEntity.swift */; };
+		3FEC57732C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */; };
+		3FEC57752C8F49F60080DF96 /* FCMTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */; };
+		3FEC57772C8F4A080080DF96 /* RegisterPushNotiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */; };
 		3FEEF75E2C69B27A002CBA53 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */; };
 		3FEEF7602C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */; };
 		3FEEF7652C6DF7B0002CBA53 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */; };
@@ -511,6 +521,16 @@
 		3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3FEC575E2C8F0C760080DF96 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenResponseDTO.swift; sourceTree = "<group>"; };
+		3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterPushAgreeResponseDTO.swift; sourceTree = "<group>"; };
+		3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenRequestDTO.swift; sourceTree = "<group>"; };
+		3FEC576A2C8F48880080DF96 /* PostRegisterPushAgreeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterPushAgreeRequestDTO.swift; sourceTree = "<group>"; };
+		3FEC576C2C8F493B0080DF96 /* RegisterFCMTokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMTokenUseCase.swift; sourceTree = "<group>"; };
+		3FEC576E2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushAgreeUseCase.swift; sourceTree = "<group>"; };
+		3FEC57702C8F49890080DF96 /* RegisterFCMTokenResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFCMTokenResponseEntity.swift; sourceTree = "<group>"; };
+		3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushAgreeResponseEntity.swift; sourceTree = "<group>"; };
+		3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMTokenViewModel.swift; sourceTree = "<group>"; };
+		3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushNotiViewModel.swift; sourceTree = "<group>"; };
 		3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPageFeedPostUseCase.swift; sourceTree = "<group>"; };
 		3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
@@ -707,6 +727,8 @@
 				3F94635E2C11650600229940 /* CheckUserPhoneResponseEntity.swift */,
 				3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */,
 				3F6E13C32C7B7E4900F94595 /* DeleteUserResponseEntity.swift */,
+				3FEC57702C8F49890080DF96 /* RegisterFCMTokenResponseEntity.swift */,
+				3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -817,6 +839,8 @@
 				3F5150492C0E065600AD05C3 /* RegisterTreeMemberUseCase.swift */,
 				3F94635C2C11644600229940 /* CheckUserPhoneUseCase.swift */,
 				3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */,
+				3FEC576C2C8F493B0080DF96 /* RegisterFCMTokenUseCase.swift */,
+				3FEC576E2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift */,
 				3F6E13C12C7B7DFD00F94595 /* DeleteUserUseCase.swift */,
 			);
 			path = Register;
@@ -1232,6 +1256,8 @@
 				3F8845FF2BF095F60021FB79 /* UserSettingViewModel.swift */,
 				3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */,
 				3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */,
+				3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */,
+				3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1424,6 +1450,8 @@
 				3F9463602C11662200229940 /* PostCheckUserPhoneResponseDTO.swift */,
 				3F81715A2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift */,
 				3F6E13BF2C7B779D00F94595 /* DeleteUserResponseDTO.swift */,
+				3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */,
+				3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1438,6 +1466,8 @@
 				3FF1071C2BEA0A5300C52908 /* PostReissueTokenRequestDTO.swift */,
 				3F94635A2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift */,
 				3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */,
+				3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */,
+				3FEC576A2C8F48880080DF96 /* PostRegisterPushAgreeRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1955,6 +1985,7 @@
 				3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */,
 				3FF48FD42C4DF69E00A6DD8A /* PostViewModel.swift in Sources */,
 				3FDCDA332C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift in Sources */,
+				3FEC576F2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift in Sources */,
 				3F8AE70E2C5A2AEF00E999C4 /* PatchUpdateFeedPostRequestDTO.swift in Sources */,
 				3F51505A2C0ED99400AD05C3 /* CheckInvitationsReponseEntity.swift in Sources */,
 				3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */,
@@ -1968,6 +1999,7 @@
 				3F6E13C62C7C7F0400F94595 /* WebViewContainer.swift in Sources */,
 				3F8530EA2C5281E5003FA07A /* CustomAsyncImage.swift in Sources */,
 				3F06C3072BFDEB40002B771B /* PostReactionCommentRequestDTO.swift in Sources */,
+				3FEC57672C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift in Sources */,
 				3F1936142C6287B600584939 /* PostCheckNotificationsResponseDTO.swift in Sources */,
 				3FA175E32C1AC47A00A57987 /* PresignedURLResponseEntity.swift in Sources */,
 				3F06C2FA2BFDC2E8002B771B /* FeedAPI.swift in Sources */,
@@ -2046,8 +2078,10 @@
 				3F8835832BCBF97D0021C8AB /* SetMemberBioView.swift in Sources */,
 				3F06C3102BFDF2D4002B771B /* PatchUpdateFeedPostResponseDTO.swift in Sources */,
 				3FFA73162C318CC000C3AF4F /* Data+.swift in Sources */,
+				3FEC576B2C8F48880080DF96 /* PostRegisterPushAgreeRequestDTO.swift in Sources */,
 				3FF490242C51163400A6DD8A /* ReadMyProfileInfoUseCase.swift in Sources */,
 				00CF35942BC2E20300D9E332 /* StringLiterals.swift in Sources */,
+				3FEC57712C8F49890080DF96 /* RegisterFCMTokenResponseEntity.swift in Sources */,
 				3F81716A2C43FEB800CEE21E /* CreateCommentUseCase.swift in Sources */,
 				3F9463612C11662200229940 /* PostCheckUserPhoneResponseDTO.swift in Sources */,
 				3F94635B2C11628A00229940 /* PostCheckUserPhoneRequestDTO.swift in Sources */,
@@ -2091,7 +2125,10 @@
 				94D388D32C257BBC0058231B /* CreateTreeHallNameView.swift in Sources */,
 				3F88357F2BCBA5C10021C8AB /* SetMemberProfileNameView.swift in Sources */,
 				3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */,
+				3FEC576D2C8F493B0080DF96 /* RegisterFCMTokenUseCase.swift in Sources */,
 				3FF48FE92C50E8DE00A6DD8A /* TreehouseAPI.swift in Sources */,
+				3FEC57772C8F4A080080DF96 /* RegisterPushNotiViewModel.swift in Sources */,
+				3FEC57692C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift in Sources */,
 				3FE6B7F62C7EECD800457DD0 /* PostInvitationResponseDTO.swift in Sources */,
 				3FF48FF02C50E9BF00A6DD8A /* GetReadTreehouseInfoResponseDTO.swift in Sources */,
 				3F0AC3012C2D53C8009F8F46 /* UserInfoDataSource.swift in Sources */,
@@ -2109,6 +2146,7 @@
 				3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */,
 				94D100182C0C2A1900025D43 /* CommentCountView.swift in Sources */,
 				3FF107172BEA0A2A00C52908 /* PostCheckUserNameRequestDTO.swift in Sources */,
+				3FEC57652C8F484F0080DF96 /* PostRegisterFCMTokenResponseDTO.swift in Sources */,
 				3F8171682C43FE6F00CEE21E /* CreateCommentResponseEntity.swift in Sources */,
 				9499D9522BF1C5AD007CC6CF /* NetworkErrorCode.swift in Sources */,
 				0087C29C2BE3609C004CED9C /* RegisterAPI.swift in Sources */,
@@ -2190,6 +2228,7 @@
 				00F8BB452BC9A43000B23AE4 /* LoginView.swift in Sources */,
 				3FF106FA2BEA077E00C52908 /* BaseRequest.swift in Sources */,
 				008B67FE2BC57EEF001E3AB5 /* VerificationView.swift in Sources */,
+				3FEC57752C8F49F60080DF96 /* FCMTokenViewModel.swift in Sources */,
 				3F5150502C0EA09F00AD05C3 /* AcceptInvitationTreeMemberEntity.swift in Sources */,
 				3FE6B7F42C7EEBFD00457DD0 /* PostInvitationRequestDTO.swift in Sources */,
 				3FBFBA802BC3DA6C00B6A446 /* View+.swift in Sources */,
@@ -2202,6 +2241,7 @@
 				009B71142BFF41BD009A741C /* FeedHeaderView.swift in Sources */,
 				00C2F56F2C18667E0009C6A1 /* MemberGroupRow.swift in Sources */,
 				3F8835812BCBC4A40021C8AB /* SetMemberProfileImage.swift in Sources */,
+				3FEC57732C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift in Sources */,
 				3F8AE7002C59BD6E00E999C4 /* EmojiView.swift in Sources */,
 				3FF490072C50FDB600A6DD8A /* CreateTreehouseResponseEntity.swift in Sources */,
 				3F1BE1302C2118F600D3AF1D /* UploadImageToAWSUseCase.swift in Sources */,

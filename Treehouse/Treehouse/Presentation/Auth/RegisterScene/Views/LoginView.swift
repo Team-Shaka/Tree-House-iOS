@@ -16,8 +16,11 @@ struct LoginView: View {
     
     @State private var userLoginViewModel: UserLoginViewModel = UserLoginViewModel(existsUserLoginUseCase: ExistsUserLoginUserCase(repository: RegisterRepositoryImpl()), readMyProfileInfoUseCase: ReadMyProfileInfoUseCase(repository: MemberRepositoryImpl()))
     @State private var userInfoViewModel: UserInfoViewModel = UserInfoViewModel()
+    @State var fcmTokenViewModel = FCMTokenViewModel(registerFCMTokenUseCase: RegisterFCMTokenUseCase(repository: RegisterRepositoryImpl()))
+    @State var registerPushNotiViewModel = RegisterPushNotiViewModel(registerPushAgreeUseCase: RegisterPushAgreeUseCase(repository: RegisterRepositoryImpl()))
     
     @AppStorage(Config.loginKey) private var isLogin = false
+    @AppStorage("PushAgree") private var isPush = false
     
     // MARK: - View
     
@@ -58,7 +61,10 @@ struct LoginView: View {
                     if let userResult = result {
                         let userSaveResult = await userInfoViewModel.createData(newData: userResult)
                         
-                        if userLoginViewModel.isLogin && userSaveResult {
+                        await fcmTokenViewModel.registerFCMToken()
+                        await registerPushNotiViewModel.registerPushAgree()
+                        
+                        if userLoginViewModel.isLogin && userSaveResult && fcmTokenViewModel.isSaveFCMToken && registerPushNotiViewModel.isPostPushAgree {
                             isLogin = true
                             viewRouter.navigate(viewType: .enterTreehouse)
                         }

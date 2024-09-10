@@ -14,6 +14,9 @@ struct ShowUserProfileView: View {
     @Environment(UserSettingViewModel.self) private var viewModel
     @Environment(ViewRouter.self) private var viewRouter
     
+    @State var fcmTokenViewModel = FCMTokenViewModel(registerFCMTokenUseCase: RegisterFCMTokenUseCase(repository: RegisterRepositoryImpl()))
+    @State var registerPushNotiViewModel = RegisterPushNotiViewModel(registerPushAgreeUseCase: RegisterPushAgreeUseCase(repository: RegisterRepositoryImpl()))
+    
     // MARK: - View
     
     var body: some View {
@@ -37,8 +40,10 @@ struct ShowUserProfileView: View {
             Button(action: {
                 Task {
                     let result = await viewModel.registerUser()
+                    await fcmTokenViewModel.registerFCMToken()
+                    await registerPushNotiViewModel.registerPushAgree()
                     
-                    if result {
+                    if result && fcmTokenViewModel.isSaveFCMToken && registerPushNotiViewModel.isPostPushAgree {
                         viewRouter.push(RegisterRouter.receivedFirstInvitationView)
                     }
                 }
