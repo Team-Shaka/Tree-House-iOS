@@ -11,6 +11,7 @@ enum RegisterAPI {
     case postCheckUserName(requestBody: PostCheckUserNameRequestDTO)
     case postRegisterUser(requestBody: PostRegisterUserRequestDTO)
     case postRegisterTreeMember(requestBody: PostRegisterTreeMemberRequestDTO)
+    case postRegisterTreeMemberMaker(requestBody: PostRegisterTreeMemberRequestDTO)
     case postReissueToken(requestBody: PostReissueTokenRequestDTO)
     case postCheckUserPhone(requestBody: PostCheckUserPhoneRequestDTO)
     case postExistsUserLogin(requestBody: PostExistsUserLoginRequestDTO)
@@ -25,6 +26,7 @@ extension RegisterAPI: BaseRequest {
         case .postCheckUserName: return "users/checkName"
         case .postRegisterUser: return "users/register"
         case .postRegisterTreeMember: return "members/register"
+        case .postRegisterTreeMemberMaker: return "founder/register"
         case .postReissueToken: return "users/reissue"
         case .postCheckUserPhone: return "users/phone"
         case .postExistsUserLogin: return "users/login"
@@ -39,6 +41,7 @@ extension RegisterAPI: BaseRequest {
         case .postCheckUserName: return .post
         case .postRegisterUser: return .post
         case .postRegisterTreeMember: return .post
+        case .postRegisterTreeMemberMaker: return .post
         case .postReissueToken: return .post
         case .postCheckUserPhone: return .post
         case .postExistsUserLogin: return .post
@@ -52,7 +55,7 @@ extension RegisterAPI: BaseRequest {
         switch self {
         case .postCheckUserName, .postRegisterUser, .postCheckUserPhone:
             return .noHeader
-        case .postRegisterTreeMember, .postRegisterFCMToken, .postRegisterPushAgree, .deleteUser:
+        case .postRegisterTreeMember, .postRegisterTreeMemberMaker, .postRegisterFCMToken, .postRegisterPushAgree, .deleteUser:
             return .accessTokenHeader
         case .postReissueToken:
             return .refreshTokenHeader
@@ -70,6 +73,7 @@ extension RegisterAPI: BaseRequest {
         case .postCheckUserName(requestBody: let requestBody): return requestBody
         case .postRegisterUser(requestBody: let requestBody): return requestBody
         case .postRegisterTreeMember(requestBody: let requestBody): return requestBody
+        case .postRegisterTreeMemberMaker(requestBody: let requestBody): return requestBody
         case .postReissueToken(requestBody: let requestBody): return requestBody
         case .postCheckUserPhone(requestBody: let requestBody): return requestBody
         case .postExistsUserLogin(requestBody: let requestBody): return requestBody

@@ -212,6 +212,8 @@
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
 		3FEC57562C8F0BDD0080DF96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */; };
 		3FEC575D2C8F0C2B0080DF96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */; };
+		3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */; };
+		3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */; };
 		3FEC57652C8F484F0080DF96 /* PostRegisterFCMTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */; };
 		3FEC57672C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */; };
 		3FEC57692C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */; };
@@ -222,8 +224,6 @@
 		3FEC57732C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */; };
 		3FEC57752C8F49F60080DF96 /* FCMTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */; };
 		3FEC57772C8F4A080080DF96 /* RegisterPushNotiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */; };
-		3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */; };
-		3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */; };
 		3FEEF75E2C69B27A002CBA53 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */; };
 		3FEEF7602C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */; };
 		3FEEF7652C6DF7B0002CBA53 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */; };
@@ -523,6 +523,8 @@
 		3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3FEC575E2C8F0C760080DF96 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBranchViewModel.swift; sourceTree = "<group>"; };
+		3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBranchView.swift; sourceTree = "<group>"; };
 		3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterPushAgreeResponseDTO.swift; sourceTree = "<group>"; };
 		3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenRequestDTO.swift; sourceTree = "<group>"; };
@@ -533,8 +535,6 @@
 		3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushAgreeResponseEntity.swift; sourceTree = "<group>"; };
 		3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMTokenViewModel.swift; sourceTree = "<group>"; };
 		3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushNotiViewModel.swift; sourceTree = "<group>"; };
-		3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBranchViewModel.swift; sourceTree = "<group>"; };
-		3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBranchView.swift; sourceTree = "<group>"; };
 		3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPageFeedPostUseCase.swift; sourceTree = "<group>"; };
 		3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };

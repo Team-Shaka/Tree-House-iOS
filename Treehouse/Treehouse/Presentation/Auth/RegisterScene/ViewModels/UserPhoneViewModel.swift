@@ -25,10 +25,12 @@ final class CheckUserPhoneViewModel: BaseViewModel {
     
     init(checkUserPhoneUseCase: PostCheckUserPhoneUseCaseProtocol) {
         self.checkUserPhoneUseCase = checkUserPhoneUseCase
+        
+        print("Init CheckUserPhoneViewModel")
     }
     
     deinit {
-        print("Deinit UserPhoneViewModel")
+        print("Deinit CheckUserPhoneViewModel")
     }
 }
 
