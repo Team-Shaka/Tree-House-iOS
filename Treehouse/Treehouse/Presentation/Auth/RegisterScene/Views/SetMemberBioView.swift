@@ -66,6 +66,7 @@ struct SetMemberBioView: View {
         .padding(EdgeInsets(top: 30, leading: 24, bottom: 30, trailing: 24))
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
+        .background(.grayscaleWhite)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(StringLiterals.Register.navigationTitle1)

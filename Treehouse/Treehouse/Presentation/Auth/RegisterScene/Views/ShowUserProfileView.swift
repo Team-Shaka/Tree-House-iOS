@@ -71,6 +71,7 @@ struct ShowUserProfileView: View {
             }
         }
         .padding(EdgeInsets(top: 22, leading: 23, bottom: 2, trailing: 24))
+        .background(.grayscaleWhite)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -82,6 +83,12 @@ struct ShowUserProfileView: View {
                 }
                 .padding(.top, 5)
             }
+        }
+        .onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.grayscaleWhite
+            appearance.shadowColor = .clear // 하단 선 제거
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }

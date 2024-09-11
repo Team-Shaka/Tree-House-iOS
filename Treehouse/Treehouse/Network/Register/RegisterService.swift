@@ -60,6 +60,7 @@ class RegisterService {
         
         switch registerType {
         case .registerUser:
+            print("user 가입")
             let request = NetworkRequest(requestType: RegisterAPI.postRegisterTreeMember(requestBody: requestBody))
             
             guard let makeUrlRequest = request.request() else {
@@ -68,6 +69,7 @@ class RegisterService {
             
             urlRequest = makeUrlRequest
         case .registerTreehouse:
+            print("Treehouse 생성자 가입")
             let request = NetworkRequest(requestType: RegisterAPI.postRegisterTreeMemberMaker(requestBody: requestBody))
             
             guard let makeUrlRequest = request.request() else {

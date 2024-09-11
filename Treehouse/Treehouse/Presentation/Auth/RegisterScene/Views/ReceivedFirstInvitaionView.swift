@@ -78,6 +78,12 @@ struct ReceivedFirstInvitaionView: View {
         .task {
             await viewModel.checkInvitations()
         }
+        .onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.gray1
+            appearance.shadowColor = .clear // 하단 선 제거
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
         .onDisappear {
             print("ReceivedFirstInvitationView disappeared")
         }
