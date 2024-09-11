@@ -117,6 +117,7 @@ struct VerificationView: View {
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
         .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
+        .background(.grayscaleWhite)
         .onTapGesture {
             hideKeyboard()
         }
