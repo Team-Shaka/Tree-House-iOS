@@ -87,6 +87,8 @@
 		3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */; };
 		3F1BE13E2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE13D2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift */; };
 		3F1BE1412C21741000D3AF1D /* PutUploadImagesResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE1402C21741000D3AF1D /* PutUploadImagesResponseEntity.swift */; };
+		3F25A3542C91C580006E2715 /* InvitationTreehouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */; };
+		3F25A3562C927FFA006E2715 /* InvitationTreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */; };
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
@@ -212,6 +214,8 @@
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
 		3FEC57562C8F0BDD0080DF96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */; };
 		3FEC575D2C8F0C2B0080DF96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */; };
+		3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */; };
+		3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */; };
 		3FEC57652C8F484F0080DF96 /* PostRegisterFCMTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */; };
 		3FEC57672C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */; };
 		3FEC57692C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */; };
@@ -222,8 +226,6 @@
 		3FEC57732C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */; };
 		3FEC57752C8F49F60080DF96 /* FCMTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */; };
 		3FEC57772C8F4A080080DF96 /* RegisterPushNotiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */; };
-		3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */; };
-		3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */; };
 		3FEEF75E2C69B27A002CBA53 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */; };
 		3FEEF7602C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */; };
 		3FEEF7652C6DF7B0002CBA53 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */; };
@@ -400,6 +402,8 @@
 		3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSImageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		3F1BE13D2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUploadImagesResponseDTO.swift; sourceTree = "<group>"; };
 		3F1BE1402C21741000D3AF1D /* PutUploadImagesResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUploadImagesResponseEntity.swift; sourceTree = "<group>"; };
+		3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTreehouseView.swift; sourceTree = "<group>"; };
+		3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
@@ -523,6 +527,8 @@
 		3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3FEC575E2C8F0C760080DF96 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBranchViewModel.swift; sourceTree = "<group>"; };
+		3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBranchView.swift; sourceTree = "<group>"; };
 		3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenResponseDTO.swift; sourceTree = "<group>"; };
 		3FEC57662C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterPushAgreeResponseDTO.swift; sourceTree = "<group>"; };
 		3FEC57682C8F48770080DF96 /* PostRegisterFCMTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRegisterFCMTokenRequestDTO.swift; sourceTree = "<group>"; };
@@ -533,8 +539,6 @@
 		3FEC57722C8F499A0080DF96 /* RegisterPushAgreeResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushAgreeResponseEntity.swift; sourceTree = "<group>"; };
 		3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMTokenViewModel.swift; sourceTree = "<group>"; };
 		3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushNotiViewModel.swift; sourceTree = "<group>"; };
-		3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeBranchViewModel.swift; sourceTree = "<group>"; };
-		3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBranchView.swift; sourceTree = "<group>"; };
 		3FEEF75D2C69B27A002CBA53 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3FEEF75F2C69F7B7002CBA53 /* ReadPageFeedPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPageFeedPostUseCase.swift; sourceTree = "<group>"; };
 		3FEEF7642C6DF7B0002CBA53 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
@@ -1183,6 +1187,7 @@
 				3F8AE7072C59FD6B00E999C4 /* PresingedURLViewModel.swift */,
 				3F8AE7092C5A01C200E999C4 /* LoadImageAWSViewModel.swift */,
 				3F8AE7172C5B1D6F00E999C4 /* CurrentTreehouseInfoViewModel.swift */,
+				3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1371,6 +1376,7 @@
 				3F8530E92C5281E5003FA07A /* CustomAsyncImage.swift */,
 				3F6801CC2C5FC065005E694E /* CustomAlertView.swift */,
 				3FA541542C60F06200723BAD /* LottieView.swift */,
+				3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2268,9 +2274,11 @@
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
+				3F25A3542C91C580006E2715 /* InvitationTreehouseView.swift in Sources */,
 				3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */,
 				3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
+				3F25A3562C927FFA006E2715 /* InvitationTreehouseViewModel.swift in Sources */,
 				3F7F25EA2C8808F400863E3D /* DIContainer.swift in Sources */,
 				3FF490042C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift in Sources */,
 				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,
