@@ -87,6 +87,8 @@
 		3F1BE13C2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */; };
 		3F1BE13E2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE13D2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift */; };
 		3F1BE1412C21741000D3AF1D /* PutUploadImagesResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1BE1402C21741000D3AF1D /* PutUploadImagesResponseEntity.swift */; };
+		3F25A3542C91C580006E2715 /* InvitationTreehouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */; };
+		3F25A3562C927FFA006E2715 /* InvitationTreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */; };
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
@@ -400,6 +402,8 @@
 		3F1BE13B2C214A9500D3AF1D /* AWSImageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSImageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		3F1BE13D2C21529000D3AF1D /* PutUploadImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUploadImagesResponseDTO.swift; sourceTree = "<group>"; };
 		3F1BE1402C21741000D3AF1D /* PutUploadImagesResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUploadImagesResponseEntity.swift; sourceTree = "<group>"; };
+		3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTreehouseView.swift; sourceTree = "<group>"; };
+		3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTreehouseViewModel.swift; sourceTree = "<group>"; };
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
@@ -1183,6 +1187,7 @@
 				3F8AE7072C59FD6B00E999C4 /* PresingedURLViewModel.swift */,
 				3F8AE7092C5A01C200E999C4 /* LoadImageAWSViewModel.swift */,
 				3F8AE7172C5B1D6F00E999C4 /* CurrentTreehouseInfoViewModel.swift */,
+				3F25A3552C927FFA006E2715 /* InvitationTreehouseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1371,6 +1376,7 @@
 				3F8530E92C5281E5003FA07A /* CustomAsyncImage.swift */,
 				3F6801CC2C5FC065005E694E /* CustomAlertView.swift */,
 				3FA541542C60F06200723BAD /* LottieView.swift */,
+				3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2268,9 +2274,11 @@
 				3F8846002BF095F60021FB79 /* UserSettingViewModel.swift in Sources */,
 				3F5150542C0EC46100AD05C3 /* InvitationRepositoryImpl.swift in Sources */,
 				3FF106FE2BEA079500C52908 /* HttpMethod.swift in Sources */,
+				3F25A3542C91C580006E2715 /* InvitationTreehouseView.swift in Sources */,
 				3F1BE1322C211D0200D3AF1D /* AWSImageRepositoryImpl.swift in Sources */,
 				3F81719B2C46D18D00CEE21E /* EmojiViewModel.swift in Sources */,
 				00C2F5672C15B5560009C6A1 /* SettingView.swift in Sources */,
+				3F25A3562C927FFA006E2715 /* InvitationTreehouseViewModel.swift in Sources */,
 				3F7F25EA2C8808F400863E3D /* DIContainer.swift in Sources */,
 				3FF490042C50FD0600A6DD8A /* TreehouseRepositoryProtocol.swift in Sources */,
 				00B591952C23549400F7C38C /* ChecklAvailableInvitationUseCase.swift in Sources */,

@@ -11,6 +11,7 @@ struct GetReadMemberInfoResponseDTO: Decodable {
     let memberId: Int
     let memberName: String
     let userName: String
+    let phone: String
     let closestMemberCount: Int
     let treehouseCount: Int
     let fromMe: Int
@@ -22,6 +23,7 @@ struct GetReadMemberInfoResponseDTO: Decodable {
             memberId: memberId,
             memberName: memberName,
             userName: userName,
+            phone: phone,
             closestMemberCount: closestMemberCount,
             treehouseCount: treehouseCount,
             fromMe: fromMe,

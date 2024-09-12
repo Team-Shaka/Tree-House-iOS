@@ -19,6 +19,7 @@ struct MemberProfileView: View {
     
     @State var isPresent = false
     @State var isLoading = true
+    @State private var showSheet = false
     
     // MARK: - View
     
@@ -35,7 +36,7 @@ struct MemberProfileView: View {
                                      branchCount: data.closestMemberCount,
                                      treeHouseCount: data.treehouseCount,
                                      root: "\(data.fromMe)",
-                                     inviteAction: nil,
+                                     inviteAction: { showSheet = true },
                                      branchAction: { viewRouter.push(ProfileRouter.memberBranchView(treehouseId: feedViewModel.currentTreehouseId ?? 0, memberId: data.memberId))
                                     },
                                      profileAction: nil)
@@ -60,17 +61,22 @@ struct MemberProfileView: View {
                                         .onAppear {
                                             feedViewModel.currentPostId = feed.postId
                                         }
-                                    
-                                    CommentCountView(commentCount: feed.commentCount)
-                                        .padding(.top, 10)
-                                        .padding(.trailing, 16)
-                                        .onTapGesture {
-                                            feedViewModel.currentPostId = feed.postId
-                                            viewRouter.push(FeedRouter.postDetailView)
-                                        }
+                                    if feed.commentCount > 0 {
+                                        CommentCountView(commentCount: feed.commentCount)
+                                            .padding(.top, 10)
+                                            .padding(.trailing, 16)
+                                            .onTapGesture {
+                                                feedViewModel.currentPostId = feed.postId
+                                                viewRouter.push(FeedRouter.postDetailView)
+                                            }
+                                    }
                                 }
                                 .padding(.leading, 62)
                                 .padding(.bottom, 16)
+                                
+                                Rectangle()
+                                    .frame(maxWidth: .infinity, maxHeight: 1)
+                                    .foregroundColor(.gray3)
                             }
                             .background(
                                 Color.clear
@@ -88,8 +94,14 @@ struct MemberProfileView: View {
                 await memberProfileViewModel.performAsyncTasks()
             }
         }
+        .sheet(isPresented: $showSheet) {
+            InvitationTreehouseView(showSheet: $showSheet)
+                .environment(memberProfileViewModel)
+                .presentationDetents([.large])
+        }
         .navigationTitle(memberProfileViewModel.title)
         .navigationBarTitleDisplayMode(.inline)
+        .background(.grayscaleWhite)
         .task {
             await memberProfileViewModel.performAsyncTasks()
         }
@@ -109,6 +121,7 @@ struct MemberProfileView: View {
             )
         )
         .environment(ViewRouter())
+        .environment(FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl())))
     }
 }
 

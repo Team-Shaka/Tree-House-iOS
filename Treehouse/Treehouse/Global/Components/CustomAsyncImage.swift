@@ -45,7 +45,16 @@ struct CustomAsyncImage: View {
         Group {
             switch imageLoader.state {
             case .loading:
-                ProgressView()
+                switch type {
+                case .memberProfileImage, .postMemberProfileImage:
+                    Circle()
+                        .fill(.gray3)
+                case .postImage:
+                    RoundedRectangle(cornerRadius: 6.0)
+                        .fill(.gray3)
+                default:
+                    ProgressView()
+                }
                     
             case .success(let image):
                 Image(uiImage: image)
@@ -80,9 +89,9 @@ struct CustomAsyncImage: View {
                 .resizable()
                 .scaledToFit()
         case .postImage:
-            Image(.imgDummy)
-                .resizable()
-                .scaledToFit()
+            RoundedRectangle(cornerRadius: 6.0)
+                .fill(.gray3)
+
         case .treehouseImage, .postTreehouseImage:
             Image(.imgGroup)
                 .resizable()
