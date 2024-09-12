@@ -18,8 +18,8 @@ enum UserAuthentication {
 }
 
 enum RegisterType {
-    case registerUser
-    case registerTreehouse
+    case registerUser // 일반적인 회원가입
+    case registerTreehouse // treehouse 를 만들고 회원가입
 }
 
 protocol BaseViewModel: AnyObject {}
@@ -125,6 +125,8 @@ final class UserSettingViewModel: BaseViewModel {
         self.presignedURLUseCase = presignedURLUseCase
         self.uploadImageToAWSUseCase = uploadImageToAWSUseCase
         self.registerType = registerType
+        
+        print("Init UserSettingViewModel")
     }
     
     deinit {
@@ -134,13 +136,12 @@ final class UserSettingViewModel: BaseViewModel {
     func createUserInfoData() -> UserInfoData? {
         guard let userId = userId,
               let treehouseId = treehouseId,
-              let memberName = memberName,
-              let bio = bio,
-              let profileImage = accessUrlImage.first else {
+              let profileImage = accessUrlImage.first,
+              let treehouseData = createMemberInfoData() else {
             return nil
         }
         
-        let userData = UserInfoData(userId: userId, userName: userName, profileImageUrl: profileImage, treehouses: [treehouseId], treehouseInfo: [])
+        let userData = UserInfoData(userId: userId, userName: userName, profileImageUrl: profileImage, treehouses: [treehouseId], treehouseInfo: [treehouseData])
         return userData
     }
     
@@ -240,7 +241,9 @@ extension UserSettingViewModel {
             return false
         }
         
-        let result = await registerTreeMemberUseCase.execute(requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage.first ?? "" ))
+        print(registerType, treehouseId, userName, memberName, bio, accessUrlImage.first ?? "")
+        
+        let result = await registerTreeMemberUseCase.execute(registerType: registerType, requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage.first ?? "" ))
         
         switch result {
         case .success(let response):
@@ -396,7 +399,9 @@ extension UserSettingViewModel {
         
         do {
             let authResult = try await Auth.auth().signIn(with: credential)
-            print("인증 성공!")
+            
+            let user = authResult.user // 인증된 사용자 정보
+            print("인증 성공! 사용자 ID: \(user.uid)")
             
             await MainActor.run {
                 self.isCallCehckVerification = true

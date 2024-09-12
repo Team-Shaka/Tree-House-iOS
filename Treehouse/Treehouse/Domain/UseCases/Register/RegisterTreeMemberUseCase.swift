@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PostRegisterTreeMemberUseCaseProtocol {
-    func execute(requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError>
+    func execute(registerType: RegisterType, requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError>
 }
 
 final class RegisterTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol {
@@ -18,7 +18,7 @@ final class RegisterTreeMemberUseCase: PostRegisterTreeMemberUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
-        return await repository.postRegisterTreeMember(requestDTO: requestDTO)
+    func execute(registerType: RegisterType, requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
+        return await repository.postRegisterTreeMember(registerType: registerType, requestDTO: requestDTO)
     }
 }

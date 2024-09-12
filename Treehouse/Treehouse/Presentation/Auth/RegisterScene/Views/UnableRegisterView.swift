@@ -63,6 +63,7 @@ struct UnableRegisterView: View {
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 30 / 852)
         }
         .padding(.horizontal, SizeLiterals.Screen.screenWidth * 24 / 393)
+        .background(.grayscaleWhite)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

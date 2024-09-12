@@ -30,9 +30,9 @@ final class RegisterRepositoryImpl: RegisterRepositoryProtocol {
         }
     }
     
-    func postRegisterTreeMember(requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
+    func postRegisterTreeMember(registerType: RegisterType, requestDTO: PostRegisterTreeMemberRequestDTO) async -> Result<RegisterTreeMemberResponseEntity, NetworkError> {
         do {
-            let response = try await registerService.postRegisterTreeMember(requestBody: requestDTO)
+            let response = try await registerService.postRegisterTreeMember(registerType: registerType, requestBody: requestDTO)
             return .success(response.toDomain())
         } catch let error as NetworkError {
             return .failure(error)

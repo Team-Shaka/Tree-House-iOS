@@ -26,72 +26,74 @@ struct ShowMemberProfileView: View {
     // MARK: - View
     
     var body: some View {
-        Text("\(StringLiterals.Register.registerTitle10)")
-            .foregroundColor(.treeBlack)
-            .font(.fontGuide(.heading1))
-            .fontWithLineHeight(fontLevel: .heading1)
-            .padding(.top, 30)
-            .padding(.leading, 25)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        
-        profileView
-        
-        Spacer()
-        
-        Button(action: {
-            // MARK: - TODO
-            // lottie 추가
-            viewModel.isSignUp = true
-            isRetryButtonDisabled = true
+        VStack(spacing: 0) {
+            Text("\(StringLiterals.Register.registerTitle10)")
+                .foregroundColor(.treeBlack)
+                .font(.fontGuide(.heading1))
+                .fontWithLineHeight(fontLevel: .heading1)
+                .padding(.top, 30)
+                .padding(.leading, 25)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
-            Task {
-                switch viewModel.registerType {
-                case .registerUser:
-                    let result = await viewModel.registerTreeMember()
-                    
-                    guard let createResult = viewModel.createUserInfoData() else { return }
-                                    
-                    let userDataResult = await userInfoViewModel.createData(newData: createResult)
-                    
-                    if result && userDataResult {
-                        isLogin = true
-                        viewRouter.navigate(viewType: .enterTreehouse)
-                    }
-                case .registerTreehouse:
-                    let result = await viewModel.registerTreeMember()
-                    
-                    guard let createResult = viewModel.createMemberInfoData() else { return }
-                    
-                    let userDataResult = userInfoViewModel.addTreehouseInfo(treehouseInfo: createResult)
-                    
-                    if result && userDataResult {
-                        isLogin = true
-                        selectedTreehouseId = viewModel.treehouseId ?? 0
-                        viewRouter.selectedTab = .home
-                        viewRouter.navigate(viewType: .enterTreehouse)
+            profileView
+            
+            Spacer()
+            
+            Button(action: {
+                // MARK: - TODO
+                // lottie 추가
+                viewModel.isSignUp = true
+                isRetryButtonDisabled = true
+                
+                Task {
+                    switch viewModel.registerType {
+                    case .registerUser:
+                        let result = await viewModel.registerTreeMember()
+                        
+                        guard let createResult = viewModel.createUserInfoData() else { return }
+                        
+                        let userDataResult = await userInfoViewModel.createData(newData: createResult)
+                        
+                        if result && userDataResult {
+                            isLogin = true
+                            viewRouter.navigate(viewType: .enterTreehouse)
+                        }
+                    case .registerTreehouse:
+                        let result = await viewModel.registerTreeMember()
+                        
+                        guard let createResult = viewModel.createMemberInfoData() else { return }
+                        
+                        let userDataResult = userInfoViewModel.addTreehouseInfo(treehouseInfo: createResult)
+                        
+                        if result && userDataResult {
+                            isLogin = true
+                            selectedTreehouseId = viewModel.treehouseId ?? 0
+                            viewRouter.selectedTab = .home
+                            viewRouter.navigate(viewType: .enterTreehouse)
+                        }
                     }
                 }
+            }) {
+                Text(StringLiterals.Register.buttonTitle6)
+                    .frame(width: 344, height: 56)
+                    .font(.fontGuide(.body2))
+                    .foregroundColor(.gray1)
+                    .background(.treeBlack)
+                    .cornerRadius(12)
+                    .padding(.horizontal, 24)
             }
-        }) {
-            Text(StringLiterals.Register.buttonTitle6)
-                .frame(width: 344, height: 56)
-                .font(.fontGuide(.body2))
-                .foregroundColor(.gray1)
-                .background(.treeBlack)
-                .cornerRadius(12)
-                .padding(.horizontal, 24)
+            
+            Button(action: {
+                viewRouter.popMultiple(count: 3)
+            }) {
+                Text(StringLiterals.Register.buttonTitle12)
+                    .fontWithLineHeight(fontLevel: .body5)
+                    .foregroundStyle(.gray6)
+                    .underline()
+                    .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
+            }
+            .disabled(isRetryButtonDisabled)
         }
-        
-        Button(action: {
-            viewRouter.popMultiple(count: 3)
-        }) {
-            Text(StringLiterals.Register.buttonTitle12)
-                .fontWithLineHeight(fontLevel: .body5)
-                .foregroundStyle(.gray6)
-                .underline()
-                .padding(EdgeInsets(top: 15, leading: 17, bottom: 19, trailing: 17))
-        }
-        .disabled(isRetryButtonDisabled)
         .onAppear {
             if viewModel.registerType == .registerTreehouse {
                 viewModel.userName = userInfoViewModel.userInfo?.userName ?? ""
@@ -99,11 +101,11 @@ struct ShowMemberProfileView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
+        .background(.grayscaleWhite)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     viewRouter.pop()
-                    print("뒤로가기 버튼")
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.treeBlack)

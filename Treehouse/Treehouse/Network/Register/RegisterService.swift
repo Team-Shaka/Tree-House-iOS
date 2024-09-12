@@ -54,14 +54,31 @@ class RegisterService {
     }
 
     /// 트리하우스 멤버 가입 API
-    func postRegisterTreeMember(requestBody: PostRegisterTreeMemberRequestDTO) async throws -> PostRegisterTreeMemberResponseDTO {
+    func postRegisterTreeMember(registerType: RegisterType, requestBody: PostRegisterTreeMemberRequestDTO) async throws -> PostRegisterTreeMemberResponseDTO {
         
-        let request = NetworkRequest(requestType: RegisterAPI.postRegisterTreeMember(requestBody: requestBody))
+        var urlRequest: URLRequest
         
-        guard let urlRequest = request.request() else {
-            throw NetworkError.clientError(message: "Request 생성불가")
+        switch registerType {
+        case .registerUser:
+            print("user 가입")
+            let request = NetworkRequest(requestType: RegisterAPI.postRegisterTreeMember(requestBody: requestBody))
+            
+            guard let makeUrlRequest = request.request() else {
+                throw NetworkError.clientError(message: "Request 생성불가")
+            }
+            
+            urlRequest = makeUrlRequest
+        case .registerTreehouse:
+            print("Treehouse 생성자 가입")
+            let request = NetworkRequest(requestType: RegisterAPI.postRegisterTreeMemberMaker(requestBody: requestBody))
+            
+            guard let makeUrlRequest = request.request() else {
+                throw NetworkError.clientError(message: "Request 생성불가")
+            }
+            
+            urlRequest = makeUrlRequest
         }
-        
+
         return try await networkServiceManager.performRequest(with: urlRequest, decodingType: PostRegisterTreeMemberResponseDTO.self)
     }
     

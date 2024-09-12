@@ -53,7 +53,7 @@ final class NetworkServiceManager: NetworkServiceable {
         
         do {
             let decodingData = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
-            
+            print(decodingData.data)
             switch httpResponse.statusCode {
 
             case 200:

@@ -101,6 +101,12 @@ struct SetMemberProfileNameView: View {
                 textFieldState = .notFocused
             }
         }
+        .onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.grayscaleWhite
+            appearance.shadowColor = .clear // 하단 선 제거
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
 }
 
