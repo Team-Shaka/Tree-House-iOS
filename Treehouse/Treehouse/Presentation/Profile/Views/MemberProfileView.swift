@@ -61,17 +61,22 @@ struct MemberProfileView: View {
                                         .onAppear {
                                             feedViewModel.currentPostId = feed.postId
                                         }
-                                    
-                                    CommentCountView(commentCount: feed.commentCount)
-                                        .padding(.top, 10)
-                                        .padding(.trailing, 16)
-                                        .onTapGesture {
-                                            feedViewModel.currentPostId = feed.postId
-                                            viewRouter.push(FeedRouter.postDetailView)
-                                        }
+                                    if feed.commentCount > 0 {
+                                        CommentCountView(commentCount: feed.commentCount)
+                                            .padding(.top, 10)
+                                            .padding(.trailing, 16)
+                                            .onTapGesture {
+                                                feedViewModel.currentPostId = feed.postId
+                                                viewRouter.push(FeedRouter.postDetailView)
+                                            }
+                                    }
                                 }
                                 .padding(.leading, 62)
                                 .padding(.bottom, 16)
+                                
+                                Rectangle()
+                                    .frame(maxWidth: .infinity, maxHeight: 1)
+                                    .foregroundColor(.gray3)
                             }
                             .background(
                                 Color.clear
@@ -90,10 +95,9 @@ struct MemberProfileView: View {
             }
         }
         .sheet(isPresented: $showSheet) {
-//            InvitationTreehouseView(memberName: memberProfileViewModel.memberProfileData?.memberName ?? "정보없음",
-//                                    memberProfileUrl: memberProfileViewModel.memberProfileData?.profileImageUrl ?? "")
-//            .environment(memberProfileViewModel)
-//                .presentationDetents([.large])
+            InvitationTreehouseView(showSheet: $showSheet)
+                .environment(memberProfileViewModel)
+                .presentationDetents([.large])
         }
         .navigationTitle(memberProfileViewModel.title)
         .navigationBarTitleDisplayMode(.inline)

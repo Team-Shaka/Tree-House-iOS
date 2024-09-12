@@ -17,6 +17,8 @@ struct InvitationTreehouseView: View {
                                                                            checkAvailableInvitationUseCase: CheckAvailableInvitationUseCase(repository: InvitationRepositoryImpl()),
                                                                            invitationUseCase: InvitationUseCase(repository: InvitationRepositoryImpl()))
     @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
+    
+    @Binding var showSheet: Bool
 
     // MARK: - View
     
@@ -75,6 +77,12 @@ struct InvitationTreehouseView: View {
             Button(action: {
                 Task {
                     await invitationTreehouseViewModel.invitationTreehouse()
+                    
+                    await MainActor.run {
+                        if invitationTreehouseViewModel.invitationResult == true {
+                            showSheet.toggle()
+                        }
+                    }
                 }
             }) {
                 Text(StringLiterals.Invitation.buttonTitle2)
@@ -95,7 +103,7 @@ struct InvitationTreehouseView: View {
         .onAppear {
             invitationTreehouseViewModel.senderId = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)?.treehouseMemberId
             
-//            invitationTreehouseViewModel.memberPhoenNumber = memberProfileViewModel.memberProfileData.
+            invitationTreehouseViewModel.memberPhoenNumber = memberProfileViewModel.memberProfileData?.phone
         }
     }
 }
@@ -138,7 +146,7 @@ extension InvitationTreehouseView {
 }
 
 #Preview {
-    InvitationTreehouseView()
+    InvitationTreehouseView(showSheet: .constant(false))
         .environment(MemberProfileViewModel(
             readMemberInfoUseCase: ReadMemberInfoUseCase(repository: MemberRepositoryImpl()),
             readMemberFeedUseCase: ReadMemberFeedUseCase(repository: MemberRepositoryImpl()),

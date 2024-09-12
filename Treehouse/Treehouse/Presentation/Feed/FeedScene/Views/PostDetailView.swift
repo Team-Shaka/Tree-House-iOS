@@ -39,7 +39,7 @@ struct PostDetailView: View {
         ZStack {
             VStack(spacing: 0) {
                 ScrollView {
-                    if let postId = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
+                    if let _ = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
                     
                         VStack {
                             SinglePostView(sentTime: postDetailData.postedAt,
@@ -55,12 +55,6 @@ struct PostDetailView: View {
                                 .environment(emojiViewModel)
                                 .environment(commentViewModel)
                         }
-                    } else {
-                        SinglePostView(sentTime: "",
-                                       postContent: "정보없음",
-                                       postImageURLs: [""],
-                                       memberProfile: MemberProfileEntity(memberId: 0, memberName: "", memberProfileImageUrl: "", memberBranch: 0),
-                                       postType: .DetailView)
                     }
                     
                     Divider()
