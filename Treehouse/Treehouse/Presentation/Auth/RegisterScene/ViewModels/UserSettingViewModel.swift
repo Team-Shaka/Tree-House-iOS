@@ -375,6 +375,7 @@ extension UserSettingViewModel {
             }
         } catch let error as NSError {
             await MainActor.run {
+                print(error.userInfo)
                 errorMessage = "인증 실패: \(error.localizedDescription)"
             }
         }

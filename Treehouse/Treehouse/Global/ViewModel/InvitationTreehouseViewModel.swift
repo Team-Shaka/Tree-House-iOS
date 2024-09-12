@@ -16,6 +16,7 @@ final class InvitationTreehouseViewModel: BaseViewModel {
     var treehouseInfo: [ReadTreehouseInfoResponseEntity]?
     var availableInvitation: Int = 0
     var activeRate: Int = 0
+    var invitationResult = false
     var isSelectTreehouse: Bool = false {
         didSet {
             if isSelectTreehouse == false {
@@ -131,22 +132,20 @@ extension InvitationTreehouseViewModel {
         }
     }
     
-    func invitationTreehouse() async -> Bool {
+    func invitationTreehouse() async {
         guard let senderId = senderId, let memberPhoenNumber = memberPhoenNumber, let selectedTreehouseId = selectedTreehouseId else {
-            return false
+            return
         }
         
         let result = await invitationUseCase.execute(senderId: senderId, phoneNumber: memberPhoenNumber, treehouseId: selectedTreehouseId)
         
         switch result {
         case .success(_):
-            return true
+            invitationResult = true
         case .failure(let error):
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
             }
-            
-            return false
         }
     }
 }
