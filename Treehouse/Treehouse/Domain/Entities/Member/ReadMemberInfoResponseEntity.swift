@@ -11,6 +11,7 @@ struct ReadMemberInfoResponseEntity: Decodable {
     let memberId: Int
     let memberName: String
     let userName: String
+    let phone: String
     let closestMemberCount: Int
     let treehouseCount: Int
     let fromMe: Int
