@@ -19,6 +19,7 @@ struct MemberProfileView: View {
     
     @State var isPresent = false
     @State var isLoading = true
+    @State private var showSheet = false
     
     // MARK: - View
     
@@ -35,7 +36,7 @@ struct MemberProfileView: View {
                                      branchCount: data.closestMemberCount,
                                      treeHouseCount: data.treehouseCount,
                                      root: "\(data.fromMe)",
-                                     inviteAction: nil,
+                                     inviteAction: { showSheet = true },
                                      branchAction: { viewRouter.push(ProfileRouter.memberBranchView(treehouseId: feedViewModel.currentTreehouseId ?? 0, memberId: data.memberId))
                                     },
                                      profileAction: nil)
@@ -88,8 +89,15 @@ struct MemberProfileView: View {
                 await memberProfileViewModel.performAsyncTasks()
             }
         }
+        .sheet(isPresented: $showSheet) {
+//            InvitationTreehouseView(memberName: memberProfileViewModel.memberProfileData?.memberName ?? "정보없음",
+//                                    memberProfileUrl: memberProfileViewModel.memberProfileData?.profileImageUrl ?? "")
+//            .environment(memberProfileViewModel)
+//                .presentationDetents([.large])
+        }
         .navigationTitle(memberProfileViewModel.title)
         .navigationBarTitleDisplayMode(.inline)
+        .background(.grayscaleWhite)
         .task {
             await memberProfileViewModel.performAsyncTasks()
         }
@@ -109,6 +117,7 @@ struct MemberProfileView: View {
             )
         )
         .environment(ViewRouter())
+        .environment(FeedViewModel(getReadTreehouseInfoUseCase: ReadTreehouseInfoUseCase(repository: TreehouseRepositoryImpl())))
     }
 }
 
