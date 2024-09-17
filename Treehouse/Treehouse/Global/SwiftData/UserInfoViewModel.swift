@@ -69,6 +69,8 @@ final class UserInfoViewModel: BaseViewModel {
     
     /// TreehouseInfo 추가하기 위한 메서드
     func addTreehouseInfo(treehouseInfo: TreehouseInfo) -> Bool {
+        let _ = modifyTreehouse(treehouseId: treehouseInfo.treehouseId)
+        
         if let data = userInfo {
             data.treehouseInfo.append(treehouseInfo)
         }
@@ -93,7 +95,7 @@ private extension UserInfoViewModel {
     
     /// 이미 저장된 데이터를 수정하기 위해 다시 저장하는 메서드
     func updateData() -> Bool {
-        guard let data = userInfo else { return false }
+        guard let _ = userInfo else { return false }
         
         switch dataSource.saveUserInfo() {
         case .success(let result):

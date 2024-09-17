@@ -38,13 +38,18 @@ final class UserInfoDataSource {
     func fetchItem() -> UserInfoData? {
         do {
             let data = try modelContext.fetch(FetchDescriptor<UserInfoData>())
+            
             data.forEach {
                 print($0.userName)
             }
-            print("유저 정보 불러오기: \(String(describing: data.first?.userName))")
+            print("유저 이름: \(String(describing: data.first?.userName))")
+            print("유저 프로필: \(String(describing: data.first?.profileImageUrl))")
+            print("가입한 Treehouse: \(String(describing: data.first?.treehouses))")
             
             data.first?.treehouseInfo.forEach {
-                print("유저 정보 불러오기: \(String(describing: $0.treehouseName))")
+                print("첫번째 Treehouse ID: \(String(describing: $0.treehouseId))")
+                print("첫번째 Treehouse Name: \(String(describing: $0.treehouseName))")
+                print("첫번째 Treehouse Member ID: \(String(describing: $0.treehouseMemberId))")
             }
     
             return data.first
