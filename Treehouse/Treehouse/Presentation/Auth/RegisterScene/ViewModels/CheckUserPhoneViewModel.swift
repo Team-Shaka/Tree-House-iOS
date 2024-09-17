@@ -1,5 +1,5 @@
 //
-//  UserPhoneViewModel.swift
+//  CheckUserPhoneViewModel.swift
 //  Treehouse
 //
 //  Created by ParkJunHyuk on 7/14/24.
