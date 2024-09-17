@@ -29,19 +29,21 @@ struct PostDetailView: View {
     @FocusState private var isKeyboardShowing: Bool
     
     @State var isloading = true
-//    @GestureState private var dragOffset = CGSize.zero
+
+    @State private var keyboardHeight: CGFloat = 0
+    @State private var contentOffset: CGFloat = 0
     
     // MARK: - View
     
     var body: some View {
         @Bindable var commentViewModel = commentViewModel
-        
-        ZStack {
+
+        ScrollViewReader { proxy in
             VStack(spacing: 0) {
                 ScrollView {
-                    if let _ = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
-                    
-                        VStack {
+                    VStack {
+                        if let _ = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
+                            
                             SinglePostView(sentTime: postDetailData.postedAt,
                                            postContent: postDetailData.context,
                                            postImageURLs: postDetailData.pictureUrlList,
@@ -54,19 +56,31 @@ struct PostDetailView: View {
                                 .environment(postDetailViewModel)
                                 .environment(emojiViewModel)
                                 .environment(commentViewModel)
+                            
+                        }
+                        
+                        Divider()
+                            .padding(.top, 16)
+                        
+                        if !(commentViewModel.unwrappedReadCommentData.isEmpty) {
+                            FeedContentView(focusedField: $focusedField)
+                                .environment(commentViewModel)
+                                .environment(emojiViewModel)
+                                .environment(postDetailViewModel)
+                        }
+                        
+                    }
+                }
+                .onChange(of: commentViewModel.selectedCommentId) { _, newValue in
+                    if let id = newValue {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            withAnimation {
+                                proxy.scrollTo(id, anchor: .center)
+                            }
                         }
                     }
-                    
-                    Divider()
-                        .padding(.top, 16)
-                    
-                    if !(commentViewModel.unwrappedReadCommentData.isEmpty) {
-                        FeedContentView(focusedField: $focusedField)
-                            .environment(commentViewModel)
-                            .environment(emojiViewModel)
-                            .environment(postDetailViewModel)
-                    }
-                }.refreshable {
+                }
+                .refreshable {
                     await performAsyncTasks()
                 }
                 
@@ -143,6 +157,9 @@ struct PostDetailView: View {
                 await performAsyncTasks()
                 commentViewModel.createCommentMemberName = postDetailViewModel.detailFeedListData?.memberProfile.memberName ?? ""
             }
+            
+            setupKeyboardObservers()
+            removeKeyboardObservers()
         }
         .onChange(of: emojiViewModel.isSelectFeedEmojiView) { _, newValue in
             if newValue == false {
@@ -177,6 +194,35 @@ struct PostDetailView: View {
         if detailResult && commentResult {
             isloading = false
         }
+    }
+    
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                keyboardHeight = keyboardRectangle.height
+                
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    contentOffset = keyboardHeight / 2
+                }
+
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+            keyboardHeight = 0
+            
+            withAnimation(.easeInOut(duration: 0.3)) {
+                contentOffset = 0
+            }
+            
+            commentViewModel.selectedCommentId = nil
+        }
+    }
+    
+    private func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 

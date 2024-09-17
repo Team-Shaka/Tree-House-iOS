@@ -31,6 +31,7 @@ struct FeedContentView: View {
                             reactionData: comment.reactionList,
                             focusedField: focusedField,
                             isReplayList: !comment.replyList.isEmpty)
+                    .id(comment.commentId)
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                 
                 replyView(reply: comment.replyList)
@@ -49,16 +50,17 @@ private extension FeedContentView {
     @ViewBuilder
     func replyView(reply: [ReplyListEntity]?) -> some View {
         if let data = reply {
-            ForEach(data) {
+            ForEach(data) { replyComment in
                 CommentView(commentType: .reply,
-                            commentId: $0.commentId,
-                            userProfile: $0.memberProfile,
-                            time: $0.commentedAt,
-                            comment: $0.context,
-                            reactionData: $0.reactionList, 
+                            commentId: replyComment.commentId,
+                            userProfile: replyComment.memberProfile,
+                            time: replyComment.commentedAt,
+                            comment: replyComment.context,
+                            reactionData: replyComment.reactionList,
                             focusedField: focusedField,
                             isReplayList: true,
-                            lastData: $0.commentId == data.last?.commentId)
+                            lastData: replyComment.commentId == data.last?.commentId)
+                .id(replyComment.commentId)
                 .environment(emojiViewModel)
             }
         }

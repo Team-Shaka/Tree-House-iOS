@@ -27,6 +27,7 @@ final class CommentViewModel: BaseViewModel {
         readCommentData ?? []
     }
     
+    var selectedCommentId: Int?
     var postContent: String = ""
     var errorMessage: String = ""
     var isSelectEmojiView = false
@@ -81,6 +82,10 @@ final class CommentViewModel: BaseViewModel {
                 }
             }
         }
+    }
+    
+    func selectComment(_ id: Int) {
+        selectedCommentId = id
     }
 }
 

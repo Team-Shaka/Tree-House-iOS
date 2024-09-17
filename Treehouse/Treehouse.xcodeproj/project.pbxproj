@@ -126,7 +126,7 @@
 		3F81715D2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */; };
 		3F81715F2C4384E600CEE21E /* ExistsUserLoginUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */; };
 		3F8171642C4399B700CEE21E /* UserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */; };
-		3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */; };
+		3F8171662C43A27300CEE21E /* CheckUserPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171652C43A27300CEE21E /* CheckUserPhoneViewModel.swift */; };
 		3F8171682C43FE6F00CEE21E /* CreateCommentResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */; };
 		3F81716A2C43FEB800CEE21E /* CreateCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */; };
 		3F81716C2C44002900CEE21E /* ReadCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */; };
@@ -442,7 +442,7 @@
 		3F81715C2C43847A00CEE21E /* ExistsUserLoginResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginResponseEntity.swift; sourceTree = "<group>"; };
 		3F81715E2C4384E600CEE21E /* ExistsUserLoginUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsUserLoginUserCase.swift; sourceTree = "<group>"; };
 		3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewModel.swift; sourceTree = "<group>"; };
-		3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneViewModel.swift; sourceTree = "<group>"; };
+		3F8171652C43A27300CEE21E /* CheckUserPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPhoneViewModel.swift; sourceTree = "<group>"; };
 		3F8171672C43FE6F00CEE21E /* CreateCommentResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentResponseEntity.swift; sourceTree = "<group>"; };
 		3F8171692C43FEB800CEE21E /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
 		3F81716B2C44002900CEE21E /* ReadCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCommentUseCase.swift; sourceTree = "<group>"; };
@@ -1265,7 +1265,7 @@
 			children = (
 				3F8845FF2BF095F60021FB79 /* UserSettingViewModel.swift */,
 				3F8171632C4399B700CEE21E /* UserLoginViewModel.swift */,
-				3F8171652C43A27300CEE21E /* UserPhoneViewModel.swift */,
+				3F8171652C43A27300CEE21E /* CheckUserPhoneViewModel.swift */,
 				3FEC57742C8F49F60080DF96 /* FCMTokenViewModel.swift */,
 				3FEC57762C8F4A080080DF96 /* RegisterPushNotiViewModel.swift */,
 			);
@@ -2298,7 +2298,7 @@
 				944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */,
 				3FFA73142C3178F800C3AF4F /* Image+.swift in Sources */,
 				0012366F2BD1831300CEAC53 /* PhoneNumberSearchBar.swift in Sources */,
-				3F8171662C43A27300CEE21E /* UserPhoneViewModel.swift in Sources */,
+				3F8171662C43A27300CEE21E /* CheckUserPhoneViewModel.swift in Sources */,
 				3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

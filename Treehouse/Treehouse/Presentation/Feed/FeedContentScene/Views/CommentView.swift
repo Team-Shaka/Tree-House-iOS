@@ -93,6 +93,7 @@ struct CommentView: View {
                         focusedField.wrappedValue = .post
                         commentViewModel.createCommentMemberName = userProfile.memberName
                         commentViewModel.commentState = .createReplyComment
+                        commentViewModel.selectComment(commentId)
                     }) {
                         Text("답글 달기")
                             .fontWithLineHeight(fontLevel: .body4)
@@ -104,6 +105,7 @@ struct CommentView: View {
                         focusedField.wrappedValue = .post
                         commentViewModel.createCommentMemberName = userProfile.memberName
                         commentViewModel.commentState = .createReplyComment
+                        commentViewModel.selectComment(commentId)
                     }) {
                         Text("답글 달기")
                             .fontWithLineHeight(fontLevel: .body4)
