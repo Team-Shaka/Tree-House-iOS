@@ -116,6 +116,7 @@
 		3F51505C2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51505B2C0EDFE400AD05C3 /* CheckInvitationsUseCase.swift */; };
 		3F5189E72C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5189E62C520B2E00982B5B /* PostExistsUserLoginRequestDTO.swift */; };
 		3F6801CD2C5FC065005E694E /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6801CC2C5FC065005E694E /* CustomAlertView.swift */; };
+		3F6A114E2C9C00EB00F039AA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F6A114D2C9C00EB00F039AA /* FirebaseCrashlytics */; };
 		3F6E13C02C7B779D00F94595 /* DeleteUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E13BF2C7B779D00F94595 /* DeleteUserResponseDTO.swift */; };
 		3F6E13C22C7B7DFD00F94595 /* DeleteUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E13C12C7B7DFD00F94595 /* DeleteUserUseCase.swift */; };
 		3F6E13C42C7B7E4900F94595 /* DeleteUserResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6E13C32C7B7E4900F94595 /* DeleteUserResponseEntity.swift */; };
@@ -656,6 +657,7 @@
 				00CF35A22BC2F42F00D9E332 /* Moya in Frameworks */,
 				00CF35A02BC2F42F00D9E332 /* CombineMoya in Frameworks */,
 				3FA085C12C773991001D3E90 /* FirebaseAuth in Frameworks */,
+				3F6A114E2C9C00EB00F039AA /* FirebaseCrashlytics in Frameworks */,
 				00CF35A62BC2F42F00D9E332 /* RxMoya in Frameworks */,
 				3FA085BF2C773991001D3E90 /* FirebaseAnalytics in Frameworks */,
 				00CF35A42BC2F42F00D9E332 /* ReactiveMoya in Frameworks */,
@@ -1931,6 +1933,7 @@
 				3FA085BE2C773991001D3E90 /* FirebaseAnalytics */,
 				3FA085C02C773991001D3E90 /* FirebaseAuth */,
 				3FA085C22C773991001D3E90 /* FirebaseMessaging */,
+				3F6A114D2C9C00EB00F039AA /* FirebaseCrashlytics */,
 			);
 			productName = Treehouse;
 			productReference = 00CF357E2BC291FA00D9E332 /* Treehouse.app */;
@@ -2625,6 +2628,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 00CF35B72BC306D500D9E332 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
+		};
+		3F6A114D2C9C00EB00F039AA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FA085BD2C773991001D3E90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		3FA085BE2C773991001D3E90 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
