@@ -9,6 +9,7 @@ import Foundation
 import Observation
 import SwiftUI
 import FirebaseAuth
+import FirebaseAnalytics
 
 enum UserAuthentication {
     case notInvitation
@@ -367,9 +368,13 @@ extension UserSettingViewModel {
         do {
             self.verificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(fixPhoneNumber, uiDelegate: nil)
             
-            
             // 서버 통신 성공, verificationID를 저장
             if let verificationID = verificationID {
+                Analytics.logEvent("phone_auth_success", parameters: [
+                                "phone_number": fixPhoneNumber,
+                                "verification_id": verificationID
+                            ])
+                
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             }
             
@@ -377,6 +382,12 @@ extension UserSettingViewModel {
                 self.isVerificationID = true
             }
         } catch let error as NSError {
+            Analytics.logEvent("phone_auth_failure", parameters: [
+                        "phone_number": fixPhoneNumber,
+                        "error_message": error.localizedDescription,
+                        "error_user": error.userInfo
+                    ])
+            
             await MainActor.run {
                 print(error.userInfo)
                 errorMessage = "인증 실패: \(error.localizedDescription)"
