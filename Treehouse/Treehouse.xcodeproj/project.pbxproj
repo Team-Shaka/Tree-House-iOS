@@ -1914,6 +1914,7 @@
 				00CF357A2BC291FA00D9E332 /* Sources */,
 				00CF357B2BC291FA00D9E332 /* Frameworks */,
 				00CF357C2BC291FA00D9E332 /* Resources */,
+				3F6A114F2C9C075800F039AA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1999,6 +2000,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F6A114F2C9C075800F039AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00CF357A2BC291FA00D9E332 /* Sources */ = {
