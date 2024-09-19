@@ -9,7 +9,7 @@ import Foundation
 import Observation
 import SwiftUI
 import FirebaseAuth
-import FirebaseAnalytics
+import FirebaseCrashlytics
 
 enum UserAuthentication {
     case notInvitation
@@ -370,10 +370,8 @@ extension UserSettingViewModel {
             
             // 서버 통신 성공, verificationID를 저장
             if let verificationID = verificationID {
-                Analytics.logEvent("phone_auth_success", parameters: [
-                                "phone_number": fixPhoneNumber,
-                                "verification_id": verificationID
-                            ])
+                // Crashlytics 로그 추가
+                Crashlytics.crashlytics().log("Phone authentication successful")
                 
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             }
@@ -382,11 +380,16 @@ extension UserSettingViewModel {
                 self.isVerificationID = true
             }
         } catch let error as NSError {
-            Analytics.logEvent("phone_auth_failure", parameters: [
-                        "phone_number": fixPhoneNumber,
-                        "error_message": error.localizedDescription,
-                        "error_user": error.userInfo
-                    ])
+            // Crashlytics 로그 추가
+            Crashlytics.crashlytics().log("Phone authentication failed")
+            Crashlytics.crashlytics().setCustomValue(fixPhoneNumber, forKey: "phone_number")
+            Crashlytics.crashlytics().setCustomValue(error.localizedDescription, forKey: "error_message")
+            
+            // userInfo의 내용을 그대로 저장
+            let userInfo = error.userInfo
+            for (key, value) in userInfo {
+                Crashlytics.crashlytics().setCustomValue(value, forKey: key)
+            }
             
             await MainActor.run {
                 print(error.userInfo)
