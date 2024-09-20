@@ -393,6 +393,7 @@ extension UserSettingViewModel {
             
             await MainActor.run {
                 print(error.userInfo)
+                fatalError("Crash was triggered")
                 errorMessage = "인증 실패: \(error.localizedDescription)"
             }
         }
