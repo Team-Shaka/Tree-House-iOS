@@ -23,6 +23,20 @@ enum RegisterType {
     case registerTreehouse // treehouse 를 만들고 회원가입
 }
 
+enum PhoneNumberAuthState {
+    case error(title: String)
+    case success
+    
+    var title: String {
+        switch self {
+        case .success:
+            return "인증에 성공했습니다"
+        case .error(let title):
+            return title
+        }
+    }
+}
+
 protocol BaseViewModel: AnyObject {}
 
 @Observable
@@ -81,6 +95,12 @@ final class UserSettingViewModel: BaseViewModel {
     var isVerificationID = false
     var isCheckVerification = false
     var isCallCehckVerification = false
+    
+    var isSendAuthMessageState: PhoneNumberAuthState?
+    var isAuthAlert: Bool = false
+ 
+    var errorKey: String = ""
+    var errorValue: String = ""
     
     // MARK: - UseCase Property
     
@@ -360,8 +380,8 @@ extension UserSettingViewModel {
 
 
 extension UserSettingViewModel {
-    func certificationPhoneNumber() async {
-        guard let phoneNumber = phoneNumber else { return }
+    func certificationPhoneNumber() async -> Bool {
+        guard let phoneNumber = phoneNumber else { return false }
         
         let fixPhoneNumber = "+82" + phoneNumber.dropFirst(1)
 
@@ -374,28 +394,46 @@ extension UserSettingViewModel {
                 Crashlytics.crashlytics().log("Phone authentication successful")
                 
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                print("verificationID 저장 완료")
             }
             
             await MainActor.run {
                 self.isVerificationID = true
             }
+            
+            return true
         } catch let error as NSError {
             // Crashlytics 로그 추가
             Crashlytics.crashlytics().log("Phone authentication failed")
             Crashlytics.crashlytics().setCustomValue(fixPhoneNumber, forKey: "phone_number")
             Crashlytics.crashlytics().setCustomValue(error.localizedDescription, forKey: "error_message")
-            
+
             // userInfo의 내용을 그대로 저장
             let userInfo = error.userInfo
-            for (key, value) in userInfo {
-                Crashlytics.crashlytics().setCustomValue(value, forKey: key)
+            
+            print(error.domain)
+            print(error.code)
+            
+            switch error.code {
+            case 17010:
+                isSendAuthMessageState = .error(title: "잦은 요청으로 인해 차단되었습니다\n1시간 후 다시 시도해주세요")
+            default:
+                isSendAuthMessageState = .error(title: "알 수 없는 오류가 발생했습니다\n잠시 후 시도해주세요")
             }
             
+       
+            for (key, value) in userInfo {
+                print("Key:\(key), Value: \(value)")
+                Crashlytics.crashlytics().setCustomValue(value, forKey: key)
+            }
+
             await MainActor.run {
+                isAuthAlert = true
                 print(error.userInfo)
-                fatalError("Crash was triggered")
                 errorMessage = "인증 실패: \(error.localizedDescription)"
             }
+            
+            return false
         }
     }
     
@@ -419,6 +457,8 @@ extension UserSettingViewModel {
             print("인증 성공! 사용자 ID: \(user.uid)")
             
             await MainActor.run {
+                isSendAuthMessageState = .success
+                isAuthAlert = true
                 self.isCallCehckVerification = true
                 self.isCheckVerification = true
             }

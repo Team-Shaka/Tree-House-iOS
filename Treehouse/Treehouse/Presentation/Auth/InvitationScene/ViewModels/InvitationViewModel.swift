@@ -13,13 +13,19 @@ final class InvitationViewModel: BaseViewModel {
     
     // MARK: - Invitation Property
     
-    var treehouseName: String = ""
+    var currentTreehouseId: Int = 0
+    var selectedIndex: Int = 0
     var invitedMember: String = ""
-    var memberNum: Int = 0
+    var invitedPhoneNumber: String = ""
+    var senderId: Int = 0
     var memberProfileImages: [URL] = []
     var availableInvitation: Int = 0
     var activeRate: Int = 0
     var invitationCount = 0
+    var isinvitationAlert = false
+    var invitationState: invitationState?
+    
+    var invitationTitle = "완료되었습니다."
     
     var errorMessage: String? = nil
     
@@ -49,24 +55,50 @@ final class InvitationViewModel: BaseViewModel {
         self.checkAvailableInvitationUseCase = checkAvailableInvitationUseCase
         self.invitationUseCase = invitationUseCase
     }
+    
+    // 초대하기 버튼을 눌렀을 때 (alert 표시)
+    func invitationButtonTapped(index: Int, name: String, phoneNumber: String) {
+        if availableInvitation > 0 {
+            selectedIndex = index
+            invitedMember = name
+            invitedPhoneNumber = phoneNumber
+            invitationState = .success
+        } else {
+            invitationState = .faliure
+        }
+        
+        isinvitationAlert = true
+    }
 }
 
 // MARK: - Invitation API Extension
 
 extension InvitationViewModel {
+    func invitationTreehouse() async -> Bool {
+        let result = await invitationUseCase.execute(senderId: senderId, phoneNumber: invitedPhoneNumber, treehouseId: currentTreehouseId)
+        
+        invitedMember = ""
+        invitedPhoneNumber = ""
+        
+        switch result {
+        case .success(_):
+//            isinvitationAlert = true
+            return true
+        case .failure(let error):
+//            isinvitationAlert = true
+            errorMessage = error.localizedDescription
+            return false
+        }
+    }
+    
     func invitationTreehouse(senderId: Int, phoneNumber: String, treehouseId: Int) async -> Bool {
-        print(senderId)
-        print(phoneNumber)
-        print(treehouseId)
-        let result = await invitationUseCase.execute(senderId: senderId, phoneNumber: phoneNumber, treehouseId: treehouseId)
+        let result = await invitationUseCase.execute(senderId: senderId, phoneNumber: invitedPhoneNumber, treehouseId: treehouseId)
         
         switch result {
         case .success(_):
             return true
         case .failure(let error):
-            await MainActor.run {
-                self.errorMessage = error.localizedDescription
-            }
+            self.errorMessage = error.localizedDescription
             
             return false
         }
