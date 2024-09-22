@@ -79,7 +79,11 @@ final class NetworkServiceManager: NetworkServiceable {
                     throw NetworkError.clientError(message: decodingData.message)
                 }
                 
-                return nil
+                if NetworkErrorCode.invitationError.contains(decodingData.code) {
+                    throw NetworkError.clientError(message: decodingData.message)
+                }
+                
+                throw NetworkError.clientError(message: "Unknown 400 error")
                 
             case 401...409:
                 try await postReissueToken()

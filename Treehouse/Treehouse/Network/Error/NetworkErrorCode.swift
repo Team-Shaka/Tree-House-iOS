@@ -20,4 +20,6 @@ enum NetworkErrorCode {
                                  "AUTH404_1",
                                  "USER404_1",
                                  "USER409_1"]
+    
+    static let invitationError = ["INVITATION400_1"]
 }
