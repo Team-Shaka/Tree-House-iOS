@@ -7,6 +7,61 @@
 
 import SwiftUI
 
+struct CustomAlertModifier<AlertContent: View>: ViewModifier {
+    @Binding var isPresented: Bool
+    let alertContent: () -> AlertContent
+    
+    @State private var overlayWindow: UIWindow?
+    
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: isPresented) { _, newValue in
+                if newValue {
+                    showOverlay()
+                } else {
+                    hideOverlay()
+                }
+            }
+    }
+    
+    private func showOverlay() {
+        let window = UIWindow(windowScene: UIApplication.shared.connectedScenes.first as! UIWindowScene)
+        
+        let overlayVC = UIHostingController(rootView:
+            ZStack {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        isPresented = false
+                    }
+                
+                alertContent()
+            }
+            .ignoresSafeArea()
+        )
+        
+        overlayVC.view.backgroundColor = .clear
+
+        window.rootViewController = overlayVC
+        window.isHidden = false
+        self.overlayWindow = window
+    }
+    
+    private func hideOverlay() {
+        overlayWindow?.isHidden = true
+        overlayWindow = nil
+    }
+}
+
+extension View {
+    func topLevelAlert<AlertContent: View>(
+        isPresented: Binding<Bool>,
+        @ViewBuilder content: @escaping () -> AlertContent
+    ) -> some View {
+        self.modifier(CustomAlertModifier(isPresented: isPresented, alertContent: content))
+    }
+}
+
 struct FontWithLineHeight: ViewModifier {
     let font: UIFont
     let lineHeight: CGFloat
