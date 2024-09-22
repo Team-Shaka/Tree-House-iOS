@@ -92,6 +92,8 @@
 		3F2DB2792BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */; };
 		3F2DB27B2BD0C83900DEFBA6 /* InvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */; };
 		3F2DB27D2BD0F35900DEFBA6 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */; };
+		3F2F62462CA00844005E5DC1 /* AuthPhoneNumAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F62452CA00844005E5DC1 /* AuthPhoneNumAlert.swift */; };
+		3F2F62482CA04136005E5DC1 /* InvitationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F62472CA04136005E5DC1 /* InvitationAlert.swift */; };
 		3F32DAC22C5B89EF001786BC /* CreateTreehouseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */; };
 		3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */; };
 		3F3DAE9B2C588CE900C1424C /* TreehouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */; };
@@ -408,6 +410,8 @@
 		3F2DB2782BCFF5FE00DEFBA6 /* ReceivedInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedInvitationView.swift; sourceTree = "<group>"; };
 		3F2DB27A2BD0C83900DEFBA6 /* InvitationAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlertView.swift; sourceTree = "<group>"; };
 		3F2DB27C2BD0F35900DEFBA6 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		3F2F62452CA00844005E5DC1 /* AuthPhoneNumAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPhoneNumAlert.swift; sourceTree = "<group>"; };
+		3F2F62472CA04136005E5DC1 /* InvitationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAlert.swift; sourceTree = "<group>"; };
 		3F32DAC12C5B89EF001786BC /* CreateTreehouseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTreehouseRouter.swift; sourceTree = "<group>"; };
 		3F3DAE972C57D09800C1424C /* ReportCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCommentUseCase.swift; sourceTree = "<group>"; };
 		3F3DAE9A2C588CE900C1424C /* TreehouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreehouseViewModel.swift; sourceTree = "<group>"; };
@@ -1379,6 +1383,8 @@
 				3F6801CC2C5FC065005E694E /* CustomAlertView.swift */,
 				3FA541542C60F06200723BAD /* LottieView.swift */,
 				3F25A3532C91C580006E2715 /* InvitationTreehouseView.swift */,
+				3F2F62452CA00844005E5DC1 /* AuthPhoneNumAlert.swift */,
+				3F2F62472CA04136005E5DC1 /* InvitationAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2030,6 +2036,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F3DAE982C57D09800C1424C /* ReportCommentUseCase.swift in Sources */,
+				3F2F62482CA04136005E5DC1 /* InvitationAlert.swift in Sources */,
 				3FF48FD42C4DF69E00A6DD8A /* PostViewModel.swift in Sources */,
 				3FDCDA332C63B84400C7F7B6 /* PostCheckTreehouseNameRequestDTO.swift in Sources */,
 				3FEC576F2C8F49460080DF96 /* RegisterPushAgreeUseCase.swift in Sources */,
@@ -2320,6 +2327,7 @@
 				946424AC2C3E4F8100BB177F /* NotificationRepositoryProtocol.swift in Sources */,
 				0087C2872BDEC7B0004CED9C /* RegisterRepositoryImpl.swift in Sources */,
 				9412FF392BFF2466006A8A15 /* TabViewType.swift in Sources */,
+				3F2F62462CA00844005E5DC1 /* AuthPhoneNumAlert.swift in Sources */,
 				3F8530EE2C5382E3003FA07A /* ReadDetailFeedPostUseCase.swift in Sources */,
 				3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */,
 				944D48952BF10CA000205B18 /* SinglePostView.swift in Sources */,

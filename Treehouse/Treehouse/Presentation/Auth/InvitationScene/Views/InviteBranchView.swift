@@ -158,21 +158,16 @@ struct InviteBranchView: View {
                                        phoneNumber: userData.phoneNumber,
                                        isInvitation: userData.isInvitation,
                                        invitationButtonTappeed: {
-                            Task {
-                                let result = await viewModel.invitationTreehouse(senderId: memberId, phoneNumber: userData.phoneNumber, treehouseId: selectedTreehouseId)
-                                
-                                phoneNumberViewModel.invitationButtonTapped(index: index, tap: true)
-                            }
+                            hideKeyboard()
+                            viewModel.invitationButtonTapped(index: index, name: userData.name, phoneNumber: userData.phoneNumber)
                         })
                     }
                 }
             }
             .padding(.horizontal, SizeLiterals.Screen.screenWidth * 16/393)
-            .onTapGesture {
-                hideKeyboard()
-            }
             .onAppear {
-                memberId = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)?.treehouseMemberId ?? 0
+                viewModel.senderId = userInfoViewModel.userInfo?.findTreehouse(id: selectedTreehouseId)?.treehouseMemberId ?? 0
+                viewModel.currentTreehouseId = selectedTreehouseId
                 
                 Task {
                     await viewModel.checkAvailableInvitation()
@@ -206,6 +201,35 @@ struct InviteBranchView: View {
         .refreshable {
             await viewModel.checkAvailableInvitation()
             await viewModel.checkInvitations()
+        }
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .topLevelAlert(isPresented: $viewModel.isinvitationAlert) {
+            if let state = viewModel.invitationState {
+                InvitationAlert(invitationState: state, memberName: viewModel.invitedMember,
+                                onCancel: {
+                    switch state {
+                    case .success:
+                        viewModel.isinvitationAlert = false
+                    case .faliure:
+                        break
+                    }
+                },
+                                onConfirm: {
+                    switch state {
+                    case .success:
+                        Task {
+                            let result = await viewModel.invitationTreehouse()
+                            phoneNumberViewModel.invitationButtonTapped(index: viewModel.selectedIndex, tap: result)
+                            viewModel.isinvitationAlert = false
+                        }
+                        viewModel.isinvitationAlert = false
+                    case .faliure:
+                        viewModel.isinvitationAlert = false
+                    }
+                })
+            }
         }
     }
 }

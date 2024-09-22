@@ -26,6 +26,8 @@ struct VerificationView: View {
     // MARK: - View
     
     var body: some View {
+        @Bindable var viewModel = viewModel
+        
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 0) {
@@ -123,10 +125,15 @@ struct VerificationView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            isKeyboardShowing = true
-        }
-        .task {
-            await viewModel.certificationPhoneNumber()
+            Task {
+                let result = await viewModel.certificationPhoneNumber()
+                
+                if result == true {
+                    await MainActor.run {
+                        isKeyboardShowing = result
+                    }
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -145,6 +152,9 @@ struct VerificationView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
+        }
+        .topLevelAlert(isPresented: $viewModel.isAuthAlert) {
+            AuthPhoneNumAlert(authState: viewModel.isSendAuthMessageState, onConfirm: { viewModel.isAuthAlert = false })
         }
     }
     
