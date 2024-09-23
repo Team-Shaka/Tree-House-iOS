@@ -70,8 +70,8 @@ extension MyProfileViewModel {
         switch result {
         case .success(let response):
             myProfileData = response
-            isLoadedMyProfile.toggle()
-
+            isLoadedMyProfile = true
+            
             return false
         case .failure(let error):
             await MainActor.run {

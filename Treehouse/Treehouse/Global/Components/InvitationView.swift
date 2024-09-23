@@ -125,13 +125,13 @@ extension InvitationView {
             .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
             .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
             
-            Text(treehouseName)
+            Text(viewModel.treehouseName)
                 .fontWithLineHeight(fontLevel: .heading2)
                 .foregroundStyle(.treeBlack)
                 .padding(.bottom, 6)
             
             HStack(spacing: 0) {
-                Text("\(invitedMember)님")
+                Text("\(viewModel.invitedMember)님")
                     .fontWithLineHeight(fontLevel: .body2)
                 Text("이 당신을 초대했습니다.")
                     .fontWithLineHeight(fontLevel: .body3)
@@ -147,7 +147,7 @@ extension InvitationView {
                 }
                 .padding(.trailing, 8)
                 
-                Text("\(memberNum)명의 멤버들이 함께하고 있어요.")
+                Text("\(viewModel.memberNum)명의 멤버들이 함께하고 있어요.")
                     .fontWithLineHeight(fontLevel: .body5)
             }
         }
@@ -167,7 +167,7 @@ extension InvitationView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            CustomAsyncImage(url: memberProfileUrls[index] ?? "",
+            CustomAsyncImage(url: viewModel.memberProfileImages[index] ?? "",
                              type: .postMemberProfileImage,
                              width: 29, height: 29)
             .clipShape(Circle())

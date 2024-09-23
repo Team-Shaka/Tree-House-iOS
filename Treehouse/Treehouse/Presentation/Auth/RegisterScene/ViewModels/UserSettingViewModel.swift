@@ -262,9 +262,9 @@ extension UserSettingViewModel {
             return false
         }
         
-        print(registerType, treehouseId, userName, memberName, bio, accessUrlImage.first ?? "")
+        let imageUrl = accessUrlImage.first ?? ""
         
-        let result = await registerTreeMemberUseCase.execute(registerType: registerType, requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: accessUrlImage.first ?? "" ))
+        let result = await registerTreeMemberUseCase.execute(registerType: registerType, requestDTO: PostRegisterTreeMemberRequestDTO(treehouseId: treehouseId, userName: userName, memberName: memberName, bio: bio, profileImageURL: imageUrl))
         
         switch result {
         case .success(let response):
