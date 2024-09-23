@@ -60,14 +60,19 @@ struct SetMemberProfileImage: View {
             Spacer()
             
             Button(action: {
-                Task {
-                    if await viewModel.presignedURL() {
-                        await viewModel.loadImageAWS()
-                    }
-                }
-                
-                if viewModel.isPresignedURL == viewModel.isloadImageAWS {
+                if photoPickerManager.selectedImages.isEmpty {
+                    viewModel.accessUrlImage.append("")
                     viewRouter.push(RegisterRouter.setMemberBioView)
+                } else {
+                    Task {
+                        if await viewModel.presignedURL() {
+                            await viewModel.loadImageAWS()
+                        }
+                    }
+                    
+                    if viewModel.isPresignedURL == viewModel.isloadImageAWS {
+                        viewRouter.push(RegisterRouter.setMemberBioView)
+                    }
                 }
             }) {
                 Text(StringLiterals.Register.buttonTitle10)
