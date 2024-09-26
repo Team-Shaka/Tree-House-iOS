@@ -216,7 +216,6 @@
 		3FE944152BD63FF600C3A869 /* ReceivedInvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944142BD63FF600C3A869 /* ReceivedInvitationViewModel.swift */; };
 		3FE944172BD645C300C3A869 /* ReceivedInvitationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE944162BD645C300C3A869 /* ReceivedInvitationRowView.swift */; };
 		3FEC57562C8F0BDD0080DF96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC57552C8F0BDD0080DF96 /* GoogleService-Info.plist */; };
-		3FEC575D2C8F0C2B0080DF96 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC575C2C8F0C2B0080DF96 /* Config.xcconfig */; };
 		3FEC57612C8F23B80080DF96 /* TreeBranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57602C8F23B80080DF96 /* TreeBranchViewModel.swift */; };
 		3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57622C8F28B80080DF96 /* MemberBranchView.swift */; };
 		3FEC57652C8F484F0080DF96 /* PostRegisterFCMTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC57642C8F484E0080DF96 /* PostRegisterFCMTokenResponseDTO.swift */; };
@@ -1998,7 +1997,6 @@
 				3F7BCF912C60FD69000939DC /* Launch Screen.storyboard in Resources */,
 				00CF35862BC291FC00D9E332 /* Assets.xcassets in Resources */,
 				00CF35B12BC2F63E00D9E332 /* Pretendard-SemiBold.otf in Resources */,
-				3FEC575D2C8F0C2B0080DF96 /* Config.xcconfig in Resources */,
 				3FEC57562C8F0BDD0080DF96 /* GoogleService-Info.plist in Resources */,
 				3F8F2A812C18AB1400D8CB9F /* structuredEmojis.json in Resources */,
 				3FA541572C60F12100723BAD /* treehouse_loading.json in Resources */,
@@ -2093,7 +2091,6 @@
 				3F8B72742C19DF8700299C24 /* ColorEmojiPopover.swift in Sources */,
 				3FC1FB2C2BD7738900AAE53F /* FeedContentView.swift in Sources */,
 				3F8846022BF254B60021FB79 /* ViewRouter.swift in Sources */,
-				94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */,
 				94103F402C24226800CCF44A /* SheetActionViewModel.swift in Sources */,
 				3F81715B2C43833100CEE21E /* PostExistsUserLoginResponseDTO.swift in Sources */,
 				3FF1070E2BEA097900C52908 /* NotificationAPI.swift in Sources */,
