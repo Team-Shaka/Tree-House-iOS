@@ -124,33 +124,25 @@ struct PostDetailView: View {
                     .foregroundStyle(.treeBlack)
             }
         }
-        .popup(isPresented: $emojiViewModel.isSelectFeedEmojiView) {
+        .sheet(isPresented: $emojiViewModel.isSelectFeedEmojiView) {
             if let postId = feedViewModel.currentPostId {
                 EmojiGridView(emojiType: .feedView, postId: postId)
                     .environment(feedViewModel)
                     .environment(emojiViewModel)
+                    .presentationDetents([.fraction(0.98)])
+                    .presentationCornerRadius(20)
+                    .edgesIgnoringSafeArea(.bottom)
             }
-        } customize: {
-            $0
-                .type(.toast)
-                .closeOnTapOutside(true)
-                .dragToDismiss(true)
-                .isOpaque(true)
-                .backgroundColor(.treeBlack.opacity(0.5))
         }
-        .popup(isPresented: $emojiViewModel.isSelectCommentEmojiView) {
+        .sheet(isPresented: $emojiViewModel.isSelectCommentEmojiView) {
             if feedViewModel.currentPostId != nil {
                 EmojiGridView(emojiType: .detailView, commentId: feedViewModel.currentCommentId ?? 0)
                     .environment(feedViewModel)
                     .environment(emojiViewModel)
+                    .presentationDetents([.fraction(0.98)])
+                    .presentationCornerRadius(20)
+                    .edgesIgnoringSafeArea(.bottom)
             }
-        } customize: {
-            $0
-                .type(.toast)
-                .closeOnTapOutside(true)
-                .dragToDismiss(true)
-                .isOpaque(true)
-                .backgroundColor(.treeBlack.opacity(0.5))
         }
         .onAppear {
             Task {

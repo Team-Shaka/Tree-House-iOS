@@ -66,7 +66,7 @@ struct EmojiGridView: View {
                         .frame(width:32, height: 32)
                     
                     
-                    TextField("이모티콘 검색", text: $serachEmoji)
+                    TextField("이모티콘 검색", text: $emojiViewModel.inputEmoji)
                         .padding(.vertical, 3)
                         .tint(.treeGreen)
                         .focused($focusedField)
@@ -75,13 +75,13 @@ struct EmojiGridView: View {
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 .fontWithLineHeight(fontLevel: .body3)
                 .foregroundStyle(.gray7)
-                .background(.gray3)
+                .background(.gray2)
                 .clipShape(RoundedRectangle(cornerRadius: 10.0))
                 .padding(.bottom, 17)
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(emojiViewModel.emojis) { data in
+                        ForEach(emojiViewModel.emojiList) { data in
                             VStack {
                                 Button(action: {
                                     if self.selectedId == data.id {
@@ -121,8 +121,10 @@ struct EmojiGridView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 17, bottom: 10, trailing: 16))
         }
-        .background(.gray2)
-        .selectCornerRadius(radius: 20, corners: [.topLeft, .topRight])
+        .background(.grayscaleWhite)
+        .selectCornerRadius(radius: 18, corners: [.topLeft, .topRight])
+        .padding(.top, 1)
+        .shadow(color: .gray6.opacity(0.7), radius: 20, x: 0, y: -10)
         .onTapGesture {
             selectedId = nil
             focusedField = false
@@ -163,10 +165,17 @@ extension EmojiGridView {
         Task {
             switch emojiType {
             case .feedView:
-                _ = await emojiViewModel.createReactionPost(
+                let result = await emojiViewModel.createReactionPost(
                     treehouseId: feedViewModel.currentTreehouseId ?? 0,
                     postId: postId ?? 0
                 )
+                
+                if result {
+                    feedViewModel.selectEmoji = emojiViewModel.selectEmoji
+                    feedViewModel.selectPostId = postId
+                    
+                    emojiViewModel.selectEmoji = nil
+                }
                 
             case .detailView:
                 _ = await emojiViewModel.createReactionComment(

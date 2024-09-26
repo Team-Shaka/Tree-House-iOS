@@ -21,13 +21,16 @@ final class EmojiViewModel: BaseViewModel {
     
     // MARK: - Property
     
-    var emojis = [EmojiDatas]()
-    var selectEmoji: String? {
+    private var emojis = [EmojiDatas]()
+    var selectEmoji: String?
+    var errorMessage: String = ""
+    var inputEmoji: String = "" {
         didSet {
-            self.selectEmoji
+            searchEmoji()
         }
     }
-    var errorMessage: String = ""
+    
+    private(set) var emojiList = [EmojiDatas]()
     
     var feedEmojiData: ReactionListDataEntity? {
         didSet {
@@ -61,11 +64,20 @@ extension EmojiViewModel {
         do {
             let data = try Data(contentsOf: url)
             let decodeData = try JSONDecoder().decode([EmojiDatas].self, from: data)
-            DispatchQueue.main.async {
-                self.emojis = decodeData
-            }
+            
+            emojis = decodeData
+            emojiList = emojis
+            
         } catch {
             print("JSON 파일 디코딩 실패: \(error)")
+        }
+    }
+    
+    func searchEmoji() {
+        if inputEmoji.isEmpty {
+            emojiList = emojis
+        } else {
+            emojiList = emojis.filter { $0.unicodeEmoji == inputEmoji }
         }
     }
 }
@@ -84,9 +96,6 @@ extension EmojiViewModel {
         
         switch result {
         case .success(_):
-            await MainActor.run {
-                self.selectEmoji = nil
-            }
             
             return true
             
@@ -113,9 +122,7 @@ extension EmojiViewModel {
         
         switch result {
         case .success(_):
-            await MainActor.run {
-                self.selectEmoji = nil
-            }
+            self.selectEmoji = nil
             
             return true
             
@@ -129,3 +136,4 @@ extension EmojiViewModel {
         }
     }
 }
+

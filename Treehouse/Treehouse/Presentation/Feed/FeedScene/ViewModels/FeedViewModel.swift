@@ -26,6 +26,10 @@ final class FeedViewModel: BaseViewModel {
     
     /// Feed 의 Post 내용이 바뀌었을때 다시 내용을 로드하기 위한 변수
     var modifyPostContent: (Int, String) = (0, "")
+    var selectEmoji: String?
+    
+    @ObservationIgnored
+    var selectPostId: Int?
     
     @ObservationIgnored
     var currentTreehouseId: Int?
