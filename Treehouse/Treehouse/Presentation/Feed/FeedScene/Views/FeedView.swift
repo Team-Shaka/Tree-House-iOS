@@ -58,27 +58,6 @@ struct FeedView: View {
                 emptyFeedView
             }
         }
-        .popup(isPresented: $feedViewModel.isSelectEmojiView) {
-            if let postId = feedViewModel.currentPostId {
-                EmojiGridView(emojiType: .feedView, postId: postId)
-                    .environment(feedViewModel)
-                    .environment(emojiViewModel)
-            }
-        } customize: {
-            $0
-                .type(.toast)
-                .closeOnTapOutside(true)
-                .dragToDismiss(true)
-                .isOpaque(true)
-                .backgroundColor(.treeBlack.opacity(0.5))
-        }
-        .onChange(of: feedViewModel.isSelectEmojiView) { _, newValue in
-            if newValue == false {
-                Task {
-                    _ = await postViewModel.readFeedPostsList(treehouseId: feedViewModel.currentTreehouseId ?? 0)
-                }
-            }
-        }
         .onChange(of: focusedField) { _, newValue in
             if newValue == .post {
                 textFieldState = .enable

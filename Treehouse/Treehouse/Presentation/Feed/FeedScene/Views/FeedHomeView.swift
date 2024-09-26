@@ -80,6 +80,17 @@ struct FeedHomeView: View {
                 }
             }
         }
+        .sheet(isPresented: $feedViewModel.isSelectEmojiView) {
+            if let postId = feedViewModel.currentPostId {
+                EmojiGridView(emojiType: .feedView, postId: postId)
+                    .environment(feedViewModel)
+                    .environment(emojiViewModel)
+                    .presentationDetents([.fraction(0.98)])
+                    .presentationCornerRadius(20)
+                    .edgesIgnoringSafeArea(.bottom)
+            }
+        }
+
         .navigationBarHidden(true)
         .navigationDestination(for: FeedRouter.self) { router in
             viewRouter.buildScene(inputRouter: router, viewModel: feedViewModel)
@@ -113,6 +124,13 @@ struct FeedHomeView: View {
                 await MainActor.run {
                     self.postViewModel.isLoading = true
                 }
+            }
+        }
+        .onChange(of: feedViewModel.selectEmoji) { _, newValue in
+            guard let postId = feedViewModel.selectPostId, let emoji = newValue else { return }
+            
+            Task {
+                await postViewModel.changeEmojiData(postId: postId, selectEmoji: emoji)
             }
         }
     }
