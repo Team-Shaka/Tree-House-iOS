@@ -21,7 +21,6 @@ struct MyProfileView: View {
     @AppStorage(Config.loginKey) private var isLogin = false
     @AppStorage("treehouseId") private var selectedTreehouseId: Int = -1
     
-    @State var isPresent = false
     @State var isLoading = true
     
     // MARK: - View
@@ -60,7 +59,7 @@ struct MyProfileView: View {
                                 )
                             })
                         } else {
-                            UserInfoView(infoType: .myProfile, 
+                            UserInfoView(infoType: .myProfile,
                                          treememberName: "",
                                          userName: "",
                                          profileImageUrl: "",
@@ -88,6 +87,9 @@ struct MyProfileView: View {
                 isLoading = await myProfileViewModel.readMyProfileInfo(treehouseId: selectedTreehouseId)
             }
         }
+        .fullScreenCover(isPresented: $myProfileViewModel.isWebViewPresented) {
+            WebViewContainer(url: myProfileViewModel.webViewUrl)
+        }
         .task {
             if myProfileViewModel.isLoadedMyProfile == false {
                 isLoading = true
@@ -102,43 +104,54 @@ struct MyProfileView: View {
                 isLoading = await myProfileViewModel.readMyProfileInfo(treehouseId: selectedTreehouseId)
             }
         }
-        .customAlert(alertType: myProfileViewModel.isAlert.1,
-                     isPresented: $myProfileViewModel.isAlert.0,
-                     onCancel: { myProfileViewModel.isAlert.0.toggle() },
-                     onConfirm: { switch myProfileViewModel.isAlert.1 {
-                     case .logout:
-                         self.isLogin.toggle()
-                         userInfoViewModel.deleteMyData()
-                         
-                         do {
-                             try Auth.auth().signOut()
-                             print("User signed out successfully")
-                             // 필요한 경우, 앱 내에서 상태 초기화나 화면 전환 등을 처리
-                         } catch let signOutError as NSError {
-                             print("Error signing out: %@", signOutError)
-                         }
-                         
-                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                             viewRouter.navigate(viewType: .userAuthentication)
-                             viewRouter.selectedTab = .home
-                             self.isLogin.toggle()
-                         }
-                     case .deleteAccount:
-                         self.isLogin.toggle()
-                         
-                         Task {
-                             await myProfileViewModel.deleteUser()
-                         }
-                         
-                         if myProfileViewModel.isDeleteUser == true {
-                             userInfoViewModel.deleteMyData()
-                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                 viewRouter.navigate(viewType: .userAuthentication)
-                             }
-                         }
-                     } })
-        .fullScreenCover(isPresented: $myProfileViewModel.isWebViewPresented) {
-            WebViewContainer(url: myProfileViewModel.webViewUrl)
+        .fullScreenCover(isPresented: $myProfileViewModel.isPresentedAlert) {
+            CustomAlertView(
+                isPresented: $myProfileViewModel.isPresentedAlert,
+                alertType: myProfileViewModel.presentedAlertType ?? .error,
+                onCancel: { },
+                onConfirm: { completion in
+                    switch myProfileViewModel.presentedAlertType {
+                    case .logout:
+                        do {
+                            try Auth.auth().signOut()
+                            print("User signed out successfully")
+
+                            userInfoViewModel.deleteMyData()
+                            myProfileViewModel.deleteServerToken()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.isLogin.toggle()
+                                viewRouter.navigate(viewType: .userAuthentication)
+                                completion()
+                            }
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
+                        }
+                    case .deleteAccount:
+                        Task {
+                            await myProfileViewModel.deleteUser()
+                            myProfileViewModel.deleteServerToken()
+                            
+                            if myProfileViewModel.isDeleteUser == true {
+                                userInfoViewModel.deleteMyData()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    self.isLogin.toggle()
+                                    viewRouter.navigate(viewType: .userAuthentication)
+                                    completion()
+                                }
+                            } else {
+                                completion()
+                            }
+                        }
+                    default:
+                        completion()
+                    }
+                }
+            )
+            .presentationBackground(.ultraThinMaterial)
+        }
+        .transaction { transaction in
+            transaction.disablesAnimations = true
         }
     }
 }
