@@ -160,12 +160,13 @@ extension View {
         self
             .fullScreenCover(isPresented: isPresented) {
                 CustomAlertView(
+                    isPresented: isPresented, 
                     alertType: alertType,
                     onCancel: {
                         onCancel()
                         isPresented.wrappedValue = false
                     },
-                    onConfirm: {
+                    onConfirm: { _ in
                         onConfirm()
                         isPresented.wrappedValue = false
                     }

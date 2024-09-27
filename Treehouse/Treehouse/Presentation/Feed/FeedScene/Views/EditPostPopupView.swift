@@ -18,6 +18,7 @@ struct EditPostPopupView: View {
     
     @State private var isCancelPopupShowing: Bool = false
     @State var postContent: String
+    @FocusState private var isFocused: Bool
     
     // MARK: - Property
     
@@ -46,9 +47,17 @@ struct EditPostPopupView: View {
                                 .fontWithLineHeight(fontLevel: .body2)
                                 .foregroundStyle(.treeBlack)
                                 .padding(.bottom, 2)
-                            
-                            DynamicHeightTextEditorView(text: $postContent)
-                                .padding(.bottom, 8)
+
+                            TextEditor(text: $postContent)
+                                .fontWithLineHeight(fontLevel: .body3)
+                                .focused($isFocused)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        self.isFocused = true
+                                    }
+                                }
+                                .padding(.bottom, 15)
+                                .zIndex(1)
 
                             
                             if postImageURLs.count == 1 {
@@ -82,8 +91,9 @@ struct EditPostPopupView: View {
                 cancleEditPopupView
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
 }
 
@@ -92,6 +102,7 @@ extension EditPostPopupView {
     var editPostPopupHeaderView: some View {
         HStack(alignment: .center) {
             Button(action: {
+                hideKeyboard()
                 self.isCancelPopupShowing.toggle()
             }) {
                 Text("취소")
@@ -110,6 +121,7 @@ extension EditPostPopupView {
             Spacer()
             
             Button(action: {
+                hideKeyboard()
                 Task {
                     await updateFeedPostViewModel.updateFeedPost(treehouseId: feedViewModel.currentTreehouseId ?? 0, postId: postId, context: postContent)
                     

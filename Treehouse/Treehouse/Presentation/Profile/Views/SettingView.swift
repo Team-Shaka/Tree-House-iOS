@@ -54,7 +54,7 @@ struct SettingView: View {
             
             ForEach(settingList, id: \.self) { settingOption in
                 Button(action: {
-                    myProfileViewModel.buttonAction(titleName: settingOption)
+                    myProfileViewModel.settingListButtonAction(titleName: settingOption)
                 }) {
                     Text(settingOption)
                         .fontWithLineHeight(fontLevel: .body2)

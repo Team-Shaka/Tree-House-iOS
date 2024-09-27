@@ -56,15 +56,15 @@ final class FeedService {
     }
     
     /// Feed 의 게시글을 삭제하는 API
-//    func deleteFeedPost(treehouseId: Int, postId: Int) async throws -> BaseResponse<nil> {
-//        let request = NetworkRequest(requestType: FeedAPI.getReadFeedPostsList(treehouseId: treehouseId))
-//        
-//        guard let urlRequest = request.request() else {
-//            throw NetworkError.clientError(message: "Request 생성불가")
-//        }
-//        
-//        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: GetReadFeedPostsListResponseDTO.self)
-//    }
+    func deleteFeedPost(treehouseId: Int, postId: Int) async throws -> Empty {
+        let request = NetworkRequest(requestType: FeedAPI.deleteFeedPost(treehouseId: treehouseId, postId: postId))
+        
+        guard let urlRequest = request.request() else {
+            throw NetworkError.clientError(message: "Request 생성불가")
+        }
+        
+        return try await networkServiceManager.performRequest(with: urlRequest, decodingType: Empty.self)
+    }
     
     /// Feed 의 게시글을 수정하는 API
     func patchUpdateFeedPost(treehouseId: Int, postId: Int, context: String) async throws -> PatchUpdateFeedPostResponseDTO {

@@ -22,7 +22,10 @@ final class MyProfileViewModel: BaseViewModel {
     var myProfileData: ReadMyProfileInfoResponseEntity?
     var isLoadedMyProfile = false
     var isDeleteUser = false
-    var isAlert: (Bool, AlertType) = (false, .logout)
+    var isPresentedAlert: Bool = false
+    
+    var presentedAlertType: AlertType?
+    
     var isWebViewPresented = false
     var webViewUrl = ""
     var errorMessage: String = ""
@@ -36,30 +39,32 @@ final class MyProfileViewModel: BaseViewModel {
         self.deleteUserUseCase = deleteUserUseCase
     }
     
-    func buttonAction(titleName: String) {
+    func settingListButtonAction(titleName: String) {
         switch titleName {
         case "운영정책":
             isWebViewPresented.toggle()
             webViewUrl = "https://sites.google.com/view/treehouse-manage/%ED%99%88"
+            
         case "개인정보정책":
             isWebViewPresented.toggle()
             webViewUrl = "https://sites.google.com/view/treehouse-privacy/%ED%99%88"
+            
         case "로그아웃 하기":
-            isAlert.0.toggle()
-            isAlert.1 = .logout
-            
-            KeychainHelper.shared.delete(for: Config.accessTokenKey)
-            KeychainHelper.shared.delete(for: Config.refreshTokenKey)
-            
+            isPresentedAlert.toggle()
+            presentedAlertType = .logout
+
         case "회원탈퇴 하기":
-            isAlert.0.toggle()
-            
-            KeychainHelper.shared.delete(for: Config.accessTokenKey)
-            KeychainHelper.shared.delete(for: Config.refreshTokenKey)
-            
+            isPresentedAlert.toggle()
+            presentedAlertType = .deleteAccount
+
         default:
             break
         }
+    }
+    
+    func deleteServerToken() {
+        KeychainHelper.shared.delete(for: Config.accessTokenKey)
+        KeychainHelper.shared.delete(for: Config.refreshTokenKey)
     }
 }
 
