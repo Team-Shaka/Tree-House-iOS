@@ -208,6 +208,7 @@
 		3FE00F0E2BC6D35A00CC821E /* SetUserIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */; };
 		3FE00F102BC7E29700CC821E /* TextFieldStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */; };
 		3FE00F122BC8138300CC821E /* ShowUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */; };
+		3FE0DD712CA5778100002176 /* DeleteFeedPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0DD702CA5778100002176 /* DeleteFeedPostUseCase.swift */; };
 		3FE6B7F42C7EEBFD00457DD0 /* PostInvitationRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6B7F32C7EEBFD00457DD0 /* PostInvitationRequestDTO.swift */; };
 		3FE6B7F62C7EECD800457DD0 /* PostInvitationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6B7F52C7EECD700457DD0 /* PostInvitationResponseDTO.swift */; };
 		3FE6B7F82C7EED6900457DD0 /* InvitationResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6B7F72C7EED6900457DD0 /* InvitationResponseEntity.swift */; };
@@ -521,6 +522,7 @@
 		3FE00F0D2BC6D35A00CC821E /* SetUserIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserIdView.swift; sourceTree = "<group>"; };
 		3FE00F0F2BC7E29700CC821E /* TextFieldStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStateType.swift; sourceTree = "<group>"; };
 		3FE00F112BC8138300CC821E /* ShowUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserProfileView.swift; sourceTree = "<group>"; };
+		3FE0DD702CA5778100002176 /* DeleteFeedPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFeedPostUseCase.swift; sourceTree = "<group>"; };
 		3FE6B7F32C7EEBFD00457DD0 /* PostInvitationRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostInvitationRequestDTO.swift; path = Treehouse/Domain/UseCases/Register/PostInvitationRequestDTO.swift; sourceTree = SOURCE_ROOT; };
 		3FE6B7F52C7EECD700457DD0 /* PostInvitationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInvitationResponseDTO.swift; sourceTree = "<group>"; };
 		3FE6B7F72C7EED6900457DD0 /* InvitationResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationResponseEntity.swift; sourceTree = "<group>"; };
@@ -1300,6 +1302,7 @@
 				3F8530EF2C5639E3003FA07A /* CreateReactionToPostUseCase.swift */,
 				3F8AE7052C59E11D00E999C4 /* CreateFeedPostsUseCase.swift */,
 				3F8AE7112C5A2C1100E999C4 /* UpdateFeedPostUseCase.swift */,
+				3FE0DD702CA5778100002176 /* DeleteFeedPostUseCase.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -2053,6 +2056,7 @@
 				3F06C3072BFDEB40002B771B /* PostReactionCommentRequestDTO.swift in Sources */,
 				3FEC57672C8F48630080DF96 /* PostRegisterPushAgreeResponseDTO.swift in Sources */,
 				3FEC57632C8F28B80080DF96 /* MemberBranchView.swift in Sources */,
+				3FE0DD712CA5778100002176 /* DeleteFeedPostUseCase.swift in Sources */,
 				3F1936142C6287B600584939 /* PostCheckNotificationsResponseDTO.swift in Sources */,
 				3FA175E32C1AC47A00A57987 /* PresignedURLResponseEntity.swift in Sources */,
 				3F06C2FA2BFDC2E8002B771B /* FeedAPI.swift in Sources */,

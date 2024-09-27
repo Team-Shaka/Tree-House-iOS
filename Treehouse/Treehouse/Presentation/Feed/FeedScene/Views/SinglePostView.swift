@@ -106,6 +106,9 @@ struct SinglePostView: View {
                                     viewModel.sheetCase = .isReaderOnPost
                                 }
                                 
+                                viewModel.treehouseId = feedViewModel.currentTreehouseId
+                                viewModel.postId = postId
+                                
                                 viewModel.isBottomSheetShowing.toggle()
                             }) {
                                 Image(.icMeatball)
@@ -154,6 +157,17 @@ struct SinglePostView: View {
                 .isOpaque(true)
                 .closeOnTap(false)
                 .backgroundColor(.treeBlack.opacity(0.5))
+        }
+        .topLevelAlert(isPresented: $viewModel.isCompleteDeletePost) {
+            CustomAlertView(
+                isPresented: $viewModel.isCompleteDeletePost,
+                alertType: .deletePost(result: viewModel.deletePostReulst),
+                onCancel: {},
+                onConfirm: { completion in
+                    viewModel.isCompleteDeletePost = false
+                    completion()
+                }
+            )
         }
     }
 }
