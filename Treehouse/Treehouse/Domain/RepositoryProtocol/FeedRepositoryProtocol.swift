@@ -15,4 +15,5 @@ protocol FeedRepositoryProtocol {
     func patchUpdateFeedPost(treehouseId: Int, postId: Int, context: String) async -> Result<UpdateFeedPostResponseEntity, NetworkError>
     func getReadDetailPost(treehouseId: Int, postId: Int) async -> Result<GetReadDetailFeedPostResponseEntity, NetworkError>
     func postCreateReactionToPost(treehouseId: Int, postId: Int, requestDTO: PostReactionFeedPostRequestDTO) async -> Result<String, NetworkError>
+    func deleteFeedPost(treehouseId: Int, postId: Int) async -> Result<Void, NetworkError>
 }

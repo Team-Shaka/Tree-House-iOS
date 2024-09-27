@@ -93,4 +93,16 @@ final class FeedRepositoryImpl: FeedRepositoryProtocol {
             return .failure(NetworkError.unknown)
         }
     }
+    
+    /// 내 게시글을 삭제하는 API
+    func deleteFeedPost(treehouseId: Int, postId: Int) async -> Result<Void, NetworkError> {
+        do {
+            let response = try await feedService.deleteFeedPost(treehouseId: treehouseId, postId: postId)
+            return .success(())
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(NetworkError.unknown)
+        }
+    }
 }
