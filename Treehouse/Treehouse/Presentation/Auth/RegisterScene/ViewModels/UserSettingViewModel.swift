@@ -416,7 +416,7 @@ extension UserSettingViewModel {
             
             switch error.code {
             case 17010:
-                isSendAuthMessageState = .error(title: "잦은 요청으로 인해 차단되었습니다\n1시간 후 다시 시도해주세요")
+                isSendAuthMessageState = .error(title: "인증 시도 횟수가 초과되었습니다\n일정 시간 후 다시 시도해주세요")
             default:
                 isSendAuthMessageState = .error(title: "알 수 없는 오류가 발생했습니다\n잠시 후 시도해주세요")
             }
