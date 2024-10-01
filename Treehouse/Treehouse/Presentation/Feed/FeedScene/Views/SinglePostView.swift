@@ -23,11 +23,9 @@ struct SinglePostView: View {
     
     @Environment (ViewRouter.self) var viewRouter
     @Environment (FeedViewModel.self) var feedViewModel
-    
-    @State private var selectedImage: Int? = nil
     @State private var viewModel = SheetActionViewModel()
     
-    @State private var loadedImage = [(Int,UIImage)]()
+    @State private var selectedImage = 0
     @State private var isDetailImage = false
     
     // MARK: - Property
@@ -127,7 +125,7 @@ struct SinglePostView: View {
                 contentImageView()
             }
             .fullScreenCover(isPresented: $isDetailImage) {
-                ImageDetailCarouselView(selectedIndex: selectedImage ?? 0, images: $loadedImage)
+                ImageDetailCarouselView(selectedIndex: $selectedImage, imageUrls: postImageURLs)
             }
         }
         // 바텀시트 표출
@@ -189,11 +187,10 @@ extension SinglePostView {
         CustomAsyncImage(url: postImageURLs.first ?? "",
                          type: .postImage,
                          width: 314,
-                         height: 200) { image in
-                            self.loadedImage.append((0, image))
-                        }
+                         height: 200)
             .onTapGesture {
                 if postType == .DetailView {
+                    selectedImage = 0
                     isDetailImage.toggle()
                 } else {
                     feedViewModel.currentPostId = postId
@@ -211,13 +208,11 @@ extension SinglePostView {
                 ForEach(0..<postImageURLs.count, id: \.self) { index in
                     CustomAsyncImage(url: postImageURLs[index], type: .postImage,
                                      width: 206,
-                                     height: 200) { image in
-                                        self.loadedImage.append((index, image))
-                                    }
+                                     height: 200)
                         .onTapGesture {
                             if postType == .DetailView {
-                                isDetailImage.toggle()
                                 selectedImage = index
+                                isDetailImage.toggle()
                             } else {
                                 feedViewModel.currentPostId = postId
                                 viewRouter.push(FeedRouter.postDetailView)
