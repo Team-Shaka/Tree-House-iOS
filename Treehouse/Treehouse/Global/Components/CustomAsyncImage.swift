@@ -14,66 +14,80 @@ enum ImageType {
     case memberProfileImage
     case postImage
     case notiProfileImage
+    case carouselImage
 }
 
 struct CustomAsyncImage: View {
-    @State var imageLoader: ImageLoader
     
-    var url: String
+    @State private var loadState: LoadState = .loading
+    
+    let url: String
     var type: ImageType
     var width: CGFloat
     var height: CGFloat
-    var onImageLoaded: ((UIImage) -> Void)?
     
+    /// ImageDetailCarouselView 이외에서 사용하는 init
     init(url: String, type: ImageType, width: CGFloat, height: CGFloat) {
         self.url = url
         self.type = type
         self.width = width
         self.height = height
-        self._imageLoader = State(wrappedValue: ImageLoader(url: url))
     }
     
-    init(url: String, type: ImageType, width: CGFloat, height: CGFloat, onImageLoaded: @escaping (UIImage) -> Void) {
-        self.init(url: url, type: type, width: width, height: height)
-        if type == .postImage {
-            self.onImageLoaded = onImageLoaded
-        }
+    /// ImageDetailCarouselView 에서 사용하는 init
+    init(url: String, type: ImageType) {
+        self.url = url
+        self.type = type
+        self.width = SizeLiterals.Screen.screenWidth
+        self.height = SizeLiterals.Screen.screenHeight
     }
     
     @ViewBuilder
     var body: some View {
         Group {
-            switch imageLoader.state {
+            switch loadState {
             case .loading:
+                loadingView
+                    .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
+                
+            case .success(let data):
                 switch type {
-                case .memberProfileImage, .postMemberProfileImage:
-                    Circle()
-                        .fill(.gray3)
-                case .postImage:
-                    RoundedRectangle(cornerRadius: 6.0)
-                        .fill(.gray3)
-                default:
-                    ProgressView()
-                }
+                case .carouselImage:
+                    Image(uiImage: UIImage(data: data) ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth:.infinity)
                     
-            case .success(let image):
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .onAppear {
-                        if type == .postImage {
-                            onImageLoaded?(image)
-                        }
-                    }
+                default:
+                    Image(uiImage: UIImage(data: data) ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
+                        .cornerRadius(6.0)
+                        .contentShape(Rectangle())
+                }
+                   
             case .failure:
                 failurebackImage
+                    .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
             }
         }
-        .frame(width: SizeLiterals.Screen.screenWidth * width / 393, height: SizeLiterals.Screen.screenHeight * height / 852)
-        .cornerRadius(6.0)
-        .contentShape(Rectangle())
         .task {
-            await imageLoader.fetch()
+            loadState = await ImageLoader.shared.loadImage(url: url)
+        }
+    }
+    
+    @ViewBuilder
+    private var loadingView: some View {
+        switch type {
+        case .memberProfileImage, .postMemberProfileImage:
+            Circle()
+                .fill(.gray3)
+        case .postImage:
+            RoundedRectangle(cornerRadius: 6.0)
+                .fill(.gray3)
+        default:
+            ProgressView()
         }
     }
     
@@ -88,7 +102,7 @@ struct CustomAsyncImage: View {
             Image(.imgProfile)
                 .resizable()
                 .scaledToFit()
-        case .postImage:
+        case .postImage, .carouselImage:
             RoundedRectangle(cornerRadius: 6.0)
                 .fill(.gray3)
 
@@ -99,6 +113,7 @@ struct CustomAsyncImage: View {
         }
     }
 }
+
 
 #Preview {
     CustomAsyncImage(url: "",

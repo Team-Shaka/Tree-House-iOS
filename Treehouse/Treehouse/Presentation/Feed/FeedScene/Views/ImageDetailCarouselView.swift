@@ -12,8 +12,9 @@ struct ImageDetailCarouselView: View {
     // MARK: - State Property
     
     @Environment(\.presentationMode) var presentationMode
-    @State var selectedIndex: Int
-    @Binding var images: [(Int,UIImage)]
+    @Binding var selectedIndex: Int
+    
+    let imageUrls: [String]
     
     // MARK: - View
     
@@ -29,29 +30,24 @@ struct ImageDetailCarouselView: View {
                 .padding(.leading, 14)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("\(selectedIndex + 1) / \(images.count)")
+                Text("\(selectedIndex + 1) / \(imageUrls.count)")
                     .fontWithLineHeight(fontLevel: .body2)
                     .foregroundStyle(.grayscaleWhite)
                     .frame(maxWidth: .infinity)
             }
             
             TabView(selection: $selectedIndex) {
-                ForEach(0..<images.count, id: \.self) { imageIndex in
-                    Image(uiImage: images[imageIndex].1)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.horizontal, 5)
-                        .frame(maxWidth:.infinity)
-                        .padding(.bottom, 30)
-                        .tag(imageIndex)
+                ForEach(0..<imageUrls.count, id: \.self) { imageIndex in
+                    CustomAsyncImage(url: imageUrls[imageIndex],
+                                     type: .carouselImage)
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, 30)
+                    .tag(imageIndex)
                 }
             }
         }
         .background(.grayscaleBlack)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-        .onAppear {
-            images = images.sorted(by: {$0.0 < $1.0} )
-        }
         .gesture(
             DragGesture()
                 .onEnded { value in
@@ -65,6 +61,6 @@ struct ImageDetailCarouselView: View {
 
 // MARK: - Preview
 
-//#Preview {
-//    ImageDetailCarouselView(images: [], selectedIndex: 1)
-//}
+#Preview {
+    ImageDetailCarouselView(selectedIndex: .constant(0), imageUrls:[""])
+}

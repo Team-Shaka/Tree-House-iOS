@@ -22,35 +22,22 @@ struct CacheUsage {
     }
 }
 
+enum LoadState {
+    case loading
+    case success(Data)
+    case failure
+}
+
 @Observable
 final class ImageLoader {
-    var image: UIImage?
-    private var url: String?
-    var state: LoadState = .loading
+    static let shared = ImageLoader()
     
-    enum LoadState {
-       case loading
-       case success(UIImage)
-       case failure
-   }
-    
-    static func getCurrentCacheUsage() -> CacheUsage {
-       let cache = URLCache.shared
-       return CacheUsage(
-           memoryUsage: cache.currentMemoryUsage,
-           diskUsage: cache.currentDiskUsage
-       )
-   }
-    
-    init(url: String?) {
-        self.url = url
-    }
+    private init() {}
     
     @MainActor
-    func fetch() async {
-        guard let url = url, let fetchURL = URL(string: url) else {
-            state = .failure
-            return
+    func loadImage(url: String) async -> LoadState {
+        guard let fetchURL = URL(string: url) else {
+            return .failure
         }
         
         let request = URLRequest(url: fetchURL, cachePolicy: .returnCacheDataElseLoad)
@@ -58,16 +45,19 @@ final class ImageLoader {
         
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
-            if let image = UIImage(data: data) {
-                state = .success(image)
-            } else {
-                state = .failure
-            }
             print("메모리 캐시: \(String(format: "%.2f", usage.memoryUsageMB)) MB")
             print("디스크 캐시: \(String(format: "%.2f", usage.diskUsageMB)) MB")
+            return .success(data)
         } catch {
             print("Error loading image: \(error)")
-            state = .failure
+            return .failure
         }
+    }
+    
+    static func getCurrentCacheUsage() -> (memoryUsageMB: Double, diskUsageMB: Double) {
+        let cache = URLCache.shared
+        let memoryUsageMB = Double(cache.currentMemoryUsage) / (1024 * 1024)
+        let diskUsageMB = Double(cache.currentDiskUsage) / (1024 * 1024)
+        return (memoryUsageMB, diskUsageMB)
     }
 }
