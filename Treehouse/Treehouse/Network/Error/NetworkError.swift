@@ -17,6 +17,7 @@ enum NetworkError: Error, LocalizedError {
     case userState(code: String, message: String)
     case reIssueJWT
     case unknown
+    case duplicationError
     
     var errorDescription: String? {
         switch self {
@@ -38,6 +39,8 @@ enum NetworkError: Error, LocalizedError {
             return "🔧 JWT토큰을 재발급해야 합니다 🔧"
         case .unknown:
             return "📁 알 수 없는 에러입니다. 📁"
+        case .duplicationError:
+            return "📝 중복된 유저나 전화번호 입니다. 📝"
         }
     }
 }

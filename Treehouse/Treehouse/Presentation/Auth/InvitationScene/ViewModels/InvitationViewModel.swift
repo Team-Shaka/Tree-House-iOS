@@ -26,6 +26,7 @@ final class InvitationViewModel: BaseViewModel {
     var invitationState: invitationState?
     
     var invitationTitle = "완료되었습니다."
+    var invitationError = false
     
     var errorMessage: String? = nil
     
@@ -82,10 +83,10 @@ extension InvitationViewModel {
         
         switch result {
         case .success(_):
-//            isinvitationAlert = true
             return true
         case .failure(let error):
-//            isinvitationAlert = true
+            invitationError = true
+            invitationState = .duplication
             errorMessage = error.localizedDescription
             return false
         }

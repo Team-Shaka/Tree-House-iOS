@@ -85,7 +85,7 @@ final class NetworkServiceManager: NetworkServiceable {
                 
                 throw NetworkError.clientError(message: "Unknown 400 error")
                 
-            case 401...409:
+            case 401...408:
                 try await postReissueToken()
                 
                 // KeyChain 으로 저장한 accessToken 이 존재하는지?
@@ -104,6 +104,9 @@ final class NetworkServiceManager: NetworkServiceable {
                 } else {
                     throw NetworkError.jsonDecodingError
                 }
+                
+            case 409:
+                throw NetworkError.duplicationError
                 
             case 500...599:
                 throw NetworkError.serverError

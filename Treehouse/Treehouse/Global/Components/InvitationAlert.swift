@@ -10,6 +10,7 @@ import SwiftUI
 enum invitationState {
     case success
     case faliure
+    case duplication
 }
 struct InvitationAlert: View {
     
@@ -74,6 +75,24 @@ struct InvitationAlert: View {
             }
         case .faliure:
             Text("사용할 수 있는 초대장이 없습니다")
+                .fontWithLineHeight(fontLevel: .heading4)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 29)
+            
+            Button(action: {
+                onConfirm()
+            }) {
+                Text("확인")
+                    .fontWithLineHeight(fontLevel: .body3)
+                    .foregroundStyle(.grayscaleWhite)
+                    .padding(.vertical, 11)
+                    .frame(maxWidth: .infinity)
+                    .background(.grayscaleBlack)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 8.0))
+            
+        case .duplication:
+            Text("이미 초대가 된 멤버입니다")
                 .fontWithLineHeight(fontLevel: .heading4)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 29)
