@@ -212,7 +212,7 @@ struct InviteBranchView: View {
                     switch state {
                     case .success:
                         viewModel.isinvitationAlert = false
-                    case .faliure:
+                    case .faliure, .duplication:
                         break
                     }
                 },
@@ -225,8 +225,27 @@ struct InviteBranchView: View {
                             viewModel.isinvitationAlert = false
                         }
                         viewModel.isinvitationAlert = false
-                    case .faliure:
+                    case .faliure, .duplication:
                         viewModel.isinvitationAlert = false
+                    }
+                })
+            }
+        }
+        .topLevelAlert(isPresented: $viewModel.invitationError) {
+            if let state = viewModel.invitationState {
+                InvitationAlert(invitationState: .duplication, memberName: viewModel.invitedMember, onCancel: {
+                    switch state {
+                    case .success:
+                        viewModel.isinvitationAlert = false
+                    case .faliure, .duplication:
+                        break
+                    }
+                }, onConfirm: {
+                    switch state {
+                    case .duplication:
+                        viewModel.invitationError = false
+                    default:
+                        break
                     }
                 })
             }
