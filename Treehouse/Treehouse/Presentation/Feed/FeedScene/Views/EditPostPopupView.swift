@@ -25,7 +25,7 @@ struct EditPostPopupView: View {
     let postId: Int
     let memberProfile: MemberProfileEntity
     let postImageURLs: [String]
-    
+
     // MARK: - View
     
     var body: some View {
@@ -50,6 +50,8 @@ struct EditPostPopupView: View {
 
                             TextEditor(text: $postContent)
                                 .fontWithLineHeight(fontLevel: .body3)
+                                .scrollContentBackground(.hidden)
+                                .background(.grayscaleWhite)
                                 .focused($isFocused)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -57,8 +59,6 @@ struct EditPostPopupView: View {
                                     }
                                 }
                                 .padding(.bottom, 15)
-                                .zIndex(1)
-
                             
                             if postImageURLs.count == 1 {
                                 CustomAsyncImage(url: postImageURLs.first ?? "",
@@ -86,13 +86,12 @@ struct EditPostPopupView: View {
                     .padding(16)
                 }
             }
-            
-            if isCancelPopupShowing {
-                cancleEditPopupView
-            }
         }
         .onAppear {
             UIApplication.shared.hideKeyboard()
+        }
+        .topLevelAlert(isPresented: $isCancelPopupShowing) {
+            cancleEditPopupView
         }
     }
 }
@@ -128,7 +127,6 @@ extension EditPostPopupView {
                     if updateFeedPostViewModel.isUpdatePost {
                         sheetActionViewModel.isEditPostPopupShowing.toggle()
                         feedViewModel.modifyPostContent = (postId, postContent)
-//                        feedViewModel.isModifyPostContent.toggle()
                     }
                 }
             }) {

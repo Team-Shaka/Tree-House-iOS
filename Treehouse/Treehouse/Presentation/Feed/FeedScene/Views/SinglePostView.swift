@@ -30,7 +30,7 @@ struct SinglePostView: View {
     
     // MARK: - Property
     
-    let postId: Int?
+    let postId: Int
     let sentTime: String
     var postContent: String
     let postImageURLs: [String]
@@ -39,17 +39,8 @@ struct SinglePostView: View {
     
     // MARK:  - init
     
-    init(postId: Int?, sentTime: String, postContent: String, postImageURLs: [String], memberProfile: MemberProfileEntity, postType: PostType) {
+    init(postId: Int, sentTime: String, postContent: String, postImageURLs: [String], memberProfile: MemberProfileEntity, postType: PostType) {
         self.postId = postId
-        self.sentTime = sentTime
-        self.postContent = postContent
-        self.postImageURLs = postImageURLs
-        self.memberProfile = memberProfile
-        self.postType = postType
-    }
-    
-    init(sentTime: String, postContent: String, postImageURLs: [String], memberProfile: MemberProfileEntity, postType: PostType) {
-        self.postId = nil
         self.sentTime = sentTime
         self.postContent = postContent
         self.postImageURLs = postImageURLs
