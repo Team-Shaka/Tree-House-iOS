@@ -44,7 +44,8 @@ struct PostDetailView: View {
                     VStack {
                         if let _ = feedViewModel.currentPostId, let postDetailData = postDetailViewModel.detailFeedListData {
                             
-                            SinglePostView(sentTime: postDetailData.postedAt,
+                            SinglePostView(postId: postDetailData.postId,
+                                           sentTime: postDetailData.postedAt,
                                            postContent: postDetailData.context,
                                            postImageURLs: postDetailData.pictureUrlList,
                                            memberProfile: postDetailData.memberProfile,
