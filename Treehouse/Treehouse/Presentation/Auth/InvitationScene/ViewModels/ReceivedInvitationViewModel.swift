@@ -39,13 +39,9 @@ extension ReceivedInvitationViewModel {
         
         switch result {
         case .success(let response):
-            await MainActor.run {
-                receivedInvitations = response.invitations
-            }
+            receivedInvitations = response.invitations
         case .failure(let error):
-            await MainActor.run {
-                self.errorMessage = error.localizedDescription
-            }
+            self.errorMessage = error.localizedDescription
         }
     }
     
@@ -58,9 +54,7 @@ extension ReceivedInvitationViewModel {
         case .success(_):
             return true
         case .failure(let error):
-            await MainActor.run {
-                self.errorMessage = error.localizedDescription
-            }
+            self.errorMessage = error.localizedDescription
             return false
         }
     }

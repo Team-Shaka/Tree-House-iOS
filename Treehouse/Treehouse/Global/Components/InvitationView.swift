@@ -44,8 +44,14 @@ struct InvitationView: View {
                 treehouseTitleView
                     .padding(.top, invitationType == .first ? SizeLiterals.Screen.screenHeight * 26.44 / 852 : SizeLiterals.Screen.screenHeight * 15 / 852)
                 
-                invitationView
-                    .padding(.bottom, SizeLiterals.Screen.screenHeight * (46)/852)
+                switch invitationType {
+                case .first:
+                    firstInvitationView
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * (46)/852)
+                case .received:
+                    receivedInvitationView
+                        .padding(.bottom, SizeLiterals.Screen.screenHeight * (46)/852)
+                }
                 
                 HStack(spacing: 12) {
                     Button(action: {
@@ -116,7 +122,7 @@ extension InvitationView {
     }
     
     @ViewBuilder
-    var invitationView: some View {
+    var firstInvitationView: some View {
         VStack(spacing: 0) {
             CustomAsyncImage(url: viewModel.senderProfileImageUrl,
                              type: .treehouseImage,
@@ -152,6 +158,44 @@ extension InvitationView {
             }
         }
     }
+    
+    @ViewBuilder
+    var receivedInvitationView: some View {
+        VStack(spacing: 0) {
+            CustomAsyncImage(url: viewModel.senderProfileImageUrl,
+                             type: .treehouseImage,
+                             width: 98.56, height: 98.56)
+            .clipShape(Circle())
+            .padding(.top, SizeLiterals.Screen.screenHeight * 27.27 / 852)
+            .padding(.bottom, SizeLiterals.Screen.screenHeight * 20.72 / 852)
+            
+            Text(treehouseName)
+                .fontWithLineHeight(fontLevel: .heading2)
+                .foregroundStyle(.treeBlack)
+                .padding(.bottom, 6)
+            
+            HStack(spacing: 0) {
+                Text("\(invitedMember)님")
+                    .fontWithLineHeight(fontLevel: .body2)
+                Text("이 당신을 초대했습니다.")
+                    .fontWithLineHeight(fontLevel: .body3)
+            }
+            .foregroundStyle(.gray8)
+            .padding(.bottom, 18)
+            
+            HStack(spacing: 0) {
+                HStack(spacing: -3) {
+                    ForEach(0..<iterater, id: \.self) { index in
+                        memberProfileImage(index, memberNum - 2)
+                    }
+                }
+                .padding(.trailing, 8)
+                
+                Text("\(memberNum)명의 멤버들이 함께하고 있어요.")
+                    .fontWithLineHeight(fontLevel: .body5)
+            }
+        }
+    }
 
     @ViewBuilder
     func memberProfileImage(_ index: Int, _ count: Int) -> some View {
@@ -167,12 +211,23 @@ extension InvitationView {
                     .foregroundStyle(.grayscaleWhite)
             }
         } else {
-            CustomAsyncImage(url: viewModel.memberProfileImages[index] ?? "",
-                             type: .postMemberProfileImage,
-                             width: 29, height: 29)
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
+            switch invitationType {
+            case .first:
+                CustomAsyncImage(url: viewModel.memberProfileImages[index] ?? "",
+                                 type: .postMemberProfileImage,
+                                 width: 29, height: 29)
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
+                }
+            case .received:
+                CustomAsyncImage(url: memberProfileUrls[index] ?? "",
+                                 type: .postMemberProfileImage,
+                                 width: 29, height: 29)
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.grayscaleWhite, lineWidth: 1.5)
+                }
             }
         }
     }
