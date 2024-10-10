@@ -118,6 +118,7 @@ struct MyProfileView: View {
 
                             userInfoViewModel.deleteMyData()
                             myProfileViewModel.deleteServerToken()
+                            myProfileViewModel.deleteFCMToken()
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.isLogin.toggle()

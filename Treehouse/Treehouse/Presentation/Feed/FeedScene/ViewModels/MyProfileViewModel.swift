@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import FirebaseMessaging
 
 @Observable
 final class MyProfileViewModel: BaseViewModel {
@@ -65,6 +66,16 @@ final class MyProfileViewModel: BaseViewModel {
     func deleteServerToken() {
         KeychainHelper.shared.delete(for: Config.accessTokenKey)
         KeychainHelper.shared.delete(for: Config.refreshTokenKey)
+    }
+    
+    func deleteFCMToken() {
+        Messaging.messaging().deleteToken { error in
+            if let error = error {
+                print("Error deleting FCM token: \(error)")
+            } else {
+                print("FCM token deleted successfully")
+            }
+        }
     }
 }
 
