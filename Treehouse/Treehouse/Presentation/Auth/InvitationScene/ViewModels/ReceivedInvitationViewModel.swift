@@ -40,6 +40,7 @@ extension ReceivedInvitationViewModel {
         switch result {
         case .success(let response):
             receivedInvitations = response.invitations
+            viewState = receivedInvitations.isEmpty ? .unInvitation : .invitation
         case .failure(let error):
             self.errorMessage = error.localizedDescription
         }
