@@ -43,6 +43,8 @@ struct FeedView: View {
     
     var body: some View {
         @Bindable var feedViewModel = feedViewModel
+        @Bindable var currentTreehouseInfoViewModel = currentTreehouseInfoViewModel
+        
         LazyVStack(spacing: 0) {
             postTextField
             
@@ -92,36 +94,45 @@ extension FeedView {
     @ViewBuilder
     private var postTextField: some View {
         VStack(spacing: 0) {
-            HStack() {
-                TextField("\(currentTreehouseInfoViewModel.treehouseName)에 글쓰기...", text: $postContent, axis: .vertical)
-                    .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
+            HStack(spacing: 0) {
+                TextField("", text: $postContent, axis: .vertical)
                     .fontWithLineHeight(fontLevel: .body5)
+                    .padding(EdgeInsets(top: 12.0, leading: 14.0, bottom: 12.0, trailing: 14.0))
+                    .background(alignment: .leading) {
+                        Text(postContent.isEmpty ? "\(currentTreehouseInfoViewModel.treehouseName)에 글쓰기..." : "")
+                            .foregroundColor(.gray5)
+                            .fontWithLineHeight(fontLevel: .body5)
+                            .padding(.leading, 14.0)
+                    }
                     .tint(.treeGreen)
                     .foregroundColor(textFieldState.fontColor)
                     .focused($focusedField, equals: .post)
                     .focused($isKeyboardShowing)
                     .keyboardType(.default)
                     .textInputAutocapitalization(.never)
-                    .frame(width: 320)
+                    .frame(maxWidth: .infinity)
+                    .frame(minHeight: 48)
                     .lineLimit(2)
                     .background(.gray2)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button(action: {
-                                isPickerPresented = true
-                            }){
-                                Image(.icPhoto)
-                            }
-                            Button(action: {
-                                isKeyboardShowing = false
-                            }){
-                                Image(.icDelete2)
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    isPickerPresented = true
+                                }){
+                                    Image(.icPhoto)
+                                }
+                                Button(action: {
+                                    isKeyboardShowing = false
+                                }){
+                                    Image(.icDelete2)
+                                }
                             }
                         }
                     }
-                    .padding(.leading, 16)
+                    .padding(.trailing, 10)
                 
                 Button(action: {
                     Task {
@@ -151,7 +162,6 @@ extension FeedView {
                 }) {
                     Image(textFieldState == .enable ? .icReply : .icReplyUnable)
                 }
-                .padding(.trailing, 16)
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
             
