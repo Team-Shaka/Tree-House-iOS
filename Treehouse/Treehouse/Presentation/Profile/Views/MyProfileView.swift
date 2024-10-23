@@ -135,6 +135,7 @@ struct MyProfileView: View {
                             
                             if myProfileViewModel.isDeleteUser == true {
                                 userInfoViewModel.deleteMyData()
+                                myProfileViewModel.deleteFCMToken()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                     self.isLogin.toggle()
                                     viewRouter.navigate(viewType: .userAuthentication)

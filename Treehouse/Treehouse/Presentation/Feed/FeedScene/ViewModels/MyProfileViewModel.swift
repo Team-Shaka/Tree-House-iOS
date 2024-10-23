@@ -102,7 +102,7 @@ extension MyProfileViewModel {
         let result = await deleteUserUseCase.execute()
         
         switch result {
-        case .success(let response):
+        case .success:
             isDeleteUser = true
         case .failure(let error):
             await MainActor.run {
