@@ -117,6 +117,11 @@ struct TreehouseApp: App {
                     }
                 }
             }
+            .onChange(of: isLogin) { _, newValue in
+                if newValue == false {
+                    viewRouter.navigate(viewType: .userAuthentication)
+                }
+            }
         }
     }
     
